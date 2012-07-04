@@ -36,8 +36,8 @@ or
 ### Copy additional files
 
 #### Controllers Directory
-Copy the controllers/appunto-auth directory to your application's controller directory so your directory 
-structure looks like this: 
+Copy the controllers/appunto-auth directory to your application's controller directory so your application's
+directory structure looks like this: 
 ```
    .
    |-application
@@ -45,8 +45,8 @@ structure looks like this:
    |-----appunto-auth
 ```
 #### Views Directory
-Copy the views/appunto-auth directory to your application's views directory so your directory 
-structure looks like this: 
+Copy the views/appunto-auth directory to your application's views directory so your application's
+directory structure looks like this: 
 ```
    .
    |-application
