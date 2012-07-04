@@ -1,0 +1,130 @@
+/* Large icons for menu */
+.users {
+	background-image:url(icons/Users.png) !important;
+}
+.smiley {
+	background-image:url(icons/Smiley.png) !important;
+}
+/* Fam Fam Silk Icons - small application icons */
+.application {
+	background-image:url(icons/application.png) !important;
+}
+.application_side_tree {
+	background-image:url(icons/application_side_tree.png) !important;
+}
+.group {
+	background-image:url(icons/group.png) !important;
+}
+.group-title {
+	background-image:url(icons/group.png) !important;
+	height: 18px;
+}
+.user-add {
+	background-image:url(icons/user_add.png) !important;
+}
+.user-edit {
+	background-image:url(icons/user_edit.png) !important;
+}
+.user-delete {
+	background-image:url(icons/user_delete.png) !important;
+}
+.key {
+	background-image:url(icons/key.png) !important;
+}
+.delete {
+	background-image:url(icons/delete.png) !important;
+}
+.wand {
+	background-image:url(icons/wand.png) !important;
+}
+.exclamation {
+	background-image:url(icons/exclamation.png) !important;
+}
+.cog {
+	background-image:url(icons/cog.png) !important;
+}
+.cog-title {
+	background:url(icons/cog.png) !important;
+	height: 18px;
+}
+.information {
+	background-image:url(icons/information.png) !important;
+}
+.information-title {
+	background-image:url(icons/information.png) !important;
+	height: 18px;
+}
+.info-grey {
+	background-image:url(icons/info_grey.gif) !important;
+}
+.lock {
+	background-image:url(icons/lock.png) !important;
+}
+.lock-add {
+	background-image:url(icons/lock_add.png) !important;
+}
+.lock-edit {
+	background-image:url(icons/lock_edit.png) !important;
+}
+.lock-delete {
+	background-image:url(icons/lock_delete.png) !important;
+}
+.shield {
+	background-image:url(icons/shield.png) !important;
+}
+.shield-add {
+	background-image:url(icons/shield_add.png) !important;
+}
+.shield-go {
+	background-image:url(icons/shield_go.png) !important;
+}
+.shield-delete {
+	background-image:url(icons/shield_delete.png) !important;
+}
+.monitor {
+	background-image:url(icons/monitor.png) !important;
+}
+.monitor-delete {
+	background-image:url(icons/monitor_delete.png) !important;
+}
+.map {
+	background-image:url(icons/map.png) !important;
+}
+.map-magnify {
+	background-image:url(icons/map_magnify.png) !important;
+}
+.world-link {
+	background-image:url(icons/world_link.png) !important;
+}
+.page-delete {
+	background-image:url(icons/page_delete.png) !important;
+}
+.medal-gold-3 {
+	background-image:url(icons/medal_gold_3.png) !important;
+}
+/* icons for path grid */
+.path-public div.x-grid-cell-inner {
+	background: url(icons/world_link.png) 2px 1px no-repeat !important;
+	padding-left: 24px;
+}
+.path-private div.x-grid-cell-inner {
+	background: url(icons/page_delete.png) 2px 1px no-repeat !important;
+	padding-left: 24px;
+}
+div.combo-path-Public {
+	background: url(icons/world_link.png) 2px 0px no-repeat !important;
+	height: 18px;
+	padding-left: 24px;
+}
+div.combo-path-Private {
+	background: url(icons/page_delete.png) 2px 0px no-repeat !important;
+	height: 18px;
+	padding-left: 24px;
+}
+/* Fugue Icons - small application icons */
+.open-source {
+	background-image:url(icons/open-source.png) !important;
+}
+.trophy {
+	background-image:url(icons/trophy) !important;
+}

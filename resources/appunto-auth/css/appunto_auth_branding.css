@@ -1,0 +1,17 @@
+body {
+	background: #fff;
+}
+.app-header {
+	background: #375EAC url(images/appunto_auth_logo_small.gif) 24px 16px no-repeat;
+}
+#app-user {
+    color: #fff;
+	font-size: 14px;
+  	font-family: helvetica, tahoma, arial, verdana, sans-serif;
+}
+#app-user span.usertext{
+	color: #ccc;
+}
+#app-user span.username {
+	margin-right: 12px;
+}

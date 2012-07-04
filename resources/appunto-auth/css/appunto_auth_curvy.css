@@ -1,0 +1,91 @@
+.app-header {
+	background-color: #375EAC;
+	-moz-border-radius: 16px;
+	-webkit-border-radius: 16px;
+	border-radius: 16px;
+	text-align: right;
+	padding: 16px 20px 0; 
+	margin: 6px 20px 0;
+}
+#app-user {
+    color: #fff;
+	font-size: 14px;
+  	font-family: helvetica, tahoma, arial, verdana, sans-serif;
+}
+#app-user span.usertext{
+	color: #ccc;
+}
+#app-user span.username {
+	margin-right: 12px;
+}
+.app-menu {
+	background: #6F95FC;
+	-moz-border-radius: 16px;
+	-webkit-border-radius: 16px;
+	border-radius: 16px;
+	padding: 16px 0; 
+	margin: 16px 0 16px 20px;
+	font-size: 16px;
+  	font-family: helvetica, tahoma, arial, verdana, sans-serif;
+    color: #fff;
+}
+.app-main {
+	background: #6F95FC;
+	-moz-border-radius: 16px;
+	-webkit-border-radius: 16px;
+	border-radius: 16px;
+	margin: 16px 20px;
+	padding: 4px 24px 24px; 
+	font-size: 16px;
+  	font-family: helvetica, tahoma, arial, verdana, sans-serif;
+    color: #fff;
+}
+.app-main-panel .x-panel-header { 
+    background: #6F95FC;
+    border-color: #6F95FC;
+	box-shadow: none;
+}
+.app-main-panel .x-panel-header-text {
+	color: #fff;
+	font-size: 14px;
+	line-height: 14px;
+  	font-family: helvetica, tahoma, arial, verdana, sans-serif;
+	margin-left: 6px;
+}
+input.round-button,
+a.button {
+  font-size: .9em;
+  cursor: pointer;
+  padding: 3px 12px;
+  margin-bottom: 1em;
+  margin-right: 1em; /* LTR */
+  color: #5a5a5a;
+  text-align: center;
+  font-weight: normal;
+  font-family: helvetica, tahoma, arial, verdana, sans-serif;
+  border: 1px solid #e4e4e4;
+  border-bottom: 1px solid #b4b4b4;
+  border-left-color: #d2d2d2;
+  border-right-color: #d2d2d2;
+  background: url(images/buttons.png) 0 0 repeat-x;
+  -moz-border-radius: 16px;
+  -webkit-border-radius: 16px;
+  border-radius: 16px;
+}
+a.button:link,
+a.button:visited,
+a.button:hover,
+a.button:active {
+  text-decoration: none;
+  color: #5a5a5a;
+}
+input.round-button:hover {
+  background: #DFE8F6;
+  color: #3359A4;
+}
+input.round-button:active {
+  background: #666;
+  color: #fff;
+  border-color: #555;
+  text-shadow: #222 0 -1px 0;
+}
