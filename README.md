@@ -9,5 +9,3 @@ Features:
  - Simple ACL with roles and permissions
  - Restrict/Allow access using controller/function paths
  - Encrypts passwords in database using phpass library
- - 
- - test
