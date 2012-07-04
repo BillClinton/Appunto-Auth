@@ -71,7 +71,7 @@ directory structure looks like this:
 ### Update Codeigniter configuration files
 
 #### Include Reference to Hook in hooks.php
-Appunto Auth authenticates the user in a pre-controller hook. The hook function resides in the Appunto_auth.php 
+Appunto Auth authenticates the user in a post_controller_constructor hook. The hook function resides in the Appunto_auth.php 
 library file.  A reference to this hook must be included in CodeIgniter's config/hooks.php file using the following format:
 
 ```
@@ -85,3 +85,5 @@ $hook['post_controller_constructor'] = array(
 ```
 #### Enable CodeIgniter hooks
 Enable CodeIgniter hooks by setting __enable_hooks__ to TRUE in your application's config.php
+
+__Note__: If hooks are not enabled, no authentication will be performed
