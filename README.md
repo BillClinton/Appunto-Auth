@@ -25,8 +25,10 @@ User Guide located at http://codeigniter.com/user_guide/libraries/sessions.html
 Appunto Auth is available via Sparks.  For information on installing sparks, go here: http://getsparks.org/install
 
 If you have the Spark Manager installed, type:
-```php tools/spark install appunto-auth```
-(use a backslash on Windows (eg. php tools\spark install appunto-auth)
+```php tools/spark install appunto-auth``` (Lixus or OSX)
+or
+```php tools\spark install appunto-auth``` (Windows)
+
 
 ### Copy additional files
 
