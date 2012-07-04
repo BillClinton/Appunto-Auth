@@ -38,7 +38,7 @@ structure looks like this:
    |-application
    |---controllers
    |-----appunto-auth
-'''
+```
 #### Views Directory
 Copy the views/appunto-auth directory to your application's views directory so your directory 
 structure looks like this: 
@@ -47,7 +47,7 @@ structure looks like this:
    |-application
    |---views
    |-----appunto-auth
-'''
+```
 
 ### Include Reference to Hook in hooks.php
 Appunto Auth authenticates the user in a pre-controller hook. The hook function resides in the Appunto_auth.php 
