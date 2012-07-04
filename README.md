@@ -11,7 +11,7 @@ An authentication spark for CodeIgniter with a Sencha Ext JS interface and a sim
 
 ## Installing
 
-### Codeigniter Setup
+### CodeIgniter Setup
 
 Enable CodeIgniter to use the database to store session information by following the instructions 
 in the _Saving Session Data to a Database_ section of the _Session Class_ page in the CodeIgniter
