@@ -26,7 +26,7 @@
 	<link rel="stylesheet" type="text/css" href="<?=base_url()?>resources/appunto-auth/css/appunto_auth_branding.css" /> 
 	<link rel="stylesheet" type="text/css" href="<?=base_url()?>resources/appunto-auth/css/appunto_auth_icons.css" />
 
-	<!-- set a base_url - this would normally be set dynamically in ci view -->
+	<!-- set a base_url -->
 	<script type="text/javascript">var appunto_auth_base_url = '<?=base_url()?>index.php/';</script>
 
 	<!-- ExtJS library -->

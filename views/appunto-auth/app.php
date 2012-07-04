@@ -26,14 +26,14 @@
 	<link rel="stylesheet" type="text/css" href="<?=base_url()?>resources/appunto-auth/css/appunto_auth_branding.css" /> 
 	<link rel="stylesheet" type="text/css" href="<?=base_url()?>resources/appunto-auth/css/appunto_auth_icons.css" />
 
-	<!-- set a base_url - this would normally be set dynamically in ci view -->
+	<!-- set a base_url -->
 	<script type="text/javascript">var appunto_auth_base_url = '<?=base_url()?>index.php/';</script>
 
 	<!-- ExtJS library -->
 	<script type="text/javascript">document.getElementById('loading-msg').innerHTML = 'Loading Sencha ExtJS...';</script>
 	<!-- <script type="text/javascript" src="http://cdn.sencha.io/ext-4.0.7-gpl/ext.js"></script> -->
 	<!-- <script type="text/javascript" src="http://extjs.cachefly.net/ext-4.0.7-gpl/ext-dev.js"></script> -->
-	<script type="text/javascript" src="extjs/ext-dev.js"></script> 
+	<script type="text/javascript" src="extjs/ext.js"></script> 
 
 	<!-- Application requirements -->
 	<script type="text/javascript">document.getElementById('loading-msg').innerHTML = 'Loading Application...';</script>
