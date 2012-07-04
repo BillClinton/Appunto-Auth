@@ -30,7 +30,7 @@ If you have the Spark Manager installed, type:
 
 ### Copy additional files
 
-## Controllers Directory
+#### Controllers Directory
 Copy the controllers/appunto-auth directory to your application's controller directory so your directory 
 structure looks like this: 
 ```
@@ -39,7 +39,7 @@ structure looks like this:
    |---controllers
    |-----appunto-auth
 '''
-## Views Directory
+#### Views Directory
 Copy the views/appunto-auth directory to your application's views directory so your directory 
 structure looks like this: 
 ```
