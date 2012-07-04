@@ -22,8 +22,8 @@ class Application extends CI_Controller {
 			$data['username']= $this->session->userdata['username'];
 		}
 
-//		$this->load->view('appunto-auth/app',$data);
-		$this->load->view('appunto-auth/app_src',$data);
+		$this->load->view('appunto-auth/app',$data);
+//		$this->load->view('appunto-auth/app_src',$data);
 	}
 }
 /* End of file application.php */

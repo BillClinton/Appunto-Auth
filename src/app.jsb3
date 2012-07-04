@@ -10,559 +10,399 @@
             },
             "files": [
                 {
-                    "path": "extjs/src/form/",
+                    "path": "http://cdn.sencha.io/ext-4.0.7-gpl/src/form/",
                     "name": "FieldAncestor.js"
                 },
                 {
-                    "path": "extjs/src/util/",
-                    "name": "Observable.js"
-                },
-                {
-                    "path": "extjs/src/data/",
-                    "name": "Operation.js"
-                },
-                {
-                    "path": "extjs/src/util/",
-                    "name": "Filter.js"
-                },
-                {
-                    "path": "extjs/src/util/",
-                    "name": "KeyMap.js"
-                },
-                {
-                    "path": "extjs/src/util/",
-                    "name": "Memento.js"
-                },
-                {
-                    "path": "extjs/src/form/field/",
-                    "name": "Field.js"
-                },
-                {
-                    "path": "extjs/src/",
+                    "path": "http://cdn.sencha.io/ext-4.0.7-gpl/src/",
                     "name": "Template.js"
                 },
                 {
-                    "path": "extjs/src/util/",
-                    "name": "KeyNav.js"
+                    "path": "http://cdn.sencha.io/ext-4.0.7-gpl/src/util/",
+                    "name": "Observable.js"
                 },
                 {
-                    "path": "extjs/src/fx/",
-                    "name": "CubicBezier.js"
+                    "path": "http://cdn.sencha.io/ext-4.0.7-gpl/src/util/",
+                    "name": "KeyMap.js"
                 },
                 {
-                    "path": "extjs/src/form/field/",
+                    "path": "http://cdn.sencha.io/ext-4.0.7-gpl/src/util/",
+                    "name": "Memento.js"
+                },
+                {
+                    "path": "http://cdn.sencha.io/ext-4.0.7-gpl/src/form/field/",
+                    "name": "Field.js"
+                },
+                {
+                    "path": "http://cdn.sencha.io/ext-4.0.7-gpl/src/data/",
+                    "name": "Operation.js"
+                },
+                {
+                    "path": "http://cdn.sencha.io/ext-4.0.7-gpl/src/util/",
+                    "name": "Filter.js"
+                },
+                {
+                    "path": "http://cdn.sencha.io/ext-4.0.7-gpl/src/form/field/",
                     "name": "VTypes.js"
                 },
                 {
-                    "path": "extjs/src/util/",
+                    "path": "http://cdn.sencha.io/ext-4.0.7-gpl/src/util/",
                     "name": "ClickRepeater.js"
                 },
                 {
-                    "path": "extjs/src/util/",
+                    "path": "http://cdn.sencha.io/ext-4.0.7-gpl/src/util/",
                     "name": "TextMetrics.js"
                 },
                 {
-                    "path": "extjs/src/data/",
-                    "name": "Association.js"
+                    "path": "http://cdn.sencha.io/ext-4.0.7-gpl/src/fx/",
+                    "name": "CubicBezier.js"
                 },
                 {
-                    "path": "extjs/src/data/",
-                    "name": "IdGenerator.js"
-                },
-                {
-                    "path": "extjs/src/data/",
-                    "name": "validations.js"
-                },
-                {
-                    "path": "extjs/src/",
-                    "name": "ZIndexManager.js"
-                },
-                {
-                    "path": "extjs/src/util/",
-                    "name": "Sorter.js"
-                },
-                {
-                    "path": "extjs/src/util/",
-                    "name": "AbstractMixedCollection.js"
-                },
-                {
-                    "path": "extjs/src/data/",
-                    "name": "SortTypes.js"
-                },
-                {
-                    "path": "extjs/src/util/",
-                    "name": "Grouper.js"
-                },
-                {
-                    "path": "extjs/src/panel/",
-                    "name": "Proxy.js"
-                },
-                {
-                    "path": "extjs/src/form/action/",
-                    "name": "Action.js"
-                },
-                {
-                    "path": "extjs/src/data/",
+                    "path": "http://cdn.sencha.io/ext-4.0.7-gpl/src/data/",
                     "name": "Connection.js"
                 },
                 {
-                    "path": "extjs/src/util/",
-                    "name": "Floating.js"
+                    "path": "http://cdn.sencha.io/ext-4.0.7-gpl/src/data/",
+                    "name": "Association.js"
                 },
                 {
-                    "path": "extjs/src/layout/",
-                    "name": "Layout.js"
+                    "path": "http://cdn.sencha.io/ext-4.0.7-gpl/src/util/",
+                    "name": "AbstractMixedCollection.js"
                 },
                 {
-                    "path": "extjs/src/",
-                    "name": "ComponentQuery.js"
+                    "path": "http://cdn.sencha.io/ext-4.0.7-gpl/src/data/",
+                    "name": "IdGenerator.js"
                 },
                 {
-                    "path": "extjs/src/util/",
-                    "name": "HashMap.js"
+                    "path": "http://cdn.sencha.io/ext-4.0.7-gpl/src/form/action/",
+                    "name": "Action.js"
                 },
                 {
-                    "path": "extjs/src/dd/",
-                    "name": "DragTracker.js"
+                    "path": "http://cdn.sencha.io/ext-4.0.7-gpl/src/data/",
+                    "name": "validations.js"
                 },
                 {
-                    "path": "extjs/src/util/",
-                    "name": "Offset.js"
+                    "path": "http://cdn.sencha.io/ext-4.0.7-gpl/src/",
+                    "name": "ZIndexManager.js"
                 },
                 {
-                    "path": "extjs/src/layout/container/boxOverflow/",
-                    "name": "None.js"
-                },
-                {
-                    "path": "extjs/src/layout/container/boxOverflow/",
-                    "name": "Scroller.js"
-                },
-                {
-                    "path": "extjs/src/dd/",
-                    "name": "StatusProxy.js"
-                },
-                {
-                    "path": "extjs/src/util/",
-                    "name": "Animate.js"
-                },
-                {
-                    "path": "extjs/src/fx/target/",
-                    "name": "Target.js"
-                },
-                {
-                    "path": "extjs/src/draw/",
-                    "name": "Color.js"
-                },
-                {
-                    "path": "extjs/src/data/writer/",
-                    "name": "Writer.js"
-                },
-                {
-                    "path": "extjs/src/state/",
-                    "name": "Provider.js"
-                },
-                {
-                    "path": "extjs/src/data/",
-                    "name": "ResultSet.js"
-                },
-                {
-                    "path": "extjs/src/data/",
-                    "name": "Tree.js"
-                },
-                {
-                    "path": "extjs/src/",
-                    "name": "XTemplate.js"
-                },
-                {
-                    "path": "extjs/src/grid/feature/",
-                    "name": "Feature.js"
-                },
-                {
-                    "path": "extjs/src/grid/feature/",
-                    "name": "Grouping.js"
-                },
-                {
-                    "path": "extjs/src/app/",
-                    "name": "Controller.js"
-                },
-                {
-                    "path": "extjs/src/app/",
-                    "name": "EventBus.js"
-                },
-                {
-                    "path": "extjs/src/util/",
-                    "name": "Sortable.js"
-                },
-                {
-                    "path": "extjs/src/util/",
-                    "name": "MixedCollection.js"
-                },
-                {
-                    "path": "extjs/src/data/",
-                    "name": "AbstractStore.js"
-                },
-                {
-                    "path": "extjs/src/form/",
-                    "name": "CheckboxManager.js"
-                },
-                {
-                    "path": "extjs/src/data/",
-                    "name": "StoreManager.js"
-                },
-                {
-                    "path": "extjs/src/form/action/",
-                    "name": "Load.js"
-                },
-                {
-                    "path": "extjs/src/form/action/",
-                    "name": "Submit.js"
-                },
-                {
-                    "path": "extjs/src/data/",
-                    "name": "Errors.js"
-                },
-                {
-                    "path": "extjs/src/form/",
-                    "name": "Labelable.js"
-                },
-                {
-                    "path": "extjs/src/layout/container/",
-                    "name": "AbstractContainer.js"
-                },
-                {
-                    "path": "extjs/src/layout/container/",
-                    "name": "Container.js"
-                },
-                {
-                    "path": "extjs/src/layout/container/",
-                    "name": "Anchor.js"
-                },
-                {
-                    "path": "extjs/src/fx/",
-                    "name": "Easing.js"
-                },
-                {
-                    "path": "extjs/src/util/",
-                    "name": "ComponentDragger.js"
-                },
-                {
-                    "path": "extjs/src/util/",
-                    "name": "Region.js"
-                },
-                {
-                    "path": "extjs/src/menu/",
-                    "name": "Manager.js"
-                },
-                {
-                    "path": "extjs/src/",
-                    "name": "Ajax.js"
-                },
-                {
-                    "path": "extjs/src/",
-                    "name": "AbstractManager.js"
-                },
-                {
-                    "path": "extjs/src/",
-                    "name": "ModelManager.js"
-                },
-                {
-                    "path": "extjs/src/",
-                    "name": "ComponentManager.js"
-                },
-                {
-                    "path": "extjs/src/",
-                    "name": "FocusManager.js"
-                },
-                {
-                    "path": "extjs/src/layout/container/",
-                    "name": "Auto.js"
-                },
-                {
-                    "path": "extjs/src/data/",
-                    "name": "Types.js"
-                },
-                {
-                    "path": "extjs/src/data/",
-                    "name": "Field.js"
-                },
-                {
-                    "path": "extjs/src/data/",
-                    "name": "NodeInterface.js"
-                },
-                {
-                    "path": "extjs/src/layout/component/",
-                    "name": "Component.js"
-                },
-                {
-                    "path": "extjs/src/layout/component/field/",
-                    "name": "Field.js"
-                },
-                {
-                    "path": "extjs/src/layout/component/field/",
-                    "name": "Text.js"
-                },
-                {
-                    "path": "extjs/src/layout/component/field/",
-                    "name": "TextArea.js"
-                },
-                {
-                    "path": "extjs/src/layout/component/",
-                    "name": "Button.js"
-                },
-                {
-                    "path": "extjs/src/layout/component/",
-                    "name": "ProgressBar.js"
-                },
-                {
-                    "path": "extjs/src/layout/component/",
-                    "name": "AbstractDock.js"
-                },
-                {
-                    "path": "extjs/src/layout/component/",
-                    "name": "Dock.js"
-                },
-                {
-                    "path": "extjs/src/layout/component/",
-                    "name": "Editor.js"
-                },
-                {
-                    "path": "extjs/src/fx/",
-                    "name": "Queue.js"
-                },
-                {
-                    "path": "extjs/src/fx/target/",
-                    "name": "Element.js"
-                },
-                {
-                    "path": "extjs/src/fx/target/",
-                    "name": "CompositeElement.js"
-                },
-                {
-                    "path": "extjs/src/fx/target/",
-                    "name": "Sprite.js"
-                },
-                {
-                    "path": "extjs/src/fx/target/",
-                    "name": "CompositeSprite.js"
-                },
-                {
-                    "path": "extjs/src/fx/target/",
-                    "name": "Component.js"
-                },
-                {
-                    "path": "extjs/src/fx/",
-                    "name": "Manager.js"
-                },
-                {
-                    "path": "extjs/src/fx/",
-                    "name": "Animator.js"
-                },
-                {
-                    "path": "extjs/src/draw/",
-                    "name": "Draw.js"
-                },
-                {
-                    "path": "extjs/src/fx/",
-                    "name": "PropertyHandler.js"
-                },
-                {
-                    "path": "extjs/src/fx/",
-                    "name": "Anim.js"
-                },
-                {
-                    "path": "extjs/src/layout/container/",
-                    "name": "AbstractFit.js"
-                },
-                {
-                    "path": "extjs/src/dd/",
-                    "name": "DragDropManager.js"
-                },
-                {
-                    "path": "extjs/src/layout/component/field/",
-                    "name": "Trigger.js"
-                },
-                {
-                    "path": "extjs/src/data/writer/",
-                    "name": "Json.js"
-                },
-                {
-                    "path": "extjs/src/state/",
-                    "name": "Manager.js"
-                },
-                {
-                    "path": "extjs/src/state/",
-                    "name": "Stateful.js"
-                },
-                {
-                    "path": "extjs/src/",
-                    "name": "AbstractComponent.js"
-                },
-                {
-                    "path": "extjs/src/",
-                    "name": "Component.js"
-                },
-                {
-                    "path": "extjs/src/form/field/",
-                    "name": "Base.js"
-                },
-                {
-                    "path": "extjs/src/form/field/",
-                    "name": "Checkbox.js"
-                },
-                {
-                    "path": "extjs/src/resizer/",
-                    "name": "Splitter.js"
-                },
-                {
-                    "path": "extjs/src/toolbar/",
-                    "name": "Item.js"
-                },
-                {
-                    "path": "extjs/src/toolbar/",
-                    "name": "TextItem.js"
-                },
-                {
-                    "path": "extjs/src/form/field/",
-                    "name": "Text.js"
-                },
-                {
-                    "path": "extjs/src/form/field/",
-                    "name": "TextArea.js"
-                },
-                {
-                    "path": "extjs/src/button/",
-                    "name": "Button.js"
-                },
-                {
-                    "path": "extjs/src/",
-                    "name": "ProgressBar.js"
-                },
-                {
-                    "path": "extjs/src/container/",
-                    "name": "AbstractContainer.js"
-                },
-                {
-                    "path": "extjs/src/container/",
-                    "name": "Container.js"
-                },
-                {
-                    "path": "extjs/src/container/",
-                    "name": "Viewport.js"
-                },
-                {
-                    "path": "extjs/src/layout/container/",
-                    "name": "Border.js"
-                },
-                {
-                    "path": "extjs/src/panel/",
-                    "name": "Header.js"
-                },
-                {
-                    "path": "extjs/src/grid/header/",
-                    "name": "Container.js"
-                },
-                {
-                    "path": "extjs/src/grid/column/",
-                    "name": "Column.js"
-                },
-                {
-                    "path": "extjs/src/grid/column/",
-                    "name": "Date.js"
-                },
-                {
-                    "path": "extjs/src/grid/plugin/",
-                    "name": "Editing.js"
-                },
-                {
-                    "path": "extjs/src/",
-                    "name": "Editor.js"
-                },
-                {
-                    "path": "extjs/src/grid/",
-                    "name": "CellEditor.js"
-                },
-                {
-                    "path": "extjs/src/grid/plugin/",
-                    "name": "CellEditing.js"
-                },
-                {
-                    "path": "extjs/src/toolbar/",
-                    "name": "Fill.js"
-                },
-                {
-                    "path": "extjs/src/form/field/",
-                    "name": "Trigger.js"
-                },
-                {
-                    "path": "extjs/src/form/field/",
-                    "name": "Spinner.js"
-                },
-                {
-                    "path": "extjs/src/form/field/",
-                    "name": "Number.js"
-                },
-                {
-                    "path": "extjs/src/toolbar/",
-                    "name": "Separator.js"
-                },
-                {
-                    "path": "extjs/src/layout/container/boxOverflow/",
-                    "name": "Menu.js"
-                },
-                {
-                    "path": "extjs/src/layout/container/",
-                    "name": "Box.js"
-                },
-                {
-                    "path": "extjs/src/layout/container/",
-                    "name": "HBox.js"
-                },
-                {
-                    "path": "extjs/src/layout/container/",
-                    "name": "Fit.js"
-                },
-                {
-                    "path": "extjs/src/layout/container/",
-                    "name": "AbstractCard.js"
-                },
-                {
-                    "path": "extjs/src/layout/container/",
-                    "name": "Card.js"
-                },
-                {
-                    "path": "extjs/src/layout/container/",
-                    "name": "VBox.js"
-                },
-                {
-                    "path": "extjs/src/toolbar/",
-                    "name": "Toolbar.js"
-                },
-                {
-                    "path": "extjs/src/toolbar/",
-                    "name": "Paging.js"
-                },
-                {
-                    "path": "extjs/src/panel/",
-                    "name": "AbstractPanel.js"
-                },
-                {
-                    "path": "extjs/src/data/reader/",
-                    "name": "Reader.js"
-                },
-                {
-                    "path": "extjs/src/data/reader/",
-                    "name": "Json.js"
-                },
-                {
-                    "path": "extjs/src/data/proxy/",
+                    "path": "http://cdn.sencha.io/ext-4.0.7-gpl/src/panel/",
                     "name": "Proxy.js"
                 },
                 {
-                    "path": "extjs/src/data/proxy/",
+                    "path": "http://cdn.sencha.io/ext-4.0.7-gpl/src/util/",
+                    "name": "Floating.js"
+                },
+                {
+                    "path": "http://cdn.sencha.io/ext-4.0.7-gpl/src/util/",
+                    "name": "Sorter.js"
+                },
+                {
+                    "path": "http://cdn.sencha.io/ext-4.0.7-gpl/src/util/",
+                    "name": "Grouper.js"
+                },
+                {
+                    "path": "http://cdn.sencha.io/ext-4.0.7-gpl/src/data/",
+                    "name": "SortTypes.js"
+                },
+                {
+                    "path": "http://cdn.sencha.io/ext-4.0.7-gpl/src/util/",
+                    "name": "Offset.js"
+                },
+                {
+                    "path": "http://cdn.sencha.io/ext-4.0.7-gpl/src/util/",
+                    "name": "HashMap.js"
+                },
+                {
+                    "path": "http://cdn.sencha.io/ext-4.0.7-gpl/src/dd/",
+                    "name": "DragTracker.js"
+                },
+                {
+                    "path": "http://cdn.sencha.io/ext-4.0.7-gpl/src/layout/container/boxOverflow/",
+                    "name": "None.js"
+                },
+                {
+                    "path": "http://cdn.sencha.io/ext-4.0.7-gpl/src/",
+                    "name": "ComponentQuery.js"
+                },
+                {
+                    "path": "http://cdn.sencha.io/ext-4.0.7-gpl/src/layout/container/boxOverflow/",
+                    "name": "Scroller.js"
+                },
+                {
+                    "path": "http://cdn.sencha.io/ext-4.0.7-gpl/src/layout/",
+                    "name": "Layout.js"
+                },
+                {
+                    "path": "http://cdn.sencha.io/ext-4.0.7-gpl/src/fx/",
+                    "name": "Queue.js"
+                },
+                {
+                    "path": "http://cdn.sencha.io/ext-4.0.7-gpl/src/dd/",
+                    "name": "StatusProxy.js"
+                },
+                {
+                    "path": "http://cdn.sencha.io/ext-4.0.7-gpl/src/util/",
+                    "name": "Animate.js"
+                },
+                {
+                    "path": "http://cdn.sencha.io/ext-4.0.7-gpl/src/fx/target/",
+                    "name": "Target.js"
+                },
+                {
+                    "path": "http://cdn.sencha.io/ext-4.0.7-gpl/src/data/writer/",
+                    "name": "Writer.js"
+                },
+                {
+                    "path": "http://cdn.sencha.io/ext-4.0.7-gpl/src/draw/",
+                    "name": "Color.js"
+                },
+                {
+                    "path": "http://cdn.sencha.io/ext-4.0.7-gpl/src/data/",
+                    "name": "ResultSet.js"
+                },
+                {
+                    "path": "http://cdn.sencha.io/ext-4.0.7-gpl/src/state/",
+                    "name": "Provider.js"
+                },
+                {
+                    "path": "http://cdn.sencha.io/ext-4.0.7-gpl/src/",
+                    "name": "XTemplate.js"
+                },
+                {
+                    "path": "http://cdn.sencha.io/ext-4.0.7-gpl/src/data/",
+                    "name": "Tree.js"
+                },
+                {
+                    "path": "http://cdn.sencha.io/ext-4.0.7-gpl/src/grid/feature/",
+                    "name": "Feature.js"
+                },
+                {
+                    "path": "http://cdn.sencha.io/ext-4.0.7-gpl/src/grid/feature/",
+                    "name": "Grouping.js"
+                },
+                {
+                    "path": "http://cdn.sencha.io/ext-4.0.7-gpl/src/",
+                    "name": "Ajax.js"
+                },
+                {
+                    "path": "http://cdn.sencha.io/ext-4.0.7-gpl/src/app/",
+                    "name": "Controller.js"
+                },
+                {
+                    "path": "http://cdn.sencha.io/ext-4.0.7-gpl/src/app/",
+                    "name": "EventBus.js"
+                },
+                {
+                    "path": "http://cdn.sencha.io/ext-4.0.7-gpl/src/util/",
+                    "name": "KeyNav.js"
+                },
+                {
+                    "path": "http://cdn.sencha.io/ext-4.0.7-gpl/src/form/action/",
+                    "name": "Load.js"
+                },
+                {
+                    "path": "http://cdn.sencha.io/ext-4.0.7-gpl/src/form/action/",
+                    "name": "Submit.js"
+                },
+                {
+                    "path": "http://cdn.sencha.io/ext-4.0.7-gpl/src/util/",
+                    "name": "Sortable.js"
+                },
+                {
+                    "path": "http://cdn.sencha.io/ext-4.0.7-gpl/src/util/",
+                    "name": "MixedCollection.js"
+                },
+                {
+                    "path": "http://cdn.sencha.io/ext-4.0.7-gpl/src/form/",
+                    "name": "CheckboxManager.js"
+                },
+                {
+                    "path": "http://cdn.sencha.io/ext-4.0.7-gpl/src/data/",
+                    "name": "AbstractStore.js"
+                },
+                {
+                    "path": "http://cdn.sencha.io/ext-4.0.7-gpl/src/data/",
+                    "name": "StoreManager.js"
+                },
+                {
+                    "path": "http://cdn.sencha.io/ext-4.0.7-gpl/src/data/",
+                    "name": "Errors.js"
+                },
+                {
+                    "path": "http://cdn.sencha.io/ext-4.0.7-gpl/src/form/",
+                    "name": "Labelable.js"
+                },
+                {
+                    "path": "http://cdn.sencha.io/ext-4.0.7-gpl/src/util/",
+                    "name": "ComponentDragger.js"
+                },
+                {
+                    "path": "http://cdn.sencha.io/ext-4.0.7-gpl/src/util/",
+                    "name": "Region.js"
+                },
+                {
+                    "path": "http://cdn.sencha.io/ext-4.0.7-gpl/src/menu/",
+                    "name": "Manager.js"
+                },
+                {
+                    "path": "http://cdn.sencha.io/ext-4.0.7-gpl/src/layout/container/",
+                    "name": "AbstractContainer.js"
+                },
+                {
+                    "path": "http://cdn.sencha.io/ext-4.0.7-gpl/src/layout/container/",
+                    "name": "Container.js"
+                },
+                {
+                    "path": "http://cdn.sencha.io/ext-4.0.7-gpl/src/layout/container/",
+                    "name": "Anchor.js"
+                },
+                {
+                    "path": "http://cdn.sencha.io/ext-4.0.7-gpl/src/fx/",
+                    "name": "Easing.js"
+                },
+                {
+                    "path": "http://cdn.sencha.io/ext-4.0.7-gpl/src/",
+                    "name": "AbstractManager.js"
+                },
+                {
+                    "path": "http://cdn.sencha.io/ext-4.0.7-gpl/src/",
+                    "name": "ModelManager.js"
+                },
+                {
+                    "path": "http://cdn.sencha.io/ext-4.0.7-gpl/src/",
+                    "name": "ComponentManager.js"
+                },
+                {
+                    "path": "http://cdn.sencha.io/ext-4.0.7-gpl/src/",
+                    "name": "FocusManager.js"
+                },
+                {
+                    "path": "http://cdn.sencha.io/ext-4.0.7-gpl/src/layout/container/",
+                    "name": "Auto.js"
+                },
+                {
+                    "path": "http://cdn.sencha.io/ext-4.0.7-gpl/src/layout/component/",
+                    "name": "Component.js"
+                },
+                {
+                    "path": "http://cdn.sencha.io/ext-4.0.7-gpl/src/layout/component/field/",
+                    "name": "Field.js"
+                },
+                {
+                    "path": "http://cdn.sencha.io/ext-4.0.7-gpl/src/layout/component/",
+                    "name": "ProgressBar.js"
+                },
+                {
+                    "path": "http://cdn.sencha.io/ext-4.0.7-gpl/src/layout/component/field/",
+                    "name": "Text.js"
+                },
+                {
+                    "path": "http://cdn.sencha.io/ext-4.0.7-gpl/src/layout/component/field/",
+                    "name": "TextArea.js"
+                },
+                {
+                    "path": "http://cdn.sencha.io/ext-4.0.7-gpl/src/layout/component/",
+                    "name": "Button.js"
+                },
+                {
+                    "path": "http://cdn.sencha.io/ext-4.0.7-gpl/src/layout/component/",
+                    "name": "AbstractDock.js"
+                },
+                {
+                    "path": "http://cdn.sencha.io/ext-4.0.7-gpl/src/layout/component/",
+                    "name": "Dock.js"
+                },
+                {
+                    "path": "http://cdn.sencha.io/ext-4.0.7-gpl/src/layout/container/",
+                    "name": "AbstractFit.js"
+                },
+                {
+                    "path": "http://cdn.sencha.io/ext-4.0.7-gpl/src/data/",
+                    "name": "Types.js"
+                },
+                {
+                    "path": "http://cdn.sencha.io/ext-4.0.7-gpl/src/data/",
+                    "name": "Field.js"
+                },
+                {
+                    "path": "http://cdn.sencha.io/ext-4.0.7-gpl/src/data/",
+                    "name": "NodeInterface.js"
+                },
+                {
+                    "path": "http://cdn.sencha.io/ext-4.0.7-gpl/src/layout/component/",
+                    "name": "Editor.js"
+                },
+                {
+                    "path": "http://cdn.sencha.io/ext-4.0.7-gpl/src/dd/",
+                    "name": "DragDropManager.js"
+                },
+                {
+                    "path": "http://cdn.sencha.io/ext-4.0.7-gpl/src/fx/target/",
+                    "name": "Element.js"
+                },
+                {
+                    "path": "http://cdn.sencha.io/ext-4.0.7-gpl/src/fx/target/",
+                    "name": "CompositeElement.js"
+                },
+                {
+                    "path": "http://cdn.sencha.io/ext-4.0.7-gpl/src/fx/target/",
+                    "name": "Sprite.js"
+                },
+                {
+                    "path": "http://cdn.sencha.io/ext-4.0.7-gpl/src/fx/target/",
+                    "name": "Component.js"
+                },
+                {
+                    "path": "http://cdn.sencha.io/ext-4.0.7-gpl/src/fx/target/",
+                    "name": "CompositeSprite.js"
+                },
+                {
+                    "path": "http://cdn.sencha.io/ext-4.0.7-gpl/src/fx/",
+                    "name": "Manager.js"
+                },
+                {
+                    "path": "http://cdn.sencha.io/ext-4.0.7-gpl/src/fx/",
+                    "name": "Animator.js"
+                },
+                {
+                    "path": "http://cdn.sencha.io/ext-4.0.7-gpl/src/data/writer/",
+                    "name": "Json.js"
+                },
+                {
+                    "path": "http://cdn.sencha.io/ext-4.0.7-gpl/src/draw/",
+                    "name": "Draw.js"
+                },
+                {
+                    "path": "http://cdn.sencha.io/ext-4.0.7-gpl/src/fx/",
+                    "name": "PropertyHandler.js"
+                },
+                {
+                    "path": "http://cdn.sencha.io/ext-4.0.7-gpl/src/fx/",
+                    "name": "Anim.js"
+                },
+                {
+                    "path": "http://cdn.sencha.io/ext-4.0.7-gpl/src/layout/component/field/",
+                    "name": "Trigger.js"
+                },
+                {
+                    "path": "http://cdn.sencha.io/ext-4.0.7-gpl/src/data/reader/",
+                    "name": "Reader.js"
+                },
+                {
+                    "path": "http://cdn.sencha.io/ext-4.0.7-gpl/src/data/reader/",
+                    "name": "Json.js"
+                },
+                {
+                    "path": "http://cdn.sencha.io/ext-4.0.7-gpl/src/data/proxy/",
+                    "name": "Proxy.js"
+                },
+                {
+                    "path": "http://cdn.sencha.io/ext-4.0.7-gpl/src/data/proxy/",
                     "name": "Server.js"
                 },
                 {
-                    "path": "extjs/src/data/proxy/",
+                    "path": "http://cdn.sencha.io/ext-4.0.7-gpl/src/data/proxy/",
                     "name": "Ajax.js"
                 },
                 {
@@ -570,264 +410,424 @@
                     "name": "Codeigniter.js"
                 },
                 {
-                    "path": "extjs/src/data/",
+                    "path": "http://cdn.sencha.io/ext-4.0.7-gpl/src/data/",
                     "name": "Model.js"
                 },
                 {
-                    "path": "extjs/src/data/",
+                    "path": "http://cdn.sencha.io/ext-4.0.7-gpl/src/data/",
                     "name": "Store.js"
                 },
                 {
-                    "path": "extjs/src/data/",
+                    "path": "http://cdn.sencha.io/ext-4.0.7-gpl/src/data/",
                     "name": "NodeStore.js"
                 },
                 {
-                    "path": "extjs/src/data/",
+                    "path": "http://cdn.sencha.io/ext-4.0.7-gpl/src/data/",
                     "name": "TreeStore.js"
                 },
                 {
-                    "path": "extjs/src/layout/component/",
-                    "name": "Tip.js"
+                    "path": "http://cdn.sencha.io/ext-4.0.7-gpl/src/state/",
+                    "name": "Manager.js"
                 },
                 {
-                    "path": "extjs/src/dd/",
-                    "name": "DragDrop.js"
+                    "path": "http://cdn.sencha.io/ext-4.0.7-gpl/src/state/",
+                    "name": "Stateful.js"
                 },
                 {
-                    "path": "extjs/src/dd/",
-                    "name": "DD.js"
+                    "path": "http://cdn.sencha.io/ext-4.0.7-gpl/src/",
+                    "name": "AbstractComponent.js"
                 },
                 {
-                    "path": "extjs/src/dd/",
-                    "name": "DDProxy.js"
-                },
-                {
-                    "path": "extjs/src/dd/",
-                    "name": "DragSource.js"
-                },
-                {
-                    "path": "extjs/src/panel/",
-                    "name": "DD.js"
-                },
-                {
-                    "path": "extjs/src/panel/",
-                    "name": "Panel.js"
-                },
-                {
-                    "path": "extjs/src/window/",
-                    "name": "Window.js"
-                },
-                {
-                    "path": "extjs/src/window/",
-                    "name": "MessageBox.js"
-                },
-                {
-                    "path": "extjs/src/form/",
-                    "name": "Basic.js"
-                },
-                {
-                    "path": "extjs/src/form/",
-                    "name": "Panel.js"
-                },
-                {
-                    "path": "extjs/src/tip/",
-                    "name": "Tip.js"
-                },
-                {
-                    "path": "extjs/src/tip/",
-                    "name": "ToolTip.js"
-                },
-                {
-                    "path": "extjs/src/tip/",
-                    "name": "QuickTip.js"
-                },
-                {
-                    "path": "extjs/src/tip/",
-                    "name": "QuickTipManager.js"
-                },
-                {
-                    "path": "extjs/src/app/",
-                    "name": "Application.js"
-                },
-                {
-                    "path": "extjs/src/util/",
-                    "name": "Point.js"
-                },
-                {
-                    "path": "extjs/src/",
-                    "name": "Layer.js"
-                },
-                {
-                    "path": "extjs/src/data/",
-                    "name": "ArrayStore.js"
-                },
-                {
-                    "path": "extjs/src/",
-                    "name": "PluginManager.js"
-                },
-                {
-                    "path": "extjs/src/layout/component/",
-                    "name": "Auto.js"
-                },
-                {
-                    "path": "extjs/src/",
-                    "name": "LoadMask.js"
-                },
-                {
-                    "path": "extjs/src/resizer/",
-                    "name": "Resizer.js"
-                },
-                {
-                    "path": "extjs/src/resizer/",
-                    "name": "SplitterTracker.js"
-                },
-                {
-                    "path": "extjs/src/panel/",
-                    "name": "Tool.js"
-                },
-                {
-                    "path": "extjs/src/util/",
-                    "name": "CSS.js"
-                },
-                {
-                    "path": "extjs/src/grid/",
-                    "name": "ColumnLayout.js"
-                },
-                {
-                    "path": "extjs/src/grid/plugin/",
-                    "name": "HeaderResizer.js"
-                },
-                {
-                    "path": "extjs/src/data/",
-                    "name": "Batch.js"
-                },
-                {
-                    "path": "extjs/src/data/",
-                    "name": "Request.js"
-                },
-                {
-                    "path": "extjs/src/menu/",
-                    "name": "Item.js"
-                },
-                {
-                    "path": "extjs/src/menu/",
-                    "name": "KeyNav.js"
-                },
-                {
-                    "path": "extjs/src/",
-                    "name": "ElementLoader.js"
-                },
-                {
-                    "path": "extjs/src/layout/component/",
-                    "name": "Draw.js"
-                },
-                {
-                    "path": "extjs/src/data/proxy/",
-                    "name": "Client.js"
-                },
-                {
-                    "path": "extjs/src/draw/",
-                    "name": "CompositeSprite.js"
-                },
-                {
-                    "path": "extjs/src/dd/",
-                    "name": "DragZone.js"
-                },
-                {
-                    "path": "extjs/src/dd/",
-                    "name": "Registry.js"
-                },
-                {
-                    "path": "extjs/src/dd/",
-                    "name": "DDTarget.js"
-                },
-                {
-                    "path": "extjs/src/dd/",
-                    "name": "ScrollManager.js"
-                },
-                {
-                    "path": "extjs/src/",
-                    "name": "ComponentLoader.js"
-                },
-                {
-                    "path": "extjs/src/menu/",
-                    "name": "CheckItem.js"
-                },
-                {
-                    "path": "extjs/src/menu/",
-                    "name": "Separator.js"
-                },
-                {
-                    "path": "extjs/src/menu/",
-                    "name": "Menu.js"
-                },
-                {
-                    "path": "extjs/src/data/proxy/",
-                    "name": "Memory.js"
-                },
-                {
-                    "path": "extjs/src/draw/",
-                    "name": "Surface.js"
-                },
-                {
-                    "path": "extjs/src/draw/",
+                    "path": "http://cdn.sencha.io/ext-4.0.7-gpl/src/",
                     "name": "Component.js"
                 },
                 {
-                    "path": "extjs/src/grid/header/",
+                    "path": "http://cdn.sencha.io/ext-4.0.7-gpl/src/form/field/",
+                    "name": "Base.js"
+                },
+                {
+                    "path": "http://cdn.sencha.io/ext-4.0.7-gpl/src/form/field/",
+                    "name": "Checkbox.js"
+                },
+                {
+                    "path": "http://cdn.sencha.io/ext-4.0.7-gpl/src/toolbar/",
+                    "name": "Item.js"
+                },
+                {
+                    "path": "http://cdn.sencha.io/ext-4.0.7-gpl/src/toolbar/",
+                    "name": "TextItem.js"
+                },
+                {
+                    "path": "http://cdn.sencha.io/ext-4.0.7-gpl/src/form/field/",
+                    "name": "Text.js"
+                },
+                {
+                    "path": "http://cdn.sencha.io/ext-4.0.7-gpl/src/form/field/",
+                    "name": "TextArea.js"
+                },
+                {
+                    "path": "http://cdn.sencha.io/ext-4.0.7-gpl/src/",
+                    "name": "ProgressBar.js"
+                },
+                {
+                    "path": "http://cdn.sencha.io/ext-4.0.7-gpl/src/button/",
+                    "name": "Button.js"
+                },
+                {
+                    "path": "http://cdn.sencha.io/ext-4.0.7-gpl/src/resizer/",
+                    "name": "Splitter.js"
+                },
+                {
+                    "path": "http://cdn.sencha.io/ext-4.0.7-gpl/src/container/",
+                    "name": "AbstractContainer.js"
+                },
+                {
+                    "path": "http://cdn.sencha.io/ext-4.0.7-gpl/src/container/",
+                    "name": "Container.js"
+                },
+                {
+                    "path": "http://cdn.sencha.io/ext-4.0.7-gpl/src/container/",
+                    "name": "Viewport.js"
+                },
+                {
+                    "path": "http://cdn.sencha.io/ext-4.0.7-gpl/src/layout/container/",
+                    "name": "Border.js"
+                },
+                {
+                    "path": "http://cdn.sencha.io/ext-4.0.7-gpl/src/grid/header/",
+                    "name": "Container.js"
+                },
+                {
+                    "path": "http://cdn.sencha.io/ext-4.0.7-gpl/src/grid/column/",
+                    "name": "Column.js"
+                },
+                {
+                    "path": "http://cdn.sencha.io/ext-4.0.7-gpl/src/grid/column/",
+                    "name": "Date.js"
+                },
+                {
+                    "path": "http://cdn.sencha.io/ext-4.0.7-gpl/src/grid/plugin/",
+                    "name": "Editing.js"
+                },
+                {
+                    "path": "http://cdn.sencha.io/ext-4.0.7-gpl/src/panel/",
+                    "name": "Header.js"
+                },
+                {
+                    "path": "http://cdn.sencha.io/ext-4.0.7-gpl/src/",
+                    "name": "Editor.js"
+                },
+                {
+                    "path": "http://cdn.sencha.io/ext-4.0.7-gpl/src/grid/",
+                    "name": "CellEditor.js"
+                },
+                {
+                    "path": "http://cdn.sencha.io/ext-4.0.7-gpl/src/grid/plugin/",
+                    "name": "CellEditing.js"
+                },
+                {
+                    "path": "http://cdn.sencha.io/ext-4.0.7-gpl/src/toolbar/",
+                    "name": "Fill.js"
+                },
+                {
+                    "path": "http://cdn.sencha.io/ext-4.0.7-gpl/src/form/field/",
+                    "name": "Trigger.js"
+                },
+                {
+                    "path": "http://cdn.sencha.io/ext-4.0.7-gpl/src/form/field/",
+                    "name": "Spinner.js"
+                },
+                {
+                    "path": "http://cdn.sencha.io/ext-4.0.7-gpl/src/form/field/",
+                    "name": "Number.js"
+                },
+                {
+                    "path": "http://cdn.sencha.io/ext-4.0.7-gpl/src/toolbar/",
+                    "name": "Separator.js"
+                },
+                {
+                    "path": "http://cdn.sencha.io/ext-4.0.7-gpl/src/layout/container/boxOverflow/",
+                    "name": "Menu.js"
+                },
+                {
+                    "path": "http://cdn.sencha.io/ext-4.0.7-gpl/src/layout/container/",
+                    "name": "Box.js"
+                },
+                {
+                    "path": "http://cdn.sencha.io/ext-4.0.7-gpl/src/layout/container/",
+                    "name": "HBox.js"
+                },
+                {
+                    "path": "http://cdn.sencha.io/ext-4.0.7-gpl/src/layout/container/",
+                    "name": "Fit.js"
+                },
+                {
+                    "path": "http://cdn.sencha.io/ext-4.0.7-gpl/src/layout/container/",
+                    "name": "AbstractCard.js"
+                },
+                {
+                    "path": "http://cdn.sencha.io/ext-4.0.7-gpl/src/layout/container/",
+                    "name": "Card.js"
+                },
+                {
+                    "path": "http://cdn.sencha.io/ext-4.0.7-gpl/src/layout/container/",
+                    "name": "VBox.js"
+                },
+                {
+                    "path": "http://cdn.sencha.io/ext-4.0.7-gpl/src/toolbar/",
+                    "name": "Toolbar.js"
+                },
+                {
+                    "path": "http://cdn.sencha.io/ext-4.0.7-gpl/src/toolbar/",
+                    "name": "Paging.js"
+                },
+                {
+                    "path": "http://cdn.sencha.io/ext-4.0.7-gpl/src/panel/",
+                    "name": "AbstractPanel.js"
+                },
+                {
+                    "path": "http://cdn.sencha.io/ext-4.0.7-gpl/src/layout/component/",
+                    "name": "Tip.js"
+                },
+                {
+                    "path": "http://cdn.sencha.io/ext-4.0.7-gpl/src/dd/",
+                    "name": "DragDrop.js"
+                },
+                {
+                    "path": "http://cdn.sencha.io/ext-4.0.7-gpl/src/dd/",
+                    "name": "DD.js"
+                },
+                {
+                    "path": "http://cdn.sencha.io/ext-4.0.7-gpl/src/dd/",
+                    "name": "DDProxy.js"
+                },
+                {
+                    "path": "http://cdn.sencha.io/ext-4.0.7-gpl/src/dd/",
+                    "name": "DragSource.js"
+                },
+                {
+                    "path": "http://cdn.sencha.io/ext-4.0.7-gpl/src/panel/",
+                    "name": "DD.js"
+                },
+                {
+                    "path": "http://cdn.sencha.io/ext-4.0.7-gpl/src/panel/",
+                    "name": "Panel.js"
+                },
+                {
+                    "path": "http://cdn.sencha.io/ext-4.0.7-gpl/src/window/",
+                    "name": "Window.js"
+                },
+                {
+                    "path": "http://cdn.sencha.io/ext-4.0.7-gpl/src/window/",
+                    "name": "MessageBox.js"
+                },
+                {
+                    "path": "http://cdn.sencha.io/ext-4.0.7-gpl/src/form/",
+                    "name": "Basic.js"
+                },
+                {
+                    "path": "http://cdn.sencha.io/ext-4.0.7-gpl/src/form/",
+                    "name": "Panel.js"
+                },
+                {
+                    "path": "http://cdn.sencha.io/ext-4.0.7-gpl/src/tip/",
+                    "name": "Tip.js"
+                },
+                {
+                    "path": "http://cdn.sencha.io/ext-4.0.7-gpl/src/tip/",
+                    "name": "ToolTip.js"
+                },
+                {
+                    "path": "http://cdn.sencha.io/ext-4.0.7-gpl/src/tip/",
+                    "name": "QuickTip.js"
+                },
+                {
+                    "path": "http://cdn.sencha.io/ext-4.0.7-gpl/src/tip/",
+                    "name": "QuickTipManager.js"
+                },
+                {
+                    "path": "http://cdn.sencha.io/ext-4.0.7-gpl/src/app/",
+                    "name": "Application.js"
+                },
+                {
+                    "path": "http://cdn.sencha.io/ext-4.0.7-gpl/src/util/",
+                    "name": "Point.js"
+                },
+                {
+                    "path": "http://cdn.sencha.io/ext-4.0.7-gpl/src/data/",
+                    "name": "ArrayStore.js"
+                },
+                {
+                    "path": "http://cdn.sencha.io/ext-4.0.7-gpl/src/data/",
+                    "name": "Batch.js"
+                },
+                {
+                    "path": "http://cdn.sencha.io/ext-4.0.7-gpl/src/",
+                    "name": "Layer.js"
+                },
+                {
+                    "path": "http://cdn.sencha.io/ext-4.0.7-gpl/src/data/",
+                    "name": "Request.js"
+                },
+                {
+                    "path": "http://cdn.sencha.io/ext-4.0.7-gpl/src/",
+                    "name": "PluginManager.js"
+                },
+                {
+                    "path": "http://cdn.sencha.io/ext-4.0.7-gpl/src/",
+                    "name": "LoadMask.js"
+                },
+                {
+                    "path": "http://cdn.sencha.io/ext-4.0.7-gpl/src/layout/component/",
+                    "name": "Auto.js"
+                },
+                {
+                    "path": "http://cdn.sencha.io/ext-4.0.7-gpl/src/resizer/",
+                    "name": "SplitterTracker.js"
+                },
+                {
+                    "path": "http://cdn.sencha.io/ext-4.0.7-gpl/src/grid/",
+                    "name": "ColumnLayout.js"
+                },
+                {
+                    "path": "http://cdn.sencha.io/ext-4.0.7-gpl/src/resizer/",
+                    "name": "Resizer.js"
+                },
+                {
+                    "path": "http://cdn.sencha.io/ext-4.0.7-gpl/src/grid/plugin/",
+                    "name": "HeaderResizer.js"
+                },
+                {
+                    "path": "http://cdn.sencha.io/ext-4.0.7-gpl/src/panel/",
+                    "name": "Tool.js"
+                },
+                {
+                    "path": "http://cdn.sencha.io/ext-4.0.7-gpl/src/util/",
+                    "name": "CSS.js"
+                },
+                {
+                    "path": "http://cdn.sencha.io/ext-4.0.7-gpl/src/menu/",
+                    "name": "Item.js"
+                },
+                {
+                    "path": "http://cdn.sencha.io/ext-4.0.7-gpl/src/data/proxy/",
+                    "name": "Client.js"
+                },
+                {
+                    "path": "http://cdn.sencha.io/ext-4.0.7-gpl/src/menu/",
+                    "name": "KeyNav.js"
+                },
+                {
+                    "path": "http://cdn.sencha.io/ext-4.0.7-gpl/src/",
+                    "name": "ElementLoader.js"
+                },
+                {
+                    "path": "http://cdn.sencha.io/ext-4.0.7-gpl/src/layout/component/",
+                    "name": "Draw.js"
+                },
+                {
+                    "path": "http://cdn.sencha.io/ext-4.0.7-gpl/src/dd/",
                     "name": "DragZone.js"
                 },
                 {
-                    "path": "extjs/src/dd/",
+                    "path": "http://cdn.sencha.io/ext-4.0.7-gpl/src/draw/",
+                    "name": "CompositeSprite.js"
+                },
+                {
+                    "path": "http://cdn.sencha.io/ext-4.0.7-gpl/src/dd/",
+                    "name": "Registry.js"
+                },
+                {
+                    "path": "http://cdn.sencha.io/ext-4.0.7-gpl/src/dd/",
+                    "name": "ScrollManager.js"
+                },
+                {
+                    "path": "http://cdn.sencha.io/ext-4.0.7-gpl/src/dd/",
+                    "name": "DDTarget.js"
+                },
+                {
+                    "path": "http://cdn.sencha.io/ext-4.0.7-gpl/src/data/proxy/",
+                    "name": "Memory.js"
+                },
+                {
+                    "path": "http://cdn.sencha.io/ext-4.0.7-gpl/src/",
+                    "name": "ComponentLoader.js"
+                },
+                {
+                    "path": "http://cdn.sencha.io/ext-4.0.7-gpl/src/menu/",
+                    "name": "CheckItem.js"
+                },
+                {
+                    "path": "http://cdn.sencha.io/ext-4.0.7-gpl/src/menu/",
+                    "name": "Separator.js"
+                },
+                {
+                    "path": "http://cdn.sencha.io/ext-4.0.7-gpl/src/menu/",
+                    "name": "Menu.js"
+                },
+                {
+                    "path": "http://cdn.sencha.io/ext-4.0.7-gpl/src/grid/header/",
+                    "name": "DragZone.js"
+                },
+                {
+                    "path": "http://cdn.sencha.io/ext-4.0.7-gpl/src/draw/",
+                    "name": "Surface.js"
+                },
+                {
+                    "path": "http://cdn.sencha.io/ext-4.0.7-gpl/src/draw/",
+                    "name": "Component.js"
+                },
+                {
+                    "path": "http://cdn.sencha.io/ext-4.0.7-gpl/src/dd/",
                     "name": "DropTarget.js"
                 },
                 {
-                    "path": "extjs/src/dd/",
+                    "path": "http://cdn.sencha.io/ext-4.0.7-gpl/src/dd/",
                     "name": "DropZone.js"
                 },
                 {
-                    "path": "extjs/src/grid/header/",
+                    "path": "http://cdn.sencha.io/ext-4.0.7-gpl/src/grid/header/",
                     "name": "DropZone.js"
                 },
                 {
-                    "path": "extjs/src/grid/plugin/",
+                    "path": "http://cdn.sencha.io/ext-4.0.7-gpl/src/grid/plugin/",
                     "name": "HeaderReorderer.js"
                 },
                 {
-                    "path": "extjs/src/data/reader/",
-                    "name": "Array.js"
-                },
-                {
-                    "path": "extjs/src/resizer/",
+                    "path": "http://cdn.sencha.io/ext-4.0.7-gpl/src/resizer/",
                     "name": "ResizeTracker.js"
                 },
                 {
-                    "path": "extjs/src/",
+                    "path": "http://cdn.sencha.io/ext-4.0.7-gpl/src/data/reader/",
+                    "name": "Array.js"
+                },
+                {
+                    "path": "http://cdn.sencha.io/ext-4.0.7-gpl/src/",
                     "name": "ShadowPool.js"
                 },
                 {
-                    "path": "extjs/src/draw/",
+                    "path": "http://cdn.sencha.io/ext-4.0.7-gpl/src/draw/",
                     "name": "Matrix.js"
                 },
                 {
-                    "path": "extjs/src/draw/",
+                    "path": "http://cdn.sencha.io/ext-4.0.7-gpl/src/draw/",
                     "name": "SpriteDD.js"
                 },
                 {
-                    "path": "extjs/src/",
+                    "path": "http://cdn.sencha.io/ext-4.0.7-gpl/src/",
                     "name": "Shadow.js"
                 },
                 {
-                    "path": "extjs/src/draw/",
+                    "path": "http://cdn.sencha.io/ext-4.0.7-gpl/src/draw/",
                     "name": "Sprite.js"
                 },
                 {
-                    "path": "extjs/src/draw/engine/",
-                    "name": "Svg.js"
+                    "path": "http://cdn.sencha.io/ext-4.0.7-gpl/src/draw/engine/",
+                    "name": "Vml.js"
                 },
                 {
-                    "path": "extjs/src/draw/engine/",
-                    "name": "Vml.js"
+                    "path": "http://cdn.sencha.io/ext-4.0.7-gpl/src/draw/engine/",
+                    "name": "Svg.js"
                 },
                 {
                     "path": "app/view/main/",
@@ -990,19 +990,19 @@
                     "name": "LicensePanel.js"
                 },
                 {
-                    "path": "extjs/src/panel/",
-                    "name": "Table.js"
-                },
-                {
-                    "path": "extjs/src/tree/",
+                    "path": "http://cdn.sencha.io/ext-4.0.7-gpl/src/tree/",
                     "name": "Column.js"
                 },
                 {
-                    "path": "extjs/src/selection/",
+                    "path": "http://cdn.sencha.io/ext-4.0.7-gpl/src/panel/",
+                    "name": "Table.js"
+                },
+                {
+                    "path": "http://cdn.sencha.io/ext-4.0.7-gpl/src/selection/",
                     "name": "Model.js"
                 },
                 {
-                    "path": "extjs/src/selection/",
+                    "path": "http://cdn.sencha.io/ext-4.0.7-gpl/src/selection/",
                     "name": "DataViewModel.js"
                 },
                 {
@@ -1010,31 +1010,31 @@
                     "name": "Info.js"
                 },
                 {
-                    "path": "extjs/src/selection/",
+                    "path": "http://cdn.sencha.io/ext-4.0.7-gpl/src/selection/",
                     "name": "RowModel.js"
                 },
                 {
-                    "path": "extjs/src/selection/",
+                    "path": "http://cdn.sencha.io/ext-4.0.7-gpl/src/selection/",
                     "name": "TreeModel.js"
                 },
                 {
-                    "path": "extjs/src/view/",
+                    "path": "http://cdn.sencha.io/ext-4.0.7-gpl/src/view/",
                     "name": "AbstractView.js"
                 },
                 {
-                    "path": "extjs/src/view/",
+                    "path": "http://cdn.sencha.io/ext-4.0.7-gpl/src/view/",
                     "name": "View.js"
                 },
                 {
-                    "path": "extjs/src/view/",
+                    "path": "http://cdn.sencha.io/ext-4.0.7-gpl/src/view/",
                     "name": "Table.js"
                 },
                 {
-                    "path": "extjs/src/tree/",
+                    "path": "http://cdn.sencha.io/ext-4.0.7-gpl/src/tree/",
                     "name": "View.js"
                 },
                 {
-                    "path": "extjs/src/tree/",
+                    "path": "http://cdn.sencha.io/ext-4.0.7-gpl/src/tree/",
                     "name": "Panel.js"
                 },
                 {
@@ -1054,11 +1054,11 @@
                     "name": "Settings.js"
                 },
                 {
-                    "path": "extjs/src/grid/",
+                    "path": "http://cdn.sencha.io/ext-4.0.7-gpl/src/grid/",
                     "name": "View.js"
                 },
                 {
-                    "path": "extjs/src/grid/",
+                    "path": "http://cdn.sencha.io/ext-4.0.7-gpl/src/grid/",
                     "name": "Panel.js"
                 },
                 {
@@ -1114,19 +1114,19 @@
                     "name": "Sessions.js"
                 },
                 {
-                    "path": "extjs/src/grid/",
+                    "path": "http://cdn.sencha.io/ext-4.0.7-gpl/src/grid/",
                     "name": "Scroller.js"
                 },
                 {
-                    "path": "extjs/src/view/",
+                    "path": "http://cdn.sencha.io/ext-4.0.7-gpl/src/view/",
                     "name": "TableChunker.js"
                 },
                 {
-                    "path": "extjs/src/grid/",
+                    "path": "http://cdn.sencha.io/ext-4.0.7-gpl/src/grid/",
                     "name": "LockingView.js"
                 },
                 {
-                    "path": "extjs/src/grid/",
+                    "path": "http://cdn.sencha.io/ext-4.0.7-gpl/src/grid/",
                     "name": "Lockable.js"
                 }
             ]

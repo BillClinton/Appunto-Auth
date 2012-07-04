@@ -1,3 +1,5 @@
+//Ext.Loader.setPath('Ext', 'http://cdn.sencha.io/ext-4.0.7-gpl/src');
+//Ext.Loader.setPath('Ext', 'http://extjs.cachefly.net/ext-4.0.7-gpl/src');
 Ext.Loader.setPath('Ext', 'extjs/src');
 
 Ext.require('Ext.container.Viewport');
