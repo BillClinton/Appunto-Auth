@@ -24,6 +24,6 @@ Ext.define('APPA.model.Path', {
     proxy: 
     {
         type    : 'ci',
-        ci_class: 'appunto/path'
+        ci_class: 'appunto-auth/path'
     }
 });

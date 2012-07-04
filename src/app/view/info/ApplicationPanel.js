@@ -10,6 +10,6 @@ Ext.define('APPA.view.info.ApplicationPanel' ,{
 	autoScroll	: true,
 	bodyStyle 	: 'padding:24px;',
 	
-	autoLoad	: '/auth/index.php/appunto/info/application'
+	autoLoad	: appunto_auth_base_url+'appunto-auth/info/application'
 
 });

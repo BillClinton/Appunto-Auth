@@ -14,8 +14,8 @@ Ext.define('APPUNTO.lib.proxy.Codeigniter', {
 	/*
 	 * These two values should reflect your deployment
 	 */ 
-	baseurl 	: '/auth/', // use a trailing slash
-	index_php	: true,		// true to include the index.php in codeigniter URLs
+	baseurl 	: appunto_auth_base_url, 		// use a trailing slash
+	index_php	: false,		// true to include the index.php in codeigniter URLs
 
 	ci_class 	: '', // leave this blank, for initialization only.
 	ci_method		: '', // leave this blank, for initialization only.

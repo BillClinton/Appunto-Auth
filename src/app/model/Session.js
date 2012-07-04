@@ -19,6 +19,6 @@ Ext.define('APPA.model.Session', {
     proxy: 
     {
         type    : 'ci',
-        ci_class: 'appunto/session'
+        ci_class: 'appunto-auth/session'
     }
 });

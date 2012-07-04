@@ -20,6 +20,6 @@ Ext.define('APPA.model.Role', {
     proxy: 
     {
         type    : 'ci',
-        ci_class: 'appunto/role'
+        ci_class: 'appunto-auth/role'
     }
 });

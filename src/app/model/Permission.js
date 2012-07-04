@@ -18,6 +18,6 @@ Ext.define('APPA.model.Permission', {
     proxy: 
     {
         type    : 'ci',
-        ci_class: 'appunto/permission'
+        ci_class: 'appunto-auth/permission'
     }
 });
