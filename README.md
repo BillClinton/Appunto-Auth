@@ -13,16 +13,16 @@ An authentication spark for CodeIgniter with a Sencha Ext JS interface and a sim
 
 ### CodeIgniter Setup
 
-Enable CodeIgniter to use the database to store session information by following the instructions 
+Enable CodeIgniter to use the database to store sessions by following the instructions 
 in the _Saving Session Data to a Database_ section of the _Session Class_ page in the CodeIgniter
 User Guide located at http://codeigniter.com/user_guide/libraries/sessions.html
 
  - create the ci_sessions database table
- - enable the database option in your config.php by setting sess_use_database to TRUE in your config.php
+ - enable the database option in your config.php by setting __sess_use_database__ to TRUE in your config.php
 
 ### Get The Spark
 
-Appunto Auth is available via Sparks.  For info about how to install sparks, go here: http://getsparks.org/install
+Appunto Auth is available via Sparks.  For information on installing sparks, go here: http://getsparks.org/install
 
 If you have the Spark Manager installed, type:
 'php tools/spark install appunto-auth'
