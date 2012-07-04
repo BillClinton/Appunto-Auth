@@ -35,6 +35,10 @@ or
 
 ### Copy additional files
 
+In order to create its interface, Appunto Auth relies on controller, view and resource files that are not 
+distributed automatically by the Spark Manager.  These directories must be copied to your application's 
+directory structure manually.
+
 #### Controllers Directory
 Copy the controllers/appunto-auth directory to your application's controller directory so your application's
 directory structure looks like this: 
@@ -52,6 +56,16 @@ directory structure looks like this:
    |-application
    |---views
    |-----appunto-auth
+```
+
+#### Resources Directory
+Copy the resources directory to your application's views directory so your application's
+directory structure looks like this: 
+```
+   .
+   |-application
+   |-resources
+     index.php
 ```
 
 ### Include Reference to Hook in hooks.php
