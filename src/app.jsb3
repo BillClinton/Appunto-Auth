@@ -1,6 +1,6 @@
 {
-    "projectName": "Project Name",
-    "licenseText": "Copyright(c) 2011 Company Name",
+    "projectName": "Appunto Auth",
+    "licenseText": "See licensing information packaged with application.",
     "builds": [
         {
             "name": "All Classes",
