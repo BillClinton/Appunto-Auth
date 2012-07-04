@@ -1,6 +1,6 @@
 # Appunto-Auth
 
-An authentication spark for CodeIgniter with a simple ACL and ExtJS interface.
+An authentication spark for CodeIgniter with a Sencha Ext JS interface and a simple ACL.
 
 ## Features
  - Administrative interface using ExtJS
@@ -14,7 +14,7 @@ An authentication spark for CodeIgniter with a simple ACL and ExtJS interface.
 ### Codeigniter Setup
 
 Enable CodeIgniter to use the database to store session information by following the instructions 
-in the _Saving Session Data to a Database section_ of the _Session Class_ page in the CodeIgniter
+in the _Saving Session Data to a Database_ section of the _Session Class_ page in the CodeIgniter
 User Guide located at http://codeigniter.com/user_guide/libraries/sessions.html
 
  - create the ci_sessions database table
@@ -23,6 +23,10 @@ User Guide located at http://codeigniter.com/user_guide/libraries/sessions.html
 ### Get The Spark
 
 Appunto Auth is available via Sparks.  For info about how to install sparks, go here: http://getsparks.org/install
+
+If you have the Spark Manager installed, type:
+'php tools/spark install appunto-auth
+(use a backslash on Windows (eg. php tools\spark install appunto-auth)
 
 ### Copy additional files
 
