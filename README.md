@@ -2,6 +2,8 @@
 
 An authentication spark for CodeIgniter with a Sencha Ext JS interface and a simple ACL.
 
+__This is still being deployed.  Do not install this yet!!!! First version ready by mid-July 2012__
+
 ## Features
  - Administrative interface using ExtJS
  - Authentication performed in pre-controller hook rather than controller code
@@ -56,6 +58,17 @@ directory structure looks like this:
    |-application
    |---views
    |-----appunto-auth
+```
+
+#### Language Directory
+Copy the appunto_auth_lang.php file from the language/english directory to your application's language directory so your application's
+directory structure looks like this: 
+```
+   .
+   |-application
+   |---language
+   |-----english
+   appunto-auth_lang.php
 ```
 
 #### Resources Directory
