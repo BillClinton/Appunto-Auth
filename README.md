@@ -60,6 +60,17 @@ directory structure looks like this:
    |-----appunto-auth
 ```
 
+#### Language Directory
+Copy the appunto_auth_lang.php file from the language/english directory to your application's language directory so your application's
+directory structure looks like this: 
+```
+   .
+   |-application
+   |---language
+   |-----english
+   appunto-auth_lang.php
+```
+
 #### Resources Directory
 Copy the resources directory to your application's views directory so your application's
 directory structure looks like this: 
