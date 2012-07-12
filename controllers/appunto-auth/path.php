@@ -77,7 +77,8 @@ class Path extends CI_Controller
 
 		$result = array (
 			'success'   => true,
-			'msg'       => ($new_cnt == 0 ? 'No': $new_cnt).' new path'.($new_cnt == 0 || $new_cnt > 1 ? "s":"").' found.'
+			'msg'       => ($new_cnt == 0 ? 'No': $new_cnt).' new path'.($new_cnt == 0 || $new_cnt > 1 ? "s":"").' found.',
+			'cnt'		=> $new_cnt
 		);
 
         $this->appunto_auth->sendResponse($result);
@@ -143,7 +144,7 @@ class Path extends CI_Controller
             $result = array (
                 'success'   => false,
                 'msg'       => 'This path cannot be deleted because it was found on your filesystem'.
-								' the last time paths were verified. <br><br>Please re-verify paths if'.
+								' the last time paths were verified. <br><br>Please refresh paths if'.
 								' you believe you have received this message in error.'
             );
         } 
@@ -151,6 +152,13 @@ class Path extends CI_Controller
         {
             $result = $this->pathmodel->delete_record($data);
         }
+        $this->appunto_auth->sendResponse($result);
+	}
+
+    function delete_not_found()
+    {
+        $result = $this->pathmodel->delete_not_found();
+
         $this->appunto_auth->sendResponse($result);
 	}
 

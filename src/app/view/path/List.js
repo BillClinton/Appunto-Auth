@@ -163,9 +163,14 @@ Ext.define('APPA.view.path.List' ,{
 
 		this.tbar = [{ 
 			xtype	: 'button', 
-			text	: 'Verify paths',
-			action	: 'find',
+			text	: 'Hide Appunto Auth Paths',
+			action	: 'hide_auth_paths',
 			iconCls	: 'map-magnify' 
+		},{
+			xtype	: 'button', 
+			text	: 'Delete Unfound Paths',
+			action	: 'delete_not_found',
+			iconCls	: 'map-delete' 
 		}];
 
 		this.bbar = [{ 

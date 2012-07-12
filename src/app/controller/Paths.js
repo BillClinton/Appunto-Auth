@@ -17,6 +17,9 @@ Ext.define('APPA.controller.Paths', {
     refs : [{
         ref : 'list',
         selector: 'appa_path_list'
+	},{
+        ref : 'delete_unfound_button',
+        selector: 'appa_path_list button[action="delete_not_found"]'
     }],
 
     init: function() 
@@ -24,6 +27,7 @@ Ext.define('APPA.controller.Paths', {
         this.control(
         {
             'appa_path_list' : {
+				activate		: this.findPaths,
                 beforeedit		: this.denyPermissionChangeForPublic,
                 edit			: this.updatePath,
                 itemcontextmenu	: this.showContextMenu,
@@ -31,11 +35,15 @@ Ext.define('APPA.controller.Paths', {
                 containercontextmenu: function(view, e) { e.preventDefault(); }, 
                 contextmenu		: function(e) { e.preventDefault(); } 
             },
-            'appa_path_list button[action="find"]': {
+            'appa_path_list button[action="hide_auth_paths"]': {
                 click: this.findPaths
             },
+            'appa_path_list button[action="delete_not_found"]': {
+                click: this.deleteNotFound
+            },
             'appa_path_list button[action="refresh"]': {
-                click: this.refreshList
+                //click: this.refreshList
+                click: this.findPaths
             },
             'appa_path_contextmenu menuitem[action="set_public"]': {
                 click: this.setPublic
@@ -106,7 +114,14 @@ Ext.define('APPA.controller.Paths', {
 		{
 			if (success)
 			{
-				Ext.Msg.alert('Result',operation.getResultSet().message,me.refreshList,me);
+				if (operation.getResultSet().cnt > 0)
+				{
+					Ext.Msg.alert('Result',operation.getResultSet().message,me.refreshList,me);
+				}
+				else
+				{
+					me.refreshList();
+				}
 			}
 		}
 
@@ -118,7 +133,26 @@ Ext.define('APPA.controller.Paths', {
 
 	refreshList: function()
 	{
-		this.getPathsStore().load();
+		var me		= this,
+			store 	= this.getPathsStore(),
+			cb,
+			unfound;
+
+		cb = function(records, operation, success) 
+		{
+			if (success)
+			{
+				unfound = store.findBy(function(rec){
+					if (rec.get('found') == 0) return true;
+				});
+				console.log('unfound: '+unfound);
+				me.getDelete_unfound_button().setDisabled(unfound == -1);
+			}
+		}
+
+		store.load({
+			callback	: cb
+		});	
 	},
 
     setPublic: function(menuitem) 
@@ -189,6 +223,26 @@ Ext.define('APPA.controller.Paths', {
 		{
 			success: function() { store.remove(rec); } 
 		});
+	},
+
+    deleteNotFound: function(menuitem)
+    {
+		var me		= this,
+			store 	= this.getPathsStore(),
+			cb;
+
+		cb = function(records, operation, success) 
+		{
+			if (success)
+			{
+				me.findPaths();
+			}
+		}
+
+		store.load({
+        	ci_method	: 'delete_not_found',
+			callback	: cb
+		});	
 	}
 });
 
