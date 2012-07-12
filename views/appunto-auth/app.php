@@ -16,12 +16,13 @@
 <div id='script-includes'>
 
 	<!-- ExtJS style sheets -->
-	<!-- <link rel="stylesheet" type="text/css" href="http://cdn.sencha.io/ext-4.0.7-gpl/resources/css/ext-all.css"> -->
+	<link rel="stylesheet" type="text/css" href="http://cdn.sencha.io/ext-4.0.7-gpl/resources/css/ext-all.css">
 	<!-- <link rel="stylesheet" type="text/css" href="http://extjs.cachefly.net/ext-4.0.7-gpl/resources/css/ext-all.css"> -->
-	<link rel="stylesheet" type="text/css" href="extjs/resources/css/ext-all.css">
+	<!-- <link rel="stylesheet" type="text/css" href="extjs/resources/css/ext-all.css"> -->
 
 	<!-- Application style sheets -->
 	<link rel="stylesheet" type="text/css" href="<?=base_url()?>resources/appunto-auth/css/appunto_auth_app.css" />
+	<link rel="stylesheet" type="text/css" href="<?=base_url()?>resources/appunto-auth/css/appunto_auth_login.css" />
 	<link rel="stylesheet" type="text/css" href="<?=base_url()?>resources/appunto-auth/css/appunto_auth_curvy.css" />
 	<link rel="stylesheet" type="text/css" href="<?=base_url()?>resources/appunto-auth/css/appunto_auth_branding.css" /> 
 	<link rel="stylesheet" type="text/css" href="<?=base_url()?>resources/appunto-auth/css/appunto_auth_icons.css" />
@@ -31,9 +32,9 @@
 
 	<!-- ExtJS library -->
 	<script type="text/javascript">document.getElementById('loading-msg').innerHTML = 'Loading Sencha ExtJS...';</script>
-	<!-- <script type="text/javascript" src="http://cdn.sencha.io/ext-4.0.7-gpl/ext.js"></script> -->
+	<script type="text/javascript" src="http://cdn.sencha.io/ext-4.0.7-gpl/ext.js"></script> 
 	<!-- <script type="text/javascript" src="http://extjs.cachefly.net/ext-4.0.7-gpl/ext-dev.js"></script> -->
-	<script type="text/javascript" src="extjs/ext.js"></script> 
+	<!-- <script type="text/javascript" src="extjs/ext.js"></script> -->
 
 	<!-- Application requirements -->
 	<script type="text/javascript">document.getElementById('loading-msg').innerHTML = 'Loading Application...';</script>
@@ -42,6 +43,7 @@
 </div>
 
 <div id="app-user">
+		 <?php echo login_box(false,'login-form-header') ?>
 </div>
 
 </body>

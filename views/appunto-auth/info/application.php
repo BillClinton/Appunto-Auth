@@ -41,6 +41,10 @@ table.version-info th {
 	<td><span id='extjs-version-display'>0.0.0</span></td>
 </tr>
 <tr>
+	<td>PHP</td>
+	<td><?= phpversion() ?></td>
+</tr>
+<tr>
 	<th colspan="2">&nbsp;</td>
 </tr>
 </table>

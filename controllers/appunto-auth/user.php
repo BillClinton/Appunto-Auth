@@ -7,27 +7,27 @@ class User extends CI_Controller {
         parent::__construct();
 
         $this->load->model('usermodel');
-        $this->load->helper('form');
+//        $this->load->helper('form');
         $this->load->helper('url');
-        $this->load->helper('language');
+//        $this->load->helper('language');
         $this->load->library('form_validation');
 		$this->load->library('session');
         $this->load->library('appunto_auth');
 		$this->load->config('appunto_auth',true,false);
-//		$this->lang->load('appunto_auth');
+		$this->lang->load('appunto_auth');
     }
 
 	public function index()
 	{
-		redirect('/user/login/');
+		redirect('appunto-auth/user/login/');
 	}
 
 	public function login()
 	{
+        $this->load->helper('appunto-auth');
+
 		if ($this->appunto_auth->logged_in()) redirect($this->router->default_controller);
 
-		//if ($this->router->fetch_method() == "
-		log_message('error',$_SERVER['REQUEST_METHOD']);
 		if ($_SERVER['REQUEST_METHOD'] == 'GET')
 		{
 
@@ -38,9 +38,16 @@ class User extends CI_Controller {
 				$data['auth_message'] = $auth_message;
 			}
 			$data['site_name'] = $this->config->item('site_name', 'appunto_auth');
-			$this->load->view('login',$data);
+			$this->load->view('appunto-auth/login',$data);
 		}
-		else if ($_SERVER['REQUEST_METHOD'] == 'POST')
+		else die('invalid request method:'.$_SERVER['REQUEST_METHOD']);
+	}
+
+	public function authenticate()
+	{
+        $this->load->helper('appunto-auth');
+
+		if ($_SERVER['REQUEST_METHOD'] == 'POST')
 		{
 
 			$this->form_validation->set_rules('username', 'lang:appunto_form_username', 'trim|required|xss_clean');
@@ -48,7 +55,7 @@ class User extends CI_Controller {
 
 			if (!$this->form_validation->run())
 			{
-				$this->load->view('login');
+				$this->load->view('appunto-auth/login');
 			}
 			else
 			{
@@ -69,12 +76,12 @@ class User extends CI_Controller {
 				{
 					$this->form_validation->set_rules('password', 'lang:appunto_form_password', 'callback__invalid_password');
 					$this->form_validation->run();
-					$this->load->view('login');
+					$this->load->view('appunto-auth/login');
 
 				}
 			}
 		}
-		else die('invalid request method');
+		else die('invalid request method:'.$_SERVER['REQUEST_METHOD']);
 	}
 
 	public function error()

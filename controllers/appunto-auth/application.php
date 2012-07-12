@@ -11,10 +11,12 @@ class Application extends CI_Controller {
         $this->load->library('security');
         $this->load->library('appunto_auth');
         $this->lang->load('appunto_auth');
+        $this->load->helper('appunto-auth');
     }
 
 	public function index()
 	{
+
 		$data= array();
 
 		if (isset($this->session->userdata['username']))
@@ -23,7 +25,7 @@ class Application extends CI_Controller {
 		}
 
 		$this->load->view('appunto-auth/app',$data);
-//		$this->load->view('appunto-auth/app_src',$data);
+		//$this->load->view('appunto-auth/app_src',$data);
 	}
 }
 /* End of file application.php */

@@ -10,7 +10,9 @@ Ext.define('APPA.controller.Main', {
 
     views: [
 		'main.Frame',
-		'main.Menu'
+		'main.Menu',
+		'main.Viewport',
+		'main.Container'
     ],
 
     refs : [{
