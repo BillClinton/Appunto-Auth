@@ -1,6 +1,6 @@
-//Ext.Loader.setPath('Ext', 'http://cdn.sencha.io/ext-4.0.7-gpl/src');
+Ext.Loader.setPath('Ext', 'http://cdn.sencha.io/ext-4.0.7-gpl/src');
 //Ext.Loader.setPath('Ext', 'http://extjs.cachefly.net/ext-4.0.7-gpl/src');
-Ext.Loader.setPath('Ext', 'extjs/src');
+//Ext.Loader.setPath('Ext', 'extjs/src');
 
 Ext.require('Ext.container.Viewport');
 Ext.require('Ext.data.TreeStore');
@@ -16,12 +16,18 @@ Ext.require('Ext.toolbar.TextItem');
 Ext.require('Ext.window.MessageBox');
 
 // Require proxy
-Ext.Loader.setPath('APPUNTO.lib', 'resources/appunto-auth/lib');
+//Ext.Loader.setPath('APPUNTO.lib', 'resources/appunto-auth/lib');  // need this for build/deploy
+Ext.Loader.setPath('APPUNTO.lib', '/auth/resources/appunto-auth/lib'); // need this for testing src version locally 
 Ext.require('APPUNTO.lib.proxy.Codeigniter');
 Ext.ClassManager.setAlias('APPUNTO.lib.proxy.Codeigniter', 'proxy.ci');
 
+
+
 Ext.application({
     name: 'APPA',
+
+	// Add path for testing src version - comment this out when building/deploying
+	appFolder: '/auth/app',
 
     controllers: [
 		'Main',
@@ -36,52 +42,26 @@ Ext.application({
 
     launch: function() 
 	{
-        Ext.create('Ext.container.Viewport', {
-            layout: 'border',
-            items: [
-				{
-					// header area
-					xtype		: 'container',
-					cls			: 'app-header',
-					applyTo		: 'app-user',
-					region		: 'north',
-					height		: 60,
-					border		:  0
-				},
-				{
-					xtype		: 'panel',
-					cls			: 'app-main',
-					region		: 'center',
-					layout		: 'fit',
-					flex		: 5,
-					border		:  0,
-					items		: [
-						{
-							xtype		: 'panel',
-							layout		: 'card',
-							itemId		: 'mainPanel',
-							border		: 0,
-							activeItem	: 0,
-							items		: [
-								{
-									xtype		: 'appa_main_frame',
-									cls			: 'app-main-panel',
-								},
-								{
-									xtype		: 'container',
-//									xtype		: 'appa_settings_frame',
-									cls			: 'app-main-panel',
-								}
-							]
-						}
-					]
-				}
-            ]
-        });
+		var container;
+
+		if (appunto_auth_display_type == "viewport")
+		{
+			Ext.create('APPA.view.main.Viewport').render();
+		}
+		else if (appunto_auth_display_type == "container")
+		{
+			container = Ext.create('APPA.view.main.Container');
+			Ext.EventManager.onWindowResize(container.doLayout, container);
+		} 
+		else
+		{
+			alert('no display type defined!');
+		}
 
 		setTimeout(function(){
-			Ext.get('loading').remove();
-			Ext.get('loading-mask').fadeOut({remove:true});
+				Ext.get('loading').remove();
+				Ext.get('loading-mask').fadeOut({remove:true});
 		}, 250);
+
     }
 });
