@@ -35,15 +35,20 @@ Ext.define('APPA.controller.Paths', {
                 containercontextmenu: function(view, e) { e.preventDefault(); }, 
                 contextmenu		: function(e) { e.preventDefault(); } 
             },
-            'appa_path_list button[action="hide_auth_paths"]': {
+            'appa_path_list button[action="refresh"]': {
                 click: this.findPaths
+            },
+            'appa_path_list button[action="expand_all"]': {
+                click: this.expandAllGroups
+            },
+            'appa_path_list button[action="collapse_all"]': {
+                click: this.collapseAllGroups
+            },
+            'appa_path_list button[action="hide_auth_paths"]': {
+                click: this.filterAuthPaths
             },
             'appa_path_list button[action="delete_not_found"]': {
                 click: this.deleteNotFound
-            },
-            'appa_path_list button[action="refresh"]': {
-                //click: this.refreshList
-                click: this.findPaths
             },
             'appa_path_contextmenu menuitem[action="set_public"]': {
                 click: this.setPublic
@@ -66,6 +71,16 @@ Ext.define('APPA.controller.Paths', {
 			scope		: this,
 			groupchange	: this.groupingChanged
 		});
+	},
+
+	expandAllGroups: function() 
+	{
+		this.getList().getView().getFeature('grouping').expandAll();
+	},
+
+	collapseAllGroups: function() 
+	{
+		this.getList().getView().getFeature('grouping').collapseAll();
 	},
 
 	groupingChanged: function(store, grouper) 
@@ -225,7 +240,7 @@ Ext.define('APPA.controller.Paths', {
 		});
 	},
 
-    deleteNotFound: function(menuitem)
+    deleteNotFound: function()
     {
 		var me		= this,
 			store 	= this.getPathsStore(),
@@ -243,6 +258,20 @@ Ext.define('APPA.controller.Paths', {
         	ci_method	: 'delete_not_found',
 			callback	: cb
 		});	
+	},
+
+    filterAuthPaths: function(button)
+    {
+		var store 	= this.getPathsStore();
+
+		if (button.pressed)
+		{
+			store.filter({filterFn: function(item) { return item.get("dir") != 'appunto-auth'; }});	
+		}
+		else
+		{
+			store.clearFilter();
+		}
 	}
 });
 

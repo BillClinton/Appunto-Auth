@@ -12,16 +12,19 @@ Ext.define('APPA.view.path.List' ,{
 	autoScroll	: true,
 
 	features: [{
-		ftype: 'grouping',
-		groupHeaderTpl: 'Controller: {name}, {rows.length} methods',
-		collapseAll: function() {
+		id				: 'grouping',  // adding this because view.getFeature() wants an id
+		ftype			: 'grouping',
+		groupHeaderTpl	: 'Controller: {name}, {rows.length} methods',
+		collapseAll		: function() 
+		{
 			var self = this, view = self.view;
 			view.el.query('.x-grid-group-hd').forEach(function (group) {
 				var group_body = Ext.fly(group.nextSibling, '_grouping');
 				self.collapse(group_body);
 			});
 		},
-		expandAll: function() {
+		expandAll		: function() 
+		{
 			var self = this, view = self.view;
 			view.el.query('.x-grid-group-hd').forEach(function (group) {
 				var group_body = Ext.fly(group.nextSibling, '_grouping');
@@ -162,15 +165,32 @@ Ext.define('APPA.view.path.List' ,{
         ];
 
 		this.tbar = [{ 
-			xtype	: 'button', 
-			text	: 'Hide Appunto Auth Paths',
-			action	: 'hide_auth_paths',
-			iconCls	: 'map-magnify' 
+			xtype		: 'button', 
+			text		: 'Expand All',
+			action		: 'expand_all',
+			iconCls		: 'section-collapsed' 
 		},{
-			xtype	: 'button', 
-			text	: 'Delete Unfound Paths',
-			action	: 'delete_not_found',
-			iconCls	: 'map-delete' 
+			xtype		: 'button', 
+			text		: 'Collapse All',
+			action		: 'collapse_all',
+			iconCls		: 'section-expanded' 
+		},{
+			xtype		: 'tbspacer', 
+			width		: 36 
+		},{
+			xtype		: 'button', 
+			text		: 'Hide Appunto Auth Paths',
+			action		: 'hide_auth_paths',
+			enableToggle: true,
+			iconCls		: 'map-magnify' 
+		},{
+			xtype		: 'tbspacer', 
+			width		: 12 
+		},{
+			xtype		: 'button', 
+			text		: 'Delete Unfound Paths',
+			action		: 'delete_not_found',
+			iconCls		: 'map-delete' 
 		}];
 
 		this.bbar = [{ 
