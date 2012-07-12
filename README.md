@@ -72,7 +72,7 @@ directory structure looks like this:
 ```
 
 #### Resources Directory
-Copy the resources directory to your application's views directory so your application's
+Copy the resources directory to your application directory so your application's
 directory structure looks like this: 
 ```
    .
