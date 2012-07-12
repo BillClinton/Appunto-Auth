@@ -12,12 +12,12 @@ class Usermodel extends CI_Model
 
 		$prefix = $this->config->item('db_table_prefix','appunto_auth');
 
-        $this->table = $prefix.'auth_user';
-        $this->role_table = $prefix.'auth_role';
-        $this->user_role_table = $prefix.'auth_user_role';
-        $this->permission_table = $prefix.'auth_permission';
-        $this->user_permission_table = $prefix.'auth_user_permission';
-        $this->role_permission_table = $prefix.'auth_role_permission';
+        $this->table = $prefix.'appa_user';
+        $this->role_table = $prefix.'appa_role';
+        $this->user_role_table = $prefix.'appa_user_role';
+        $this->permission_table = $prefix.'appa_permission';
+        $this->user_permission_table = $prefix.'appa_user_permission';
+        $this->role_permission_table = $prefix.'appa_role_permission';
 	}
     
 

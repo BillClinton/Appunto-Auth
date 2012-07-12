@@ -12,8 +12,8 @@ class Pathmodel extends CI_Model
 
 		$prefix = $this->config->item('db_table_prefix','appunto_auth');
 
-        $this->table = $prefix.'auth_path';
-        $this->permission_table = $prefix.'auth_permission';
+        $this->table = $prefix.'appa_path';
+        $this->permission_table = $prefix.'appa_permission';
 	}
     
 	/**
@@ -163,6 +163,23 @@ class Pathmodel extends CI_Model
 	{
         // get/set the id 
         $this->db->where('id', $data['id']);
+
+        // execute query
+		$query = $this->db->delete($this->table);
+
+        // return formatted result
+        return $this->appunto_auth->formatOperationResult($query);
+	}
+
+	/**
+	 * Delete all paths that are not found
+	 *
+	 * @return	object
+	 */
+	function delete_not_found() 
+	{
+        // get/set the id 
+        $this->db->where('found', 0);
 
         // execute query
 		$query = $this->db->delete($this->table);

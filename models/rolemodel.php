@@ -12,9 +12,9 @@ class Rolemodel extends CI_Model
 
 		$prefix = $this->config->item('db_table_prefix','appunto_auth');
 
-        $this->table = $prefix.'auth_role';
-        $this->permission_table = $prefix.'auth_permission';
-        $this->role_permission_table = $prefix.'auth_role_permission';
+        $this->table = $prefix.'appa_role';
+        $this->permission_table = $prefix.'appa_permission';
+        $this->role_permission_table = $prefix.'appa_role_permission';
 	}
     
 
