@@ -19,8 +19,8 @@ class Appunto_auth
 		$this->CI->load->helper('url');
 		$this->CI->load->helper('language');
 
-        $this->CI->load->model('auth/pathmodel');
-        $this->CI->load->model('auth/usermodel');
+        $this->CI->load->model('pathmodel');
+        $this->CI->load->model('usermodel');
 
     }
 
@@ -215,6 +215,32 @@ class Appunto_auth
 	public function logged_in()
 	{
 		return ($this->CI->session->userdata('logged_in') == true);
+	}
+
+	/**
+     * Create an array of URLs for use in helper.
+	 * 
+	 * @return	array
+	*/
+	public function include_urls()
+	{
+
+		$urls = array();
+
+		$urls['base'] = base_url();
+		$urls['extjs'] = $this->CI->config->item('extjs_url', 'appunto_auth');
+
+		if (true === $this->CI->config->item('appunto_dev_mode', 'appunto_auth'))
+		{
+			$urls['extjs_lib'] = $urls['extjs'].'ext-dev.js';
+			$urls['app'] = $urls['base'].'app.js';
+		} 
+		else 
+		{
+			$urls['extjs_lib'] = $urls['extjs'].'ext.js';
+			$urls['app'] = $urls['base'].'resources/appunto-auth/app-all.js';
+		}
+		return $urls;
 	}
 
 	/**
