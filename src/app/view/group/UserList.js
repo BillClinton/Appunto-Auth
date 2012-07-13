@@ -10,7 +10,7 @@ Ext.define('APPA.view.group.UserList' ,{
 	autoScroll	: true,
 
 	viewConfig: {
-		emptyText		: '<div class="empty"><p>No users found</p><p>Try selecting a Group or Show All</p></div>',                    
+		emptyText		: '<div class="empty"><p>Select a Group or select <b>Show All</b> above.</p></div>',                    
 		deferEmptyText	: false
 	},
 

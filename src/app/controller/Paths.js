@@ -129,7 +129,7 @@ Ext.define('APPA.controller.Paths', {
 		{
 			if (success)
 			{
-				if (operation.getResultSet().cnt > 0)
+				if (operation.getResultSet().total > 0)
 				{
 					Ext.Msg.alert('Result',operation.getResultSet().message,me.refreshList,me);
 				}

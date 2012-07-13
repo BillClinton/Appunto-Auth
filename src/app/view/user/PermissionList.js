@@ -5,12 +5,12 @@ Ext.define('APPA.view.user.PermissionList' ,{
 
     title   : 'Permissions',
     iconCls : 'lock', 
-	cls		: 'user-permission-list',
+	cls		: 'appunto-list',
 
 	autoScroll	: true,
 
 	viewConfig: {
-		emptyText		: '<div class="empty">No user selected</div>',                    
+		emptyText		: '<div class="empty"><p>Select a User or select <b>Show All</b> above.</p></div>',                    
 		deferEmptyText	: false
 	},
 

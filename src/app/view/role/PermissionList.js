@@ -5,12 +5,12 @@ Ext.define('APPA.view.role.PermissionList' ,{
 
     title   : 'Permissions',
     iconCls : 'lock', 
-	cls		: 'role-permission-list',
+	cls		: 'appunto-list',
 
 	autoScroll	: true,
 
 	viewConfig: {
-		emptyText		: '<div class="empty">No permissions found</div>',                    
+		emptyText		: '<div class="empty"><p>Select a Role or select <b>Show All</b> above.</p></div>',                    
 		deferEmptyText	: false
 	},
 
