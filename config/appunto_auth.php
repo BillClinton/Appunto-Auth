@@ -36,6 +36,20 @@ $config['allow_private_without_permission'] = false;
 $config['extjs_url'] = 'http://cdn.sencha.io/ext-4.0.7-gpl/';
 
 /**
+ * Path cache
+ *
+ * By default, the application paths will be loaded from the db into an array on every request.
+ * You can cache the paths for better performance, but note that changes made to paths and their 
+ * permissions will not take effect until the cache is refreshed.  
+ *
+ * The interval of the cache refesh is determined by the value of path_cache_duration, in seconds,
+ * If the value of path_cache_duration is set to false, the cache will never refresh. This is
+ * not recommended, but if you do try it let me know how it goes.
+ */
+$config['cache_paths'] = false;
+$config['path_cache_duration'] = 3600; //default is 5 minutes, 60*5=3600
+
+/**
  * PHPPass Settings
  *
  * Quote from http://sunnyis.me/blog/secure-passwords/
