@@ -20,8 +20,6 @@ Ext.define('APPA.controller.Info', {
 
 	writeExtVersion: function(button)
 	{
-		console.log('writeExtVersion');
-		console.log(Ext.get('extjs-version-display'));
 		Ext.get('extjs-version-display').update(Ext.getVersion());
 	}
 

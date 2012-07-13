@@ -15,6 +15,9 @@ if ( ! function_exists('appunto_auth_application'))
 	{
 		$CI =& get_instance();
 
+		$CI->load->config('appunto_auth',true,false); // true to avoid naming collisions, false to not suppress errors
+		$extjs_url = $CI->config->item('extjs_url', 'appunto_auth');
+
 		$base_url = base_url();
 
 		$html = <<<APP
@@ -28,7 +31,7 @@ if ( ! function_exists('appunto_auth_application'))
 <div id='script-includes'>
 
 	<!-- ExtJS style sheets -->
-	<link rel="stylesheet" type="text/css" href="http://cdn.sencha.io/ext-4.0.7-gpl/resources/css/ext-all.css">
+	<link rel="stylesheet" type="text/css" href="{$extjs_url}resources/css/ext-all.css">
 
 	<!-- Application style sheets -->
 	<link rel="stylesheet" type="text/css" href="{$base_url}resources/appunto-auth/css/appunto_auth_app.css" />
@@ -45,12 +48,12 @@ if ( ! function_exists('appunto_auth_application'))
 	</script>
 
 	<!-- ExtJS library -->
-	<!-- <script type="text/javascript" src="http://cdn.sencha.io/ext-4.0.7-gpl/ext.js"></script> -->
-	<script type="text/javascript" src="http://cdn.sencha.io/ext-4.0.7-gpl/ext-dev.js"></script>
-	<!-- <script type="text/javascript" src="http://extjs.cachefly.net/ext-4.0.7-gpl/ext-dev.js"></script> -->
-	<!-- <script type="text/javascript" src="extjs/ext.js"></script> -->
+	<script type="text/javascript">document.getElementById('loading-msg').innerHTML = 'Loading Sencha ExtJS...';</script>
+	<script type="text/javascript" src="{$extjs_url}ext-dev.js"></script>
+	<!-- <script type="text/javascript" src="{$extjs_url}ext.js"></script> -->
 
 	<!-- Application requirements -->
+	<script type="text/javascript">document.getElementById('loading-msg').innerHTML = 'Loading Application...';</script>
 	<script type="text/javascript" src="{$base_url}app.js"></script>
 
 </div>

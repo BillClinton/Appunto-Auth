@@ -4,7 +4,7 @@ Ext.define('APPA.view.user.List' ,{
     store   : 'Users',
 
     title   : 'Users',
-    iconCls : 'group-title', 
+    iconCls : 'user', 
 
 	autoScroll	: true,
 

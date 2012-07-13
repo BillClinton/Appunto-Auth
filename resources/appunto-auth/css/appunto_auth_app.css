@@ -16,6 +16,9 @@
 .permission-in-role div.x-grid-cell-inner {
 	background:url(icons/accept.png) 3px 1px no-repeat !important;
 }
+.user-in-group div.x-grid-cell-inner {
+	background:url(icons/accept.png) 3px 1px no-repeat !important;
+}
 .path-not-found div.x-grid-cell-inner {
 	background:url(icons/error.png) 3px 1px no-repeat !important;
 }
@@ -28,7 +31,7 @@
 .user-role-has-permission div.x-grid-cell-inner {
 	background:url(icons/shield.png) 3px 1px no-repeat !important;
 }
-.user-role-list .empty, .user-permission-list .empty, .role-permission-list .empty {
+.appunto-list .empty {
 /*	width:auto; */
 	font-family: tahoma, arial, verdana, sans-serif;
 	font-size: 11px;

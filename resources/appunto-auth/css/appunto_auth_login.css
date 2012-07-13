@@ -1,24 +1,21 @@
-body {
-	text-align: center;
-	background: #ccc;
-}
-.login-form {
+/* Default login header style */
+.login-form-box {
 	background: #375EAC url(images/appunto_auth_logo_small.gif) 24px 18px no-repeat;
 	-moz-border-radius: 16px;
 	-webkit-border-radius: 16px;
 	border-radius: 16px;
 	padding: 60px 0 16px; 
 	margin: 0 auto; 
-	margin-top: 130px;
+	margin-top: 0px;
 	width: 360px; 
 	font-size: 16px;
   	font-family: helvetica, tahoma, arial, verdana, sans-serif;
     color: #fff;
 }
-.login-form-errors {
+.login-form-box .login-form-errors {
 	padding-bottom: 12px;
 }
-.login-form-errors p {
+.login-form-box .login-form-errors p {
 	font-size: 12px;
 	text-align: left;
 	background: url(icons/error.png) 2px 2px no-repeat;
@@ -27,28 +24,28 @@ body {
 	padding-left: 24px;
 	margin: 10px 0 10px 48px;
 }
-.login-form-links {
+.login-form-box .login-form-links {
 	padding: 12px 18px;
 	font-size: 12px;
 	text-align: center;
 	color: #fff;
 }
-.login-form-links a {
+.login-form-box .login-form-links a {
 	color: #fff;
 	text-decoration:none;
 }
-.login-form-links a:hover {
+.login-form-box .login-form-links a:hover {
 	color: #fff;
 	text-decoration:underline;
 }
-.login-form-auth-message {
+.login-form-box .login-form-auth-message {
 	font-size: 13px;
 	width: 280px;
 	margin: 6px 24px 12px;
 	text-align: left;
 	clear: both;
 }
-.login-form-label {
+.login-form-box .login-form-label {
 	width: 120px;
 	float: left;
 	padding-top: 12px;
@@ -56,16 +53,35 @@ body {
 	text-align: right;
 	clear: both;
 }
-.login-form-field {
+.login-form-box .login-form-field {
 	width: 160px;
 	float: left;
 	padding-top: 9px;
 }
-.login-form-button {
+.login-form-box .login-form-button {
 	padding-top: 12px;
 	width: 300px;
 	clear: both;
 	text-align: right;
+}
+/* Default login header style */
+.login-form-header {
+	font-size: 12px;
+  	font-family: helvetica, tahoma, arial, verdana, sans-serif;
+	float:right;
+    color: #fff;
+}
+.login-form-header div {
+	float:left;
+}
+.login-form-header .login-form-label {
+	float: left;
+	padding: 4px 6px 0 6px;
+	text-align: right;
+}
+.login-form-header .login-form-field input {
+	margin: 2px 4px;
+	width: 90px;
 }
 .round-button {
 	-moz-box-shadow:inset 0px 1px 0px 0px #ffffff;

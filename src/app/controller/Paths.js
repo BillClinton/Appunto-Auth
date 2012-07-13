@@ -160,7 +160,6 @@ Ext.define('APPA.controller.Paths', {
 				unfound = store.findBy(function(rec){
 					if (rec.get('found') == 0) return true;
 				});
-				console.log('unfound: '+unfound);
 				me.getDelete_unfound_button().setDisabled(unfound == -1);
 			}
 		}

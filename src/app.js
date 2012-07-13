@@ -6,12 +6,19 @@ Ext.require('Ext.container.Viewport');
 Ext.require('Ext.data.TreeStore');
 Ext.require('Ext.form.Panel');
 Ext.require('Ext.form.field.Checkbox');
+Ext.require('Ext.form.field.ComboBox');
 Ext.require('Ext.grid.column.Date');
+
+/**
+ * Override grouping here, override from 
+ * http://www.sencha.com/forum/showthread.php?143617-Grids-CollapseAllGroups-amp-ExpandAllGroups&p=651791&viewfull=1#post651791
+ */
 Ext.require('Ext.grid.feature.Grouping');
 Ext.require('Ext.grid.plugin.CellEditing');
 Ext.require('Ext.layout.container.Border');
 Ext.require('Ext.layout.container.Card');
 Ext.require('Ext.toolbar.Paging');
+Ext.require('Ext.toolbar.Spacer');
 Ext.require('Ext.toolbar.TextItem');
 Ext.require('Ext.window.MessageBox');
 
@@ -32,6 +39,7 @@ Ext.application({
     controllers: [
 		'Main',
 		'Users',
+		'Groups',
 		'Settings',
 		'Roles',
 		'Permissions',

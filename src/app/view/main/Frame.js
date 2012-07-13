@@ -46,6 +46,9 @@ Ext.define('APPA.view.main.Frame' ,{
 						xtype	: 'appa_user_frame'
 					},
 					{
+						xtype	: 'appa_group_frame'
+					},
+					{
 						xtype	: 'appa_role_frame'
 					},
 					{

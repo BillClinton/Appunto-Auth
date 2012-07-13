@@ -31,6 +31,12 @@ Ext.define('APPA.view.main.Menu' ,{
 					{ 
 						text	: "Users", 
 						id		: 'users',
+						iconCls	: 'user', 
+						leaf	: true 
+					},
+					{ 
+						text	: "Groups", 
+						id		: 'groups',
 						iconCls	: 'group', 
 						leaf	: true 
 					},
