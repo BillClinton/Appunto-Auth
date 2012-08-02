@@ -54,12 +54,13 @@ class Sessionmodel extends CI_Model
 				$total++;
 
                 $user_data = unserialize($row->user_data);
+				$user_name = isset($user_data['username']) ? $user_data['username'] : '';
 
 				if ( $show_all == 1 || is_array($user_data))
 				{
 					$this_row = array (
 						'id'            => $row->id,
-						'username'      => $user_data['username'],
+						'username'      => $user_name,
 						'last_activity' => $row->last_activity,
 						'ip_address'    => $row->ip_address,
 						'user_agent'    => $row->user_agent

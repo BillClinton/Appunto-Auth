@@ -60,6 +60,7 @@ class Path extends CI_Controller
 
 				foreach ($methods as $method)
 				{
+					log_message('error',$controller_dir.'/'.$classname.'/'.$method);
 					if ($this->pathmodel->path_exists($controller_dir,$classname,$method))
 					{
 						$this->pathmodel->mark_found($controller_dir,$classname,$method);
@@ -67,7 +68,7 @@ class Path extends CI_Controller
 					else
 					{
 						if (substr($method,0,1)!='_' && $method!='get_instance') {
-							$this->pathmodel->create_record($controller_dir,$classname,$method);
+							$this->pathmodel->create_record($controller_dir,$classname,$method,1);
 							$new_cnt++;
 						}
 					}
@@ -78,8 +79,9 @@ class Path extends CI_Controller
 		$result = array (
 			'success'   => true,
 			'msg'       => ($new_cnt == 0 ? 'No': $new_cnt).' new path'.($new_cnt == 0 || $new_cnt > 1 ? "s":"").' found.',
-			'cnt'		=> $new_cnt
+			'total'		=> $new_cnt
 		);
+		log_message('error',print_r($result,true));
 
         $this->appunto_auth->sendResponse($result);
 	}

@@ -74,11 +74,12 @@ class Pathmodel extends CI_Model
 	 * @param	int		ci_method	
 	 * @return	object
 	 */
-	function create_record($dir, $ci_controller, $ci_method)
+	function create_record($dir, $ci_controller, $ci_method, $found = 0)
 	{
 		$this->db->set('dir', $dir);
 		$this->db->set('ci_controller', $ci_controller);
 		$this->db->set('ci_method', $ci_method);
+		$this->db->set('found', $found);
 
         // execute query
 		$query = $this->db->insert($this->table);

@@ -20,5 +20,10 @@ The following products were used in the creation of Appunto Auth. Trademarks and
 <p><a href='http://p.yusukekamiyamane.com/' target='_new'>http://p.yusukekamiyamane.com/</a>
 <p>Icon set by Yusuke Kamiyamane.</p>
 <p>Fugue Icons are licensed under a Creative Commons Attribution 3.0 License.</p> 
+
+<h2>Silk companion icon set</h2>
+<p><a href='http://www.damieng.com/icons/silkcompanion' target='_new'>http://www.damieng.com/icons/silkcompanion/</a>
+<p>Icon set by Damien Guard.</p>
+<p>Silk companion icon set is licensed under a Creative Commons Attribution 2.5 License.</p> 
 </div>
 

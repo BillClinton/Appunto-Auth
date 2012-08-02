@@ -11,14 +11,17 @@
  */
 if ( ! function_exists('appunto_auth_application'))
 {
-	function appunto_auth_application($height="600px", $width="100%", $additional_css='')
+	function appunto_auth_application($width="100%", $height="600px", $additional_css='')
 	{
 		$CI =& get_instance();
 
-		$CI->load->config('appunto_auth',true,false); // true to avoid naming collisions, false to not suppress errors
-		$extjs_url = $CI->config->item('extjs_url', 'appunto_auth');
+		if (!isset($CI->appunto_auth)) $CI->load->library('appunto_auth');
+
+		$urls = $CI->appunto_auth->include_urls();
 
 		$base_url = base_url();
+		$base_url = '/appuntoauth/';
+		$site_url = site_url();
 
 		$html = <<<APP
 <link rel="stylesheet" type="text/css" href="{$base_url}resources/appunto-auth/css/loading_mask.css" />
@@ -31,7 +34,7 @@ if ( ! function_exists('appunto_auth_application'))
 <div id='script-includes'>
 
 	<!-- ExtJS style sheets -->
-	<link rel="stylesheet" type="text/css" href="{$extjs_url}resources/css/ext-all.css">
+	<link rel="stylesheet" type="text/css" href="{$base_url}/extjs/resources/css/ext-all.css">
 
 	<!-- Application style sheets -->
 	<link rel="stylesheet" type="text/css" href="{$base_url}resources/appunto-auth/css/appunto_auth_app.css" />
@@ -40,17 +43,16 @@ if ( ! function_exists('appunto_auth_application'))
 	<link rel="stylesheet" type="text/css" href="{$base_url}resources/appunto-auth/css/appunto_auth_branding.css" /> 
 	<link rel="stylesheet" type="text/css" href="{$base_url}resources/appunto-auth/css/appunto_auth_icons.css" />
 
-	<!-- set base url, display type and height -->
+	<!-- set base url, display type -->
 	<script type="text/javascript">
-		var appunto_auth_base_url = '{$base_url}index.php/',	
-			appunto_auth_display_type = 'container',
-			appunto_auth_height = '$height';
+		var ci_site_url = "{$site_url}",
+			ci_base_url	= "{$base_url}",
+			appunto_auth_display_type = 'viewport';
 	</script>
 
 	<!-- ExtJS library -->
 	<script type="text/javascript">document.getElementById('loading-msg').innerHTML = 'Loading Sencha ExtJS...';</script>
-	<script type="text/javascript" src="{$extjs_url}ext-dev.js"></script>
-	<!-- <script type="text/javascript" src="{$extjs_url}ext.js"></script> -->
+	<script type="text/javascript" src="{$urls['extjs_lib']}"></script>
 
 	<!-- Application requirements -->
 	<script type="text/javascript">document.getElementById('loading-msg').innerHTML = 'Loading Application...';</script>
@@ -73,7 +75,13 @@ if ( ! function_exists('appunto_auth_application_viewport'))
 	{
 		$CI =& get_instance();
 
+		if (!isset($CI->appunto_auth)) $CI->load->library('appunto_auth');
+
+		$urls = $CI->appunto_auth->include_urls();
+
 		$base_url = base_url();
+		$base_url = '/appuntoauth/';
+		$site_url = site_url();
 
 		$html = <<<APP
 <link rel="stylesheet" type="text/css" href="{$base_url}resources/appunto-auth/css/loading_mask.css" />
@@ -86,7 +94,7 @@ if ( ! function_exists('appunto_auth_application_viewport'))
 <div id='script-includes'>
 
 	<!-- ExtJS style sheets -->
-	<link rel="stylesheet" type="text/css" href="http://cdn.sencha.io/ext-4.0.7-gpl/resources/css/ext-all.css">
+	<link rel="stylesheet" type="text/css" href="{$urls['extjs']}resources/css/ext-all.css">
 
 	<!-- Application style sheets -->
 	<link rel="stylesheet" type="text/css" href="{$base_url}resources/appunto-auth/css/appunto_auth_app.css" />
@@ -95,18 +103,16 @@ if ( ! function_exists('appunto_auth_application_viewport'))
 	<link rel="stylesheet" type="text/css" href="{$base_url}resources/appunto-auth/css/appunto_auth_branding.css" /> 
 	<link rel="stylesheet" type="text/css" href="{$base_url}resources/appunto-auth/css/appunto_auth_icons.css" />
 
-	<!-- set a base_url -->
-	<script type="text/javascript">var appunto_auth_base_url = '{$base_url}index.php/';</script>
-
-	<!-- set display type -->
-	<script type="text/javascript">var appunto_auth_display_type = 'viewport';</script>
+	<!-- set base url, display type -->
+	<script type="text/javascript">
+		var ci_site_url = "{$site_url}",
+			ci_base_url	= "{$base_url}",
+			appunto_auth_display_type = 'viewport';
+	</script>
 
 	<!-- ExtJS library -->
 	<script type="text/javascript">document.getElementById('loading-msg').innerHTML = 'Loading Sencha ExtJS...';</script>
-	<!-- <script type="text/javascript" src="http://cdn.sencha.io/ext-4.0.7-gpl/ext.js"></script> -->
-	<script type="text/javascript" src="http://cdn.sencha.io/ext-4.0.7-gpl/ext-dev.js"></script>
-	<!-- <script type="text/javascript" src="http://extjs.cachefly.net/ext-4.0.7-gpl/ext-dev.js"></script> -->
-	<!-- <script type="text/javascript" src="extjs/ext.js"></script> -->
+	<script type="text/javascript" src="{$urls['extjs_lib']}"></script>
 
 	<!-- Application requirements -->
 	<script type="text/javascript">document.getElementById('loading-msg').innerHTML = 'Loading Application...';</script>
@@ -124,6 +130,11 @@ if ( ! function_exists('login_box'))
 	function login_box($return=false, $css = 'login-form-box')
 	{
 		$CI =& get_instance();
+
+		if (!isset($CI->appunto_auth)) $CI->load->library('appunto_auth');
+		if (!isset($CI->form_validation)) $CI->load->library('form_validation');
+
+		$urls = $CI->appunto_auth->include_urls();
 
 		/** 
 		 * If language library is loaded, set labels.  If not, set to false which is also 
@@ -161,13 +172,18 @@ if ( ! function_exists('login_box'))
 
 		$field_username = form_input($login);
 		$field_password = form_password($password);
+		$field_uri = form_hidden('uri',set_value('uri',$CI->uri->uri_string()));
 		$submit_button	= form_submit(array('name'=>'login','value'=>$label_button,'class'=>'round-button'));
 
 		$form_open = form_open('appunto-auth/user/authenticate');
 		$form_close = form_close();
 
 		$html = <<<LOGINBOX
+<div id='script-includes'>
+	<link rel="stylesheet" type="text/css" href="{$urls['base']}resources/appunto-auth/css/appunto_auth_login.css" />
+</div>
 $form_open
+$field_uri
 <div class="login-wrap">
 	<div class="$css">
 		$message_div
@@ -193,6 +209,7 @@ if ( ! function_exists('login_header'))
 	{
 		$CI =& get_instance();
 
+		if (!isset($CI->form_validation)) $CI->load->library('form_validation');
 		/** 
 		 * If language library is loaded, set labels.  If not, set to false which is also 
 		 * the return value for the lang function if the language string is not found.

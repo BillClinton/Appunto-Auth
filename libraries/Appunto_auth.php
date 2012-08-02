@@ -10,6 +10,7 @@ class Appunto_auth
 	 */
     public function __construct()
     {
+		log_message('error','library constructor');
 		$this->CI =& get_instance();
 
 		$this->CI->load->config('appunto_auth',true,false); // true to avoid naming collisions, false to not suppress errors
@@ -21,6 +22,9 @@ class Appunto_auth
 
         $this->CI->load->model('pathmodel');
         $this->CI->load->model('usermodel');
+
+		$this->cache_paths = $this->CI->config->item('cache_paths', 'appunto_auth');
+		$this->path_cache_duration = $this->CI->config->item('path_cache_duration', 'appunto_auth');
 
     }
 
@@ -41,6 +45,9 @@ class Appunto_auth
 	 */
 	public function require_authentication_hook() 
 	{
+		$this->cnt++;
+		log_message('error','cnt: '.$this->cnt);
+
 		$paths 		= $this->_getPaths();
 		$ci_class	= $this->CI->router->fetch_class();
 		$ci_method	= $this->CI->router->fetch_method();
@@ -149,6 +156,50 @@ class Appunto_auth
 	 */
 	private function _getPaths()
 	{
+		if (true === $this->cache_paths) {
+			$path_array = $this->CI->session->userdata('path_array');
+			if (!isset($path_array) || !is_array($path_array) || count($path_array) <= 0) 
+			{
+				log_message('error','path_array not set');
+				$path_array = $this->_loadPaths();
+				$this->CI->session->set_userdata('path_array', $path_array);
+				return $path_array;
+			}
+				log_message('error','path_array IS SET IN SESSION');
+			return $path_array;
+
+
+		}
+		else
+		{	
+			return $this->_loadPaths();
+		}
+
+		$path_array = array();
+        $result 	= $this->CI->pathmodel->enumerate();
+
+		if (isset($result['rows']) && is_array($result['rows'])) 
+		{
+			$rows = $result['rows'];
+			foreach ($rows as $row)
+			{
+				$path_array[strtolower($row->ci_controller)][strtolower($row->ci_method)] = array(
+					'public_flag'	=> $row->public_flag,
+					'perm'			=> $row->permission_id
+				);
+			}
+		}
+		return $path_array;
+	}
+
+	/**
+	 * Load paths from database.
+	 *
+	 * @return	array 
+	 */
+	private function _loadPaths()
+	{
+		log_message('error','loading paths...');
 		$path_array = array();
         $result 	= $this->CI->pathmodel->enumerate();
 

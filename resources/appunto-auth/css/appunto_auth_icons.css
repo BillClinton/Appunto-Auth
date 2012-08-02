@@ -117,6 +117,26 @@
 .medal-gold-3 {
 	background-image:url(icons/medal_gold_3.png) !important;
 }
+/* landing page list items */
+.landing-page .x-panel-body li {
+	list-style: circle  url('icons/database_gear.png') !important;
+	margin: 0 0 8px 32px;
+}
+.landing-page .x-panel-body li.user-li {
+	list-style: circle  url('icons/user.png') !important;
+}
+.landing-page .x-panel-body li.group-li {
+	list-style: circle  url('icons/group.png') !important;
+}
+.landing-page .x-panel-body li.role-li {
+	list-style: circle  url('icons/shield.png') !important;
+}
+.landing-page .x-panel-body li.permission-li {
+	list-style: circle  url('icons/lock.png') !important;
+}
+.landing-page .x-panel-body li.path-li {
+	list-style: circle  url('icons/map.png') !important;
+}
 /* icons for path grid */
 .path-public div.x-grid-cell-inner {
 	background: url(icons/world_link.png) 2px 1px no-repeat !important;

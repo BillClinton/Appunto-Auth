@@ -55,6 +55,7 @@ class User extends CI_Controller {
 
 			if (!$this->form_validation->run())
 			{
+				//$uri = $this->input->post('url', TRUE);
 				$this->load->view('appunto-auth/login');
 			}
 			else
