@@ -2,13 +2,13 @@ Ext.define('APPA.controller.Roles', {
     extend: 'Ext.app.Controller',
 
 	models: [
-		'Role',
-		'RolePermission'
+		'APPA.model.Role',
+		'APPA.model.RolePermission'
 	],
 
 	stores: [
-		'Roles',
-		'RolePermissions'
+		'APPA.store.Roles',
+		'APPA.store.RolePermissions'
 	],
 
     views: [
@@ -25,7 +25,7 @@ Ext.define('APPA.controller.Roles', {
         ref : 'list',
         selector: 'appa_role_list'
 	},{
-        ref : 'rolePermissionsList',
+        ref : 'permissionsList',
         selector: 'appa_role_permission_list'
     }],
 
@@ -37,6 +37,7 @@ Ext.define('APPA.controller.Roles', {
 				activate		: this.refreshList
 			},
             'appa_role_list' : {
+				render			: this.defineStoreEventHandlers,
             	select			: this.roleSelected,
                 itemdblclick	: this.editRole,
                 itemcontextmenu	: this.showContextMenu,
@@ -82,7 +83,16 @@ Ext.define('APPA.controller.Roles', {
             }
 		});
 
-		this.getRolesStore().on({
+	},
+
+	refreshList: function(button)
+	{
+		this.getList().getStore().load();
+	},
+
+	defineStoreEventHandlers: function(button)
+	{
+		this.getList().getStore().on({
 			scope	: this,
 			load	: this.storeLoad
 		});
@@ -95,8 +105,8 @@ Ext.define('APPA.controller.Roles', {
 	 */
 	storeLoad: function()
 	{
-		var permission_store 	= this.getRolePermissionsStore(),
-			permission_list		= this.getRolePermissionsList();
+		var permission_list		= this.getPermissionsList(),
+			permission_store 	= permission_list.getStore();
 
 		permission_list.setTitle('Permissions');
 		permission_store.removeAll();
@@ -117,15 +127,10 @@ Ext.define('APPA.controller.Roles', {
         menu.showAt(e.getXY());
     },
 
-	refreshList: function(button)
-	{
-		this.getRolesStore().load();
-	},
-
 	roleSelected: function(view, record)
 	{
-		var permission_store 	= this.getRolePermissionsStore(),
-			permission_list		= this.getRolePermissionsList();
+		var permission_list		= this.getPermissionsList(),
+			permission_store 	= permission_list.getStore();
 
 		permission_list.setTitle('Permissions for '+record.get('name')+' role');
 
@@ -146,7 +151,7 @@ Ext.define('APPA.controller.Roles', {
             form   	= win.down('form'),
             values 	= form.getValues(),
             record 	= Ext.create('APPA.model.Role'),
-			store	= this.getRolesStore(),
+			store	= this.getList().getStore(),
 			win_cb;
 
 		win_cb = function(rec, operation) {
@@ -204,7 +209,7 @@ Ext.define('APPA.controller.Roles', {
     confirmRoleDeletion: function(menuitem) 
 	{
         var rec     = menuitem.up('menu').getRecord(),
-			store	= this.getRolesStore(),
+			store	= this.getList().getStore(),
 			title	= 'Delete role '+rec.data.name;
 
         Ext.MessageBox.confirm(title, 'Are you sure you want to delete this role?', Ext.bind(this.deleteRole,this,[rec,store],true));
@@ -224,7 +229,7 @@ Ext.define('APPA.controller.Roles', {
 
 	togglePermissionView: function(button) 
 	{
-		var	permissions	= this.getRolePermissionsList(),
+		var	permissions	= this.getPermissionsList(),
 			store		= permissions.getStore();
 
 		if (button.action == 'show_all')

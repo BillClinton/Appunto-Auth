@@ -11,7 +11,6 @@ Ext.define('APPA.view.main.Container' ,{
 	layout	: 'fit',
 	renderTo: 'appunto-auth-app-div',
 	width	: '100%',
-	height	: appunto_auth_height,
 
 	items: [
 		{

@@ -1,7 +1,7 @@
 Ext.define('APPA.view.user.RoleList' ,{
     extend  : 'Ext.grid.Panel',
     alias   : 'widget.appa_user_role_list',
-    store   : 'UserRoles',
+    store   : 'APPA.store.UserRoles',
 
     title   : 'Roles',
     iconCls : 'shield', 

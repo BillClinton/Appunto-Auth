@@ -5,7 +5,7 @@
  * A data model that represents application groups.
  *
  *
- * groupmodel lol :)
+ * groupmodel 
  *
  * @cfg {Array} fields An Array of {@link Ext.data.Field} defintions.
  * @cfg {String/Object/Ext.data.proxy.Proxy} [proxy=ci] Uses {@link APPUNTO.lib.proxy.Codeigniter} defined by "ci" alias.

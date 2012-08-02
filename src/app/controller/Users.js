@@ -6,15 +6,15 @@ Ext.define('APPA.controller.Users', {
     extend: 'Ext.app.Controller',
 
 	models: [
-		'User',
-		'UserRole',
-		'UserPermission'
+		'APPA.model.User',
+		'APPA.model.UserRole',
+		'APPA.model.UserPermission'
 	],
 
 	stores: [
-		'Users',
-		'UserRoles',
-		'UserPermissions'
+		'APPA.store.Users',
+		'APPA.store.UserRoles',
+		'APPA.store.UserPermissions'
 	],
 
     views: [
@@ -34,10 +34,10 @@ Ext.define('APPA.controller.Users', {
         ref : 'list',
         selector: 'appa_user_list'
 	},{
-        ref : 'userRoleList',
+        ref : 'roleList',
         selector: 'appa_user_role_list'
 	},{
-        ref : 'userPermissionList',
+        ref : 'permissionList',
         selector: 'appa_user_permission_list'
     }],
 
@@ -50,6 +50,7 @@ Ext.define('APPA.controller.Users', {
 				activate: this.loadStore
 			},
             'appa_user_list' : {
+				render			: this.defineStoreEventHandlers,
                 select			: this.userSelected,
                 itemdblclick	: this.editUser,
                 itemcontextmenu	: this.showContextMenu,
@@ -118,11 +119,12 @@ Ext.define('APPA.controller.Users', {
                 click: this.removePermission
             }
 		});
-
+/*
 		this.getUsersStore().on({
 			scope	: this,
 			load	: this.storeLoad
 		});
+*/
 
 	},
 
@@ -133,7 +135,15 @@ Ext.define('APPA.controller.Users', {
 	 */
 	loadStore: function()
 	{
-		this.getUsersStore().load();
+		this.getList().getStore().load();
+	},
+
+	defineStoreEventHandlers: function(button)
+	{
+		this.getList().getStore().on({
+			scope	: this,
+			load	: this.storeLoad
+		});
 	},
 
 	/**
@@ -143,16 +153,16 @@ Ext.define('APPA.controller.Users', {
 	 */
 	storeLoad: function()
 	{
-		this.getUserRolesStore().removeAll();
-		this.getUserPermissionsStore().removeAll();
+		this.getRoleList().getStore().removeAll();
+		this.getPermissionList().getStore().removeAll();
 	},
 
 	userSelected: function(view, record)
 	{
-		var role_store 			= this.getUserRolesStore(),
-			permission_store 	= this.getUserPermissionsStore(),
-			role_list			= this.getUserRoleList(),
-			permission_list		= this.getUserPermissionList();
+		var role_list			= this.getRoleList(),
+			permission_list		= this.getPermissionList(),
+			role_store 			= role_list.getStore(),
+			permission_store 	= permission_list.getStore();
 
 		role_list.setTitle('Roles for '+record.get('username'));
 		permission_list.setTitle('Permissions for '+record.get('username'));
@@ -241,7 +251,7 @@ Ext.define('APPA.controller.Users', {
             form   	= win.down('form'),
             values 	= form.getValues(),
             record 	= Ext.create('APPA.model.User'),
-			store	= this.getUsersStore(),
+			store	= this.getList().getStore(),
 			cb;
 
 		cb = function(rec, operation) {
@@ -376,7 +386,7 @@ Ext.define('APPA.controller.Users', {
 
 	toggleRoleView: function(button) 
 	{
-		var	roles		= this.getUserRoleList(),
+		var	roles		= this.getRoleList(),
 			store		= roles.getStore();
 
 		if (button.action == 'show_all')
@@ -455,7 +465,7 @@ Ext.define('APPA.controller.Users', {
 
 	togglePermissionView: function(button) 
 	{
-		var	permissions = this.getUserPermissionList(),
+		var	permissions = this.getPermissionList(),
 			store		= permissions.getStore();
 
 		if (button.action == 'show_all')

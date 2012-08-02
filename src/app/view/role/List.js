@@ -1,7 +1,7 @@
 Ext.define('APPA.view.role.List' ,{
     extend  : 'Ext.grid.Panel',
     alias   : 'widget.appa_role_list',
-    store   : 'Roles',
+    store   : 'APPA.store.Roles',
 
     title   : 'Roles',
     iconCls : 'shield', 
@@ -20,6 +20,13 @@ Ext.define('APPA.view.role.List' ,{
 			text	: 'Add role',
 			action	: 'add',
 			iconCls	: 'shield-add' 
+		}];
+
+		this.bbar = [{ 
+			xtype	: 'button', 
+			text	: '',
+			action	: 'refresh',
+			iconCls	: 'x-tbar-loading' 
 		}];
 
         this.callParent(arguments);

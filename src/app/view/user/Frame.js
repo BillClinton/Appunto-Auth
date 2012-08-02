@@ -1,5 +1,5 @@
 Ext.define('APPA.view.user.Frame' ,{
-    extend  : 'Ext.panel.Panel',
+    extend  : 'Ext.container.Container',
     alias   : 'widget.appa_user_frame',
 
 	layout	: {
@@ -12,6 +12,8 @@ Ext.define('APPA.view.user.Frame' ,{
 	},
 
 	border	: 0,
+
+	createMenuItem: true,
 
     initComponent: function() 
 	{
@@ -42,7 +44,7 @@ Ext.define('APPA.view.user.Frame' ,{
 				],
         		bbar	: {
 					xtype		: 'pagingtoolbar',
-            		store		: 'Users',       
+            		store		: 'APPA.store.Users',       
             		displayInfo	: true
 				}
 			}

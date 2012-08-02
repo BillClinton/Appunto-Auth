@@ -1,7 +1,7 @@
 Ext.define('APPA.view.user.List' ,{
     extend  : 'Ext.grid.Panel',
     alias   : 'widget.appa_user_list',
-    store   : 'Users',
+    store   : 'APPA.store.Users',
 
     title   : 'Users',
     iconCls : 'user', 

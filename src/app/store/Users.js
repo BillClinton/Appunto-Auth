@@ -1,5 +1,5 @@
 /** 
- * Sessions Store
+ * Users Store
  *
  *
  * A store that uses the {@link APPA.model.User} model and contains application users.

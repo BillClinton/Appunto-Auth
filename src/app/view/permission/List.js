@@ -1,7 +1,7 @@
 Ext.define('APPA.view.permission.List' ,{
     extend  : 'Ext.grid.Panel',
     alias   : 'widget.appa_permission_list',
-    store   : 'Permissions',
+    store   : 'APPA.store.Permissions',
 
     title   : 'Permissions',
     iconCls : 'lock', 

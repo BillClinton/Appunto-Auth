@@ -1,7 +1,7 @@
 Ext.define('APPA.view.session.List' ,{
     extend  : 'Ext.grid.Panel',
     alias   : 'widget.appa_session_list',
-    store   : 'Sessions',
+    store   : 'APPA.store.Sessions',
 
     title   : 'Sessions',
     iconCls : 'monitor', 

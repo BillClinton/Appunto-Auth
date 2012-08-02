@@ -4,7 +4,7 @@
 Ext.define('APPA.view.path.List' ,{
     extend  : 'Ext.grid.Panel',
     alias   : 'widget.appa_path_list',
-    store   : 'Paths',
+    store   : 'APPA.store.Paths',
 
     title   : 'Application Paths',
     iconCls : 'map', 
@@ -69,12 +69,12 @@ Ext.define('APPA.view.path.List' ,{
 					//	meta.tdAttr = 'data-qtip="private path with no permission is inaccessible"';
 					//}
 					return '';
-					return '';
 				} 
 			},
             {
 				header			: 'Path',  
-				dataIndex		: 'ci_controller', 
+				//dataIndex		: 'ci_controller', 
+				dataIndex		: 'ci_method', 
 				sortable 		: false, 
 				menuDisabled	: true,
 				groupable		: false,
@@ -105,9 +105,12 @@ Ext.define('APPA.view.path.List' ,{
 				header		: 'Access',  
 				dataIndex	: 'public_flag', 
 				width		: 80,
-				field		: 
+				editor		: 
 				{
 					xtype           : 'combo',
+					editable		: false,
+					forceSelection	: true,
+					triggerAction	: 'all',
 					store			:
 					{
 						xtype	: 'store',
@@ -142,10 +145,10 @@ Ext.define('APPA.view.path.List' ,{
             {
 				header		: 'Permission',  
 				dataIndex	: 'permission_name', 
-				field		: 
+				editor 		: 
 				{
 					xtype           : 'combo',
-					store			: 'Permissions',
+					store			: 'APPA.store.PermissionsSelection',
 					queryMode       : 'local',
 					displayField    : 'name',
 					valueField      : 'id'

@@ -1,6 +1,7 @@
-Ext.Loader.setPath('Ext', 'http://cdn.sencha.io/ext-4.0.7-gpl/src');
+//Ext.Loader.setPath('Ext', 'http://cdn.sencha.com/ext-4.1.1-gpl/src');
+//Ext.Loader.setPath('Ext', 'http://cdn.sencha.io/ext-4.0.7-gpl/src');
 //Ext.Loader.setPath('Ext', 'http://extjs.cachefly.net/ext-4.0.7-gpl/src');
-//Ext.Loader.setPath('Ext', 'extjs/src');
+Ext.Loader.setPath('Ext', '/auth/extjs/src');
 
 Ext.require('Ext.container.Viewport');
 Ext.require('Ext.data.TreeStore');
@@ -23,18 +24,17 @@ Ext.require('Ext.toolbar.TextItem');
 Ext.require('Ext.window.MessageBox');
 
 // Require proxy
-//Ext.Loader.setPath('APPUNTO.lib', 'resources/appunto-auth/lib');  // need this for build/deploy
-Ext.Loader.setPath('APPUNTO.lib', '/auth/resources/appunto-auth/lib'); // need this for testing src version locally 
+Ext.Loader.setPath('APPUNTO.lib', '/appunto/lib'); // need this for testing src version locally 
+//Ext.Loader.setPath('APPUNTO.lib', '../appunto/lib');  // need this for build/deploy
+// needs fixin? Ext.Loader.setPath('APPUNTO.lib', '/appunto/lib'); // need this for testing src version locally 
 Ext.require('APPUNTO.lib.proxy.Codeigniter');
 Ext.ClassManager.setAlias('APPUNTO.lib.proxy.Codeigniter', 'proxy.ci');
-
-
 
 Ext.application({
     name: 'APPA',
 
 	// Add path for testing src version - comment this out when building/deploying
-	appFolder: '/auth/app',
+	appFolder: ci_base_url+'/app',
 
     controllers: [
 		'Main',
@@ -50,15 +50,16 @@ Ext.application({
 
     launch: function() 
 	{
-		var container;
-
 		if (appunto_auth_display_type == "viewport")
 		{
-			Ext.create('APPA.view.main.Viewport').render();
+			Ext.create('APPA.view.main.Viewport');
 		}
 		else if (appunto_auth_display_type == "container")
 		{
-			container = Ext.create('APPA.view.main.Container');
+			var container = Ext.create('APPA.view.main.Container',
+				{
+					height	: appunto_auth_height
+				});
 			Ext.EventManager.onWindowResize(container.doLayout, container);
 		} 
 		else

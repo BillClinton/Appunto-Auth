@@ -10,6 +10,6 @@ Ext.define('APPA.view.info.CreditsPanel' ,{
 	autoScroll	: true,
 	bodyStyle 	: 'padding:24px;',
 	
-	autoLoad	: appunto_auth_base_url+'appunto-auth/info/credits'
+	autoLoad	: ci_site_url+'/appunto-auth/info/credits'
 
 });

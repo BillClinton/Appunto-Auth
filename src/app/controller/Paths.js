@@ -2,11 +2,13 @@ Ext.define('APPA.controller.Paths', {
     extend: 'Ext.app.Controller',
 
 	models: [
-		'Path'
+		'APPA.model.Path',
+		'APPA.model.Permission'
 	],
 
 	stores: [
-		'Paths'
+		'APPA.store.Paths',
+		'APPA.store.PermissionsSelection'
 	],
 
     views: [
@@ -67,10 +69,6 @@ Ext.define('APPA.controller.Paths', {
             }
 		});
 
-		this.getPathsStore().on({
-			scope		: this,
-			groupchange	: this.groupingChanged
-		});
 	},
 
 	expandAllGroups: function() 
@@ -122,7 +120,8 @@ Ext.define('APPA.controller.Paths', {
     findPaths: function() 
     {
 		var me		= this,
-			store 	= this.getPathsStore(),
+			list	= this.getList(),
+			store 	= list.getStore(),
 			cb;
 
 		cb = function(records, operation, success) 
@@ -149,7 +148,8 @@ Ext.define('APPA.controller.Paths', {
 	refreshList: function()
 	{
 		var me		= this,
-			store 	= this.getPathsStore(),
+			list	= this.getList(),
+			store 	= list.getStore(),
 			cb,
 			unfound;
 
@@ -231,7 +231,8 @@ Ext.define('APPA.controller.Paths', {
     deletePath: function(menuitem)
     {
         var rec     = menuitem.up('menu').getRecord(),
-			store	= this.getPathsStore();
+			list	= this.getList(),
+			store 	= list.getStore();
 
 		rec.destroy(
 		{
@@ -242,7 +243,8 @@ Ext.define('APPA.controller.Paths', {
     deleteNotFound: function()
     {
 		var me		= this,
-			store 	= this.getPathsStore(),
+			list	= this.getList(),
+			store 	= list.getStore(),
 			cb;
 
 		cb = function(records, operation, success) 
@@ -261,7 +263,8 @@ Ext.define('APPA.controller.Paths', {
 
     filterAuthPaths: function(button)
     {
-		var store 	= this.getPathsStore();
+		var	list	= this.getList(),
+			store 	= list.getStore();
 
 		if (button.pressed)
 		{

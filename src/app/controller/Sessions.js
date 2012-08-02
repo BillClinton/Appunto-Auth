@@ -5,17 +5,22 @@ Ext.define('APPA.controller.Sessions', {
     extend: 'Ext.app.Controller',
 
 	models: [
-		'Session'
+		'APPA.model.Session'
 	],
 
 	stores: [
-		'Sessions'
+		'APPA.store.Sessions'
 	],
 
     views: [
 		'session.List',
         'session.ContextMenu'
     ],
+
+    refs : [{
+        ref : 'list',
+        selector: 'appa_session_list'
+    }],
 
     init: function() 
 	{
@@ -57,13 +62,13 @@ Ext.define('APPA.controller.Sessions', {
 
 	refreshList: function(button)
 	{
-		this.getSessionsStore().load();
+		this.getList().getStore().load();
 	},
 
     confirmSessionDeletion: function(menuitem) 
 	{
         var rec     = menuitem.up('menu').getRecord(),
-			store	= this.getSessionsStore(),
+			store	= this.getList().getStore(),
 			title	= 'Delete session (user: '+rec.data.username+')';
 
         Ext.MessageBox.confirm(title, 'Are you sure you want to delete this session?', Ext.bind(this.deleteSession,this,[rec,store],true));

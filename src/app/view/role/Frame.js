@@ -1,5 +1,5 @@
 Ext.define('APPA.view.role.Frame' ,{
-    extend  : 'Ext.panel.Panel',
+    extend  : 'Ext.container.Container',
     alias   : 'widget.appa_role_frame',
 
 	layout	: {

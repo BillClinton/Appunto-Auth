@@ -2,11 +2,11 @@ Ext.define('APPA.controller.Permissions', {
     extend: 'Ext.app.Controller',
 
 	models: [
-		'Permission'
+		'APPA.model.Permission'
 	],
 
 	stores: [
-		'Permissions'
+		'APPA.store.Permissions'
 	],
 
     views: [
@@ -15,6 +15,11 @@ Ext.define('APPA.controller.Permissions', {
 		'permission.Add',
 		'permission.Edit'
     ],
+
+    refs : [{
+        ref : 'list',
+        selector: 'appa_permission_list'
+    }],
 
     init: function() 
 	{
@@ -78,12 +83,12 @@ Ext.define('APPA.controller.Permissions', {
 
 	refreshList: function(button)
 	{
-		this.getPermissionsStore().load();
+		this.getList().getStore().load();
 	},
 
-    addPermission: function() 
+    addPermission: function(source,e) 
     {
-		Ext.widget('appa_permission_add');
+		Ext.widget('appa_permission_add').showAt(e.getXY());
 	},
 
     createPermission: function(button) 
@@ -92,7 +97,7 @@ Ext.define('APPA.controller.Permissions', {
             form   	= win.down('form'),
             values 	= form.getValues(),
             record 	= Ext.create('APPA.model.Permission'),
-			store	= this.getPermissionsStore(),
+			store	= this.getList().getStore(),
 			win_cb;
 
 		win_cb = function(rec, operation) {
@@ -109,13 +114,14 @@ Ext.define('APPA.controller.Permissions', {
 		}
 	},
 
-    editPermission: function(menuitem) 
+    editPermission: function(menuitem,e) 
     {
         var rec     = menuitem.up('menu').getRecord(),
 			view 	= Ext.widget('appa_permission_edit'),
 			form	= view.down('form');
 
 			form.loadRecord(rec);
+			view.showAt(e.getXY());
 	},
 
     updatePermission: function(button) 
@@ -149,7 +155,7 @@ Ext.define('APPA.controller.Permissions', {
     confirmPermissionDeletion: function(menuitem) 
 	{
         var rec     = menuitem.up('menu').getRecord(),
-			store	= this.getPermissionsStore(),
+			store	= this.getList().getStore(),
 			title	= 'Delete permission '+rec.data.name;
 
         Ext.MessageBox.confirm(title, 'Are you sure you want to delete this permission?', Ext.bind(this.deletePermission,this,[rec,store],true));

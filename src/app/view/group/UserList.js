@@ -1,7 +1,8 @@
 Ext.define('APPA.view.group.UserList' ,{
     extend  : 'Ext.grid.Panel',
     alias   : 'widget.appa_group_user_list',
-    store   : 'GroupUsers',
+    store   : 'APPA.store.GroupUsers',
+    //store   : 'GroupUsers',
 
     title   : 'Users',
     iconCls : 'lock', 

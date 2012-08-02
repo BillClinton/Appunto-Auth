@@ -1,5 +1,5 @@
 Ext.define('APPA.view.group.Frame' ,{
-    extend  : 'Ext.panel.Panel',
+    extend  : 'Ext.container.Container',
     alias   : 'widget.appa_group_frame',
 
 	layout	: {
@@ -12,6 +12,8 @@ Ext.define('APPA.view.group.Frame' ,{
 	},
 
 	border	: 0,
+
+	createMenuItem: true,
 
     initComponent: function() 
 	{

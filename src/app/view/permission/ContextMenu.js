@@ -15,7 +15,7 @@ Ext.define('APPA.view.permission.ContextMenu' ,{
         {
             text    : 'Edit permission',
             action  : 'edit', 
-            iconCls : 'lock-go'
+            iconCls : 'lock-edit'
         },
         {
             text    : 'Delete permission',

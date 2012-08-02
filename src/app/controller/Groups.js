@@ -7,8 +7,8 @@ Ext.define('APPA.controller.Groups', {
 	],
 
 	stores: [
-		'Groups',
-		'GroupUsers'
+		'APPA.store.Groups',
+		'APPA.store.GroupUsers'
 	],
 
     views: [
@@ -25,7 +25,7 @@ Ext.define('APPA.controller.Groups', {
         ref : 'list',
         selector: 'appa_group_list'
 	},{
-        ref : 'groupUsersList',
+        ref : 'userList',
         selector: 'appa_group_user_list'
     }],
 
@@ -37,6 +37,7 @@ Ext.define('APPA.controller.Groups', {
 				activate		: this.refreshList
 			},
             'appa_group_list' : {
+				render			: this.defineStoreEventHandlers,
             	select			: this.groupSelected,
                 itemdblclick	: this.editGroup,
                 itemcontextmenu	: this.showContextMenu,
@@ -82,7 +83,25 @@ Ext.define('APPA.controller.Groups', {
             }
 		});
 
+		/*
 		this.getGroupsStore().on({
+			scope	: this,
+			load	: this.storeLoad
+		});
+		*/
+		console.log('created group list!');
+		console.log(this);
+
+	},
+
+	refreshList: function(button)
+	{
+		this.getList().getStore().load();
+	},
+
+	defineStoreEventHandlers: function(button)
+	{
+		this.getList().getStore().on({
 			scope	: this,
 			load	: this.storeLoad
 		});
@@ -95,8 +114,8 @@ Ext.define('APPA.controller.Groups', {
 	 */
 	storeLoad: function()
 	{
-		var user_store 	= this.getGroupUsersStore(),
-			user_list		= this.getGroupUsersList();
+		var user_list	= this.getUserList(),
+			user_store 	= user_list.getStore();
 
 		user_list.setTitle('Users');
 		user_store.removeAll();
@@ -117,15 +136,11 @@ Ext.define('APPA.controller.Groups', {
         menu.showAt(e.getXY());
     },
 
-	refreshList: function(button)
-	{
-		this.getGroupsStore().load();
-	},
 
 	groupSelected: function(view, record)
 	{
-		var user_store 	= this.getGroupUsersStore(),
-			user_list		= this.getGroupUsersList();
+		var user_list	= this.getUserList(),
+			user_store 	= user_list.getStore();
 
 		user_list.setTitle('Users in '+record.get('name')+' group');
 
@@ -224,7 +239,7 @@ Ext.define('APPA.controller.Groups', {
 
 	toggleUserView: function(button) 
 	{
-		var	users	= this.getGroupUsersList(),
+		var	users	= this.getUserList(),
 			store		= users.getStore();
 
 		if (button.action == 'show_all')
