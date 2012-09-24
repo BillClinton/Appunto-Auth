@@ -2,7 +2,7 @@
 
 An authentication spark for CodeIgniter with a Sencha Ext JS interface and a simple ACL.
 
-__This is still being deployed.  Do not install this yet!!!! First version ready by the end of July 2012__
+__This is still in testing. __
 
 ## Features
  - Administrative interface using ExtJS
