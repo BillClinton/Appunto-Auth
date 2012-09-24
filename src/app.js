@@ -24,7 +24,7 @@ Ext.require('Ext.toolbar.Spacer');
 Ext.require('Ext.toolbar.TextItem');
 Ext.require('Ext.window.MessageBox');
 
-// Require proxy
+// Require proxy 
 Ext.Loader.setPath('APPUNTO.lib', '/appunto/lib'); // need this for testing src version locally 
 //Ext.Loader.setPath('APPUNTO.lib', '../appunto/lib');  // need this for build/deploy
 // needs fixin? Ext.Loader.setPath('APPUNTO.lib', '/appunto/lib'); // need this for testing src version locally 
@@ -51,6 +51,17 @@ Ext.application({
 
     launch: function() 
 	{
+		Ext.apply(Ext.form.field.VTypes, {
+			passconfirm: function(val, field) {
+				if (field.passField) {
+					var pwd = field.up('form').down('#' + field.passField);
+					return (val == pwd.getValue());
+				}
+				return true;
+			},
+			passconfirmText: 'Passwords do not match'
+		});
+
 		if (appunto_auth_display_type == "viewport")
 		{
 			Ext.create('APPA.view.main.Viewport');

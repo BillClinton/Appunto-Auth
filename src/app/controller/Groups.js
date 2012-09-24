@@ -161,7 +161,7 @@ Ext.define('APPA.controller.Groups', {
             form   	= win.down('form'),
             values 	= form.getValues(),
             record 	= Ext.create('APPA.model.Group'),
-			store	= this.getGroupsStore(),
+			store	= this.getList().getStore(),
 			win_cb;
 
 		win_cb = function(rec, operation) {
@@ -219,7 +219,7 @@ Ext.define('APPA.controller.Groups', {
     confirmGroupDeletion: function(menuitem) 
 	{
         var rec     = menuitem.up('menu').getRecord(),
-			store	= this.getGroupsStore(),
+			store	= this.getList().getStore(),
 			title	= 'Delete group '+rec.data.name;
 
         Ext.MessageBox.confirm(title, 'Are you sure you want to delete this group?', Ext.bind(this.deleteGroup,this,[rec,store],true));

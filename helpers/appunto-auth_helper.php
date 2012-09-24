@@ -20,7 +20,6 @@ if ( ! function_exists('appunto_auth_application'))
 		$urls = $CI->appunto_auth->include_urls();
 
 		$base_url = base_url();
-		$base_url = '/appuntoauth/';
 		$site_url = site_url();
 
 		$html = <<<APP
@@ -47,7 +46,8 @@ if ( ! function_exists('appunto_auth_application'))
 	<script type="text/javascript">
 		var ci_site_url = "{$site_url}",
 			ci_base_url	= "{$base_url}",
-			appunto_auth_display_type = 'viewport';
+			appunto_auth_display_type = 'container';
+			appunto_auth_height = "{$height}" 
 	</script>
 
 	<!-- ExtJS library -->
@@ -80,7 +80,6 @@ if ( ! function_exists('appunto_auth_application_viewport'))
 		$urls = $CI->appunto_auth->include_urls();
 
 		$base_url = base_url();
-		$base_url = '/appuntoauth/';
 		$site_url = site_url();
 
 		$html = <<<APP
@@ -205,11 +204,15 @@ LOGINBOX;
 
 if ( ! function_exists('login_header'))
 {
-	function login_header()
+	function login_header($return=false, $css = 'login-form-header')
 	{
 		$CI =& get_instance();
 
+		if (!isset($CI->appunto_auth)) $CI->load->library('appunto_auth');
 		if (!isset($CI->form_validation)) $CI->load->library('form_validation');
+
+		$urls = $CI->appunto_auth->include_urls();
+
 		/** 
 		 * If language library is loaded, set labels.  If not, set to false which is also 
 		 * the return value for the lang function if the language string is not found.
@@ -246,6 +249,7 @@ if ( ! function_exists('login_header'))
 
 		$field_username = form_input($login);
 		$field_password = form_password($password);
+		$field_uri = form_hidden('uri',set_value('uri',$CI->uri->uri_string()));
 		$submit_button	= form_submit(array('name'=>'login','value'=>$label_button,'class'=>'round-button'));
 
 		$form_open = form_open('appunto-auth/user/authenticate');
@@ -253,8 +257,8 @@ if ( ! function_exists('login_header'))
 
 		$html = <<<LOGINBOX
 $form_open
-<div class="login-wrap">
-	<div class="login-form-header">
+$field_uri
+	<div class="$css">
 		$message_div
 		<div class="login-form-errors">$validation_errors</div>
 		<div class="login-form-label">$label_username</div>
@@ -264,7 +268,6 @@ $form_open
 		<div class="login-form-button">$submit_button</div>
 		<div class="login-form-links"></div>
 	</div>
-</div>
 $form_close
 LOGINBOX;
 

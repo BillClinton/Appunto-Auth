@@ -81,6 +81,34 @@ class Examples extends CI_Controller {
 		 */
 		$this->load->view('appunto-auth/examples/login-box');
 	}
+
+	/**
+	 * Example usage of Appunto Auth login header 
+	 */
+	public function login_header()
+	{
+		/**
+		 * Load the appunto-auth helper. Required. 
+		 */
+        $this->load->helper('appunto-auth');
+
+		/**
+		 * Load the language helper and the appunto-auth language file.
+		 *
+		 * These are recommended, but technically not required.
+		 *
+		 * Quick Tip: if these are not loaded correctly, your form labels will be lowercase "login,password,submit"
+		 * If you are loading the language file properly, the default english values for these labels are
+		 * capitalized. 
+		 */
+		$this->load->helper('language');
+		$this->lang->load('appunto_auth');
+
+		/**
+		 * load the example view
+		 */
+		$this->load->view('appunto-auth/examples/login-header');
+	}
 }
 
 /* End of file examples.php */
