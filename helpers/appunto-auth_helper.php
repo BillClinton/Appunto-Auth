@@ -56,7 +56,8 @@ if ( ! function_exists('appunto_auth_application'))
 
 	<!-- Application requirements -->
 	<script type="text/javascript">document.getElementById('loading-msg').innerHTML = 'Loading Application...';</script>
-	<script type="text/javascript" src="{$base_url}app.js"></script>
+	<!-- <script type="text/javascript" src="{$base_url}app.js"></script> -->
+	<script type="text/javascript" src="{$base_url}resources/appunto-auth/app-all.js"></script>
 
 </div>
 <div id="appunto-auth-app-div" style="width:$width;height:$height;$additional_css">
@@ -115,7 +116,8 @@ if ( ! function_exists('appunto_auth_application_viewport'))
 
 	<!-- Application requirements -->
 	<script type="text/javascript">document.getElementById('loading-msg').innerHTML = 'Loading Application...';</script>
-	<script type="text/javascript" src="{$base_url}app.js"></script>
+	<!-- <script type="text/javascript" src="{$base_url}app.js"></script> -->
+	<script type="text/javascript" src="{$base_url}resources/appunto-auth/app-all.js"></script>
 
 </div>
 APP;
