@@ -9,7 +9,7 @@ __This is still in testing. __
  - Authentication performed in pre-controller hook rather than controller code
  - Simple ACL with roles and permissions
  - Restrict/Allow access using controller/function paths
- - Encrypts passwords in database using phpass library
+ - Hashes passwords in database using phpass library
 
 ## Installing
 
