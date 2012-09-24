@@ -15,13 +15,6 @@
 
 <div id='script-includes'>
 
-	<!-- set base url, display type -->
-	<script type="text/javascript">
-		var ci_site_url = "/auth/index.php/"
-			ci_base_url	= "/auth",
-			appunto_auth_display_type = 'viewport';
-	</script>
-
 	<!-- ExtJS style sheets -->
 	<!-- <link rel="stylesheet" type="text/css" href="http://cdn.sencha.io/ext-4.0.7-gpl/resources/css/ext-all.css"> -->
 	<!-- <link rel="stylesheet" type="text/css" href="http://extjs.cachefly.net/ext-4.0.7-gpl/resources/css/ext-all.css"> -->
@@ -29,12 +22,17 @@
 
 	<!-- Application style sheets -->
 	<link rel="stylesheet" type="text/css" href="resources/appunto-auth/css/appunto_auth_app.css" />
+	<link rel="stylesheet" type="text/css" href="resources/appunto-auth/css/appunto_auth_login.css" />
 	<link rel="stylesheet" type="text/css" href="resources/appunto-auth/css/appunto_auth_curvy.css" />
 	<link rel="stylesheet" type="text/css" href="resources/appunto-auth/css/appunto_auth_branding.css" /> 
 	<link rel="stylesheet" type="text/css" href="resources/appunto-auth/css/appunto_auth_icons.css" />
- 
-	<!-- set a base_url - this would normally be set dynamically in ci view -->
-	<script type="text/javascript">var appunto_auth_base_url = '/auth/index.php/';</script>
+
+	<!-- set base url, display type -->
+	<script type="text/javascript">
+		var ci_site_url = ".",
+			ci_base_url	= ".",
+			appunto_auth_display_type = 'viewport';
+	</script>
 
 	<!-- ExtJS library -->
 	<script type="text/javascript">document.getElementById('loading-msg').innerHTML = 'Loading Sencha ExtJS...';</script>

@@ -1,7 +1,8 @@
 //Ext.Loader.setPath('Ext', 'http://cdn.sencha.com/ext-4.1.1-gpl/src');
 //Ext.Loader.setPath('Ext', 'http://cdn.sencha.io/ext-4.0.7-gpl/src');
 //Ext.Loader.setPath('Ext', 'http://extjs.cachefly.net/ext-4.0.7-gpl/src');
-Ext.Loader.setPath('Ext', '/auth/extjs/src');
+//Ext.Loader.setPath('Ext', '/auth/extjs/src');
+Ext.Loader.setPath('Ext', 'extjs/src');
 
 
 Ext.require('Ext.container.Viewport');
@@ -25,7 +26,7 @@ Ext.require('Ext.toolbar.TextItem');
 Ext.require('Ext.window.MessageBox');
 
 // Require proxy 
-Ext.Loader.setPath('APPUNTO.lib', '/appunto/lib'); // need this for testing src version locally 
+Ext.Loader.setPath('APPUNTO.lib', 'resources/appunto/lib'); // need this for testing src version locally 
 //Ext.Loader.setPath('APPUNTO.lib', '../appunto/lib');  // need this for build/deploy
 // needs fixin? Ext.Loader.setPath('APPUNTO.lib', '/appunto/lib'); // need this for testing src version locally 
 Ext.require('APPUNTO.lib.proxy.Codeigniter');
