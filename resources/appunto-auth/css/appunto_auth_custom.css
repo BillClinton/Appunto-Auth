@@ -1,0 +1,147 @@
+/* Application Panels */
+.app-menu {
+}
+.app-main {
+}
+.app-main-panel .x-panel-header { 
+}
+.app-main-panel .x-panel-header-text {
+}
+/* Application Header */
+#app-header-wrap {
+	width: 100%;
+}
+#app-header{
+	/* app-header ID used in helper */
+	background: #ccc;
+	height: 40px;
+	padding: 12px 0 16px; 
+	font-size: 16px;
+  	font-family: helvetica, tahoma, arial, verdana, sans-serif;
+    color: #000;
+	text-align: left;
+}
+.app-header {
+	/* app-header CLASS used in viewport */
+	margin: 4px 20px  0 20px;
+	padding: 12px 0 16px; 
+	font-size: 16px;
+  	font-family: helvetica, tahoma, arial, verdana, sans-serif;
+    color: #fff;
+}
+#app-header .site_name, 
+.app-header .site_name {
+	clear: none;
+	float: left;
+	width: 300px;
+	margin: 4px 20px  0 20px;
+	font-size: 24px;
+  	font-family: helvetica, tahoma, arial, verdana, sans-serif;
+    color: #000;
+}
+/* Login Header */
+.login-form-header {
+	float: right;
+	padding: 0; 
+	font-size: 11px;
+  	font-family: helvetica, tahoma, arial, verdana, sans-serif;
+    color: #000;
+}
+.login-form-header form {
+	float: right;
+	margin-right: 32px;
+}
+.login-form-header label {
+	display: inline-block; 
+    margin: 0 6px;
+}
+.login-form-header form #username,
+.login-form-header form #password {
+	display: block; 
+	font-size: 13px;
+	padding: 1px 3px;
+	margin: 1px 0 -1px -1px;
+}
+.login-form-header .login-form-auth-message {
+	display: inline-block; 
+	font-size: 13px;
+	margin: 6px 16px;
+	text-align: right;
+}
+/* Login Box */
+.login-form-box {
+	background: #ccc;
+	padding: 20px 0 16px; 
+	margin: 0 auto; 
+	margin-top: 0px;
+	width: 360px; 
+	font-size: 16px;
+  	font-family: helvetica, tahoma, arial, verdana, sans-serif;
+    color: #000;
+}
+.login-form-box label {
+	display: inline-block; 
+    margin: 6px 28px;
+	width: 300px;
+}
+.login-form-box form #username,
+.login-form-box form #password {
+	float: right;
+	width: 200px;
+	padding: 2px 6px;
+	margin: 1px 0 -1px -1px;
+}
+.login-form-box  .login-form-errors {
+	padding-bottom: 12px;
+}
+.login-form-box  .login-form-errors p {
+	font-size: 12px;
+	text-align: left;
+	background: url(icons/error.png) 2px 2px no-repeat;
+	color: #fff;
+	padding-top: 3px;
+	padding-left: 24px;
+	margin: 10px 0 10px 48px;
+}
+.login-form-box  .login-form-auth-message {
+	font-size: 13px;
+	width: 280px;
+	margin: 6px 32px 12px;
+	text-align: left;
+	clear: both;
+}
+.login-form-box form #login-button{
+	margin: 6px 0 20px 262px;
+} 
+.login-form-box form #logout-button{
+	margin: 6px 0 20px 140px;
+} 
+.login-form-box .site_name {
+	clear: all;
+	width: 300px;
+	margin: 4px 20px 16px 20px;
+	font-size: 24px;
+  	font-family: helvetica, tahoma, arial, verdana, sans-serif;
+    color: #000;
+}
+/* Login Buttons */
+.login-form-header form #login-button, 
+.login-form-header form #logout-button, 
+.login-form-box form #login-button, 
+.login-form-box form #logout-button {
+	margin-top: 12px;
+	display:inline-block;
+	color:#777777;
+	font-weight:normal;
+	padding:2px 12px;
+	text-decoration:none;
+}
+.login-form-header form #login-button:hover, 
+.login-form-header form #logout-button:hover {
+	background-color:#dfdfdf;
+}
+.login-form-header form #login-button:active, 
+.login-form-header form #logout-button:active {
+	position:relative;
+	top:1px;
+}
