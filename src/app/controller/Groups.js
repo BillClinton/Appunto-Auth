@@ -89,8 +89,6 @@ Ext.define('APPA.controller.Groups', {
 			load	: this.storeLoad
 		});
 		*/
-		console.log('created group list!');
-		console.log(this);
 
 	},
 
