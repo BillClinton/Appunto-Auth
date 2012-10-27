@@ -20,7 +20,7 @@ body {
 	width: 100%;
 	text-align: center;
 }
-#app-header{
+#app-header2{
 	background: #375EAC url(images/appunto_auth_logo_small.gif) 24px 18px no-repeat;
 	margin-left: 12px;
 	margin-right: 12px;
@@ -28,7 +28,7 @@ body {
 	-moz-border-radius: 16px;
 	-webkit-border-radius: 16px;
 	border-radius: 16px;
-	padding: 20px 0 16px; 
+	padding: 12px 0 16px; 
 	width: 90%;
 	margin: 4px auto;
 	font-size: 16px;
@@ -40,11 +40,32 @@ body {
 	float: right;
 	background: #375EAC;
 	padding: 0; 
-	margin-top: 0px;
-	width: 440px; 
-	font-size: 16px;
+	font-size: 11px;
   	font-family: helvetica, tahoma, arial, verdana, sans-serif;
     color: #fff;
+}
+.login-form-header form {
+	float: right;
+	margin-right: 32px;
+}
+.login-form-header label {
+	display: inline-block; 
+    margin: 0 6px;
+}
+.login-form-header form #username,
+.login-form-header form #password {
+	display: block; 
+	font-size: 13px;
+	padding: 1px 3px;
+	margin: 1px 0 -1px -1px;
+	border-color: #99BCE8;
+	border-width: 1px;
+	-moz-border-radius: 8px;
+	-webkit-border-radius: 8px;
+	border-radius: 8px;
+}
+.login-form-header form #logout-button {
+	margin-top: 12px;
 }
 .login-form-box  .login-form-errors {
 	padding-bottom: 12px;
@@ -115,7 +136,7 @@ body {
 }
  .login-form-field input {
 	margin: 2px 4px;
-	width: 90px;
+	width: 160px;
 }
 .round-button {
 	-moz-box-shadow:inset 0px 1px 0px 0px #ffffff;

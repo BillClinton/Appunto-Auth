@@ -37,7 +37,7 @@ if ( ! function_exists('appunto_auth_application'))
 
 	<!-- Application style sheets -->
 	<link rel="stylesheet" type="text/css" href="{$base_url}resources/appunto-auth/css/appunto_auth_app.css" />
-	<link rel="stylesheet" type="text/css" href="{$base_url}resources/appunto-auth/css/appunto_auth_login.css" />
+<!--	<link rel="stylesheet" type="text/css" href="{$base_url}resources/appunto-auth/css/appunto_auth_login.css" /> -->
 	<link rel="stylesheet" type="text/css" href="{$base_url}resources/appunto-auth/css/appunto_auth_curvy.css" />
 	<link rel="stylesheet" type="text/css" href="{$base_url}resources/appunto-auth/css/appunto_auth_branding.css" /> 
 	<link rel="stylesheet" type="text/css" href="{$base_url}resources/appunto-auth/css/appunto_auth_icons.css" />
@@ -58,6 +58,7 @@ if ( ! function_exists('appunto_auth_application'))
 	<script type="text/javascript">document.getElementById('loading-msg').innerHTML = 'Loading Application...';</script>
 	<!-- <script type="text/javascript" src="{$base_url}app.js"></script> -->
 	<script type="text/javascript" src="{$base_url}resources/appunto-auth/appunto-auth-all.js"></script>
+	<script type="text/javascript" src="{$base_url}resources/appunto-auth/appunto-auth-start.js"></script>
 
 </div>
 <div id="appunto-auth-app-div" style="width:$width;height:$height;$additional_css">
@@ -72,7 +73,7 @@ APP;
  */
 if ( ! function_exists('appunto_auth_application_viewport'))
 {
-	function appunto_auth_application_viewport()
+	function appunto_auth_application_viewport($ext_theme = false)
 	{
 		$CI =& get_instance();
 
@@ -83,6 +84,12 @@ if ( ! function_exists('appunto_auth_application_viewport'))
 		$base_url = base_url();
 		$site_url = site_url();
 
+		$ext_stylesheet = '<link rel="stylesheet" type="text/css" href="'.$urls['extjs'].'resources/css/ext-all.css">';	
+		if ($ext_theme != false)
+		{
+			$ext_stylesheet = '<link rel="stylesheet" type="text/css" href="'.$urls['extjs'].'resources/css/ext-all-'.$ext_theme.'.css">';
+		}
+				
 		$html = <<<APP
 <link rel="stylesheet" type="text/css" href="{$base_url}resources/appunto-auth/css/loading_mask.css" />
 <div id="loading-mask"></div>
@@ -94,14 +101,15 @@ if ( ! function_exists('appunto_auth_application_viewport'))
 <div id='script-includes'>
 
 	<!-- ExtJS style sheets -->
-	<link rel="stylesheet" type="text/css" href="{$urls['extjs']}resources/css/ext-all.css">
+	{$ext_stylesheet}	
 
 	<!-- Application style sheets -->
-	<link rel="stylesheet" type="text/css" href="{$base_url}resources/appunto-auth/css/appunto_auth_app.css" />
-	<link rel="stylesheet" type="text/css" href="{$base_url}resources/appunto-auth/css/appunto_auth_login.css" />
-	<link rel="stylesheet" type="text/css" href="{$base_url}resources/appunto-auth/css/appunto_auth_curvy.css" />
-	<link rel="stylesheet" type="text/css" href="{$base_url}resources/appunto-auth/css/appunto_auth_branding.css" /> 
 	<link rel="stylesheet" type="text/css" href="{$base_url}resources/appunto-auth/css/appunto_auth_icons.css" />
+	<link rel="stylesheet" type="text/css" href="{$base_url}resources/appunto-auth/css/appunto_auth_app.css" />
+<!--	<link rel="stylesheet" type="text/css" href="{$base_url}resources/appunto-auth/css/appunto_auth_login.css" /> -->
+<!--	<link rel="stylesheet" type="text/css" href="{$base_url}resources/appunto-auth/css/appunto_auth_curvy.css" /> -->
+<!--	<link rel="stylesheet" type="text/css" href="{$base_url}resources/appunto-auth/css/appunto_auth_branding.css" /> -->
+	<link rel="stylesheet" type="text/css" href="{$base_url}resources/appunto-auth/css/appunto_auth_custom.css" />
 
 	<!-- set base url, display type -->
 	<script type="text/javascript">
@@ -118,7 +126,10 @@ if ( ! function_exists('appunto_auth_application_viewport'))
 	<script type="text/javascript">document.getElementById('loading-msg').innerHTML = 'Loading Application...';</script>
 	<!-- <script type="text/javascript" src="{$base_url}app.js"></script> -->
 	<script type="text/javascript" src="{$base_url}resources/appunto-auth/appunto-auth-all.js"></script>
+	<script type="text/javascript" src="{$base_url}resources/appunto-auth/appunto-auth-start.js"></script>
 
+</div>
+<div id='app-user'>
 </div>
 APP;
 
@@ -137,68 +148,81 @@ if ( ! function_exists('login_box'))
 
 		$urls = $CI->appunto_auth->include_urls();
 
+		$base_url = base_url();
+		$site_url = site_url();
+
 		/** 
 		 * If language library is loaded, set labels.  If not, set to false which is also 
 		 * the return value for the lang function if the language string is not found.
 		 */
 		$label_username = (function_exists('lang')) ? lang('appunto_form_username') : false;
 		$label_password = (function_exists('lang')) ? lang('appunto_form_password') : false;
-		$label_button = (function_exists('lang')) ? lang('appunto_form_button') : false;
+		$label_login_button = (function_exists('lang')) ? lang('appunto_form_login_button') : false;
+		$label_logout_button = (function_exists('lang')) ? lang('appunto_form_logout_button') : false;
 
-		$label_username = (false != $label_username) ? $label_username : 'login';
-		$label_password = ($label_password) ? $label_password : 'password';
-		$label_button = ($label_button) ? $label_button : 'submit';
+		$label_username = (false != $label_username) ? $label_username : 'login:';
+		$label_password = ($label_password) ? $label_password : 'password:';
+		$label_login_button = ($label_login_button) ? $label_login_button : 'submit';
+		$label_logout_button = ($label_logout_button) ? $label_logout_button : 'logout';
 
 		$login = array(
 			'name'	=> 'username',
 			'id'	=> 'username',
 			'value' => set_value('username'),
-			'maxlength'	=> 80,
-			'size'	=> 20,
-			'class' => 'field-textinput'
+			'maxlength'	=> 80
 		);
 		$password = array(
 			'name'	=> 'password',
-			'id'	=> 'password',
-			'size'	=> 20,
-			'class' => 'field-textinput'
+			'id'	=> 'password'
 		);
 
 		$message_div = '';
 		if (isset($auth_message)) {
 			$message_div = "<div class='login-form-auth-message'>$auth_message</div>";
+		} 
+		else if ($CI->appunto_auth->logged_in()) {
+			$message_div = "<div class='login-form-auth-message'>You are already logged in.</div>";
 		}
 
 		$validation_errors = validation_errors();
 
 		$field_username = form_input($login);
 		$field_password = form_password($password);
-		$field_uri = form_hidden('uri',set_value('uri',$CI->uri->uri_string()));
-		$submit_button	= form_submit(array('name'=>'login','value'=>$label_button,'class'=>'round-button'));
+		$field_uri 		= form_hidden('uri',set_value('uri',$CI->uri->uri_string()));
+		$login_button	= form_submit(array('name'=>'login','value'=>$label_login_button,'id'=>'login-button'));
+		$logout_button	= form_submit(array('name'=>'logout','value'=>$label_logout_button,'id'=>'logout-button'));
 
-		$form_open = form_open('appunto-auth/user/authenticate');
+		$login_form_open = form_open('login');
+		$logout_form_open = form_open('logout');
 		$form_close = form_close();
 
+		if ($CI->appunto_auth->logged_in()) {
+
 		$html = <<<LOGINBOX
-<div id='script-includes'>
-	<link rel="stylesheet" type="text/css" href="{$urls['base']}resources/appunto-auth/css/appunto_auth_login.css" />
-</div>
-$form_open
-$field_uri
-<div class="login-wrap">
 	<div class="$css">
+		$logout_form_open
+		$message_div
+		$logout_button
+		$form_close
+	</div>
+LOGINBOX;
+
+		} else {
+
+		$html = <<<LOGINBOX
+	<div class="$css">
+		$login_form_open
 		$message_div
 		<div class="login-form-errors">$validation_errors</div>
-		<div class="login-form-label">$label_username</div>
-		<div class="login-form-field">$field_username</div>
-		<div class="login-form-label">$label_password</div>
-		<div class="login-form-field">$field_password</div>
-		<div class="login-form-button">$submit_button</div>
-		<div class="login-form-links"></div>
+		$field_uri
+		<label>$label_username $field_username</label>
+		<label>$label_password $field_password</label>
+		$login_button
+		$form_close
 	</div>
-</div>
-$form_close
 LOGINBOX;
+
+		}
 
 	return $html;
 	}
@@ -221,57 +245,67 @@ if ( ! function_exists('login_header'))
 		 */
 		$label_username = (function_exists('lang')) ? lang('appunto_form_username') : false;
 		$label_password = (function_exists('lang')) ? lang('appunto_form_password') : false;
-		$label_button = (function_exists('lang')) ? lang('appunto_form_button') : false;
+		$label_login_button = (function_exists('lang')) ? lang('appunto_form_login_button') : false;
+		$label_logout_button = (function_exists('lang')) ? lang('appunto_form_logout_button') : false;
 
-		$label_username = (false != $label_username) ? $label_username : 'login';
-		$label_password = ($label_password) ? $label_password : 'password';
-		$label_button = ($label_button) ? $label_button : 'submit';
+		$label_username = (false != $label_username) ? $label_username : 'login:';
+		$label_password = ($label_password) ? $label_password : 'password:';
+		$label_login_button = ($label_login_button) ? $label_login_button : 'submit';
+		$label_logout_button = ($label_logout_button) ? $label_logout_button : 'logout';
 
 		$login = array(
 			'name'	=> 'username',
 			'id'	=> 'username',
 			'value' => set_value('username'),
-			'maxlength'	=> 80,
-			'size'	=> 20,
-			'class' => 'field-textinput'
+			'maxlength'	=> 80
 		);
 		$password = array(
 			'name'	=> 'password',
-			'id'	=> 'password',
-			'size'	=> 20,
-			'class' => 'field-textinput'
+			'id'	=> 'password'
 		);
 
 		$message_div = '';
-		if (isset($auth_message)) {
-			$message_div = "<div class='login-form-auth-message'>$auth_message</div>";
+		if ($CI->appunto_auth->logged_in()) {
+			$message_div = "<div class='login-form-auth-message'>logged in as ".$CI->appunto_auth->get_username()."</div>";
 		}
 
 		$validation_errors = validation_errors();
 
 		$field_username = form_input($login);
 		$field_password = form_password($password);
-		$field_uri = form_hidden('uri',set_value('uri',$CI->uri->uri_string()));
-		$submit_button	= form_submit(array('name'=>'login','value'=>$label_button,'class'=>'round-button'));
+		$field_uri 		= form_hidden('uri',set_value('uri',$CI->uri->uri_string()));
+		$login_button	= form_submit(array('name'=>'login','value'=>$label_login_button,'id'=>'login-button'));
+		$logout_button	= form_submit(array('name'=>'logout','value'=>$label_logout_button,'id'=>'logout-button'));
 
-		$form_open = form_open('appunto-auth/user/authenticate');
+		$login_form_open = form_open('login');
+		$logout_form_open = form_open('logout');
 		$form_close = form_close();
 
-		$html = <<<LOGINBOX
-$form_open
-$field_uri
+		if ($CI->appunto_auth->logged_in()) {
+
+		$html = <<<LOGINHEADER
 	<div class="$css">
+		$logout_form_open
 		$message_div
-		<div class="login-form-errors">$validation_errors</div>
-		<div class="login-form-label">$label_username</div>
-		<div class="login-form-field">$field_username</div>
-		<div class="login-form-label">$label_password</div>
-		<div class="login-form-field">$field_password</div>
-		<div class="login-form-button">$submit_button</div>
-		<div class="login-form-links"></div>
+		$logout_button
+		$form_close
 	</div>
-$form_close
-LOGINBOX;
+LOGINHEADER;
+
+		} else {
+
+		$html = <<<LOGINHEADER
+	<div class="$css">
+		$login_form_open
+		$field_uri
+		<label>$label_username $field_username</label>
+		<label>$label_password $field_password</label>
+		$login_button
+		$form_close
+	</div>
+LOGINHEADER;
+
+		}
 
 	return $html;
 	}

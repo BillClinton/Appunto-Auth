@@ -3,9 +3,8 @@
 	-moz-border-radius: 16px;
 	-webkit-border-radius: 16px;
 	border-radius: 16px;
-	text-align: right;
-	padding: 16px 20px 0; 
-	margin: 6px 20px 0;
+	padding: 12px 20px 0; 
+	margin: 6px 12px 0;
 }
 #app-user {
     color: #fff;

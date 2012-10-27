@@ -19,7 +19,9 @@ class User extends CI_Controller {
 
 	public function index()
 	{
-		redirect('appunto-auth/user/login/');
+//		redirect('login');
+		echo('login');
+		die;
 	}
 
 	public function login()
@@ -40,12 +42,50 @@ class User extends CI_Controller {
 			$data['site_name'] = $this->config->item('site_name', 'appunto_auth');
 			$this->load->view('appunto-auth/login',$data);
 		}
+		else if ($_SERVER['REQUEST_METHOD'] == 'POST')
+		{
+
+			$this->form_validation->set_rules('username', 'lang:appunto_form_username', 'trim|required|xss_clean');
+			$this->form_validation->set_rules('password', 'lang:appunto_form_password', 'trim|required|xss_clean');
+
+			if (!$this->form_validation->run())
+			{
+				//$uri = $this->input->post('url', TRUE);
+				$this->load->view('appunto-auth/login');
+			}
+			else
+			{
+				$user = $this->usermodel->getLoginInfo( $this->input->post('username', TRUE) );
+				$pass = $this->input->post('password', TRUE);
+				
+				if (($user != false) && $this->appunto_auth->checkPassword($pass,$user->password))
+				{
+					$this->session->set_userdata(array(
+						'user_id'	=> $user->id,
+						'username'	=> $user->username,
+						'email'		=> $user->email,
+						'logged_in'	=> true
+					));
+					redirect($this->router->default_controller);
+				}
+				else
+				{
+					$this->form_validation->set_rules('password', 'lang:appunto_form_password', 'callback__invalid_password');
+					$this->form_validation->run();
+					$this->load->view('appunto-auth/login');
+
+				}
+			}
+		}
 		else die('invalid request method:'.$_SERVER['REQUEST_METHOD']);
 	}
 
+/*
 	public function authenticate()
 	{
         $this->load->helper('appunto-auth');
+
+		if ($this->appunto_auth->logged_in()) redirect($this->router->default_controller);
 
 		if ($_SERVER['REQUEST_METHOD'] == 'POST')
 		{
@@ -84,6 +124,7 @@ class User extends CI_Controller {
 		}
 		else die('invalid request method:'.$_SERVER['REQUEST_METHOD']);
 	}
+*/
 
 	public function error()
 	{
@@ -119,7 +160,7 @@ class User extends CI_Controller {
 		));
 		$_SESSION = array();
 		$this->session->set_flashdata('auth_message', lang('appunto_message_logout'));
-		redirect('/user/login/');
+		redirect('/login/');
 	}
 
 	public function forgotpassword()

@@ -2,6 +2,7 @@ Ext.define('APPA.controller.Info', {
     extend: 'Ext.app.Controller',
 
     views: [
+        'info.StatusPanel',
         'info.MainPanel',
         'info.ApplicationPanel',
         'info.CreditsPanel',

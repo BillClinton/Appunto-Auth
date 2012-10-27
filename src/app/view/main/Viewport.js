@@ -14,10 +14,11 @@ Ext.define('APPA.view.main.Viewport' ,{
 		{
 			// header area
 			xtype		: 'container',
+//			id			: 'app-header',
 			cls			: 'app-header',
-//					contentEl	: 'app-user',  // this div must be in the view or an error will occur
+			contentEl	: 'login-header',  // this div must be in the view or an error will occur
 			region		: 'north',
-			height		: 60,
+			height		: 64,
 			border		:  0
 		},
 		{

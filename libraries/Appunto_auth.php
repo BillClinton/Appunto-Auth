@@ -140,7 +140,9 @@ class Appunto_auth
 		}
 		else
 		{
-			$view = $login ? 'login' : 'error';
+        	$this->CI->load->helper('appunto-auth');
+
+			$view = $login ? 'appunto-auth/login' : 'appunto-auth/error';
 			$data['site_name'] = $this->CI->config->item('site_name', 'appunto_auth');
 			$data['auth_message'] = $msg;
 
@@ -268,6 +270,19 @@ class Appunto_auth
 		return ($this->CI->session->userdata('logged_in') == true);
 	}
 
+	/**
+     * Get username if user is logged in 
+	 * 
+	 * @return	void 
+	*/
+	public function get_username()
+	{
+		if ($this->CI->session->userdata('logged_in') == true)
+		{ 
+			return ($this->CI->session->userdata('username'));
+		}
+		return false;
+	}
 	/**
      * Create an array of URLs for use in helper.
 	 * 

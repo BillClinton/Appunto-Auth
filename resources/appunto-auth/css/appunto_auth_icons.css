@@ -46,6 +46,11 @@
 .delete {
 	background-image:url(icons/delete.png) !important;
 }
+.delete-cell {
+	padding: 6px;
+	width: 40px;
+	background:url(icons/delete.png) no-repeat;
+}
 .wand {
 	background-image:url(icons/wand.png) !important;
 }

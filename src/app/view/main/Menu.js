@@ -29,6 +29,12 @@ Ext.define('APPA.view.main.Menu' ,{
 				expanded: true,
 				children: [
 					{ 
+						text	: "Status", 
+						id		: 'status',
+						iconCls	: 'information', 
+						leaf	: true 
+					},
+					{ 
 						text	: "Users", 
 						id		: 'users',
 						iconCls	: 'user', 

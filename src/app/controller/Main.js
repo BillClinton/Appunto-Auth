@@ -22,16 +22,17 @@ Ext.define('APPA.controller.Main', {
 
 	cards: 
 	{
-		users		: 0,
-		groups		: 1,
-		roles		: 2,
-		permissions	: 3,
-		paths		: 4,
-		sessions	: 5,
-		main		: 6,
-		application	: 7,
-		credits		: 8,
-		license		: 9
+		status 		: 0,
+		users		: 1,
+		groups		: 2,
+		roles		: 3,
+		permissions	: 4,
+		paths		: 5,
+		sessions	: 6,
+		main		: 7,
+		application	: 8,
+		credits		: 9,
+		license		: 10
 	},	
 
     init: function() 
