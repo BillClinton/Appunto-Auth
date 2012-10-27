@@ -7,7 +7,7 @@ $config['admin_email'] = 'admin@website.com';
 /**
  * Appunto Auth version
  */
-$config['appunto_auth_version'] = '0.0.1';
+$config['appunto_auth_version'] = '0.0.3';
 
 /**
  * Behavior for private paths without permissions.
