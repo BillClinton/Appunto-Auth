@@ -4,10 +4,10 @@
 //Ext.Loader.setPath('Ext', '/auth/extjs/src');
 
 // This one needed for building
-Ext.Loader.setPath('Ext', 'extjs/src');
+//Ext.Loader.setPath('Ext', 'extjs/src');
 
 // This one needed for working with src
-//Ext.Loader.setPath('Ext', '/lib/extjs-4.1.1/src');
+Ext.Loader.setPath('Ext', '/lib/extjs-4.1.1/src');
 
 
 Ext.require('Ext.container.Viewport');
@@ -31,8 +31,8 @@ Ext.require('Ext.toolbar.TextItem');
 Ext.require('Ext.window.MessageBox');
 
 // Require proxy 
-//Ext.Loader.setPath('APPUNTO.lib', '/auth/resources/appunto/lib'); // need this for testing src version locally 
-Ext.Loader.setPath('APPUNTO.lib', '../appunto/lib');  // need this for build/deploy
+Ext.Loader.setPath('APPUNTO.lib', '/auth/resources/appunto/lib'); // need this for testing src version locally 
+//Ext.Loader.setPath('APPUNTO.lib', '../appunto/lib');  // need this for build/deploy
 // needs fixin? Ext.Loader.setPath('APPUNTO.lib', '/appunto/lib'); // need this for testing src version locally 
 Ext.require('APPUNTO.lib.proxy.Codeigniter');
 Ext.ClassManager.setAlias('APPUNTO.lib.proxy.Codeigniter', 'proxy.ci');

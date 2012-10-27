@@ -36,11 +36,9 @@ if ( ! function_exists('appunto_auth_application'))
 	<link rel="stylesheet" type="text/css" href="{$base_url}/extjs/resources/css/ext-all.css">
 
 	<!-- Application style sheets -->
-	<link rel="stylesheet" type="text/css" href="{$base_url}resources/appunto-auth/css/appunto_auth_app.css" />
-<!--	<link rel="stylesheet" type="text/css" href="{$base_url}resources/appunto-auth/css/appunto_auth_login.css" /> -->
-	<link rel="stylesheet" type="text/css" href="{$base_url}resources/appunto-auth/css/appunto_auth_curvy.css" />
-	<link rel="stylesheet" type="text/css" href="{$base_url}resources/appunto-auth/css/appunto_auth_branding.css" /> 
 	<link rel="stylesheet" type="text/css" href="{$base_url}resources/appunto-auth/css/appunto_auth_icons.css" />
+	<link rel="stylesheet" type="text/css" href="{$base_url}resources/appunto-auth/css/appunto_auth_app.css" />
+	<link rel="stylesheet" type="text/css" href="{$base_url}resources/appunto-auth/css/appunto_auth_custom.css" />
 
 	<!-- set base url, display type -->
 	<script type="text/javascript">
@@ -106,9 +104,6 @@ if ( ! function_exists('appunto_auth_application_viewport'))
 	<!-- Application style sheets -->
 	<link rel="stylesheet" type="text/css" href="{$base_url}resources/appunto-auth/css/appunto_auth_icons.css" />
 	<link rel="stylesheet" type="text/css" href="{$base_url}resources/appunto-auth/css/appunto_auth_app.css" />
-<!--	<link rel="stylesheet" type="text/css" href="{$base_url}resources/appunto-auth/css/appunto_auth_login.css" /> -->
-<!--	<link rel="stylesheet" type="text/css" href="{$base_url}resources/appunto-auth/css/appunto_auth_curvy.css" /> -->
-<!--	<link rel="stylesheet" type="text/css" href="{$base_url}resources/appunto-auth/css/appunto_auth_branding.css" /> -->
 	<link rel="stylesheet" type="text/css" href="{$base_url}resources/appunto-auth/css/appunto_auth_custom.css" />
 
 	<!-- set base url, display type -->
@@ -128,8 +123,6 @@ if ( ! function_exists('appunto_auth_application_viewport'))
 	<script type="text/javascript" src="{$base_url}resources/appunto-auth/appunto-auth-all.js"></script>
 	<script type="text/javascript" src="{$base_url}resources/appunto-auth/appunto-auth-start.js"></script>
 
-</div>
-<div id='app-user'>
 </div>
 APP;
 
@@ -292,6 +285,7 @@ if ( ! function_exists('login_header'))
 		if ($CI->appunto_auth->logged_in()) {
 
 		$html = <<<LOGINHEADER
+	<div id="login-header">
 		$site_name
 	<div class="$css">
 		$logout_form_open
@@ -299,11 +293,13 @@ if ( ! function_exists('login_header'))
 		$logout_button
 		$form_close
 	</div>
+	</div>
 LOGINHEADER;
 
 		} else {
 
 		$html = <<<LOGINHEADER
+	<div id="login-header">
 		$site_name
 	<div class="$css">
 		$login_form_open
@@ -312,6 +308,7 @@ LOGINHEADER;
 		<label>$label_password $field_password</label>
 		$login_button
 		$form_close
+	</div>
 	</div>
 LOGINHEADER;
 
