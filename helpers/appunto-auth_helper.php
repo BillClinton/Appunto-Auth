@@ -146,6 +146,9 @@ if ( ! function_exists('login_box'))
 		if (!isset($CI->appunto_auth)) $CI->load->library('appunto_auth');
 		if (!isset($CI->form_validation)) $CI->load->library('form_validation');
 
+		$CI->load->config('appunto_auth',true,false); // true to avoid naming collisions, false to not suppress errors
+		$site_name = "<div class='site_name'>".$CI->config->item('site_name', 'appunto_auth')."</div>";
+
 		$urls = $CI->appunto_auth->include_urls();
 
 		$base_url = base_url();
@@ -200,6 +203,7 @@ if ( ! function_exists('login_box'))
 
 		$html = <<<LOGINBOX
 	<div class="$css">
+		$site_name
 		$logout_form_open
 		$message_div
 		$logout_button
@@ -211,6 +215,7 @@ LOGINBOX;
 
 		$html = <<<LOGINBOX
 	<div class="$css">
+		$site_name
 		$login_form_open
 		$message_div
 		<div class="login-form-errors">$validation_errors</div>
@@ -236,6 +241,9 @@ if ( ! function_exists('login_header'))
 
 		if (!isset($CI->appunto_auth)) $CI->load->library('appunto_auth');
 		if (!isset($CI->form_validation)) $CI->load->library('form_validation');
+
+		$CI->load->config('appunto_auth',true,false); // true to avoid naming collisions, false to not suppress errors
+		$site_name = "<div class='site_name'>".$CI->config->item('site_name', 'appunto_auth')."</div>";
 
 		$urls = $CI->appunto_auth->include_urls();
 
@@ -284,6 +292,7 @@ if ( ! function_exists('login_header'))
 		if ($CI->appunto_auth->logged_in()) {
 
 		$html = <<<LOGINHEADER
+		$site_name
 	<div class="$css">
 		$logout_form_open
 		$message_div
@@ -295,6 +304,7 @@ LOGINHEADER;
 		} else {
 
 		$html = <<<LOGINHEADER
+		$site_name
 	<div class="$css">
 		$login_form_open
 		$field_uri
