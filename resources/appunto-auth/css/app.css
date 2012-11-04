@@ -29,6 +29,12 @@
 .user-role-has-permission div.x-grid-cell-inner {
 	background:url(icons/shield.png) 3px 1px no-repeat !important;
 }
+.login-success div.x-grid-cell-inner {
+	background:url(icons/accept.png) 3px 1px no-repeat !important;
+}
+.login-fail div.x-grid-cell-inner {
+	background:url(icons/delete.png) 3px 1px no-repeat !important;
+}
 .appunto-list .empty {
 	font-family: tahoma, arial, verdana, sans-serif;
 	font-size: 11px;

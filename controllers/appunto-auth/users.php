@@ -22,7 +22,7 @@ class Users extends CI_Controller
 
         $property = null;
         $direction = null;
-        $active_filter = false;
+        //$active_filter = false;
 
         // get sort params
         $sort_array = json_decode($sort);

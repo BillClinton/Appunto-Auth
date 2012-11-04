@@ -18,7 +18,8 @@ class Examples extends CI_Controller {
 
 	public function index()
 	{
-		log_message('error','here');
+		$this->load->helper('url');
+
 		$this->load->view('appunto-auth/examples/index');
 	}
 

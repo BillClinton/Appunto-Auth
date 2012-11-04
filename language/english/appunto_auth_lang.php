@@ -5,7 +5,8 @@
  */
 $lang['appunto_form_username'] = 'Login';
 $lang['appunto_form_password'] = 'Password';
-$lang['appunto_form_button'] = 'Login';
+$lang['appunto_form_login_button'] = 'Login';
+$lang['appunto_form_logout_button'] = 'Logout';
 $lang['appunto_form_forgot_password'] = 'Forgot Password?';
 $lang['appunto_form_invalid_login'] = 'Invalid username/password combination.';
 

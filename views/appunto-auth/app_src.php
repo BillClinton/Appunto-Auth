@@ -22,9 +22,9 @@
 	<link rel="stylesheet" type="text/css" href="/lib/extjs-4.1.1/resources/css/ext-all.css">
 
 	<!-- Application style sheets -->
-	<link rel="stylesheet" type="text/css" href="<?=base_url()?>resources/appunto-auth/css/appunto_auth_icons.css" />
-	<link rel="stylesheet" type="text/css" href="<?=base_url()?>resources/appunto-auth/css/appunto_auth_app.css" />
-	<link rel="stylesheet" type="text/css" href="<?=base_url()?>resources/appunto-auth/css/appunto_auth_custom.css" /> 
+	<link rel="stylesheet" type="text/css" href="<?=base_url()?>resources/appunto-auth/css/icons.css" />
+	<link rel="stylesheet" type="text/css" href="<?=base_url()?>resources/appunto-auth/css/app.css" />
+	<link rel="stylesheet" type="text/css" href="<?=base_url()?>resources/appunto-auth/css/custom.css" /> 
 
 	<!-- set base url, display type -->
 	<script type="text/javascript">

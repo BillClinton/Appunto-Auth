@@ -36,9 +36,9 @@ if ( ! function_exists('appunto_auth_application'))
 	<link rel="stylesheet" type="text/css" href="{$base_url}/extjs/resources/css/ext-all.css">
 
 	<!-- Application style sheets -->
-	<link rel="stylesheet" type="text/css" href="{$base_url}resources/appunto-auth/css/appunto_auth_icons.css" />
-	<link rel="stylesheet" type="text/css" href="{$base_url}resources/appunto-auth/css/appunto_auth_app.css" />
-	<link rel="stylesheet" type="text/css" href="{$base_url}resources/appunto-auth/css/appunto_auth_custom.css" />
+	<link rel="stylesheet" type="text/css" href="{$base_url}resources/appunto-auth/css/icons.css" />
+	<link rel="stylesheet" type="text/css" href="{$base_url}resources/appunto-auth/css/app.css" />
+	<link rel="stylesheet" type="text/css" href="{$base_url}resources/appunto-auth/css/custom.css" />
 
 	<!-- set base url, display type -->
 	<script type="text/javascript">
@@ -102,9 +102,9 @@ if ( ! function_exists('appunto_auth_application_viewport'))
 	{$ext_stylesheet}	
 
 	<!-- Application style sheets -->
-	<link rel="stylesheet" type="text/css" href="{$base_url}resources/appunto-auth/css/appunto_auth_icons.css" />
-	<link rel="stylesheet" type="text/css" href="{$base_url}resources/appunto-auth/css/appunto_auth_app.css" />
-	<link rel="stylesheet" type="text/css" href="{$base_url}resources/appunto-auth/css/appunto_auth_custom.css" />
+	<link rel="stylesheet" type="text/css" href="{$base_url}resources/appunto-auth/css/icons.css" />
+	<link rel="stylesheet" type="text/css" href="{$base_url}resources/appunto-auth/css/app.css" />
+	<link rel="stylesheet" type="text/css" href="{$base_url}resources/appunto-auth/css/custom.css" />
 
 	<!-- set base url, display type -->
 	<script type="text/javascript">

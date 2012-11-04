@@ -43,7 +43,17 @@ Ext.define('APPA.view.main.Frame' ,{
 				activeItem	: 0,
 				items	: [
 					{
-						xtype	: 'appa_info_status_panel'
+						xtype	: 'panel',
+						layout	: { type: 'hbox', align:'stretch'},
+						items	: [
+						{
+							xtype	: 'appa_info_status_panel',
+							flex	: 1
+						},
+						{
+							xtype	: 'appa_user_logins_widget',
+							flex	: 1
+						}]
 					},
 					{
 						xtype	: 'appa_user_frame'

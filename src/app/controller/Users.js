@@ -8,13 +8,15 @@ Ext.define('APPA.controller.Users', {
 	models: [
 		'APPA.model.User',
 		'APPA.model.UserRole',
-		'APPA.model.UserPermission'
+		'APPA.model.UserPermission',
+		'APPA.model.Login'
 	],
 
 	stores: [
 		'APPA.store.Users',
 		'APPA.store.UserRoles',
-		'APPA.store.UserPermissions'
+		'APPA.store.UserPermissions',
+		'APPA.store.Logins'
 	],
 
     views: [
@@ -27,7 +29,8 @@ Ext.define('APPA.controller.Users', {
 		'user.RoleList',
         'user.RoleContextMenu',
 		'user.PermissionList',
-        'user.PermissionContextMenu'
+        'user.PermissionContextMenu',
+        'user.LoginsWidget'
     ],
 
     refs : [{

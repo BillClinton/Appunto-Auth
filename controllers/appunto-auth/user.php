@@ -48,8 +48,13 @@ class User extends CI_Controller {
 			$this->form_validation->set_rules('username', 'lang:appunto_form_username', 'trim|required|xss_clean');
 			$this->form_validation->set_rules('password', 'lang:appunto_form_password', 'trim|required|xss_clean');
 
+			$username 	= $this->input->post('username', TRUE);
+			$ip_address	= $this->input->ip_address();
+			$user_agent	= $this->input->user_agent();
+
 			if (!$this->form_validation->run())
 			{
+				$this->usermodel->record_login_attempt($username, $ip_address, 0, $user_agent, 'form validation: '.validation_errors('[',']'));
 				//$uri = $this->input->post('url', TRUE);
 				$this->load->view('appunto-auth/login');
 			}
@@ -60,6 +65,8 @@ class User extends CI_Controller {
 				
 				if (($user != false) && $this->appunto_auth->checkPassword($pass,$user->password))
 				{
+					$this->usermodel->record_login_attempt($username, $ip_address, 1, $user_agent, 'successful login');
+
 					$this->session->set_userdata(array(
 						'user_id'	=> $user->id,
 						'username'	=> $user->username,
@@ -72,6 +79,7 @@ class User extends CI_Controller {
 				{
 					$this->form_validation->set_rules('password', 'lang:appunto_form_password', 'callback__invalid_password');
 					$this->form_validation->run();
+					$this->usermodel->record_login_attempt($username, $ip_address, 0, $user_agent, 'password check: '.validation_errors('[',']'));
 					$this->load->view('appunto-auth/login');
 
 				}
@@ -196,6 +204,32 @@ class User extends CI_Controller {
 		else die('invalid request method');
 	}
 
+	public function login_attempts()
+	{
+        $start  = $this->input->get_post('start', TRUE);
+        $limit  = $this->input->get_post('limit', TRUE);
+        $sort   = $this->input->get_post('sort', TRUE);
+        $filter = $this->input->get_post('filter', TRUE);
+
+        $property = null;
+        $direction = null;
+        //$active_filter = false;
+
+        // get sort params
+        $sort_array = json_decode($sort);
+        if (count($sort_array) > 0)
+        {
+            $property = $sort_array[0]->property;
+            $direction = $sort_array[0]->direction;
+        }
+
+		$filters = json_decode($filter);
+
+        $results = $this->usermodel->login_attempts($start,$limit,$property,$direction,$filters);
+
+        $this->appunto_auth->sendResponse($results);
+
+	}
 }
 /* End of file application.php */
 /* Location: ./application/controllers/application.php */

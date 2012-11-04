@@ -18,6 +18,7 @@ class Usermodel extends CI_Model
         $this->permission_table = $prefix.'appa_permission';
         $this->user_permission_table = $prefix.'appa_user_permission';
         $this->role_permission_table = $prefix.'appa_role_permission';
+        $this->user_login_attempt = $prefix.'appa_user_login_attempt';
 	}
     
 
@@ -366,5 +367,70 @@ class Usermodel extends CI_Model
 
         // return formatted result
         return $this->appunto_auth->formatOperationResult($query,$this->get_user_permission($permission_id,$user_id));
+	}
+
+	/**
+	 * Add a permission to a user 
+	 *
+	 * @param	array
+	 * @return	object
+	 */
+	function record_login_attempt($username, $ip_address, $success, $user_agent, $note) 
+	{
+        // execute query
+		$query = $this->db->insert($this->user_login_attempt, array(
+			'username'		=> $username,
+			'ip_address'	=> $ip_address,
+			'success'		=> $success,
+			'user_agent'	=> $user_agent,
+			'note'			=> $note
+		));
+
+        // return formatted result
+		return $this->appunto_auth->formatOperationResult($query);
+	}
+
+	/**
+	 * Get login attempts
+	 *
+	 * @return	object
+	 */
+	function login_attempts($offset,$rows,$sort,$dir,$filters)
+	{
+
+        $this->db->select('username, ip_address, success, user_agent, note, attempt_time');
+
+		if (count($filters)>0) 
+		{
+			foreach($filters as $filter)
+			{
+				$property = $filter->property;
+				if ($property == 'active') $active = $filter->value;
+			}
+		}
+
+		/* cache where clause to get around CI's active record _reset_select()
+		 * see http://codeigniter.com/forums/viewthread/212111/#999732
+		 */
+		$this->db->start_cache();
+
+		$total = $this->db->count_all_results($this->user_login_attempt);
+
+        if (!empty($sort) && !empty($dir)) 
+        {
+            $this->db->order_by('UPPER('.$sort.')',$dir);
+		}
+		else
+		{
+        	$this->db->order_by('attempt_time','DESC');
+        }
+
+        // execute query
+		$query = $this->db->get($this->user_login_attempt,$rows,$offset);
+
+		$this->db->flush_cache();  
+
+		// format and return result to controller
+        return $this->appunto_auth->formatQueryResult($query,$total);
 	}
 };
