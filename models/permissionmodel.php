@@ -77,6 +77,8 @@ class Permissionmodel extends CI_Model
 	 */
 	function create_record($data) 
 	{
+        $data['internal_name'] = strtoupper(str_replace(' ','_',$data['name']));
+
         // execute query
 		$query = $this->db->insert($this->table, $data);
 
@@ -125,12 +127,9 @@ class Permissionmodel extends CI_Model
         return $this->appunto_auth->formatOperationResult($query);
 	}
 
-	function in_use_by_user($data) 
+	function in_use_by_user($id) 
 	{
         $this->db->select('permission_id');
-
-        // get/set the id 
-		$id = $data['id'];
         $this->db->where('permission_id', $id);
 
         // execute query
@@ -143,12 +142,9 @@ class Permissionmodel extends CI_Model
 		return false;
 	}
 
-	function in_use_by_role($data) 
+	function in_use_by_role($id) 
 	{
         $this->db->select('permission_id');
-
-        // get/set the id 
-		$id = $data['id'];
         $this->db->where('permission_id', $id);
 
         // execute query
@@ -161,12 +157,9 @@ class Permissionmodel extends CI_Model
 		return false;
 	}
 
-	function in_use_by_path($data) 
+	function in_use_by_path($id) 
 	{
         $this->db->select('path.id');
-
-        // get/set the id 
-		$id = $data['id'];
         $this->db->where('permission_id', $id);
 
         // execute query

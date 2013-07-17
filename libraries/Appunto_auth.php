@@ -442,5 +442,107 @@ class Appunto_auth
         }
         return $result;
     }
+
+/*
+ * ***** CONTROLLER CODE ****** O__o
+ * Putting code that would normally be controller functions in the library to keep the Paths/permissions 
+ * manageable and to make it easier to distribute as a spark. 
+ */	
+	function controller_read($model)
+	{
+        $start  = $this->CI->input->get_post('start', TRUE);
+        $limit  = $this->CI->input->get_post('limit', TRUE);
+        $sort   = $this->CI->input->get_post('sort', TRUE);
+        $filter = $this->CI->input->get_post('filter', TRUE);
+
+        $property = null;
+        $direction = null;
+        $active_filter = false;
+
+        // get sort params
+        $sort_array = json_decode($sort);
+        if (count($sort_array) > 0)
+        {
+            $property = $sort_array[0]->property;
+            $direction = $sort_array[0]->direction;
+        }
+
+		$filters = json_decode($filter);
+
+        $result = $model->enumerate($start,$limit,$property,$direction,$filters);
+
+        $this->sendResponse($result);
+	}
+
+    function controller_create($model)
+    {
+        if (!$this->CI->form_validation->run()) 
+        {
+            $result = array (
+                'success'   => false,
+                'msg'       => 'Your form had errors.  Please correct them and try again',
+                'errors'    => validation_errors()
+            );
+        } 
+        else 
+        {
+			// return all POST items with XSS filter
+            $data = $this->CI->input->post(NULL, TRUE); 
+
+            // get result
+            $result = $model->create_record($data);
+        }
+        $this->sendResponse($result);
+	}
+
+    function controller_update($model)
+    {
+        if (!$this->CI->form_validation->run()) 
+        {
+            $result = array (
+                'success'   => false,
+                'msg'       => 'Your form had errors.  Please correct them and try again',
+                'errors'    => validation_errors()
+            );
+        } 
+        else 
+        {
+			// return all POST items with XSS filter
+            $data = $this->CI->input->post(NULL, TRUE);
+
+			if (count($data)>1)
+			{
+            	$result = $model->update_record($data);
+			}
+			else
+			{
+				$result = array (
+					'success'   => false,
+					'msg'       => 'No updates attempted.'
+            	);
+			}
+        }
+        $this->sendResponse($result);
+	}
+
+    function controller_destroy($model)
+    {
+		// create array from post data
+		$data = $this->CI->input->post(NULL, TRUE);
+
+        if (!$this->CI->form_validation->run()) 
+        {
+            $result = array (
+                'success'   => false,
+                'msg'       => 'Your form had errors.  Please correct them and try again',
+                'errors'    => validation_errors()
+            );
+        } 
+        else 
+        {
+            $result = $model->delete_record($data);
+        }
+        $this->sendResponse($result);
+	}
 };
 
