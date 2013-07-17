@@ -13,6 +13,7 @@ Ext.define('APPA.model.Permission', {
         {name: 'id', type: 'int'},
         {name: 'hasPermission', type: 'int'},
         {name: 'name', type: 'string'},
+        {name: 'internal_name', type: 'string'},
         {name: 'description', type: 'string'}
     ],
     proxy: 

@@ -45,6 +45,13 @@ Ext.define('APPA.view.user.LoginsWidget' ,{
             {header: 'IP Address',  dataIndex: 'ip_address', menuDisabled: true, flex: 1}
         ];
 
+		this.tools = [
+			{
+				type	: 'refresh',
+				itemId	: 'refresh'
+			}
+		];
+
         this.callParent(arguments);
     }
 });

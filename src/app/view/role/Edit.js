@@ -38,6 +38,13 @@ Ext.define('APPA.view.role.Edit', {
 						allowBlank	: false
 					},
 					{
+                        name        : 'internal_name',
+						fieldLabel	: 'Internal Name',
+                        xtype       : 'textfield',
+						value		: '',		// initialzing field so changes will show it as dirty
+						allowBlank	: false
+					},
+					{
                         name        : 'description',
 						fieldLabel	: 'Description',
                         xtype       : 'textfield',

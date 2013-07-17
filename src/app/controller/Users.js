@@ -42,6 +42,9 @@ Ext.define('APPA.controller.Users', {
 	},{
         ref : 'permissionList',
         selector: 'appa_user_permission_list'
+	},{
+        ref : 'loginsWidget',
+        selector: 'appa_user_logins_widget'
     }],
 
 	/* */
@@ -121,6 +124,11 @@ Ext.define('APPA.controller.Users', {
             'appa_user_permission_contextmenu menuitem[action="remove"]': {
                 click: this.removePermission
             }
+/*
+			'appa_user_logins_widget #refresh': {
+                click: this.refreshLoginsWidget
+			} 
+*/
 		});
 /*
 		this.getUsersStore().on({
@@ -544,5 +552,11 @@ Ext.define('APPA.controller.Users', {
 			failure		: fail_cb 
 		});	
     }
+/*
+	refreshLoginsWidget: function()
+	{
+		this.getLoginsWidget().getStore().load();
+	}
+*/
 });
 

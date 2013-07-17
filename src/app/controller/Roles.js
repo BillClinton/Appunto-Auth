@@ -156,6 +156,7 @@ Ext.define('APPA.controller.Roles', {
 
 		win_cb = function(rec, operation) {
 				store.insert(0,rec);
+				//store.load();
 				win.close();
 		}
 

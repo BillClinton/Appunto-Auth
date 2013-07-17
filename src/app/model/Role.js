@@ -15,6 +15,7 @@ Ext.define('APPA.model.Role', {
     fields: [
         {name: 'id', type: 'int'},
         {name: 'name', type: 'string'},
+        {name: 'internal_name', type: 'string'},
         {name: 'description', type: 'string'}
     ],
     proxy: 

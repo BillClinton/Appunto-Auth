@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>AppuntoAuth 0.0.1</title>
+    <title>AppuntoAuth 0.0.3</title>
 <link rel="SHORTCUT ICON" href="<?=base_url()?>resources/appunto-auth/favicon.ico">
 <link rel="stylesheet" type="text/css" href="<?=base_url()?>resources/appunto-auth/css/loading_mask.css" />
 </head>
@@ -19,7 +19,7 @@
 	<!-- <link rel="stylesheet" type="text/css" href="http://cdn.sencha.io/ext-4.0.7-gpl/resources/css/ext-all.css"> -->
 	<!-- <link rel="stylesheet" type="text/css" href="http://extjs.cachefly.net/ext-4.0.7-gpl/resources/css/ext-all.css"> -->
 	<!-- <link rel="stylesheet" type="text/css" href="extjs/resources/css/ext-all.css"> -->
-	<link rel="stylesheet" type="text/css" href="/lib/extjs-4.1.1/resources/css/ext-all.css">
+	<link rel="stylesheet" type="text/css" href="http://cdn.sencha.io/ext-4.1.1a-gpl/resources/css/ext-all.css">
 
 	<!-- Application style sheets -->
 	<link rel="stylesheet" type="text/css" href="<?=base_url()?>resources/appunto-auth/css/icons.css" />
@@ -38,7 +38,7 @@
 	<!-- <script type="text/javascript" src="http://cdn.sencha.io/ext-4.0.7-gpl/ext-dev.js"></script> -->
 	<!-- <script type="text/javascript" src="http://extjs.cachefly.net/ext-4.0.7-gpl/ext-dev.js"></script> -->
 	<!-- <script type="text/javascript" src="extjs/ext-dev.js"></script> -->
-	<script type="text/javascript" src="/lib/extjs-4.1.1/ext-dev.js"></script>
+	<script type="text/javascript" src="http://cdn.sencha.io/ext-4.1.1a-gpl/ext-dev.js"></script>
 
 	<!-- Application requirements -->
 	<script type="text/javascript">document.getElementById('loading-msg').innerHTML = 'Loading Application...';</script>

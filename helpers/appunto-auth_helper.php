@@ -11,67 +11,7 @@
  */
 if ( ! function_exists('appunto_auth_application'))
 {
-	function appunto_auth_application($width="100%", $height="600px", $additional_css='')
-	{
-		$CI =& get_instance();
-
-		if (!isset($CI->appunto_auth)) $CI->load->library('appunto_auth');
-
-		$urls = $CI->appunto_auth->include_urls();
-
-		$base_url = base_url();
-		$site_url = site_url();
-
-		$html = <<<APP
-<link rel="stylesheet" type="text/css" href="{$base_url}resources/appunto-auth/css/loading_mask.css" />
-<div id="loading-mask"></div>
-<div id="loading">
-  <div class="loading-indicator">
-    <span id="loading-msg">Loading styles and images...</span>
-  </div>
-</div>
-<div id='script-includes'>
-
-	<!-- ExtJS style sheets -->
-	<link rel="stylesheet" type="text/css" href="{$base_url}/extjs/resources/css/ext-all.css">
-
-	<!-- Application style sheets -->
-	<link rel="stylesheet" type="text/css" href="{$base_url}resources/appunto-auth/css/icons.css" />
-	<link rel="stylesheet" type="text/css" href="{$base_url}resources/appunto-auth/css/app.css" />
-	<link rel="stylesheet" type="text/css" href="{$base_url}resources/appunto-auth/css/custom.css" />
-
-	<!-- set base url, display type -->
-	<script type="text/javascript">
-		var ci_site_url = "{$site_url}",
-			ci_base_url	= "{$base_url}",
-			appunto_auth_display_type = 'container';
-			appunto_auth_height = "{$height}" 
-	</script>
-
-	<!-- ExtJS library -->
-	<script type="text/javascript">document.getElementById('loading-msg').innerHTML = 'Loading Sencha ExtJS...';</script>
-	<script type="text/javascript" src="{$urls['extjs_lib']}"></script>
-
-	<!-- Application requirements -->
-	<script type="text/javascript">document.getElementById('loading-msg').innerHTML = 'Loading Application...';</script>
-	<!-- <script type="text/javascript" src="{$base_url}app.js"></script> -->
-	<script type="text/javascript" src="{$base_url}resources/appunto-auth/appunto-auth-all.js"></script>
-	<script type="text/javascript" src="{$base_url}resources/appunto-auth/appunto-auth-start.js"></script>
-
-</div>
-<div id="appunto-auth-app-div" style="width:$width;height:$height;$additional_css">
-</div>
-APP;
-
-	return $html;
-	}
-}
-/*
- *
- */
-if ( ! function_exists('appunto_auth_application_viewport'))
-{
-	function appunto_auth_application_viewport($ext_theme = false)
+	function appunto_auth_application($ext_theme = false)
 	{
 		$CI =& get_instance();
 
@@ -99,29 +39,25 @@ if ( ! function_exists('appunto_auth_application_viewport'))
 <div id='script-includes'>
 
 	<!-- ExtJS style sheets -->
+    <link rel="stylesheet" type="text/css" href="{$base_url}resources/appunto-auth/build/app.css">
 	{$ext_stylesheet}	
 
 	<!-- Application style sheets -->
 	<link rel="stylesheet" type="text/css" href="{$base_url}resources/appunto-auth/css/icons.css" />
 	<link rel="stylesheet" type="text/css" href="{$base_url}resources/appunto-auth/css/app.css" />
 	<link rel="stylesheet" type="text/css" href="{$base_url}resources/appunto-auth/css/custom.css" />
+	<link rel="stylesheet" type="text/css" href="{$base_url}resources/appunto-auth/css/curvy_appunto.css" /> 
 
 	<!-- set base url, display type -->
 	<script type="text/javascript">
 		var ci_site_url = "{$site_url}",
 			ci_base_url	= "{$base_url}",
-			appunto_auth_display_type = 'viewport';
+			ci_index 	= "{$base_url}index.php"; //append index.php if necessary
 	</script>
-
-	<!-- ExtJS library -->
-	<script type="text/javascript">document.getElementById('loading-msg').innerHTML = 'Loading Sencha ExtJS...';</script>
-	<script type="text/javascript" src="{$urls['extjs_lib']}"></script>
 
 	<!-- Application requirements -->
 	<script type="text/javascript">document.getElementById('loading-msg').innerHTML = 'Loading Application...';</script>
-	<!-- <script type="text/javascript" src="{$base_url}app.js"></script> -->
-	<script type="text/javascript" src="{$base_url}resources/appunto-auth/appunto-auth-all.js"></script>
-	<script type="text/javascript" src="{$base_url}resources/appunto-auth/appunto-auth-start.js"></script>
+	<script type="text/javascript" src="{$base_url}resources/appunto-auth/build/appunto-auth-all.js"></script>
 
 </div>
 APP;
@@ -174,10 +110,10 @@ if ( ! function_exists('login_box'))
 
 		$message_div = '';
 		if (isset($auth_message)) {
-			$message_div = "<div class='login-form-auth-message'>$auth_message</div>";
+			$message_div = "<div id='login-form-auth-message' class='login-form-auth-message'>$auth_message</div>";
 		} 
 		else if ($CI->appunto_auth->logged_in()) {
-			$message_div = "<div class='login-form-auth-message'>You are already logged in.</div>";
+			$message_div = "<div id='login-form-auth-message' class='login-form-auth-message'>You are already logged in.</div>";
 		}
 
 		$validation_errors = validation_errors();
@@ -267,7 +203,7 @@ if ( ! function_exists('login_header'))
 
 		$message_div = '';
 		if ($CI->appunto_auth->logged_in()) {
-			$message_div = "<div class='login-form-auth-message'>logged in as ".$CI->appunto_auth->get_username()."</div>";
+			$message_div = "<div id='login-form-auth-message' class='login-form-auth-message'>logged in as ".$CI->appunto_auth->get_username()."</div>";
 		}
 
 		$validation_errors = validation_errors();
@@ -313,6 +249,73 @@ LOGINHEADER;
 LOGINHEADER;
 
 		}
+
+	return $html;
+	}
+}
+
+if ( ! function_exists('user_permissions'))
+{
+	function user_permissions()
+	{
+		$CI =& get_instance();
+
+		if (!isset($CI->appunto_auth)) $CI->load->library('appunto_auth');
+
+		$user_id = $CI->appunto_auth->get_user_id();
+
+        $CI->load->model('usermodel');
+	
+		$result = $CI->usermodel->get_user_permission_array($user_id);
+
+		$permissions = 'var app_up = new Array('; 
+		foreach ($result as $key => $perm)
+		{
+			$permissions .= $perm.',';
+		}
+		$permissions = rtrim($permissions,',');
+		$permissions .= ');';
+
+		$html = <<<APP
+<div id='app-up'>
+	<script type="text/javascript">
+	{$permissions}
+	</script>
+</div>
+APP;
+
+	return $html;
+	}
+}
+if ( ! function_exists('user_permissions_internal_name'))
+{
+	function user_permissions_internal_name()
+	{
+		$CI =& get_instance();
+
+		if (!isset($CI->appunto_auth)) $CI->load->library('appunto_auth');
+
+		$user_id = $CI->appunto_auth->get_user_id();
+
+        $CI->load->model('usermodel');
+	
+		$result = $CI->usermodel->get_user_permission_internal_name_array($user_id);
+
+		$permissions = 'var app_nm = ['; 
+		foreach ($result as $key => $perm_internal_name)
+		{
+			$permissions .= '"'.$perm_internal_name.'",';
+		}
+		$permissions = rtrim($permissions,',');
+		$permissions .= '];';
+
+		$html = <<<APP
+<div id='app-nm'>
+	<script type="text/javascript">
+	{$permissions}
+	</script>
+</div>
+APP;
 
 	return $html;
 	}

@@ -12,6 +12,7 @@ Ext.define('APPA.view.role.List' ,{
 
         this.columns = [
             {header: 'Name',  dataIndex: 'name', width: 100},
+            {header: 'Inernal Name',  dataIndex: 'internal_name', width: 100},
             {header: 'Description',  dataIndex: 'description', flex: 1}
         ];
 

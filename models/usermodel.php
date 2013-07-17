@@ -167,7 +167,7 @@ class Usermodel extends CI_Model
 	 */
 	function get_user_permission_array($id)
 	{
-        $this->db->select('p.id, p.name');
+        $this->db->select('p.id');
 
 		$subquery = '(select ur.role_id from '.$this->user_role_table. ' ur where ur.user_id ='.$id.')';
 
@@ -185,6 +185,77 @@ class Usermodel extends CI_Model
 			array_push($permissions,$row->id);
 		}
         return $permissions;
+	}
+
+	/**
+	 * Get user permission array
+	 *
+	 * @return	object
+	 */
+	function get_user_permission_internal_name_array($id)
+	{
+        $this->db->select('p.internal_name');
+
+		$subquery = '(select ur.role_id from '.$this->user_role_table. ' ur where ur.user_id ='.$id.')';
+
+        $this->db->join($this->user_permission_table.' up','p.id = up.permission_id and up.user_id ='.$id,'left');
+        $this->db->join($this->role_permission_table.' rp','p.id = rp.permission_id and rp.role_id IN '.$subquery,'left');
+
+        $this->db->where('((up.user_id IS NOT NULL) || (rp.role_id IS NOT NULL))');
+
+        // execute query
+		$query = $this->db->get($this->permission_table.' p');
+
+		$permissions = array();
+		foreach ($query->result() as $row)
+		{
+			array_push($permissions,$row->internal_name);
+		}
+        return $permissions;
+	}
+
+	/**
+	 *
+	 */
+	function verifyPermissionById($u_id,$p_id)
+	{
+        $this->db->select('p.id, p.name');
+
+		$subquery = '(select ur.role_id from '.$this->user_role_table. ' ur where ur.user_id ='.$u_id.')';
+
+        $this->db->join($this->user_permission_table.' up','p.id = up.permission_id and up.user_id ='.$u_id,'left');
+        $this->db->join($this->role_permission_table.' rp','p.id = rp.permission_id and rp.role_id IN '.$subquery,'left');
+
+        $this->db->where('((up.user_id IS NOT NULL) || (rp.role_id IS NOT NULL))');
+
+		$this->db->where('p.id',$p_id);
+
+        // execute query
+		$query = $this->db->get($this->permission_table.' p');
+
+		return ($query->num_rows() > 0);
+	}
+
+	/**
+	 *
+	 */
+	function verifyPermissionByName($u_id,$p_name)
+	{
+        $this->db->select('p.id, p.name');
+
+		$subquery = '(select ur.role_id from '.$this->user_role_table. ' ur where ur.user_id ='.$u_id.')';
+
+        $this->db->join($this->user_permission_table.' up','p.id = up.permission_id and up.user_id ='.$u_id,'left');
+        $this->db->join($this->role_permission_table.' rp','p.id = rp.permission_id and rp.role_id IN '.$subquery,'left');
+
+        $this->db->where('((up.user_id IS NOT NULL) || (rp.role_id IS NOT NULL))');
+
+		$this->db->where('UPPER(p.internal_name) = UPPER("'.$p_name.'")');
+
+        // execute query
+		$query = $this->db->get($this->permission_table.' p');
+
+		return ($query->num_rows() > 0);
 	}
 
 	/**

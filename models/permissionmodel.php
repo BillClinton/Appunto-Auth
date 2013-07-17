@@ -30,7 +30,7 @@ class Permissionmodel extends CI_Model
         $this->db->from($this->table);
         $total = $this->db->count_all_results();  
 
-        $this->db->select('p.id, p.name, p.description');
+        $this->db->select('p.id, p.name, p.internal_name, p.description');
 
         if (!empty($sort) && !empty($dir)) 
         {
@@ -57,7 +57,7 @@ class Permissionmodel extends CI_Model
 	function get($id)
 	{
 		// define query
-        $this->db->select('p.id, p.name, p.description');
+        $this->db->select('p.id, p.name, p.internal_name, p.description');
 
 		$this->db->where('p.id',$id);
 

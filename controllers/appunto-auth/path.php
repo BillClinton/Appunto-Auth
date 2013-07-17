@@ -40,6 +40,7 @@ class Path extends CI_Controller
 		});
 
 		$new_cnt = 0;
+		$failed = array();
 		foreach ($controller_dirs as $controller_dir) 
 		{
 			// get files in this directory
@@ -52,36 +53,70 @@ class Path extends CI_Controller
 			{
 				$this_dir = ($controller_dir == '.') ? $dir : $dir.$controller_dir.'/';
 
-				if ($filename != 'path.php') require_once($this_dir.$filename);
-
+				/**
+				 *	If you are getting a fatal error on the line below, you probably have two controllers with the same name.
+				 * 	Codeigniter supports controller classes with the same name in different directories, but Appunto Auth
+				 *	currently does not. 
+				 */
 				$classname = ucfirst(substr($filename, 0, strrpos($filename, '.')));
-				$controller = new $classname();
-				$methods = get_class_methods($controller);
 
-				foreach ($methods as $method)
+				if (!class_exists($classname)||($classname == 'Path'))
 				{
-					log_message('error',$controller_dir.'/'.$classname.'/'.$method);
-					if ($this->pathmodel->path_exists($controller_dir,$classname,$method))
+
+					if ($filename != 'path.php') require_once($this_dir.$filename);
+
+					$classname = ucfirst(substr($filename, 0, strrpos($filename, '.')));
+					$controller = new $classname();
+					$methods = get_class_methods($controller);
+
+					foreach ($methods as $method)
 					{
-						$this->pathmodel->mark_found($controller_dir,$classname,$method);
-					}
-					else
-					{
-						if (substr($method,0,1)!='_' && $method!='get_instance') {
-							$this->pathmodel->create_record($controller_dir,$classname,$method,1);
-							$new_cnt++;
+						
+						$full_path = ($controller_dir=='.') ? $filename : $controller_dir.'/'.$filename;
+
+						if ($classname=='Permission') log_message('error', $classname.' - '.$method);
+						
+						if ($this->pathmodel->path_exists($controller_dir,$classname,$method))
+						{
+							$this->pathmodel->mark_found($controller_dir,$classname,$method);
+						}
+						else
+						{
+							if ((substr($method,0,1)!='_' && $method!='get_instance') || $method=='_remap') {
+								$this->pathmodel->create_record($controller_dir,$filename,$full_path,$classname,$method,1);
+								$new_cnt++;
+							}
 						}
 					}
+				}
+				else
+				{
+					array_push($failed, $classname);
 				}
 			}
 		}
 
-		$result = array (
-			'success'   => true,
-			'msg'       => ($new_cnt == 0 ? 'No': $new_cnt).' new path'.($new_cnt == 0 || $new_cnt > 1 ? "s":"").' found.',
-			'total'		=> $new_cnt
-		);
-		log_message('error',print_r($result,true));
+		if (count($failed)>0) 
+		{
+			$msg = 'You have '.count($failed).' controller'.((count($failed)>1) ? 's':'').' with a duplicate name: ';
+			$msg .= "<br>";
+			$msg .= '<b>'.implode(",", $failed).'</b>';
+			$msg .= "<br>";
+			$msg .= 'Appunto Auth does not support controller classes with the same name in different directories.';
+			$result = array (
+				'success'   => false,
+				'msg'       => $msg
+			);
+		}
+		else
+		{
+			$result = array (
+				'success'   => true,
+				'msg'       => ($new_cnt == 0 ? 'No': $new_cnt).' new path'.($new_cnt == 0 || $new_cnt > 1 ? "s":"").' found.',
+				'total'		=> $new_cnt
+			);
+		}
+//		log_message('error',print_r($result,true));
 
         $this->appunto_auth->sendResponse($result);
 	}

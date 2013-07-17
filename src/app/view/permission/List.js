@@ -12,6 +12,7 @@ Ext.define('APPA.view.permission.List' ,{
 
         this.columns = [
             {header: 'Name',  dataIndex: 'name', width: 160},
+            {header: 'Internal Name',  dataIndex: 'internal_name', width: 160},
             {header: 'Description',  dataIndex: 'description', flex: 1}
         ];
 

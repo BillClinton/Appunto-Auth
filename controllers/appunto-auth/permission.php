@@ -55,6 +55,8 @@ class Permission extends CI_Controller
 			// return all POST items with XSS filter
             $data = $this->input->post(NULL, TRUE); 
 
+            $data['internal_name'] = strtoupper(str_replace(' ','_',$data['name']));
+
             // get result
             $result = $this->permissionmodel->create_record($data);
         }
@@ -114,7 +116,7 @@ class Permission extends CI_Controller
         {
             $result = array (
                 'success'   => false,
-                'msg'       => 'This permissions is currently assigned to one or more users and cannot be deleted.'
+                'msg'       => 'This permission is currently assigned to one or more users and cannot be deleted.'
             );
         } 
         else if ($this->permissionmodel->in_use_by_role($data)) 

@@ -29,11 +29,49 @@ class Appunto_auth
     }
 
 	/**
-	 * Hook to be executed after controller constructor but before controller method.
+     * Check if user is logged in 
+	 * 
+	 * @return	void 
+	*/
+	public function logged_in()
+	{
+		return ($this->CI->session->userdata('logged_in') == true);
+	}
+
+	/**
+     * Get username if user is logged in 
+	 * 
+	 * @return	void 
+	*/
+	public function get_username()
+	{
+		if ($this->CI->session->userdata('logged_in') == true)
+		{ 
+			return ($this->CI->session->userdata('username'));
+		}
+		return false;
+	}
+
+	/**
+     * Get user id if user is logged in 
+	 * 
+	 * @return	void 
+	*/
+	public function get_user_id()
+	{
+		if ($this->CI->session->userdata('logged_in') == true)
+		{ 
+			return ($this->CI->session->userdata('user_id'));
+		}
+		return false;
+	}
+
+	/**
+	 * Hook to be executed before controller 
 	 * This hook must be included in CodeIgniter's config/hooks.php file using 
 	 * the following format:
 	 *
-	 * $hook['pre_controller_constructor'] = array(
+	 * $hook['post_controller_constructor'] = array(
 	 * 	'class'    => 'Appunto_auth',
 	 * 	'function' => 'require_authentication_hook',
 	 * 	'filename' => 'Appunto_auth.php',
@@ -46,11 +84,13 @@ class Appunto_auth
 	public function require_authentication_hook() 
 	{
 		$this->cnt++;
-		log_message('error','cnt: '.$this->cnt);
+//		log_message('error','cnt: '.$this->cnt);
 
 		$paths 		= $this->_getPaths();
 		$ci_class	= $this->CI->router->fetch_class();
 		$ci_method	= $this->CI->router->fetch_method();
+
+		die;
 
 		// Test validity of path
 		if (array_key_exists($ci_class,$paths) && 
@@ -74,8 +114,9 @@ class Appunto_auth
 					if (is_numeric($path['perm']) && $path['perm'] > 0)
 					{
 						// Path has a required permission - check if user has this permission
-						$user_permissions = $this->_getPermissions();
-						if (in_array($path['perm'],$user_permissions,true))
+						//$user_permissions = $this->_getPermissions();
+						//if (in_array($path['perm'],$user_permissions,true))
+						if ($this->userHasPermission($path['perm']))
 						{
 							// User has Permission - return
 							return;
@@ -126,7 +167,7 @@ class Appunto_auth
 	 * @param string
 	 * @return	void
 	 */
-	private function _sendError($msg, $login=false)
+	public function sendError($msg, $login=false)
 	{
 		$ajax	= $this->_isAjaxRequest();
 
@@ -156,27 +197,8 @@ class Appunto_auth
 	 *
 	 * @return	array 
 	 */
-	private function _getPaths()
+	public function getPaths()
 	{
-		if (true === $this->cache_paths) {
-			$path_array = $this->CI->session->userdata('path_array');
-			if (!isset($path_array) || !is_array($path_array) || count($path_array) <= 0) 
-			{
-				log_message('error','path_array not set');
-				$path_array = $this->_loadPaths();
-				$this->CI->session->set_userdata('path_array', $path_array);
-				return $path_array;
-			}
-				log_message('error','path_array IS SET IN SESSION');
-			return $path_array;
-
-
-		}
-		else
-		{	
-			return $this->_loadPaths();
-		}
-
 		$path_array = array();
         $result 	= $this->CI->pathmodel->enumerate();
 
@@ -185,9 +207,11 @@ class Appunto_auth
 			$rows = $result['rows'];
 			foreach ($rows as $row)
 			{
+				$perm_id = intval($row->permission_id); //tighten this up *******************************************************
 				$path_array[strtolower($row->ci_controller)][strtolower($row->ci_method)] = array(
 					'public_flag'	=> $row->public_flag,
-					'perm'			=> $row->permission_id
+					'perm'			=> $perm_id,
+					'perm_string'	=> $row->internal_name
 				);
 			}
 		}
@@ -195,28 +219,39 @@ class Appunto_auth
 	}
 
 	/**
-	 * Load paths from database.
+	 * check if user has role.
 	 *
-	 * @return	array 
+	 * @return	boolean
 	 */
-	private function _loadPaths()
+	public function userHasRole($role_id)
 	{
-		log_message('error','loading paths...');
-		$path_array = array();
-        $result 	= $this->CI->pathmodel->enumerate();
+		$user_id = $this->CI->session->userdata('user_id');
 
-		if (isset($result['rows']) && is_array($result['rows'])) 
+		return ($this->CI->usermodel->verifyRoleById($user_id,$role_id) > 0);
+	}
+
+	/**
+	 * check if user has permission.
+	 *
+	 * @return	boolean
+	 */
+	public function userHasPermission($permission)
+	{
+		log_message('error','check perm');
+		log_message('error',print_r($permission,true));
+		$user_id = $this->CI->session->userdata('user_id');
+
+		if (gettype($permission)=='string')
 		{
-			$rows = $result['rows'];
-			foreach ($rows as $row)
-			{
-				$path_array[strtolower($row->ci_controller)][strtolower($row->ci_method)] = array(
-					'public_flag'	=> $row->public_flag,
-					'perm'			=> $row->permission_id
-				);
-			}
+			log_message('error','perm is a string');
+			return $this->CI->usermodel->verifyPermissionByName($user_id,$permission);
 		}
-		return $path_array;
+		else if (gettype($permission)=='integer')
+		{
+			log_message('error','perm is an int');
+			return $this->CI->usermodel->verifyPermissionById($user_id,$permission);
+		}
+		return false;
 	}
 
 	/**
@@ -260,29 +295,6 @@ class Appunto_auth
 				(strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest'));
 	}
 
-	/**
-     * Check if user is logged in 
-	 * 
-	 * @return	void 
-	*/
-	public function logged_in()
-	{
-		return ($this->CI->session->userdata('logged_in') == true);
-	}
-
-	/**
-     * Get username if user is logged in 
-	 * 
-	 * @return	void 
-	*/
-	public function get_username()
-	{
-		if ($this->CI->session->userdata('logged_in') == true)
-		{ 
-			return ($this->CI->session->userdata('username'));
-		}
-		return false;
-	}
 	/**
      * Create an array of URLs for use in helper.
 	 * 

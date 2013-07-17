@@ -80,6 +80,8 @@ class Role extends CI_Controller
 			// return all POST items with XSS filter
             $data = $this->input->post(NULL, TRUE); 
 
+            $data['internal_name'] = strtoupper(str_replace(' ','_',$data['name']));
+
             // get result
             $result = $this->rolemodel->create_record($data);
         }

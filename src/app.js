@@ -7,7 +7,7 @@
 //Ext.Loader.setPath('Ext', 'extjs/src');
 
 // This one needed for working with src
-Ext.Loader.setPath('Ext', '/lib/extjs-4.1.1/src');
+Ext.Loader.setPath('Ext', '/lib/ext-4.1.1a/src');
 
 
 Ext.require('Ext.container.Viewport');

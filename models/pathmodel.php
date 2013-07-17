@@ -23,8 +23,8 @@ class Pathmodel extends CI_Model
 	 */
 	function enumerate()
 	{
-        $this->db->select('path.id, path.dir, path.ci_controller, path.ci_method, path.found, path.public_flag, path.note');
-        $this->db->select('perm.id as permission_id, perm.name as permission_name');
+        $this->db->select('path.id, path.dir, path.full_path, path.ci_controller, path.ci_method, path.found, path.public_flag, path.note');
+        $this->db->select('perm.id as permission_id, perm.name as permission_name, perm.internal_name as internal_name');
 
 		$this->db->join($this->permission_table.' perm','perm.id = path.permission_id','left');
 
@@ -74,9 +74,11 @@ class Pathmodel extends CI_Model
 	 * @param	int		ci_method	
 	 * @return	object
 	 */
-	function create_record($dir, $ci_controller, $ci_method, $found = 0)
+	function create_record($dir, $filename, $full_path, $ci_controller, $ci_method, $found = 0)
 	{
 		$this->db->set('dir', $dir);
+		$this->db->set('filename', $filename);
+		$this->db->set('full_path', $full_path);
 		$this->db->set('ci_controller', $ci_controller);
 		$this->db->set('ci_method', $ci_method);
 		$this->db->set('found', $found);
@@ -197,7 +199,7 @@ class Pathmodel extends CI_Model
 	 */
 	function is_marked_found($data) 
 	{
-        $this->db->select('path.found');
+        $this->db->select('found');
 
         // get/set the id 
 		$id = $data['id'];
