@@ -10,7 +10,6 @@ class Appunto_auth
 	 */
     public function __construct()
     {
-		log_message('error','library constructor');
 		$this->CI =& get_instance();
 
 		$this->CI->load->config('appunto_auth',true,false); // true to avoid naming collisions, false to not suppress errors
@@ -83,14 +82,9 @@ class Appunto_auth
 	 */
 	public function require_authentication_hook() 
 	{
-		$this->cnt++;
-//		log_message('error','cnt: '.$this->cnt);
-
 		$paths 		= $this->_getPaths();
 		$ci_class	= $this->CI->router->fetch_class();
 		$ci_method	= $this->CI->router->fetch_method();
-
-		die;
 
 		// Test validity of path
 		if (array_key_exists($ci_class,$paths) && 
@@ -223,12 +217,14 @@ class Appunto_auth
 	 *
 	 * @return	boolean
 	 */
+	/*
 	public function userHasRole($role_id)
 	{
 		$user_id = $this->CI->session->userdata('user_id');
 
 		return ($this->CI->usermodel->verifyRoleById($user_id,$role_id) > 0);
 	}
+	**/
 
 	/**
 	 * check if user has permission.
@@ -237,18 +233,14 @@ class Appunto_auth
 	 */
 	public function userHasPermission($permission)
 	{
-		log_message('error','check perm');
-		log_message('error',print_r($permission,true));
 		$user_id = $this->CI->session->userdata('user_id');
 
 		if (gettype($permission)=='string')
 		{
-			log_message('error','perm is a string');
 			return $this->CI->usermodel->verifyPermissionByName($user_id,$permission);
 		}
 		else if (gettype($permission)=='integer')
 		{
-			log_message('error','perm is an int');
 			return $this->CI->usermodel->verifyPermissionById($user_id,$permission);
 		}
 		return false;
@@ -476,12 +468,14 @@ class Appunto_auth
 
     function controller_create($model)
     {
-        if (!$this->CI->form_validation->run()) 
+        if ($this->CI->form_validation->run()==FALSE) 
         {
             $result = array (
                 'success'   => false,
                 'msg'       => 'Your form had errors.  Please correct them and try again',
-                'errors'    => validation_errors()
+                'errors'    => validation_errors(),
+                'info'    	=> gettype (validation_errors()),
+                'data'    	=> print_r($this->CI->input->post(NULL, TRUE),true)
             );
         } 
         else 
@@ -497,12 +491,12 @@ class Appunto_auth
 
     function controller_update($model)
     {
-        if (!$this->CI->form_validation->run()) 
+        if ($this->CI->form_validation->run()==FALSE) 
         {
             $result = array (
                 'success'   => false,
                 'msg'       => 'Your form had errors.  Please correct them and try again',
-                'errors'    => validation_errors()
+                'errors'    => validation_errors(),
             );
         } 
         else 
@@ -535,7 +529,9 @@ class Appunto_auth
             $result = array (
                 'success'   => false,
                 'msg'       => 'Your form had errors.  Please correct them and try again',
-                'errors'    => validation_errors()
+                'errors'    => validation_errors(),
+                'info'    	=> gettype (validation_errors()),
+                'data'    	=> print_r($this->CI->input->post(NULL, TRUE),true)
             );
         } 
         else 
