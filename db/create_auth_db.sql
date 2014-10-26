@@ -1,35 +1,6 @@
--- phpMyAdmin SQL Dump
--- version 3.3.7deb6
--- http://www.phpmyadmin.net
 --
--- Host: localhost
--- Generation Time: Sep 23, 2012 at 10:48 PM
--- Server version: 5.1.49
--- PHP Version: 5.3.3-7+squeeze3
-
-SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
-
+-- Tables for Appunto Auth
 --
--- Database: `tickets`
---
-
--- --------------------------------------------------------
-
---
--- Table structure for table `appa_group`
---
-
-CREATE TABLE IF NOT EXISTS `appa_group` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(32) NOT NULL,
-  `description` varchar(64) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8;
-
---
--- Dumping data for table `appa_group`
---
-
 
 -- --------------------------------------------------------
 
@@ -40,6 +11,8 @@ CREATE TABLE IF NOT EXISTS `appa_group` (
 CREATE TABLE IF NOT EXISTS `appa_path` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `dir` varchar(256) NOT NULL,
+  `filename` varchar(120) NOT NULL,
+  `full_path` varchar(256) NOT NULL,
   `ci_controller` varchar(256) NOT NULL,
   `ci_method` varchar(256) NOT NULL,
   `found` tinyint(1) NOT NULL,
@@ -51,12 +24,7 @@ CREATE TABLE IF NOT EXISTS `appa_path` (
   KEY `dir` (`dir`(255)),
   KEY `ci_controller` (`ci_controller`(255)),
   KEY `ci_method` (`ci_method`(255))
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8;
-
---
--- Dumping data for table `appa_path`
---
-
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -67,14 +35,11 @@ CREATE TABLE IF NOT EXISTS `appa_path` (
 CREATE TABLE IF NOT EXISTS `appa_permission` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(32) NOT NULL,
+  `internal_name` varchar(60) NOT NULL,
   `description` varchar(64) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8;
-
---
--- Dumping data for table `appa_permission`
---
-
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `internal_name` (`internal_name`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -87,12 +52,7 @@ CREATE TABLE IF NOT EXISTS `appa_role` (
   `name` varchar(32) NOT NULL,
   `description` varchar(64) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8;
-
---
--- Dumping data for table `appa_role`
---
-
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -106,11 +66,6 @@ CREATE TABLE IF NOT EXISTS `appa_role_permission` (
   KEY `role_id` (`role_id`),
   KEY `permission_id` (`permission_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Dumping data for table `appa_role_permission`
---
-
 
 -- --------------------------------------------------------
 
@@ -131,30 +86,26 @@ CREATE TABLE IF NOT EXISTS `appa_user` (
   `created` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
   `modified` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8;
-
---
--- Dumping data for table `appa_user`
---
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `appa_user_group`
+-- Table structure for table `appa_user_login_attempt`
 --
 
-CREATE TABLE IF NOT EXISTS `appa_user_group` (
-  `user_id` int(11) NOT NULL,
-  `group_id` int(11) NOT NULL,
-  KEY `user_id` (`user_id`),
-  KEY `group_id` (`group_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Dumping data for table `appa_user_group`
---
-
+CREATE TABLE IF NOT EXISTS `appa_user_login_attempt` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `attempt_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `username` varchar(120) DEFAULT NULL,
+  `ip_address` varchar(120) NOT NULL,
+  `success` tinyint(1) NOT NULL,
+  `user_agent` varchar(180) DEFAULT NULL,
+  `note` varchar(80) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `attempt_time` (`attempt_time`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -169,11 +120,6 @@ CREATE TABLE IF NOT EXISTS `appa_user_permission` (
   KEY `permission_id` (`permission_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
---
--- Dumping data for table `appa_user_permission`
---
-
-
 -- --------------------------------------------------------
 
 --
@@ -186,11 +132,6 @@ CREATE TABLE IF NOT EXISTS `appa_user_role` (
   KEY `user_id` (`user_id`),
   KEY `role_id` (`role_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Dumping data for table `appa_user_role`
---
-
 
 --
 -- Constraints for dumped tables
@@ -210,23 +151,17 @@ ALTER TABLE `appa_role_permission`
   ADD CONSTRAINT `appa_role_permission_ibfk_2` FOREIGN KEY (`permission_id`) REFERENCES `appa_permission` (`id`);
 
 --
--- Constraints for table `appa_user_group`
---
-ALTER TABLE `appa_user_group`
-  ADD CONSTRAINT `appa_user_group_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `appa_user` (`id`),
-  ADD CONSTRAINT `appa_user_group_ibfk_2` FOREIGN KEY (`group_id`) REFERENCES `appa_group` (`id`);
-
---
 -- Constraints for table `appa_user_permission`
 --
 ALTER TABLE `appa_user_permission`
-  ADD CONSTRAINT `appa_user_permission_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `appa_user` (`id`),
-  ADD CONSTRAINT `appa_user_permission_ibfk_2` FOREIGN KEY (`permission_id`) REFERENCES `appa_permission` (`id`);
+  ADD CONSTRAINT `appa_user_permission_ibfk_1` FOREIGN KEY (`permission_id`) REFERENCES `appa_permission` (`id`),
+  ADD CONSTRAINT `appa_user_permission_ibfk_2` FOREIGN KEY (`user_id`) REFERENCES `appa_user` (`id`) ON DELETE CASCADE;
 
 --
 -- Constraints for table `appa_user_role`
 --
 ALTER TABLE `appa_user_role`
-  ADD CONSTRAINT `appa_user_role_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `appa_user` (`id`),
-  ADD CONSTRAINT `appa_user_role_ibfk_2` FOREIGN KEY (`role_id`) REFERENCES `appa_role` (`id`);
+  ADD CONSTRAINT `appa_user_role_ibfk_1` FOREIGN KEY (`role_id`) REFERENCES `appa_role` (`id`),
+  ADD CONSTRAINT `appa_user_role_ibfk_2` FOREIGN KEY (`user_id`) REFERENCES `appa_user` (`id`) ON DELETE CASCADE;
+
 
