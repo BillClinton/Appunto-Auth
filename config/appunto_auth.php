@@ -68,15 +68,3 @@ $config['hash_use_portable'] = false;
  */
 $config['db_table_prefix'] = '';
 
-/**
- * Dev Mode
- *
- * default: false
- *
- * Do not change this from false unless you are working on the interface's source
- * code.  If you do not have the source files in the correct directory the interface
- * will not work at all.  If you do have the source files in the correct location,
- * the interface will render very slowly, expecially if you are loading the ExtJS
- * library from an external address, so do not leave this set to true in production,
- */
-$config['appunto_dev_mode'] = false;
