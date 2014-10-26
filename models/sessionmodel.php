@@ -20,7 +20,7 @@ class Sessionmodel extends CI_Model
 	 *
 	 * @return	object
 	 */
-	function enumerate($offset,$rows,$sort,$dir,$filters)
+	function enumerate($offset,$rows=0,$sort,$dir,$filters)
 	{
         // define table here for count all results
         $this->db->from($this->table);
@@ -41,7 +41,7 @@ class Sessionmodel extends CI_Model
 		}
 
         // add limit and get results
-        $this->db->limit($rows,$offset);
+        if ($rows>0) $this->db->limit($rows,$offset);
 
 		$query = $this->db->get();
 
@@ -93,10 +93,10 @@ class Sessionmodel extends CI_Model
 	 * @param	array
 	 * @return	object
 	 */
-	function delete_record($id) 
+	function delete_record($data) 
 	{
         // get/set the id 
-        $this->db->where('session_id', $id);
+        $this->db->where('session_id', $data['id']);
 
         // execute query
 		$query = $this->db->delete($this->table);

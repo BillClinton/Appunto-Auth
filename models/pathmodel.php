@@ -21,7 +21,7 @@ class Pathmodel extends CI_Model
 	 *
 	 * @return	object
 	 */
-	function enumerate()
+	function enumerate($offset,$rows,$sort,$dir,$filters)
 	{
         $this->db->select('path.id, path.dir, path.full_path, path.ci_controller, path.ci_method, path.found, path.public_flag, path.note');
         $this->db->select('perm.id as permission_id, perm.name as permission_name, perm.internal_name as internal_name');

@@ -29,7 +29,7 @@ class Rolemodel extends CI_Model
         $this->db->from($this->table);
         $total = $this->db->count_all_results();  
 
-        $this->db->select('role.id, role.name,role.internal_name,role.description');
+        $this->db->select('role.id, role.name,role.description');
 
         if (!empty($sort) && !empty($dir)) 
         {
@@ -55,7 +55,7 @@ class Rolemodel extends CI_Model
 	function get($id)
 	{
 		// define query
-        $this->db->select('role.id, role.name, role.internal_name, role.description');
+        $this->db->select('role.id, role.name, role.description');
 
 		$this->db->where('role.id',$id);
 
