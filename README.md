@@ -10,6 +10,7 @@ __This is still in testing. __
  - Simple ACL with roles and permissions
  - Restrict/Allow access using controller/function paths
  - Hashes passwords in database using phpass library
+ - Multiple language support
 
 ## Installing
 
@@ -84,7 +85,7 @@ directory structure looks like this:
 ### Update Codeigniter configuration files
 
 #### Load the Appunto_auth.php library file in autoload.php
-Include a reference to the Appunto_auth library in CodeIgniter's config/autoload.php file.  Since CodeIgniter will be calling a method in this library in a post_controller_constructor hook, it will be needed in every controller so there is no reason to load it in your individual controllers rather than in the autoload file.  Example:
+Include a reference to the Appunto_auth library in CodeIgniter's config/autoload.php file.  CodeIgniter will be calling a method in this library in a post_controller_constructor hook, so it will be needed in every controller.  Therefore there is no reason to load it in your individual controllers rather than in the autoload file.  Example:
 
 ```
 $autoload['libraries'] = array('database', 'appunto_auth');
