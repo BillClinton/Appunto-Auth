@@ -39,7 +39,8 @@ or
 ### Copy additional directories
 
 In order to create its interface, Appunto Auth relies on controller, view and resource files that are not 
-distributed automatically by the Spark Manager.  These directories must be copied to your application's 
+distributed automatically by the Spark Manager.  These directories/files can be download from Github 
+at https://github.com/BillClinton/Appunto-Auth and must be copied to your application's 
 directory structure manually.
 
 #### Controllers Directory
