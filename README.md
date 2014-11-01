@@ -122,6 +122,6 @@ or if the user has the necessary permissions to access the _remap function.
 As noted in the CodeIgniter user guide: "If your controller contains a function named _remap(), it will always get called 
 regardless of what your URI contains. It overrides the normal behavior in which the URI determines which function is called, 
 allowing you to define your own function routing rules." Therefore AppuntoAuth assumes any call to a controller with a _remap
-function is a call to the _remap function and verifies the user's permissions for the _remap function. 
+function could be a call to the _remap function and verifies the user's permissions for the _remap function. 
 
 If additional access levels are desired in a controller with a _remap function, the developer must add them to the controller code. 
