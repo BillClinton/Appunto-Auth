@@ -6,7 +6,7 @@ __This is still in testing. __
 
 ## Features
  - Administrative interface using ExtJS
- - Authentication performed in post controller constructor rather than controller code
+ - Authentication performed in a hook rather than controller code
  - Simple ACL with roles and permissions
  - Restrict/Allow access using controller/function paths
  - Hashes passwords in database using phpass library
