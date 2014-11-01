@@ -108,4 +108,20 @@ $hook['post_controller_constructor'] = array(
 #### Enable CodeIgniter hooks
 Enable CodeIgniter hooks by setting __enable_hooks__ to TRUE in your application's config.php
 
-__Note__: If hooks are not enabled, no authentication will be performed
+
+### Additional Notes
+
+#### A note on _remap (Remapping Function Calls)
+
+CodeIgniter allows the developer to remap function calls as detailed here: https://ellislab.com/codeigniter/user-guide/general/controllers.html#remapping
+
+If a controller does contain a _remap function, AppuntoAuth's verification procedure will verify the user if the user has 
+necessary permissions to access a function in that controller that matches the user's request path (the normal procedure), 
+or if the user has the necessary permissions to access the _remap function.
+
+As noted in the CodeIgniter user guide: "If your controller contains a function named _remap(), it will always get called 
+regardless of what your URI contains. It overrides the normal behavior in which the URI determines which function is called, 
+allowing you to define your own function routing rules." Therefore AppuntoAuth assumes any call to a controller with a _remap
+function is a call to the _remap function and verifies the user's permissions for the _remap function. 
+
+If additional access levels are desired in a controller with a _remap function, the developer must add them to the controller code. 
