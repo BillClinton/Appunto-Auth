@@ -2,7 +2,7 @@
 
 An authentication spark for CodeIgniter with a Sencha Ext JS interface and a simple ACL.
 
-__This is still in testing. __
+public release coming soon!!!
 
 ## Features
  - Administrative interface using ExtJS
@@ -120,7 +120,7 @@ RewriteCond $1 !^(index\.php|images|robots\.txt)
 RewriteRule ^(.*)$ /index.php/$1 [L]
 
 ```
-add resources to the RewriteEngine line like this:
+add resources to the RewriteCond line like this:
 ``` 
 RewriteEngine on
 RewriteCond $1 !^(index\.php|images|robots\.txt|resources)
