@@ -111,6 +111,20 @@ Enable CodeIgniter hooks by setting __enable_hooks__ to TRUE in your application
 
 ### Additional Notes
 
+#### A note on removing index.php 
+
+You may remove the index.php from your URLs as described in the CodeIgniter user guide, but make sure you alter the rewrite rule to exclude the resources directory so the css and javascript files are not served by the index.php.  If you are using the example .htaccess from the user guide:
+```
+RewriteEngine on
+RewriteCond $1 !^(index\.php|images|robots\.txt)
+RewriteRule ^(.*)$ /index.php/$1 [L]
+
+add resources to the RewriteEngine line like this:
+``` 
+RewriteEngine on
+RewriteCond $1 !^(index\.php|images|robots\.txt|resources)
+RewriteRule ^(.*)$ /index.php/$1 [L]
+
 #### A note on _remap (Remapping Function Calls)
 
 CodeIgniter allows the developer to remap function calls as detailed here: https://ellislab.com/codeigniter/user-guide/general/controllers.html#remapping
