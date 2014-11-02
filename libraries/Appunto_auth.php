@@ -18,6 +18,7 @@ class Appunto_auth
 		$this->CI->load->library('session');
 		$this->CI->load->helper('url');
 		$this->CI->load->helper('language');
+		$this->CI->load->helper('appunto-auth_helper');
 
         $this->CI->load->model('pathmodel');
         $this->CI->load->model('usermodel');
@@ -88,8 +89,15 @@ class Appunto_auth
 
 		// Test validity of path
 		if (array_key_exists($ci_class,$paths) && 
-			array_key_exists($ci_method,$paths[$ci_class]))
+			(array_key_exists($ci_method,$paths[$ci_class]) ||
+			 array_key_exists('_remap',$paths[$ci_class])))
 		{
+			// if method does not exist, but _remap does, we must authenticate against _remap
+			if (!array_key_exists($ci_method,$paths[$ci_class]) && array_key_exists('_remap',$paths[$ci_class]))
+			{
+				$ci_method = '_remap';	
+			}
+
 			// Valid path - store it in a variable for brevity
 			$path = $paths[$ci_class][$ci_method];
 
@@ -149,6 +157,7 @@ class Appunto_auth
 		else
 		{
 			// Path is not in database
+			log_message('error', $this->CI->lang->line('appunto_invalid_path').': '.$ci_class.'/'.$ci_method);
 			$this->_sendError($this->CI->lang->line('appunto_invalid_path'));
 			die;
 		}
@@ -161,7 +170,7 @@ class Appunto_auth
 	 * @param string
 	 * @return	void
 	 */
-	public function sendError($msg, $login=false)
+	public function _sendError($msg, $login=false)
 	{
 		$ajax	= $this->_isAjaxRequest();
 
@@ -191,10 +200,10 @@ class Appunto_auth
 	 *
 	 * @return	array 
 	 */
-	public function getPaths()
+	public function _getPaths()
 	{
 		$path_array = array();
-        $result 	= $this->CI->pathmodel->enumerate();
+        $result 	= $this->CI->pathmodel->getAll();
 
 		if (isset($result['rows']) && is_array($result['rows'])) 
 		{
@@ -237,7 +246,7 @@ class Appunto_auth
 
 		if (gettype($permission)=='string')
 		{
-			return $this->CI->usermodel->verifyPermissionByName($user_id,$permission);
+			return $this->CI->usermodel->verifyPermissionByInternalName($user_id,$permission);
 		}
 		else if (gettype($permission)=='integer')
 		{
@@ -259,6 +268,25 @@ class Appunto_auth
 			return $this->CI->usermodel->get_user_permission_array($user_id);
 		}
 		return array();
+	}
+
+	/**
+	 * Return a Javascript snippet with items from the appunto_auth.php config file.
+	 *
+	 * @return	string
+	 */
+	public function jsConfigItems()
+	{
+		log_message('error','jsConfigItems');
+		$js = '<script type="text/javascript">';
+
+		$js .= 'var ci_base_url = "'.base_url().'",';
+		$js .= 'ci_site_url = "'.site_url().'",';
+		$js .= 'pw_regex = "'.$this->CI->config->item('password_regex_js','appunto_auth').'";';
+		$js .= '</script>';
+
+		log_message('error','/jsConfigItems');
+		return $js;
 	}
 
 	/**
@@ -292,6 +320,7 @@ class Appunto_auth
 	 * 
 	 * @return	array
 	*/
+/*
 	public function include_urls()
 	{
 
@@ -312,6 +341,7 @@ class Appunto_auth
 		}
 		return $urls;
 	}
+*/
 
 	/**
 	 * return a hash of the user password. 

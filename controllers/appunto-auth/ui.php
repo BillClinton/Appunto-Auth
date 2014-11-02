@@ -203,7 +203,11 @@ class Ui extends CI_Controller
 						$this->appunto_auth->controller_update($this->rolemodel);
 						break;	
 					case 'destroy':
-        				$this->form_validation->set_rules('id', 'Record ID', 'trim|required|numeric|xss_clean');
+						$rules =  'trim|required|numeric|xss_clean';
+						$rules .= '|callback__validate_role_in_use_by_user';
+						$rules .= '|callback__validate_role_in_use_by_permission';
+
+						$this->form_validation->set_rules('id', 'Record ID', $rules);
 
 						$this->appunto_auth->controller_destroy($this->rolemodel);
 						break;	
@@ -472,9 +476,7 @@ class Ui extends CI_Controller
 						{
 							$result = array (
 								'success'   => false,
-								'msg'       => 'This path cannot be deleted because it was found on your filesystem'.
-												' the last time paths were verified. <br><br>Please refresh paths if'.
-												' you believe you have received this message in error.'
+								'msg'       => $this->lang->line('appunto_path_found_in_filesystem')
 							);
 							$this->appunto_auth->sendResponse($result);
 						} 
@@ -536,7 +538,7 @@ class Ui extends CI_Controller
 	{ 
 		return array (
 			'success'   => false,
-			'msg'       => 'Your form had errors.  Please correct them and try again',
+			'msg'       => $this->lang->line('appunto_errors_encountered'),
 			'errors'    => validation_errors()
 		);
 	}
@@ -547,7 +549,7 @@ class Ui extends CI_Controller
 		{
 			$this->form_validation->set_message(
 				'_validate_permission_in_use_by_user', 
-				'This permission is currently assigned to one or more users and cannot be deleted.'
+				$this->lang->line('appunto_permission_in_use_by_user')
 			);
 			return false;
 		}
@@ -560,7 +562,7 @@ class Ui extends CI_Controller
 		{
 			$this->form_validation->set_message(
 				'_validate_permission_in_use_by_role', 
-				'This permission is currently assigned to one or more roles and cannot be deleted.'
+				$this->lang->line('appunto_permission_in_use_by_role')
 			);
 			return false;
 		}
@@ -573,7 +575,33 @@ class Ui extends CI_Controller
 		{
 			$this->form_validation->set_message(
 				'_validate_permission_in_use_by_path', 
-				'This permission is currently assigned to one or more paths and cannot be deleted.'
+				$this->lang->line('appunto_permission_in_use_by_path')
+			);
+			return false;
+		}
+		return true;
+	}
+
+    function _validate_role_in_use_by_user($id)
+	{
+		if ($this->rolemodel->in_use_by_user($id))
+		{
+			$this->form_validation->set_message(
+				'_validate_role_in_use_by_user', 
+				$this->lang->line('appunto_role_in_use_by_user')
+			);
+			return false;
+		}
+		return true;
+	}
+
+    function _validate_role_in_use_by_permission($id)
+	{
+		if ($this->rolemodel->in_use_by_permission($id))
+		{
+			$this->form_validation->set_message(
+				'_validate_role_in_use_by_permission', 
+				$this->lang->line('appunto_role_in_use_by_permission')
 			);
 			return false;
 		}

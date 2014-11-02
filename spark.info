@@ -7,17 +7,14 @@ name: appunto-auth
 
 # This is the current version of this spark. All sparks should be in
 #  x.x.x format. Validation will fail otherwise.
-version: 0.0.3
+version: 0.0.4
 
 # This is the version of CodeIgniter this spark is compatible up to. It should
 #  be in x.x.x format
-compatibility: 2.1.2
+compatibility: 2.2.0
 
 # There are no dependencies now, but when there are, uncomment below.
 #dependencies:
 #  some-spark-1: 1.0.0
 #  some-other-spark-2: 1.0.0
-
-
-This can be considered an alpha at this point. 
 
