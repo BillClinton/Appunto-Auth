@@ -1,0 +1,72 @@
+/* Tab icons */
+.transmit {
+	background-image:url(icons/transmit.png) !important;
+}
+.user {
+	background-image:url(icons/user.png) !important;
+}
+.shield {
+	background-image:url(icons/shield.png) !important;
+}
+.lock {
+	background-image:url(icons/lock.png) !important;
+}
+.map {
+	background-image:url(icons/map.png) !important;
+}
+.monitor {
+	background-image:url(icons/monitor.png) !important;
+}
+/* Users */
+.user-add {
+	background-image:url(icons/user_add.png) !important;
+}
+.user-edit {
+	background-image:url(icons/user_edit.png) !important;
+}
+.user-delete {
+	background-image:url(icons/user_delete.png) !important;
+}
+.key {
+	background-image:url(icons/key.png) !important;
+}
+/* Roles */
+.shield-add {
+	background-image:url(icons/shield_add.png) !important;
+}
+.shield-go {
+	background-image:url(icons/shield_go.png) !important;
+}
+.shield-delete {
+	background-image:url(icons/shield_delete.png) !important;
+}
+/* Permissions */
+.lock-add {
+	background-image:url(icons/lock_add.png) !important;
+}
+.lock-edit {
+	background-image:url(icons/lock_edit.png) !important;
+}
+.lock-delete {
+	background-image:url(icons/lock_delete.png) !important;
+}
+/* Sessions */
+.monitor-delete {
+	background-image:url(icons/monitor_delete.png) !important;
+}
+/* Misc */
+.exclamation {
+	background-image:url(icons/exclamation.png) !important;
+}
+.delete {
+	background-image:url(icons/delete.png) !important;
+}
+.accept {
+	background-image:url(icons/accept.png) !important;
+}
+.world-link {
+	background-image:url(icons/world_link.png) !important;
+}
+.page-delete {
+	background-image:url(icons/page_delete.png) !important;
+}

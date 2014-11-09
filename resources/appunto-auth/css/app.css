@@ -1,0 +1,144 @@
+.app-header {
+	background:#4F0101 url(logo/appunto_auth_logo_app_header.gif) 22px 6px no-repeat !important;
+}
+.controller-frame {
+	border-right: 1px solid #ccc;
+}
+.admin-logout-button {
+	color	: #fff;
+	font-size: 15px;
+	margin	: 12px 24px;
+}
+/* Status View Classes */
+.status-info {
+	margin: 30px 0 0 30px;
+	font-size: 15px;
+}
+.status-info td {
+	padding: 4px 12px;
+}
+.info-note {
+	background:url(icons/error.png) 3px 2px no-repeat !important;
+	padding-left: 24px !important;
+}
+/* User View Classes */
+.user-inactive div.x-grid-cell-inner {
+	background:url(icons/delete.png) 22px 3px no-repeat !important;
+	color: #777;
+}
+.user-active div.x-grid-cell-inner {
+	background:url(icons/accept.png) 22px 3px no-repeat !important;
+	color: #777;
+}
+.user-has-role div.x-grid-cell-inner {
+	background:url(icons/accept.png) 3px 3px no-repeat !important;
+}
+.has-permission div.x-grid-cell-inner {
+	background:url(icons/accept.png) 3px 3px no-repeat !important;
+}
+.user-has-permission div.x-grid-cell-inner {
+	background:url(icons/user.png) 22px 3px no-repeat !important;
+}
+.user-role-has-permission div.x-grid-cell-inner {
+	background:url(icons/shield.png) 22px 3px no-repeat !important;
+}
+.appunto-list .empty {
+	font-family: tahoma, arial, verdana, sans-serif;
+	font-size: 11px;
+	text-align: center; 
+	padding-top: 20px;
+}
+/* Controller View Classes */
+.controller-view .ci-controller {
+	border: 1px solid #ccc;
+	width: 94%;
+	float: left;
+	font-family: arial, helvetica, sans-serif;
+	font-size: 13px;
+	margin: 8px 12px;
+	padding: 1px;
+	background: #e2e2e2; /* Old browsers */
+	/* IE9 SVG, needs conditional override of 'filter' to 'none' */
+	background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2UyZTJlMiIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiNmZmZmZmYiIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
+	background: -moz-linear-gradient(top,  #e2e2e2 0%, #ffffff 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#e2e2e2), color-stop(100%,#ffffff)); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top,  #e2e2e2 0%,#ffffff 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top,  #e2e2e2 0%,#ffffff 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(top,  #e2e2e2 0%,#ffffff 100%); /* IE10+ */
+	background: linear-gradient(to bottom,  #e2e2e2 0%,#ffffff 100%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e2e2e2', endColorstr='#ffffff',GradientType=0 ); /* IE6-8 */
+}
+.controller-selected{
+}
+.controller-view .ci-controller div.selection{
+	background: url(images/ci_unselected.gif) no-repeat;
+	margin-right:6px;
+	width: 54px;
+	height: 72px;
+	display: inline;
+	float: left;
+}
+.controller-view .controller-selected div.selection {
+	background: url(images/ci_selected.gif);
+	width: 54px;
+	height: 72px;
+	display: inline;
+	float: left;
+}
+.controller-view .ci-controller .controller-info {
+	display: inline;
+	overflow: hidden;
+	vertical-align: top;
+} 
+.controller-view .ci-controller .method-info {
+	padding: 6px 0 10px 10px;
+	display: inline;
+}
+.controller-view .ci-controller .method-info {
+	float: right;
+	width: 108px;
+	border-left: 1px dotted #ccc;
+}
+.controller-view .ci-controller .method-info table td {
+	padding-right: 4px;
+}
+.controller-rollover{
+	border: 1px solid #aaa !important;
+	padding: 1px !important;
+}
+.controller-view .ci-controller .controller-name, 
+.controller-view .ci-controller .controller-dir {
+	display: block;
+}
+.controller-view .ci-controller .controller-name {
+	font-weight: bold;
+	margin-top: 6px;
+}
+/* Path View Classes */
+.path-not-found div.x-grid-cell-inner {
+	background:url(icons/error.png) 3px 2px no-repeat !important;
+}
+.path-public div.x-grid-cell-inner {
+	background: url(icons/world_link.png) 2px 1px no-repeat !important;
+	padding-left: 24px;
+}
+.path-private div.x-grid-cell-inner {
+	background: url(icons/page_delete.png) 2px 1px no-repeat !important;
+	padding-left: 24px;
+}
+.menu-title {
+	display: block;
+	padding: 4px;
+	width: 100%;
+	color: #fff;
+	background-color: #4F0101;
+}
+/* Role View Classes */
+.permission-in-role div.x-grid-cell-inner {
+	background:url(icons/accept.png) 3px 2px no-repeat !important;
+}
+/* toolbar drop-down button */
+.view-selection-button span {
+	font-size: 11px !important;
+	font-weight: normal !important;
+}

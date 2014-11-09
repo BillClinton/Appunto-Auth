@@ -1,0 +1,92 @@
+
+/* Login Box */
+.login-form-box {
+	background: #4F0101 url(logo/appunto_auth_logo_small.png) 24px 18px no-repeat;
+	-moz-border-radius: 16px;
+	-webkit-border-radius: 16px;
+	border-radius: 16px;
+	padding: 48px 0 16px; 
+	margin: 0 auto; 
+	margin-top: 100px;
+	width: 360px; 
+	font-size: 16px;
+  	font-family: helvetica, tahoma, arial, verdana, sans-serif;
+    color: #fff;
+}
+.login-form-box label {
+	display: inline-block; 
+    margin: 6px 28px;
+	width: 300px;
+}
+.login-form-box form #username,
+.login-form-box form #password {
+	float: right;
+	width: 200px;
+	padding: 2px 6px;
+	margin: 1px 0 -1px -1px;
+	border-color: #99BCE8;
+	border-width: 1px;
+	-moz-border-radius: 8px;
+	-webkit-border-radius: 8px;
+	border-radius: 8px;
+}
+.login-form-box  .login-form-errors {
+	padding-bottom: 12px;
+}
+.login-form-box  .login-form-errors p {
+	font-size: 12px;
+	text-align: left;
+	background: url(icons/error.png) 2px 2px no-repeat;
+	color: #fff;
+	padding-top: 3px;
+	padding-left: 24px;
+	margin: 10px 0 10px 48px;
+}
+.login-form-box  .login-form-auth-message {
+	font-size: 13px;
+	width: 280px;
+	margin: 6px 32px 12px;
+	text-align: left;
+	clear: both;
+}
+.login-form-box form #login-button{
+	margin: 6px 0 20px 262px;
+} 
+.login-form-box form #logout-button{
+	margin: 6px 0 20px 140px;
+} 
+.login-form-box .site_name {
+	visibility: hidden;
+} 
+/* Login Buttons */
+.login-form-box form #login-button, 
+.login-form-box form #logout-button {
+	margin-top: 12px;
+	-moz-box-shadow:inset 0px 1px 0px 0px #cccccc;
+	-webkit-box-shadow:inset 0px 1px 0px 0px #ffffff;
+	box-shadow:inset 0px 1px 0px 0px #ffffff;
+	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #cccccc), color-stop(1, #dfdfdf) );
+	background:-moz-linear-gradient( center top, #cccccc 5%, #dfdfdf 100% );
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ededed', endColorstr='#dfdfdf');
+	background-color:#ededed;
+	-moz-border-radius:16px;
+	-webkit-border-radius:16px;
+	border-radius:16px;
+	border:1px solid #cccccc;
+	display:inline-block;
+	color:#333333;
+	font-weight:normal;
+	padding:2px 12px;
+	text-decoration:none;
+	text-shadow:1px 1px 0px #ffffff;
+}
+.login-form-box form #login-button:hover {
+	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #ededed), color-stop(1, #dfdfdf) );
+	background:-moz-linear-gradient( center top, #ededed 5%, #dfdfdf 100% );
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ededed', endColorstr='#dfdfdf');
+	background-color:#ededed;
+}
+.login-form-box form #login-button:active {
+	position:relative;
+	top:1px;
+}
