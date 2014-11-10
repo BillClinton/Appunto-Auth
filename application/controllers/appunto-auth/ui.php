@@ -562,9 +562,11 @@ class Ui extends CI_Controller
 					'info_note'	=> (!$hooks_enabled ? 'No authentication is being performed!' : '')
 				));
 
+				$sessions_using_database = $this->config->item('sess_use_database');
 				array_push($info_array, array (
 					'info_item'	=> 'Sessions using database', 
-					'info_val' 	=> $this->config->item('sess_use_database')
+					'info_val' 	=> $sessions_using_database,
+					'info_note'	=> (!$sessions_using_database? 'Consider setting this value to true' : '')
 				));
 
 				$sessions_encrypted = $this->config->item('sess_encrypt_cookie');
