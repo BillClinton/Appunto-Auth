@@ -27,7 +27,7 @@ var Language =
 		tab_status		: 'Status',
 		tab_users		: 'Users',
 		tab_user_roles	: 'User Roles',
-		tab_permissions	: 'Permissions yo',
+		tab_permissions	: 'Permissions',
 		tab_paths		: 'Paths',
 		tab_sessions	: 'Sessions',
 
