@@ -411,7 +411,7 @@ class Ui extends CI_Controller
 							$msg .= "<br>";
 							$msg .= '<b>'.implode(",", $failed).'</b>';
 							$msg .= "<br>";
-							$msg .= $this->lang->line('appunto_no_homonymous_controllers'),
+							$msg .= $this->lang->line('appunto_no_homonymous_controllers');
 							$result = array (
 								'success'   => false,
 								'msg'       => $msg
