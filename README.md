@@ -2,7 +2,7 @@
 
 An authentication library for CodeIgniter with a Sencha Ext JS interface and a simple ACL.
 
-public release November 10th, 2014
+public release November 12th, 2014
 
 ## Features
  - Administrative interface using ExtJS
