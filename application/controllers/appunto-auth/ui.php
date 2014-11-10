@@ -411,7 +411,7 @@ class Ui extends CI_Controller
 							$msg .= "<br>";
 							$msg .= '<b>'.implode(",", $failed).'</b>';
 							$msg .= "<br>";
-							$msg .= 'Appunto Auth does not support controller classes with the same name in different directories.';
+							$msg .= $this->lang->line('appunto_no_homonymous_controllers'),
 							$result = array (
 								'success'   => false,
 								'msg'       => $msg
@@ -559,29 +559,30 @@ class Ui extends CI_Controller
 				array_push($info_array, array (
 					'info_item'	=> 'Hooks enabled', 
 					'info_val' 	=> $hooks_enabled,
-					'info_note'	=> (!$hooks_enabled ? 'No authentication is being performed!' : '')
+					'info_note'	=> (!$hooks_enabled ? $this->lang->line('appunto_no_hook') : '')
 				));
 
 				$sessions_using_database = $this->config->item('sess_use_database');
 				array_push($info_array, array (
-					'info_item'	=> 'Sessions using database', 
+					'info_item'	=> $this->lang->line('appunto_db_sessions'),
 					'info_val' 	=> $sessions_using_database,
-					'info_note'	=> (!$sessions_using_database? 'Consider setting this value to true' : '')
+					'info_note'	=> (!$sessions_using_database? $this->lang->line('appunto_set_true') : '')
 				));
 
 				$sessions_encrypted = $this->config->item('sess_encrypt_cookie');
 				array_push($info_array, array (
-					'info_item'	=> 'Sessions using encrypted cookies', 
+					'info_item'	=> $this->lang->line('appunto_encrypted_cookies'),
 					'info_val' 	=> $sessions_encrypted,
-					'info_note'	=> (!$sessions_encrypted ? 'Consider setting this value to true' : '')
+					'info_note'	=> (!$sessions_encrypted ? $this->lang->line('appunto_set_true') : '')
 				));
 
 				$allow_private_without_permission = $this->config->item('allow_private_without_permission', 'appunto-auth/appunto_auth');
 				array_push($info_array, array (
-					'info_item'	=> 'Private Paths without permissions viewable', 
+					'info_item'	=> $this->lang->line('appunto_private_sans_perm'), 
 					'info_val' 	=> $allow_private_without_permission,
-					'info_note'	=> ($allow_private_without_permission? 'Private paths without defined permissions viewable to any logged in user' : '')
+					'info_note'	=> ($allow_private_without_permission? $this->lang->line('appunto_private_sans_perm_warn') : '')
 				));
+
 				$result = array (
 					'success'   => true,
 					'rows'      => $info_array
