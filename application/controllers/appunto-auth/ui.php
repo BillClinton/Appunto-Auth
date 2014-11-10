@@ -365,7 +365,6 @@ class Ui extends CI_Controller
 							});
 							foreach ($controller_files as $filename)
 							{
-								log_message('error', 'Verifying Paths:'.$filename);
 								$this_dir = ($controller_dir == '.') ? $dir : $dir.$controller_dir.'/';
 
 								$classname = ucfirst(substr($filename, 0, strrpos($filename, '.')));
@@ -373,33 +372,26 @@ class Ui extends CI_Controller
 								if (!class_exists($classname)||($classname == 'Ui'))
 								{
 
-											log_message('error', 'requiring');
 									if ($filename != 'ui.php') require_once($this_dir.$filename);
-											log_message('error', 'required');
 
 									$classname = ucfirst(substr($filename, 0, strrpos($filename, '.')));
-											log_message('error', 'instantiate: '.$classname);
 									$controller = new $classname();
-											log_message('error', 'instantiated');
 									$methods = get_class_methods($controller);
 
 									foreach ($methods as $method)
 									{
 										
 										$full_path = ($controller_dir=='.') ? $filename : $controller_dir.'/'.$filename;
-										log_message('error', '$full_path:'.$full_path);
 
 										if ($this->pathmodel->path_exists($controller_dir,$classname,$method))
 										{
-											log_message('error', 'path_exists');
 											$this->pathmodel->mark_found($controller_dir,$classname,$method);
 										}
 										else
 										{
-											log_message('error', '!path_exists');
 											if ((substr($method,0,1)!='_' && $method!='get_instance') || $method=='_remap') {
 												$this->pathmodel->create_record($controller_dir,$filename,$full_path,$classname,$method,1);
-												$newPaths[$new_cnt] = $fullpath;
+												$newPaths[$new_cnt] = $full_path;
 												$new_cnt++;
 											}
 										}
@@ -432,7 +424,7 @@ class Ui extends CI_Controller
 							{
 								$msg = $new_cnt.' new path'.($new_cnt > 1 ? "s":"").' found.';
 								$msg .= '<ul>';
-								foreach ($new_paths as $path)
+								foreach ($newPaths as $path)
 								{
 									$msg .= '<li>'.$path.'</li>';
 								}
