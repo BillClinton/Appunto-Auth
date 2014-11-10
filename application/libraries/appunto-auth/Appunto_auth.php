@@ -293,7 +293,7 @@ class Appunto_auth
 		$js = '<script type="text/javascript">';
 
 		$js .= 'var ci_base_url = "'.base_url().'",';
-		$js .= 'ci_site_url = "'.site_url().'/",';
+		$js .= 'ci_site_url = "'.rtrim(site_url(), "/").'/",';
 		$js .= 'ci_login_url = "'.$this->CI->config->item('login_url','appunto-auth/appunto_auth').'",';
 		$js .= 'ci_logout_url = "'.$this->CI->config->item('logout_url','appunto-auth/appunto_auth').'",';
 		$js .= 'admin_keepalive='.$this->CI->config->item('admin_keepalive','appunto-auth/appunto_auth').',';

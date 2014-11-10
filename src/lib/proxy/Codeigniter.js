@@ -4,7 +4,7 @@
  * An extension of {@link Ext.data.proxy.Ajax} with some useful modifications for use
  * with the CodeIgniter PHP web application framework.
  *
- * @cfg {String} [siteurl='/auth/'] Application baseurl. Use a trailing slash.
+ * @cfg {String} [siteurl='/auth/'] Application siteurl. Use a trailing slash.
  * @cfg {boolean} [index_php=true] true to include the index.php in codeigniter URLs
  */
 Ext.define('AppuntoAuth.lib.proxy.Codeigniter', {
@@ -25,12 +25,19 @@ Ext.define('AppuntoAuth.lib.proxy.Codeigniter', {
 	 *
 	 * <!-- set base url, display type -->
 	 * <script type="text/javascript">
-	 * 		var ci_site_url = "<?php echo(site_url()) ?>",
+	 * 		var ci_site_url = "<?php echo('rtrim(site_url(), "/").'/"') ?>", 
 	 * 			ci_base_url = "<?php echo(base_url()) ?>";
 	 * </script>
 	 *
+	 * stripping the trailing slash, then adding a trailing slash on site_url
+	 * ensures that we don't get a double slash or a missing trailing slash when
+	 * removing or using index.php
+	 * 
+	 * (Actually, base_url is no longer necessary for proxy.Codeigniter
+	 * but you might find it useful to set it anyway for other things like
+	 * links to js and css files)
+	 *
 	 */ 
-	baseurl 	: ci_base_url, 	// has a trailing slash
 	siteurl		: ci_site_url, 	// has a trailing slash
 
 	login_url	: ci_login_url,
