@@ -24,6 +24,8 @@ User Guide located at http://codeigniter.com/user_guide/libraries/sessions.html
  - create the ci_sessions database table
  - enable the database option in your config.php by setting __sess_use_database__ to TRUE in CodeIgniter's config.php
 
+video walkthrough of this step here: https://www.youtube.com/watch?v=GlQSNBO2Eg4
+
 
 ### Download And unzip Appunto-Auth
 
