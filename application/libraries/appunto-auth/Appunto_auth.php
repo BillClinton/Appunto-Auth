@@ -12,20 +12,18 @@ class Appunto_auth
     {
 		$this->CI =& get_instance();
 
-		$this->CI->load->config('appunto_auth',true,false); // true to avoid naming collisions, false to not suppress errors
+		$this->CI->load->config('appunto-auth/appunto_auth',true,false); // true to avoid naming collisions, false to not suppress errors
 		$this->CI->lang->load('appunto_auth');
 
+		$this->CI->load->database();
 		$this->CI->load->library('session');
 		$this->CI->load->helper('url');
 		$this->CI->load->helper('language');
-		$this->CI->load->helper('appunto-auth_helper');
+		$this->CI->load->helper('appunto-auth/appunto-auth_helper');
 
-        $this->CI->load->model('pathmodel');
-        $this->CI->load->model('usermodel');
-
-		$this->cache_paths = $this->CI->config->item('cache_paths', 'appunto_auth');
-		$this->path_cache_duration = $this->CI->config->item('path_cache_duration', 'appunto_auth');
-
+        $this->CI->load->model('appunto-auth/pathmodel');
+        $this->CI->load->model('appunto-auth/usermodel');
+		log_message('error','done constructor');
     }
 
 	/**
@@ -84,8 +82,16 @@ class Appunto_auth
 	public function require_authentication_hook() 
 	{
 		$paths 		= $this->_getPaths();
+		$ci_dir		= $this->CI->router->fetch_directory();
 		$ci_class	= $this->CI->router->fetch_class();
 		$ci_method	= $this->CI->router->fetch_method();
+
+		log_message('error','path: '.$ci_dir.$ci_class.'/'.$ci_method);
+
+		if ($this->_isAjaxRequest()==false) 
+		{
+			$this->CI->session->set_userdata('last_page',$ci_dir.$ci_class.'/'.$ci_method);
+		}
 
 		// Test validity of path
 		if (array_key_exists($ci_class,$paths) && 
@@ -100,6 +106,7 @@ class Appunto_auth
 
 			// Valid path - store it in a variable for brevity
 			$path = $paths[$ci_class][$ci_method];
+			log_message('error','path valid');
 
 			//  Test if path is public
 			if ($path['public_flag'] == 1)
@@ -118,7 +125,7 @@ class Appunto_auth
 						// Path has a required permission - check if user has this permission
 						//$user_permissions = $this->_getPermissions();
 						//if (in_array($path['perm'],$user_permissions,true))
-						if ($this->userHasPermission($path['perm']))
+						if ($this->_userHasPermissionId($path['perm']))
 						{
 							// User has Permission - return
 							return;
@@ -133,7 +140,7 @@ class Appunto_auth
 					else
 					{
 						// Path has no required permission - check if config allows private without permission
-						if ($this->CI->config->item('allow_private_without_permission','appunto_auth'))
+						if ($this->CI->config->item('allow_private_without_permission','appunto-auth/appunto_auth'))
 						{
 							// Paths without permissions are viewable by logged-in users
 							return;
@@ -178,16 +185,15 @@ class Appunto_auth
 		{
 			$result = array (
 				'success'   => false,
+				'err'   	=> 'LOGIN',
 				'msg'       => $msg
 			);
 			$this->sendResponse($result);
 		}
 		else
 		{
-        	$this->CI->load->helper('appunto-auth');
-
 			$view = $login ? 'appunto-auth/login' : 'appunto-auth/error';
-			$data['site_name'] = $this->CI->config->item('site_name', 'appunto_auth');
+			$data['site_name'] = $this->CI->config->item('site_name', 'appunto-auth/appunto_auth');
 			$data['auth_message'] = $msg;
 
 			echo($this->CI->load->view($view,$data,true));
@@ -242,19 +248,26 @@ class Appunto_auth
 	 */
 	public function userHasPermission($permission)
 	{
+		if (!$this->logged_in()) return false;  // user can't have the permission if not logged in 
+
 		$user_id = $this->CI->session->userdata('user_id');
 
-		if (gettype($permission)=='string')
-		{
-			return $this->CI->usermodel->verifyPermissionByInternalName($user_id,$permission);
-		}
-		else if (gettype($permission)=='integer')
-		{
-			return $this->CI->usermodel->verifyPermissionById($user_id,$permission);
-		}
+		return $this->CI->usermodel->verifyPermissionByInternalName($user_id,$permission);
 		return false;
 	}
 
+	/**
+	 * check if user has permission.
+	 *
+	 * @return	boolean
+	 */
+	private function _userHasPermissionId($permission)
+	{
+		$user_id = $this->CI->session->userdata('user_id');
+
+		return $this->CI->usermodel->verifyPermissionById($user_id,$permission);
+		return false;
+	}
 	/**
 	 * Return an array of user permissions.
 	 *
@@ -277,15 +290,17 @@ class Appunto_auth
 	 */
 	public function jsConfigItems()
 	{
-		log_message('error','jsConfigItems');
 		$js = '<script type="text/javascript">';
 
 		$js .= 'var ci_base_url = "'.base_url().'",';
-		$js .= 'ci_site_url = "'.site_url().'",';
-		$js .= 'pw_regex = "'.$this->CI->config->item('password_regex_js','appunto_auth').'";';
+		$js .= 'ci_site_url = "'.site_url().'/",';
+		$js .= 'ci_login_url = "'.$this->CI->config->item('login_url','appunto-auth/appunto_auth').'",';
+		$js .= 'ci_logout_url = "'.$this->CI->config->item('logout_url','appunto-auth/appunto_auth').'",';
+		$js .= 'admin_keepalive='.$this->CI->config->item('admin_keepalive','appunto-auth/appunto_auth').',';
+		$js .= 'pw_regex = "'.$this->CI->config->item('password_regex_js','appunto-auth/appunto_auth').'",';
+		$js .= 'datetime_format= "'.$this->CI->config->item('datetime_format','appunto-auth/appunto_auth').'";';
 		$js .= '</script>';
 
-		log_message('error','/jsConfigItems');
 		return $js;
 	}
 
@@ -352,8 +367,8 @@ class Appunto_auth
 	public function hashPassword($password) 
 	{
 		$hasher = new PasswordHash(
-				$this->CI->config->item('hash_logarithm', 'appunto_auth'),
-				$this->CI->config->item('hash_use_portable', 'appunto_auth')
+				$this->CI->config->item('hash_logarithm', 'appunto-auth/appunto_auth'),
+				$this->CI->config->item('hash_use_portable', 'appunto-auth/appunto_auth')
 		);
 		return $hasher->HashPassword($password);
 	}
@@ -368,8 +383,8 @@ class Appunto_auth
 	public function checkPassword($password,$hash) 
 	{
 		$hasher = new PasswordHash(
-				$this->CI->config->item('hash_logarithm', 'appunto_auth'),
-				$this->CI->config->item('hash_use_portable', 'appunto_auth')
+				$this->CI->config->item('hash_logarithm', 'appunto-auth/appunto_auth'),
+				$this->CI->config->item('hash_use_portable', 'appunto-auth/appunto_auth')
 		);
 		return $hasher->checkPassword($password,$hash);
 	}
@@ -476,6 +491,7 @@ class Appunto_auth
         $limit  = $this->CI->input->get_post('limit', TRUE);
         $sort   = $this->CI->input->get_post('sort', TRUE);
         $filter = $this->CI->input->get_post('filter', TRUE);
+        $search	= $this->CI->input->get_post('search', TRUE);
 
         $property = null;
         $direction = null;
@@ -491,7 +507,7 @@ class Appunto_auth
 
 		$filters = json_decode($filter);
 
-        $result = $model->enumerate($start,$limit,$property,$direction,$filters);
+        $result = $model->enumerate($start,$limit,$property,$direction,$filters,$search);
 
         $this->sendResponse($result);
 	}
@@ -502,7 +518,7 @@ class Appunto_auth
         {
             $result = array (
                 'success'   => false,
-                'msg'       => 'Your form had errors.  Please correct them and try again',
+                'msg'       => $this->CI->lang->line('appunto_errors_encountered'),
                 'errors'    => validation_errors(),
                 'info'    	=> gettype (validation_errors()),
                 'data'    	=> print_r($this->CI->input->post(NULL, TRUE),true)
@@ -525,7 +541,7 @@ class Appunto_auth
         {
             $result = array (
                 'success'   => false,
-                'msg'       => 'Your form had errors.  Please correct them and try again',
+                'msg'       => $this->CI->lang->line('appunto_errors_encountered'),
                 'errors'    => validation_errors(),
             );
         } 
@@ -558,7 +574,7 @@ class Appunto_auth
         {
             $result = array (
                 'success'   => false,
-                'msg'       => 'Your form had errors.  Please correct them and try again',
+                'msg'       => $this->CI->lang->line('appunto_errors_encountered'),
                 'errors'    => validation_errors(),
                 'info'    	=> gettype (validation_errors()),
                 'data'    	=> print_r($this->CI->input->post(NULL, TRUE),true)
