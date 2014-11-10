@@ -128,6 +128,7 @@ var Language =
 		session_username		: 'usu&aacute;rio',
 		session_last_activity	: '&Uacute;ltima Atividade',
 		session_ip_address		: 'Endere&ccedil;o de IP',
+		session_last_page		: '&Uacute;ltima P&aacute;gina',
 		session_user_agent		: 'User Agent', // User Agent string returned by usu&aacute;rio's browser
 		session_view_all		: 'Mostrar todas as sess&otilde;es', 
 		session_view_logged_in	: 'Mostrar apenas as sess&otilde;es ativas', 

@@ -159,6 +159,7 @@ Ext.define('AppuntoAuth.lib.lang.Default', {
 		session_last_activity	: 'Last Activity',
 		session_last_page		: 'Last Page',
 		session_ip_address		: 'IP Address',
+		session_last_page		: 'Last Page',
 		session_user_agent		: 'User Agent', // User-Agent string returned by user's browser
 		session_view_all		: 'Show all sessions',
 		session_view_logged_in	: 'Show only logged in sessions',
