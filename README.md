@@ -27,7 +27,7 @@ User Guide located at http://codeigniter.com/user_guide/libraries/sessions.html
 video walkthrough of this step here: https://www.youtube.com/watch?v=GlQSNBO2Eg4
 
 
-### Download And unzip Appunto-Auth
+### Download Appunto-Auth
 
 The latest version of Appunto-Auth is available at http://www.appunto.net/appunto-auth/download
 
