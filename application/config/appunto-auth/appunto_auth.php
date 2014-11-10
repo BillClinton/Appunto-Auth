@@ -31,7 +31,7 @@ $config['appunto_auth_theme'] = 'appunto-auth';
  * If false, paths marked as private that don't have a permission set will be essentially
  * inaccessible until the admin assigns a permission to that path.   
  */
-$config['allow_private_without_permission'] = true;
+$config['allow_private_without_permission'] = false;
 
 /**
  * PHPPass Settings
