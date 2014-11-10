@@ -1,8 +1,8 @@
 # Appunto-Auth
 
-An authentication spark for CodeIgniter with a Sencha Ext JS interface and a simple ACL.
+An authentication library for CodeIgniter with a Sencha Ext JS interface and a simple ACL.
 
-public release coming soon!!!
+public release November 10th, 2014
 
 ## Features
  - Administrative interface using ExtJS
@@ -20,67 +20,48 @@ Enable CodeIgniter to use the database to store sessions by following the instru
 in the _Saving Session Data to a Database_ section of the _Session Class_ page in the CodeIgniter
 User Guide located at http://codeigniter.com/user_guide/libraries/sessions.html
 
+ - set an __encryption_key__ in CodeIgniter's config/config.php
  - create the ci_sessions database table
- - enable the database option in your config.php by setting __sess_use_database__ to TRUE in your config.php
-
-### Get The Spark
-
-Appunto Auth is available via Sparks.  For information on installing sparks, go here: http://getsparks.org/install
-
-If you have the Spark Manager installed, type:
-
-```php tools/spark install appunto-auth``` (Linux or OSX)
-
-or
-
-```php tools\spark install appunto-auth``` (Windows)
+ - enable the database option in your config.php by setting __sess_use_database__ to TRUE in CodeIgniter's config.php
 
 
-### Copy additional directories
+### Download And unzip Appunto-Auth
 
-In order to create its interface, Appunto Auth relies on controller, view and resource files that are not 
-distributed automatically by the Spark Manager.  These directories/files can be download from Github 
-at https://github.com/BillClinton/Appunto-Auth and must be copied to your application's 
-directory structure manually.
+The latest version of Appunto-Auth is available at http://www.appunto.net/appunto-auth/download
 
-#### Controllers Directory
-Copy the controllers/appunto-auth directory to your application's controller directory so your application's
-directory structure looks like this: 
-```
-   .
-   |-application
-   |---controllers
-   |-----appunto-auth
-```
-#### Views Directory
-Copy the views/appunto-auth directory to your application's views directory so your application's
-directory structure looks like this: 
-```
-   .
-   |-application
-   |---views
-   |-----appunto-auth
-```
+You can download the most recent working build at https://github.com/BillClinton/Appunto-Auth
 
-#### Language Directory
-Copy the appunto_auth_lang.php file from the language/english directory to your application's language directory so your application's
-directory structure looks like this: 
-```
-   .
-   |-application
-   |---language
-   |-----english
-   appunto-auth_lang.php
-```
-
-#### Resources Directory
-Copy the resources directory to your application directory so your application's
-directory structure looks like this: 
+The Appunto-Auth download contains 4 folders:
 ```
    .
    |-application
    |-resources
-     index.php
+   |-db
+   |-src
+```
+
+#### Copy the application and resources folders to your application folder
+
+The application folder contains controllers, models, views, helpers, libraries, and config folders.  
+While it is always a good idea to back up your application, the files contained in these folders are in 
+appunto-auth subfolders and should not overwrite anything in your existing CodeIgniter folder structure.  
+
+The files in the language folder are not in an appunto-auth subfolder, but unless you already have a file 
+named appunto_auth_lang.php in one of your language folders (unlikely), you don't have to worry about any 
+language file overwriting
+
+The files in the resources folder contain javascript, css and images needed by the Appunto-Auth admin interface.
+
+Copy the downloaded __applications__ and __resources__ folders into your main Codeigniter folder (the folder that
+contains the system and application folder) 
+
+Your CodeIgniter folder should now look like this:
+```
+   .
+   |-application
+   |-resources
+   |-system
+   |-user_guide (if you haven't deleted it yet)
 ```
 
 ### Update Codeigniter configuration files
@@ -113,7 +94,7 @@ Enable CodeIgniter hooks by setting __enable_hooks__ to TRUE in your application
 
 #### A note on removing index.php 
 
-You may remove the index.php from your URLs as described in the CodeIgniter user guide, but make sure you alter the rewrite rule to exclude the resources directory so the css and javascript files are not served by the index.php.  If you are using the example .htaccess from the user guide:
+You may remove the index.php from your URLs as described in the CodeIgniter user guide, but make sure you alter the rewrite rule to exclude the resources folder so the css and javascript files are not served by the index.php.  If you are using the example .htaccess from the user guide:
 ```
 RewriteEngine on
 RewriteCond $1 !^(index\.php|images|robots\.txt)
