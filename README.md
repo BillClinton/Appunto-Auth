@@ -72,7 +72,7 @@ Your CodeIgniter folder should now look like this:
 Include a reference to the Appunto_auth library in CodeIgniter's config/autoload.php file.  CodeIgniter will be calling a method in this library in a post_controller_constructor hook, so it will be needed in every controller.  Therefore there is no reason to load it in your individual controllers rather than in the autoload file.  Example:
 
 ```
-$autoload['libraries'] = array('database', 'appunto_auth');
+$autoload['libraries'] = array('appunto-auth/appunto_auth');
 ```
 
 #### Include Reference to Hook in hooks.php
@@ -83,7 +83,7 @@ library file.  A reference to this hook must be included in CodeIgniter's config
 $hook['post_controller_constructor'] = array(
 	'class'    => 'Appunto_auth',
 	'function' => 'require_authentication_hook',
-	'filename' => 'Appunto_auth.php',
+	'filename' => 'appunto-auth/Appunto_auth.php',
 	'filepath' => 'libraries',
 	'params'   => array()
 );
