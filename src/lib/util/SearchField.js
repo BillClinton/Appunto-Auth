@@ -4,7 +4,7 @@
 Ext.define('AppuntoAuth.lib.util.SearchField', {
     extend: 'Ext.form.field.Text',
 
-    alias: 'widget.searchfield',
+    alias: 'widget.appunto-searchfield',
 
     triggers: {
         clear: {
