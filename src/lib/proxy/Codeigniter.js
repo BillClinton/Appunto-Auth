@@ -73,6 +73,25 @@ Ext.define('AppuntoAuth.lib.proxy.Codeigniter', {
 		server_error_undefined	: 'Undefined Server Error'
 	},
 
+	// Common http status codes to provide more information when codeigniter does not send an error
+	httpError: {
+		400	: 'Bad Request',
+		401	: 'Unauthorized',
+		403	: 'Forbidden',
+		404	: 'Not Found',
+		405	: 'Method Not Allowed',
+		408	: 'Request Timeout',
+		414 : 'Request-URI Too Long',
+		500 : 'Internal Server Error',
+		501 : 'Not Implemented',
+		502 : 'Bad Gateway',
+		503 : 'Service Unavailable',
+		504 : 'Gateway Timeout',
+		505 : 'HTTP Version Not Supported',
+		509 : 'Bandwidth Limit Exceeded',
+		511 : 'Network Authentication Required' 
+	},
+
     /**
      * Set the 'ci_method' for this url which corresponds to a codeigniter controller function taking into account the order of priority,
      * - The request
@@ -130,8 +149,15 @@ Ext.define('AppuntoAuth.lib.proxy.Codeigniter', {
                 {
 					// response could not be decoded, check if it is a CodeIgniter message
 					error = this.getCodeigniterError(request);
+		
+					// response could not be decoded, check if it there is a defined http error code
+					if (request.status != undefined && this.httpError[request.status] != undefined)
+					{
+						error = '<p style="width:200px"><b>'+request.status+'</b></p><p>'+this.httpError[request.status]+'</p>';
+						this.alertError(this.getErrorMsg('server_error_title'),error);
+					}
 
-					// If not a CodeIgniter error, then report json decoding error
+					// If not a CodeIgniter error and no status code, then report json decoding error
 					if (error == null) error = this.getErrorMsg('server_error_decode')
 
 					this.alertError(this.getErrorMsg('server_error_title'),error);
