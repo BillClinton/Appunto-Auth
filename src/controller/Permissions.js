@@ -96,7 +96,11 @@ Ext.define('AppuntoAuth.controller.Permissions', {
 
     addPermission: function(source,e) 
     {
-		Ext.widget('appa_permission_add').showAt(e.getXY());
+		var	win		= Ext.widget('appa_permission_add'),
+			form	= win.down('form');
+
+		form.getForm().findField('name').focus(false,100); 
+		win.showAt(e.getXY());
 	},
 
     createPermission: function(button) 
@@ -125,11 +129,12 @@ Ext.define('AppuntoAuth.controller.Permissions', {
     editPermission: function(menuitem,e) 
     {
         var rec     = menuitem.up('menu').getRecord(),
-			view 	= Ext.widget('appa_permission_edit'),
-			form	= view.down('form');
+			win		= Ext.widget('appa_permission_edit'),
+			form	= win.down('form');
 
-			form.loadRecord(rec);
-			view.showAt(e.getXY());
+		form.loadRecord(rec);
+		form.getForm().findField('name').focus(false,100); 
+		win.showAt(e.getXY());
 	},
 
     updatePermission: function(button) 

@@ -158,7 +158,11 @@ Ext.define('AppuntoAuth.controller.Roles', {
 
     addRole: function(source,e) 
     {
-		Ext.widget('appa_role_add').showAt(e.getXY());
+		var	win		= Ext.widget('appa_role_add'),
+			form	= win.down('form');
+
+		form.getForm().findField('name').focus(false,100); 
+		win.showAt(e.getXY());
 	},
 
     createRole: function(button) 
@@ -189,11 +193,12 @@ Ext.define('AppuntoAuth.controller.Roles', {
     editRole: function(menuitem,e) 
     {
         var rec     = menuitem.up('menu').getRecord(),
-			view 	= Ext.widget('appa_role_edit'),
-			form	= view.down('form');
+			win		= Ext.widget('appa_role_edit'),
+			form	= win.down('form');
 
-			form.loadRecord(rec);
-			view.showAt(e.getXY());
+		form.loadRecord(rec);
+		form.getForm().findField('name').focus(false,100); 
+		win.showAt(e.getXY());
 	},
 
     updateRole: function(button) 
