@@ -23,7 +23,6 @@ class Appunto_auth
 
         $this->CI->load->model('appunto-auth/pathmodel');
         $this->CI->load->model('appunto-auth/usermodel');
-		log_message('error','done constructor');
     }
 
 	/**
@@ -86,12 +85,10 @@ class Appunto_auth
 		$ci_class	= $this->CI->router->fetch_class();
 		$ci_method	= $this->CI->router->fetch_method();
 
-		log_message('error','path: '.$ci_dir.$ci_class.'/'.$ci_method);
+		$requested_path = $ci_dir.$ci_class.'/'.$ci_method;
+		log_message('error','path: '.$requested_path);
 
-		if ($this->_isAjaxRequest()==false) 
-		{
-			$this->CI->session->set_userdata('last_page',$ci_dir.$ci_class.'/'.$ci_method);
-		}
+		$this->CI->session->set_userdata('last_page',$ci_dir.$ci_class.'/'.$ci_method);
 
 		// Test validity of path
 		if (array_key_exists($ci_class,$paths) && 
@@ -116,6 +113,7 @@ class Appunto_auth
 			}
 			else
 			{
+				log_message('error','path is not public');
 				// Valid, private path - make sure user is logged in
 				if ($this->logged_in()) 
 				{
@@ -156,7 +154,17 @@ class Appunto_auth
 				else 
 				{
 					// User is not logged in
-					$this->_sendError($this->CI->lang->line('appunto_login_required'),true);
+					if ($requested_path == 'appunto-auth/user/login')
+					{
+						// If you are receiving this error, you have the login path set as private
+						// This must be set as public or users cannot log in
+						$msg = 'Logins are disabled. Contact an Administrator';
+					}
+					else
+					{
+						$msg = $this->CI->lang->line('appunto_login_required');
+					}
+					$this->_sendError($msg,true);
 					die;
 				} 
 			}

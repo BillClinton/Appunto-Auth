@@ -8,7 +8,7 @@
 
 </head>
 <body>
-<? echo appunto_login_box() ?>
+<? echo appunto_login_box($auth_message) ?>
 </body>
 </html>
 

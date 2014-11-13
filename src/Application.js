@@ -6,6 +6,7 @@
 Ext.require('AppuntoAuth.lib.proxy.Codeigniter');
 Ext.require('AppuntoAuth.lib.util.CustomVTypes');
 Ext.require('AppuntoAuth.lib.util.FakeConsole');
+Ext.require('AppuntoAuth.lib.util.SearchField');
 Ext.require('AppuntoAuth.lib.util.KeepAlive');
 Ext.require('AppuntoAuth.lib.lang.Default');
 

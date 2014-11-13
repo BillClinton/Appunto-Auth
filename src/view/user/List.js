@@ -75,6 +75,9 @@ Ext.define('AppuntoAuth.view.user.List' ,{
 		cls		: 'view-selection-button',
 		iconCls	: 'user-add'
 	},{
+		xtype	: 'tbspacer',
+		width	: 24
+	},{
 		xtype	: 'appunto-searchfield',
     	store   : 'Users'
 	},{

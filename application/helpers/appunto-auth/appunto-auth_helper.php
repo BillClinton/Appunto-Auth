@@ -63,7 +63,7 @@ APP;
 
 if ( ! function_exists('appunto_login_box'))
 {
-	function appunto_login_box($return=false, $css = 'login-form-box')
+	function appunto_login_box($auth_message = false, $css = 'login-form-box')
 	{
 		$CI =& get_instance();
 
@@ -96,8 +96,9 @@ if ( ! function_exists('appunto_login_box'))
 			'id'	=> 'password'
 		);
 
+					log_message('error','auth message: '.$auth_message);
 		$message_div = '';
-		if (isset($auth_message)) {
+		if ($auth_message != false) {
 			$message_div = "<div id='login-form-auth-message' class='login-form-auth-message'>$auth_message</div>";
 		} 
 		else if ($CI->appunto_auth->logged_in()) {

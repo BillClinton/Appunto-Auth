@@ -40,7 +40,7 @@ Ext.define('AppuntoAuth.lib.proxy.Codeigniter', {
 	 */ 
 	siteurl		: ci_site_url, 	// has a trailing slash
 
-	login_url	: ci_login_url,
+	loginurl	: ci_site_url+ci_login_url,
 
 	config: {
 		ci_class 	: '', // leave this blank, for initialization only.
@@ -192,7 +192,7 @@ Ext.define('AppuntoAuth.lib.proxy.Codeigniter', {
 
 	alertError: function(title, msg, login_redir) 
 	{
-		var	login_url = this.getSiteurl()+'login', 
+		var	login_url = this.loginurl,
 			handler = function(button) { button.up('window').close(); }
 
 		if (login_redir == true) 
