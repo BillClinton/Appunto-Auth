@@ -183,5 +183,31 @@ if ( ! function_exists('anchor_if_permitted'))
 		}
 	}
 }
+/**
+ * Username (if logged in)
+ *
+ * @access	public
+ * @return	string
+ */
+if ( ! function_exists('appunto_username'))
+{
+	function appunto_username()
+	{
+		$CI =& get_instance();
+
+		if (!isset($CI->appunto_auth)) $CI->load->library('appunto_auth');
+
+        $username = $CI->appunto_auth->get_username();
+
+		if ($username != false)
+		{
+			return $username;
+		}
+		else
+		{
+			return '';
+		}
+	}
+}
 
 ?>
