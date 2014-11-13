@@ -4,6 +4,10 @@
 
 -- --------------------------------------------------------
 
+SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
+SET time_zone = "+00:00";
+-- --------------------------------------------------------
+
 --
 -- Table structure for table `appa_path`
 --
@@ -34,12 +38,12 @@ CREATE TABLE IF NOT EXISTS `appa_path` (
 
 CREATE TABLE IF NOT EXISTS `appa_permission` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(32) NOT NULL,
-  `internal_name` varchar(60) NOT NULL,
-  `description` varchar(64) DEFAULT NULL,
+  `name` varchar(32) COLLATE utf8_bin NOT NULL,
+  `internal_name` varchar(60) COLLATE utf8_bin NOT NULL,
+  `description` varchar(64) COLLATE utf8_bin DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `internal_name` (`internal_name`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_bin AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -82,12 +86,15 @@ CREATE TABLE IF NOT EXISTS `appa_user` (
   `name` varchar(60) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL,
   `surname` varchar(60) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL,
   `last_ip` varchar(40) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL,
-  `last_login` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
-  `created` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `last_login` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `created` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   `modified` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `username` (`username`),
+  KEY `email` (`email`),
+  KEY `name` (`name`),
+  KEY `surname` (`surname`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
-
 
 -- --------------------------------------------------------
 
@@ -105,7 +112,7 @@ CREATE TABLE IF NOT EXISTS `appa_user_login_attempt` (
   `note` varchar(80) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `attempt_time` (`attempt_time`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -163,5 +170,4 @@ ALTER TABLE `appa_user_permission`
 ALTER TABLE `appa_user_role`
   ADD CONSTRAINT `appa_user_role_ibfk_1` FOREIGN KEY (`role_id`) REFERENCES `appa_role` (`id`),
   ADD CONSTRAINT `appa_user_role_ibfk_2` FOREIGN KEY (`user_id`) REFERENCES `appa_user` (`id`) ON DELETE CASCADE;
-
 
