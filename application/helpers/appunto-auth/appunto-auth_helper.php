@@ -76,10 +76,6 @@ if ( ! function_exists('appunto_login_box'))
 		$base_url = base_url();
 		$site_url = site_url();
 
-		/** 
-		 * If language library is loaded, set labels.  If not, set to false which is also 
-		 * the return value for the lang function if the language string is not found.
-		 */
 		$label_username = lang('appunto_form_username');
 		$label_password = lang('appunto_form_password');
 		$label_login_button = lang('appunto_form_login_button');
@@ -96,7 +92,6 @@ if ( ! function_exists('appunto_login_box'))
 			'id'	=> 'password'
 		);
 
-					log_message('error','auth message: '.$auth_message);
 		$message_div = '';
 		if ($auth_message != false) {
 			$message_div = "<div id='login-form-auth-message' class='login-form-auth-message'>$auth_message</div>";
@@ -183,6 +178,7 @@ if ( ! function_exists('anchor_if_permitted'))
 		}
 	}
 }
+
 /**
  * Username (if logged in)
  *
@@ -207,6 +203,71 @@ if ( ! function_exists('appunto_username'))
 		{
 			return '';
 		}
+	}
+}
+
+/**
+ * appunto_logout_link 
+ *
+ * @access	public
+ * @param	boolean show even if user is logged out
+ * @param	mixed	any attributes for anchor helper
+ * @return	string
+ */
+if ( ! function_exists('appunto_logout_link'))
+{
+	function appunto_logout_link($show_if_logged_out = false, $attributes = '')
+	{
+		$CI =& get_instance();
+		$CI->load->helper('url');
+
+		if (!isset($CI->appunto_auth)) $CI->load->library('appunto_auth');
+
+		if ($show_if_logged_out == true || $CI->appunto_auth->logged_in() == true)
+		{
+			return anchor($CI->config->item('logout_url', 'appunto-auth/appunto_auth'), lang('appunto_form_logout_button'), $attributes);
+		}
+		else
+		{
+			return '';
+		}
+	}
+}
+
+/**
+ * is_logged_in 
+ *
+ * @access	public
+ * @return	boolean
+ */
+if ( ! function_exists('is_logged_in'))
+{
+	function is_logged_in()
+	{
+		$CI =& get_instance();
+
+		if (!isset($CI->appunto_auth)) $CI->load->library('appunto_auth');
+
+		return ($CI->appunto_auth->logged_in() == true);
+	}
+}
+
+/**
+ * has_permission 
+ *
+ * @access	public
+ * @param	string the permission's internal name
+ * @return	string
+ */
+if ( ! function_exists('has_permission'))
+{
+	function has_permission($permission)
+	{
+		$CI =& get_instance();
+
+		if (!isset($CI->appunto_auth)) $CI->load->library('appunto_auth');
+
+		return ($CI->appunto_auth->userHasPermission($permission) == true);
 	}
 }
 
