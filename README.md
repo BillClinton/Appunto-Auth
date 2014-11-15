@@ -104,7 +104,7 @@ $hook['post_controller_constructor'] = array(
 #### Enable CodeIgniter hooks
 Enable CodeIgniter hooks by setting __enable_hooks__ to TRUE in your application's config.php
 
-### Support for multiple languages
+## Support for multiple languages
 
 The current release of Appunto-Auth includes one additional language: Brazilian Portuguese.  If you translate Appunto-Auth 
 to your native language, I would love to include it in future releases.  Please send me the files at code@appunto.net 
@@ -112,70 +112,6 @@ or fork the project and add them yourself using these instructions: http://kbrom
 
 To try the Portuguese translation, change the value of the $config['language'] setting in the CodeIgniter config/config.php
 file from __english__ to __portuguese-br__
-
-### Helpers
-
-__appunto_login_box()__
-
-creates a login dialog
-
-__anchor_if_permitted($permission,$uri,$title,$attributes)__
-
-Creates an anchor based on the local URL if user has the appropriate permission.  The permission parameter is case 
-sensitive and must match the internal name of a permission you have created in the admin interface for this
-function to return a link
-
-This helper uses the anchor() helper function from CodeIgniter's URL Helper so use the guidelines for that function for
-the 2nd, 3rd and 4th parameters. 
-
-__appunto_username()__
-
-Returns the user's username, if logged in.
-
-__appunto_logout_link($show_if_logged_out,$attributes)__
-
-Creates a logout link based on the logout path defined in the appunto_auth.php config file, using the logout text specified
-in the appunto_auth_lang.php file.
-
-If the first parameter is true, a logout link will be returned even if the user is not logged in.  Defaults to false.
-
-The second parameter can contain a list of attributes you would like added to the link. The attributes can be a simple 
-string or an associative array, as defined by the anchor() helper function from CodeIgniter's URL Helper.
-
-__is_logged_in()__
-
-Returns true if the user is logged in, false if the user is not logged in.
-
-### Public Library Functions
-
-While one of the goals of Appunto-Auth is to take authentication code out of the application's controllers,
-occasionally situations require some user control within the controller classes, for example if you want your 
-default controller to redirect to another controller depending on the user's permissions. 
-
-These functions can be called using the following syntax:
-```
-$this->appunto_auth->function_name()
-```
-
-__logged_in()__
-
-Returns true if the user is logged in, false if the user is not logged in.
-
-__get_username()__
-
-Returns the user's username if the user is logged in, false if the user is not logged in.
-
-__get_user_id()__
-
-Returns the user's id if the user is logged in, false if the user is not logged in.
-
-__userHasPermission($permission)__
-
-The $permission parameter is case sensitive and must match the internal name of a permission you have created in the admin interface.
-
-Returns true if the user has the specified permission, false if the user is not logged in or does not
-have the specified permission.
-
 
 ### Translating Appunto-Auth
 
@@ -213,10 +149,73 @@ be very finicky and a missed comma or misplaced quote can cause a javascript err
 opening at all.  If your admin interface does not load, check your syntax.  Please convert all accented and special characters
 to HTML safe entities using a converter like this: http://www.kidquick.com/JoomlaTools/frenchAccents.htm
 
+## Helpers
 
-### Additional Notes
+__appunto_login_box()__
 
-#### A note on removing index.php 
+creates a login dialog
+
+__anchor_if_permitted($permission,$uri,$title,$attributes)__
+
+Creates an anchor based on the local URL if user has the appropriate permission.  The permission parameter is case 
+sensitive and must match the internal name of a permission you have created in the admin interface for this
+function to return a link
+
+This helper uses the anchor() helper function from CodeIgniter's URL Helper so use the guidelines for that function for
+the 2nd, 3rd and 4th parameters. 
+
+__appunto_username()__
+
+Returns the user's username, if logged in.
+
+__appunto_logout_link($show_if_logged_out,$attributes)__
+
+Creates a logout link based on the logout path defined in the appunto_auth.php config file, using the logout text specified
+in the appunto_auth_lang.php file.
+
+If the first parameter is true, a logout link will be returned even if the user is not logged in.  Defaults to false.
+
+The second parameter can contain a list of attributes you would like added to the link. The attributes can be a simple 
+string or an associative array, as defined by the anchor() helper function from CodeIgniter's URL Helper.
+
+__is_logged_in()__
+
+Returns true if the user is logged in, false if the user is not logged in.
+
+## Public Library Functions
+
+While one of the goals of Appunto-Auth is to take authentication code out of the application's controllers,
+occasionally situations require some user control within the controller classes, for example if you want your 
+default controller to redirect to another controller depending on the user's permissions. 
+
+These functions can be called using the following syntax:
+```
+$this->appunto_auth->function_name()
+```
+
+__logged_in()__
+
+Returns true if the user is logged in, false if the user is not logged in.
+
+__get_username()__
+
+Returns the user's username if the user is logged in, false if the user is not logged in.
+
+__get_user_id()__
+
+Returns the user's id if the user is logged in, false if the user is not logged in.
+
+__userHasPermission($permission)__
+
+The $permission parameter is case sensitive and must match the internal name of a permission you have created in the admin interface.
+
+Returns true if the user has the specified permission, false if the user is not logged in or does not
+have the specified permission.
+
+
+## Additional Notes
+
+### A note on removing index.php 
 
 You may remove the index.php from your URLs as described in the CodeIgniter user guide, but make sure you alter the rewrite rule to exclude the resources folder so the css and javascript files are not served by the index.php.  If you are using the example .htaccess from the user guide:
 ```
@@ -235,7 +234,7 @@ If your application is not being served from the root of your domain, be sure to
 RewriteRule ^(.*)$ /myapplication/index.php/$1 [L]
 ```
 
-#### A note on _remap (Remapping Function Calls)
+### A note on _remap (Remapping Function Calls)
 
 CodeIgniter allows the developer to remap function calls as detailed here: https://ellislab.com/codeigniter/user-guide/general/controllers.html#remapping
 
@@ -250,13 +249,13 @@ function could be a call to the _remap function and verifies the user's permissi
 
 If additional access levels are desired in a controller with a _remap function, the developer must add them to the controller code. 
 
-### Limitations
+## Limitations
 
-#### MySQL only
+### MySQL only
 
 The current release has only been tested on MySQL.  I hope to add support for other databases in future releases.
 
-#### Controllers with the same name
+### Controllers with the same name
 
 CodeIgniter allows you to have controllers with the same name as long as they are located in different folders.  This is not 
 currently supported by Appunto-Auth and all controller classes in your application must have unique names.
