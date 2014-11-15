@@ -249,13 +249,13 @@ function could be a call to the _remap function and verifies the user's permissi
 
 If additional access levels are desired in a controller with a _remap function, the developer must add them to the controller code. 
 
-## Limitations
+### Limitations
 
-### MySQL only
+#### MySQL only
 
 The current release has only been tested on MySQL.  I hope to add support for other databases in future releases.
 
-### Controllers with the same name
+#### Controllers with the same name
 
 CodeIgniter allows you to have controllers with the same name as long as they are located in different folders.  This is not 
 currently supported by Appunto-Auth and all controller classes in your application must have unique names.
