@@ -4,6 +4,9 @@ An authentication library for CodeIgniter with a Sencha Ext JS interface and a s
 
 current release 0.1.0
 
+The goal of Appunto-Auth is to provide the CodeIgniter developer with an authentication and user management 
+system that takes authentication code out of an application's individual controller classes and functions.
+
 ## Features
  - Administrative interface using ExtJS
  - Authentication performed in a hook rather than controller code
@@ -109,6 +112,38 @@ or fork the project and add them yourself using these instructions: http://kbrom
 
 To try the Portuguese translation, change the value of the $config['language'] setting in the CodeIgniter config/config.php
 file from __english__ to __portuguese-br__
+
+### Helpers
+
+__appunto_login_box()__
+
+creates a login dialog
+
+__anchor_if_permitted($permission,$uri,$title,$attributes)__
+
+Creates an anchor based on the local URL if user has the appropriate permission.  The permission paramter is case sensitive 
+and must match the internal name of a permission you have created in the admin interface for this to return a link
+
+This helper uses the anchor() helper function from CodeIgniter's URL Helper so use the guidelines for that function for
+the 2nd, 3rd and 4th parameters. 
+
+__appunto_username()__
+
+Returns the user's username, if logged in.
+
+__appunto_logout_link($show_if_logged_out,$attributes)__
+
+Creates a logout link based on the logout path defined in the appunto_auth.php config file, using the logout text specified
+in the appunto_auth_lang.php file.
+
+If the first parameter is true, a logout link will be returned even if the user is not logged in.  Defaults to false.
+
+The second parameter can contain a list of attributes you would like added to the link. The attributes can be a simple 
+string or an associative array, as defined by the anchor() helper function from CodeIgniter's URL Helper.
+
+__is_logged_in()__
+
+Returns true if the user is logged in, false if the user is not logged in.
 
 ### Translating Appunto-Auth
 
