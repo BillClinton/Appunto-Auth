@@ -1,4 +1,4 @@
-# Appunto-Auth license
+# Appunto-Auth license for all files except for third party files, the app.js and theme.css files
 
 Appunto Auth is licensed under a version of the MIT license.  
 Please do not remove the copyright and permission notice contained in this file.
@@ -20,3 +20,11 @@ NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FO
 DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, 
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
+# License for all third party files
+
+The license of all third party files are governed by the terms of their licenses.  Please see
+the CREDITS.MD file for a list of all third party files.
+
+# license for app.js and theme.css files
+
+Per Sencha requirements, the app.js and theme.css files are governed by the terms of the GPLv3 license.
