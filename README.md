@@ -171,7 +171,7 @@ Returns the user's id if the user is logged in, false if the user is not logged 
 
 __userHasPermission($permission)__
 
-The $permission paramter is case sensitive and must match the internal name of a permission you have created in the admin interface.
+The $permission parameter is case sensitive and must match the internal name of a permission you have created in the admin interface.
 
 Returns true if the user has the specified permission, false if the user is not logged in or does not
 have the specified permission.
