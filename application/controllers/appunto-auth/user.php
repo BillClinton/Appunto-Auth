@@ -13,11 +13,8 @@ class User extends CI_Controller {
 
 	public function login()
 	{
-		log_message('error','login controller');
-
 		if (isset($_SERVER['HTTP_REFERER']))
 		{
-			log_message('error',$_SERVER['HTTP_REFERER']);
 			$this->session->set_userdata('prev_url', $_SERVER['HTTP_REFERER']);
 		}
 		else
@@ -59,7 +56,6 @@ class User extends CI_Controller {
 				$user = $this->usermodel->getLoginInfo( $this->input->post('username', TRUE) );
 				$pass = $this->input->post('password', TRUE);
 				
-				log_message('error',print_r($data,true));
 				if (($user != false) && $this->appunto_auth->checkPassword($pass,$user->password))
 				{
 					$this->usermodel->record_login_attempt($username, $ip_address, 1, $user_agent, 'successful login');

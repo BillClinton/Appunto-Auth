@@ -336,7 +336,6 @@ class Ui extends CI_Controller
 						break;	
 
 					case 'verify_paths':
-						log_message('error', 'Verifying Paths');
 						// start off by marking all paths unfound.  
 						$this->pathmodel->mark_all_unfound();
 
@@ -357,7 +356,6 @@ class Ui extends CI_Controller
 
 						foreach ($controller_dirs as $controller_dir) 
 						{
-							//log_message('error', 'Verifying Paths:'.$controller_dir);
 							// get files in this directory
 							$files = scandir($dir.$controller_dir);
 							$controller_files = array_filter($files, function($filename) {
@@ -436,8 +434,6 @@ class Ui extends CI_Controller
 								'total'		=> $new_cnt
 							);
 						}
-
-						//log_message('error', 'Verifying Paths Complete');
 						$this->appunto_auth->sendResponse($result);
 						break;	
 

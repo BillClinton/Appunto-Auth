@@ -86,7 +86,7 @@ class Appunto_auth
 		$ci_method	= $this->CI->router->fetch_method();
 
 		$requested_path = $ci_dir.$ci_class.'/'.$ci_method;
-		log_message('error','path: '.$requested_path);
+		//log_message('error','path: '.$requested_path);
 
 		$this->CI->session->set_userdata('last_page',$ci_dir.$ci_class.'/'.$ci_method);
 
@@ -103,7 +103,6 @@ class Appunto_auth
 
 			// Valid path - store it in a variable for brevity
 			$path = $paths[$ci_class][$ci_method];
-			log_message('error','path valid');
 
 			//  Test if path is public
 			if ($path['public_flag'] == 1)
@@ -113,7 +112,6 @@ class Appunto_auth
 			}
 			else
 			{
-				log_message('error','path is not public');
 				// Valid, private path - make sure user is logged in
 				if ($this->logged_in()) 
 				{
@@ -172,7 +170,6 @@ class Appunto_auth
 		else
 		{
 			// Path is not in database
-			log_message('error', $this->CI->lang->line('appunto_invalid_path').': '.$ci_class.'/'.$ci_method);
 			$this->_sendError($this->CI->lang->line('appunto_invalid_path'));
 			die;
 		}
