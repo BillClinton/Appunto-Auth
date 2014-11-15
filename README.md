@@ -223,15 +223,18 @@ You may remove the index.php from your URLs as described in the CodeIgniter user
 RewriteEngine on
 RewriteCond $1 !^(index\.php|images|robots\.txt)
 RewriteRule ^(.*)$ /index.php/$1 [L]
-
 ```
 add resources to the RewriteCond line like this:
 ``` 
 RewriteEngine on
 RewriteCond $1 !^(index\.php|images|robots\.txt|resources)
 RewriteRule ^(.*)$ /index.php/$1 [L]
-
 ```
+If your application is not being served from the root of your domain, be sure to alter the third line with the correct path:
+``` 
+RewriteRule ^(.*)$ /myapplication/index.php/$1 [L]
+```
+
 #### A note on _remap (Remapping Function Calls)
 
 CodeIgniter allows the developer to remap function calls as detailed here: https://ellislab.com/codeigniter/user-guide/general/controllers.html#remapping
