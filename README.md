@@ -126,7 +126,7 @@ other CodeIgniter developers.
 #### Appunto-Auth Codeigniter language file
 
 Appunto-Auth's CodeIgniter language files are included in the application/language/[language-name] folders.  To add your own 
-translation, create a folder with the name of your language in the application/language/ directory.  Copy the 
+translation, create a folder with the name of your language in the application/language/ folder.  Copy the 
 appunto_auth_lang.php into your new folder from one of the other language folders and use it as a template.
 
  __The name of this folder must match the name of the value of the $config['language'] setting in the CodeIgniter config/config.php__
@@ -188,8 +188,8 @@ The current release has only been tested on MySQL.  I hope to add support for ot
 
 #### Controllers with the same name
 
-CodeIgniter allows you to have controllers with the same name as long as they are located in different folders.  
-This is not currently supported by Appunto-Auth and all controller classes in your application must have unique names.
+CodeIgniter allows you to have controllers with the same name as long as they are located in different folders.  This is not 
+currently supported by Appunto-Auth and all controller classes in your application must have unique names.
 
 
 
