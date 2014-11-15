@@ -467,8 +467,6 @@ Ext.define('AppuntoAuth.controller.Users', {
 
     updatePassword: function(button) 
 	{
-		console.log('updatePassword');
-
         var win    = button.up('window'),
             form   = win.down('form').form,
             record = form.getRecord(),
@@ -671,8 +669,6 @@ Ext.define('AppuntoAuth.controller.Users', {
 
 		fail_cb = function() { record.reject(); }
 	
-		console.log(user);
-
 		record.set({ userHasPermission: 1 });
 		record.save({
 			ci_method	: 'add_permission',	
@@ -690,8 +686,6 @@ Ext.define('AppuntoAuth.controller.Users', {
 
 		fail_cb = function() { record.reject(); }
 	
-		console.log(user);
-
 		record.set({ userHasPermission: 0 });
 		record.save({
 			ci_method	: 'remove_permission',	

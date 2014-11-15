@@ -42,13 +42,12 @@ Ext.define('AppuntoAuth.controller.Navigation', {
 
 	logout: function()
 	{
-		console.log('logout: function');
 		location.href = ci_site_url + ci_logout_url;
 	},
 
 	redirTabClick: function(panel,newCard) 
 	{
-		this.getTabs().on('beforetabchange',function(){console.log('func');});
+		//this.getTabs().on('beforetabchange',function(){console.log('func');});
 		this.getTabs().clearListeners();
 		this.redirectTo(newCard.itemId.substr(4));
 		this.getTabs().on('beforetabchange',this.redirTabClick,this);
