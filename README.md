@@ -121,8 +121,9 @@ creates a login dialog
 
 __anchor_if_permitted($permission,$uri,$title,$attributes)__
 
-Creates an anchor based on the local URL if user has the appropriate permission.  The permission paramter is case sensitive 
-and must match the internal name of a permission you have created in the admin interface for this to return a link
+Creates an anchor based on the local URL if user has the appropriate permission.  The permission parameter is case 
+sensitive and must match the internal name of a permission you have created in the admin interface for this
+function to return a link
 
 This helper uses the anchor() helper function from CodeIgniter's URL Helper so use the guidelines for that function for
 the 2nd, 3rd and 4th parameters. 
@@ -144,6 +145,35 @@ string or an associative array, as defined by the anchor() helper function from 
 __is_logged_in()__
 
 Returns true if the user is logged in, false if the user is not logged in.
+
+### Public Library Functions
+
+While one of the goals of Appunto-Auth is to take authentication code out of the application's controllers,
+occasionally situations require some user control within the controller classes, for example if you want your 
+default controller to redirect to another controller depending on the user's permissions. 
+
+These functions can be called using the following syntax:
+```
+$this->appunto_auth->function_name()
+```
+
+__logged_in()__
+
+Returns true if the user is logged in, false if the user is not logged in.
+
+__get_username()__
+
+Returns the user's username if the user is logged in, false if the user is not logged in.
+
+__get_user_id()__
+
+Returns the user's id if the user is logged in, false if the user is not logged in.
+
+__userHasPermission($permission)__
+The $permission paramter is case sensitive and must match the internal name of a permission you have created in the admin interface.
+Returns true if the user has the specified permission, false if the user is not logged in or does not
+have the specified permission.
+
 
 ### Translating Appunto-Auth
 
