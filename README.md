@@ -110,20 +110,20 @@ or fork the project and add them yourself using these instructions: http://kbrom
 To try the Portuguese translation, change the value of the $config['language'] setting in the CodeIgniter config/config.php
 file from __english__ to __portuguese-br__
 
-#### Translating Appunto-Auth
+### Translating Appunto-Auth
 
-##### Codeigniter language files
+#### Codeigniter language files
 
 The first step in translating Appunto-Auth is to create or find a translation of the CodeIgniter language files.  
 When you change the language via the $config['language'] setting in the CodeIgniter config/config.php, CodeIgniter
-libraries will expect these files to be there and you will most likely experience errors if they are not there.
+libraries will expect these files to be there and you will most likely experience PHP errors if they are not there.
 
 There are many translations out there for CodeIgniter's language files and you should be able to find one for your language.
-If not, copy the english files from system/language/english into application/language/your-language to prevent PHP errors.  You
+If not, copy the English files from system/language/english into application/language/your-language to prevent PHP errors.  You
 can then change the text in these files where necessary.  If you complete a full translation, please post it and share it with 
 other CodeIgniter developers. 
 
-##### Appunto-Auth Codeigniter language file
+#### Appunto-Auth Codeigniter language file
 
 Appunto-Auth's CodeIgniter language files are included in the application/language/[language-name] folders.  To add your own 
 translation, create a folder with the name of your language in the application/language/ directory.  Copy the 
@@ -132,7 +132,7 @@ appunto_auth_lang.php into your new folder from one of the other language folder
  __The name of this folder must match the name of the value of the $config['language'] setting in the CodeIgniter config/config.php__
 
 
-##### Appunto-Auth admin interface language file
+#### Appunto-Auth admin interface language file
 
 The language files used to translate many of the elements of the admin interface are javascript files located 
 at resources/appunto-auth/lang/ .  To translate this into your own language, start with the english.js file and rename it to 
