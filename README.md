@@ -2,7 +2,7 @@
 
 An authentication library for CodeIgniter with a Sencha Ext JS interface and a simple ACL.
 
-public release late November, 2014
+current release 0.1.0
 
 ## Features
  - Administrative interface using ExtJS
@@ -75,6 +75,16 @@ Include a reference to the Appunto_auth library in CodeIgniter's config/autoload
 $autoload['libraries'] = array('appunto-auth/appunto_auth');
 ```
 
+#### Import the Appunt Auth tables
+Use the table creation script in the __db__ folder to create the Appunto-Auth tables. You can use the command line: 
+
+```
+mysql -u [db username] -p [db name] < db/create_auth_db.sql 
+```
+Or just paste the contents of this file into PhpMyAdmin.
+
+Your database should already contain the ci_session table.
+
 #### Include Reference to Hook in hooks.php
 Appunto Auth authenticates the user in a post_controller_constructor hook. The hook function resides in the Appunto_auth.php 
 library file.  A reference to this hook must be included in CodeIgniter's config/hooks.php file using the following format:
@@ -90,6 +100,51 @@ $hook['post_controller_constructor'] = array(
 ```
 #### Enable CodeIgniter hooks
 Enable CodeIgniter hooks by setting __enable_hooks__ to TRUE in your application's config.php
+
+### Support for multiple languages
+
+The current release of Appunto-Auth includes one additional language: Brazilian Portuguese.  If you translate Appunto-Auth 
+to your native language, I would love to include it in future releases.  Please send me the files at code@appunto.net 
+or fork the project and add them yourself using these instructions: http://kbroman.org/github_tutorial/pages/fork.html
+
+To try the Portuguese translation, change the value of the $config['language'] setting in the CodeIgniter config/config.php
+file from __english__ to __portuguese-br__
+
+#### Translating Appunto-Auth
+
+##### Codeigniter language files
+
+The first step in translating Appunto-Auth is to create or find a translation of the CodeIgniter language files.  
+When you change the language via the $config['language'] setting in the CodeIgniter config/config.php, CodeIgniter
+libraries will expect these files to be there and you will most likely experience errors if they are not there.
+
+There are many translations out there for CodeIgniter's language files and you should be able to find one for your language.
+If not, copy the english files from system/language/english into application/language/your-language to prevent PHP errors.  You
+can then change the text in these files where necessary.  If you complete a full translation, please post it and share it with 
+other CodeIgniter developers. 
+
+##### Appunto-Auth Codeigniter language file
+
+Appunto-Auth's CodeIgniter language files are included in the application/language/[language-name] folders.  To add your own 
+translation, create a folder with the name of your language in the application/language/ directory.  Copy the 
+appunto_auth_lang.php into your new folder from one of the other language folders and use it as a template.
+
+ __The name of this folder must match the name of the value of the $config['language'] setting in the CodeIgniter config/config.php__
+
+
+##### Appunto-Auth admin interface language file
+
+The language files used to translate many of the elements of the admin interface are javascript files located 
+at resources/appunto-auth/lang/ .  To translate this into your own language, start with the english.js file and rename it to 
+your-language.js. 
+
+ __The name of this file must match the name of the CodeIgniter language folder and the value of the $config['language'] 
+setting in the CodeIgniter config/config.php__
+
+Change the text values from English to your native language, but be very careful about quotes and commas.  Javascript can
+be very finicky and a missed comma or misplaced quote can cause a javascript error that will prevent the application from 
+opening at all.  If your admin interface does not load, check your syntax.  Please convert all accented and special characters
+to HTML safe entities using a converter like this: http://www.kidquick.com/JoomlaTools/frenchAccents.htm
 
 
 ### Additional Notes
@@ -124,3 +179,17 @@ allowing you to define your own function routing rules." Therefore AppuntoAuth a
 function could be a call to the _remap function and verifies the user's permissions for the _remap function. 
 
 If additional access levels are desired in a controller with a _remap function, the developer must add them to the controller code. 
+
+### Limitations
+
+#### MySQL only
+
+The current release has only been tested on MySQL.  I hope to add support for other databases in future releases.
+
+#### Controllers with the same name
+
+CodeIgniter allows you to have controllers with the same name as long as they are located in different folders.  
+This is not currently supported by Appunto-Auth and all controller classes in your application must have unique names.
+
+
+
