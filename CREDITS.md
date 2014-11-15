@@ -39,4 +39,10 @@ Icon set by Damien Guard.
 
 Silk companion icon set is licensed under a Creative Commons Attribution 2.5 License. 
 
+## Translations
+
+__portuguese-br__
+
+CodeIgniter translation: https://github.com/CIBr/CodeIgniter-Portuguese-BR
+Appunto-Auth translation: Loanda Drew and Ricardo Silva
 
