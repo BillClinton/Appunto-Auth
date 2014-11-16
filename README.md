@@ -16,6 +16,24 @@ For more information go to http://appunto.net/appunto-auth/
  - Restrict/Allow access using controller/function paths
  - Hashes passwords in database using phpass library
  - Multiple language support
+ 
+<!-- MarkdownTOC depth=3 autolink=true -->
+
+- [Features][features]
+- [Installing][installing]
+   - [CodeIgniter Setup][codeigniter-setup]
+   - [Download Appunto-Auth][download-appunto-auth]
+   - [Update Codeigniter configuration files][update-codeigniter-configuration-files]
+- [Support for multiple languages][support-for-multiple-languages]
+   - [Translating Appunto-Auth][translating-appunto-auth]
+- [Helpers][helpers]
+- [Public Library Functions][public-library-functions]
+- [Additional Notes][additional-notes]
+   - [A note on removing index.php][a-note-on-removing-indexphp]
+   - [A note on _remap (Remapping Function Calls)][a-note-on-_remap-remapping-function-calls]
+   - [Limitations][limitations]
+
+<!-- /MarkdownTOC -->
 
 ## Installing
 
