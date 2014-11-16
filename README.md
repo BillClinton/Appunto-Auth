@@ -9,14 +9,6 @@ system that takes authentication code out of an application's individual control
 
 For more information go to http://appunto.net/appunto-auth/
 
-## Features
- - Administrative interface using ExtJS
- - Authentication performed in a hook rather than controller code
- - Simple ACL with roles and permissions
- - Restrict/Allow access using controller/function paths
- - Hashes passwords in database using phpass library
- - Multiple language support
- 
 <!-- MarkdownTOC depth=3 autolink=true -->
 
 - [Features][features]
@@ -35,6 +27,14 @@ For more information go to http://appunto.net/appunto-auth/
 
 <!-- /MarkdownTOC -->
 
+## Features
+ - Administrative interface using ExtJS
+ - Authentication performed in a hook rather than controller code
+ - Simple ACL with roles and permissions
+ - Restrict/Allow access using controller/function paths
+ - Hashes passwords in database using phpass library
+ - Multiple language support
+ 
 ## Installing
 
 ### CodeIgniter Setup
