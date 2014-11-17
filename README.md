@@ -15,7 +15,7 @@ current release 0.1.0
 The goal of Appunto-Auth is to provide the CodeIgniter developer with an authentication and user management 
 system that takes authentication code out of an application's individual controller classes and functions.
 
-For more information go to http://appunto.net/appunto-auth/
+For more information go to http://appunto.net/appunto-auth
 
 <!-- MarkdownTOC depth=3 autolink=true bracket=round -->
 
