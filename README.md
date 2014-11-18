@@ -1,11 +1,3 @@
-## Note to Sparks users reading this on getsparks.org
-
-Appunto-Auth is no longer being released as a spark.  It does not seem that the sparks project is 
-actively maintained and the install is actually easier when it is not packaged as a spark.
-
-Please visit http://www.appunto.net/appunt-auth for more information on Appunto-Auth
-
-
 # Appunto-Auth
 
 An authentication library for CodeIgniter with a Sencha Ext JS interface and a simple ACL.
