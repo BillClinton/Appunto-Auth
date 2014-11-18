@@ -98,7 +98,7 @@ Include a reference to the Appunto_auth library in CodeIgniter's config/autoload
 $autoload['libraries'] = array('appunto-auth/appunto_auth');
 ```
 
-#### Import the Appunt Auth tables
+#### Import the Appunto-Auth tables
 Use the table creation script in the __db__ folder to create the Appunto-Auth tables. You can use the command line: 
 
 ```
@@ -109,7 +109,7 @@ Or just paste the contents of this file into PhpMyAdmin.
 Your database should already contain the ci_session table.
 
 #### Include Reference to Hook in hooks.php
-Appunto Auth authenticates the user in a post_controller_constructor hook. The hook function resides in the Appunto_auth.php 
+Appunto-Auth authenticates the user in a post_controller_constructor hook. The hook function resides in the Appunto_auth.php 
 library file.  A reference to this hook must be included in CodeIgniter's config/hooks.php file using the following format:
 
 ```
