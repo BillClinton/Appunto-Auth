@@ -43,6 +43,7 @@ $lang['appunto_path_found_in_filesystem'] = 'Este caminho n&atilde;o pode ser ap
 $lang['appunto_no_hook'] = 'Nenhuma autentica&ccedil;&atilde;o est&aacute; sendo realizada!';
 $lang['appunto_set_true'] = 'Defina este valor para "verdadeiro"';
 $lang['appunto_db_sessions'] = 'Sess&otilde;es usando banco de dados';
+$lang['appunto_csrf_protection'] = 'CSRF protection enabled';
 $lang['appunto_encrypted_cookies'] = 'Sess&otilde;es usando cookies criptografados';
 $lang['appunto_private_sans_perm'] = 'Caminhos privados sem permiss&otilde;es vis&iacute;veis';
 $lang['appunto_private_sans_perm_warn'] = 'caminhos privados sem permiss&otilde;es definidas vis&iacute;veis para qualquer usu&aacute;rio conectado';

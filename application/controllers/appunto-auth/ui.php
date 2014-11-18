@@ -558,6 +558,14 @@ class Ui extends CI_Controller
 					'info_note'	=> (!$hooks_enabled ? $this->lang->line('appunto_no_hook') : '')
 				));
 
+				$csrf_protection = $this->config->item('csrf_protection');
+				array_push($info_array, array (
+					'info_item'	=> $this->lang->line('appunto_csrf_protection'), 
+					'info_val' 	=> $csrf_protection,
+					'info_note'	=> (!$csrf_protection ? $this->lang->line('appunto_set_true') : '')
+				));
+
+
 				$sessions_using_database = $this->config->item('sess_use_database');
 				array_push($info_array, array (
 					'info_item'	=> $this->lang->line('appunto_db_sessions'),

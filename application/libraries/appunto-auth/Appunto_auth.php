@@ -301,6 +301,8 @@ class Appunto_auth
 		$js .= 'ci_site_url = "'.rtrim(site_url(), "/").'/",';
 		$js .= 'ci_login_url = "'.$this->CI->config->item('login_url','appunto-auth/appunto_auth').'",';
 		$js .= 'ci_logout_url = "'.$this->CI->config->item('logout_url','appunto-auth/appunto_auth').'",';
+		$js .= 'ci_token= "'.$this->CI->config->item('csrf_token_name').'",';
+		$js .= 'ci_cookie= "'.$this->CI->config->item('csrf_cookie_name').'",';
 		$js .= 'admin_keepalive='.$this->CI->config->item('admin_keepalive','appunto-auth/appunto_auth').',';
 		$js .= 'pw_regex = "'.$this->CI->config->item('password_regex_js','appunto-auth/appunto_auth').'",';
 		$js .= 'datetime_format= "'.$this->CI->config->item('datetime_format','appunto-auth/appunto_auth').'";';

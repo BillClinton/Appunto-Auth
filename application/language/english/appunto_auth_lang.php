@@ -43,6 +43,7 @@ $lang['appunto_path_found_in_filesystem'] = 'This path cannot be deleted because
 $lang['appunto_no_hook'] = 'No authentication is being performed!';
 $lang['appunto_set_true'] = 'Consider setting this value to true';
 $lang['appunto_db_sessions'] = 'Sessions using database';
+$lang['appunto_csrf_protection'] = 'CSRF protection enabled';
 $lang['appunto_encrypted_cookies'] = 'Sessions using encrypted cookies';
 $lang['appunto_private_sans_perm'] = 'Private paths without permissions viewable';
 $lang['appunto_private_sans_perm_warn'] = 'Private paths without defined permissions viewable to any logged in user';
