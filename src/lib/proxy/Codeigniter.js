@@ -14,33 +14,40 @@ Ext.define('AppuntoAuth.lib.proxy.Codeigniter', {
 	requires	: [
 		'AppuntoAuth.lib.proxy.CiReader',
 		'AppuntoAuth.lib.proxy.CiWriter',
-		'AppuntoAuth.lib.lang.Default'
+		'AppuntoAuth.lib.lang.Default',
+		'Ext.util.Cookies'
 	],
 
 
 	/*
 	 * These two values should reflect your deployment.
 	 * 
-	 * ci_site_url and ci_base_url should be set like this in your view:
+	 * ci_site_url should be set like this in your view:
 	 *
 	 * <!-- set base url, display type -->
 	 * <script type="text/javascript">
-	 * 		var ci_site_url = "<?php echo('rtrim(site_url(), "/").'/"') ?>", 
-	 * 			ci_base_url = "<?php echo(base_url()) ?>";
+	 * 		var ci_site_url = "<?php echo('rtrim(site_url(), "/").'/"') ?>"; 
 	 * </script>
 	 *
 	 * stripping the trailing slash, then adding a trailing slash on site_url
 	 * ensures that we don't get a double slash or a missing trailing slash when
 	 * removing or using index.php
 	 * 
-	 * (Actually, base_url is no longer necessary for proxy.Codeigniter
-	 * but you might find it useful to set it anyway for other things like
-	 * links to js and css files)
-	 *
 	 */ 
 	siteurl		: ci_site_url, 	// has a trailing slash
 
 	loginurl	: ci_site_url+ci_login_url,
+
+	/**
+	 * If CSRF protection is turned on by setting $config['csrf_protection'] = TRUE the CodeIgniter config.php,
+	 * you must set the values of these two variables to the match the variables set in the config.php
+	 *
+	 * csrf_token_name must match $config['csrf_token_name']
+	 * csrf_cookie_name must match $config['csrf_cookie_name'] 
+	 */
+	csrf_token_name		: ci_token,
+	csrf_cookie_name	: ci_cookie, 
+
 
 	config: {
 		ci_class 	: '', // leave this blank, for initialization only.
@@ -123,6 +130,30 @@ Ext.define('AppuntoAuth.lib.proxy.Codeigniter', {
 		this.setCi_methodString(request);
 
 		return this.getSiteurl()+this.getCi_class()+'/'+this.getCi_method();
+	},
+
+    /**
+     * Override the doRequest function in Ext.data.proxy.Ajax to add the CSRF parameter
+     */
+	doRequest: function(operation) 
+	{
+		this.setCSRFParam();
+		this.callParent(arguments);
+	},
+
+	/**
+	 * Add the CSRF parameter if retrieved by cookie
+	 */
+	setCSRFParam: function() 
+	{
+		var csrf_token	= this.csrf_token_name,
+			csrf_cookie	= this.csrf_cookie_name,
+			csrf_value 	= Ext.util.Cookies.get(csrf_cookie);
+
+		if (csrf_value != null)
+		{
+			this.setExtraParam(csrf_token,csrf_value);
+		} 
 	},
    
     // operation exception
