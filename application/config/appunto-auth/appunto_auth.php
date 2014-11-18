@@ -8,7 +8,7 @@ $config['admin_email'] = 'admin@website.com';
 /**
  * Appunto Auth version
  */
-$config['appunto_auth_version'] = '0.1.2';
+$config['appunto_auth_version'] = '0.1.3';
 
 /**
  * Admin interface theme. There are two themes:

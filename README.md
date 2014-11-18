@@ -2,7 +2,7 @@
 
 An authentication library for CodeIgniter with a Sencha Ext JS interface and a simple ACL.
 
-current release 0.1.2
+current release 0.1.3
 
 The goal of Appunto-Auth is to provide the CodeIgniter developer with an authentication and user management 
 system that takes authentication code out of an application's individual controller classes and functions.
