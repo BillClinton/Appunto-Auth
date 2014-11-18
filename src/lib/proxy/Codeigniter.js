@@ -151,7 +151,7 @@ Ext.define('AppuntoAuth.lib.proxy.Codeigniter', {
 					error = this.getCodeigniterError(request);
 		
 					// response could not be decoded, check if it there is a defined http error code
-					if (request.status != undefined && this.httpError[request.status] != undefined)
+					if ((error == null) && (request.status != undefined && this.httpError[request.status] != undefined))
 					{
 						error = '<p style="width:200px"><b>'+request.status+'</b></p><p>'+this.httpError[request.status]+'</p>';
 						this.alertError(this.getErrorMsg('server_error_title'),error);
