@@ -526,9 +526,7 @@ class Appunto_auth
             $result = array (
                 'success'   => false,
                 'msg'       => $this->CI->lang->line('appunto_errors_encountered'),
-                'errors'    => validation_errors(),
-                'info'    	=> gettype (validation_errors()),
-                'data'    	=> print_r($this->CI->input->post(NULL, TRUE),true)
+                'errors'    => validation_errors()
             );
         } 
         else 
@@ -582,9 +580,7 @@ class Appunto_auth
             $result = array (
                 'success'   => false,
                 'msg'       => $this->CI->lang->line('appunto_errors_encountered'),
-                'errors'    => validation_errors(),
-                'info'    	=> gettype (validation_errors()),
-                'data'    	=> print_r($this->CI->input->post(NULL, TRUE),true)
+                'errors'    => validation_errors()
             );
         } 
         else 
