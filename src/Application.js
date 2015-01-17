@@ -30,7 +30,6 @@ Ext.define('AppuntoAuth.Application',
 
     launch: function () 
     {
-        Ext.tip.QuickTipManager.init();
         AppuntoAuth.lib.util.CustomVTypes.apply();
         AppuntoAuth.lib.util.FakeConsole.init();
         AppuntoAuth.lib.lang.Default.init();
