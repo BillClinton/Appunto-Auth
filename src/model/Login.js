@@ -1,15 +1,17 @@
 /** 
  * Login Model 
  *
- *
- * A data model that represents application roles.
- *
- *
  * @cfg {Array} fields An Array of {@link Ext.data.Field} defintions.
  * @cfg {String/Object/Ext.data.proxy.Proxy} [proxy=ci] Uses {@link APPUNTO.lib.proxy.Codeigniter} defined by "ci" alias.
  */
-Ext.define('AppuntoAuth.model.Login', {
+Ext.define('AppuntoAuth.model.Login', 
+{
     extend: 'Ext.data.Model',
+
+    requires: [
+        'AppuntoAuth.lib.proxy.Codeigniter'
+    ],
+
     fields: [
         {name: 'id', type: 'int'},
         {name: 'attempt_time', type: 'date', format: 'Y-m-d H:i:s'},
@@ -19,6 +21,7 @@ Ext.define('AppuntoAuth.model.Login', {
         {name: 'success', type: 'int'},
         {name: 'note', type: 'string'}
     ],
+
     proxy: 
     {
         type    : 'ci',

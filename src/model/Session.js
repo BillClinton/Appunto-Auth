@@ -6,11 +6,14 @@
  * @cfg {Array} fields An Array of {@link Ext.data.Field} defintions.
  * @cfg {String/Object/Ext.data.proxy.Proxy} [proxy=ci] Uses {@link APPUNTO.lib.proxy.Codeigniter} defined by "ci" alias.
  */
-Ext.require('Ext.data.Model');
-Ext.require('AppuntoAuth.lib.proxy.Codeigniter');
-
-Ext.define('AppuntoAuth.model.Session', {
+Ext.define('AppuntoAuth.model.Session', 
+{
     extend: 'Ext.data.Model',
+
+    requires: [
+        'AppuntoAuth.lib.proxy.Codeigniter'
+    ],
+
     fields: [
         {name: 'id', type: 'string'},
         {name: 'username', type: 'string'},
@@ -19,6 +22,7 @@ Ext.define('AppuntoAuth.model.Session', {
         {name: 'ip_address', type: 'string'},
         {name: 'user_agent', type: 'string'}
     ],
+
     proxy: 
     {
         type    : 'ci',

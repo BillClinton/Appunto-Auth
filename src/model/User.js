@@ -1,8 +1,11 @@
-Ext.require('Ext.data.Model');
-Ext.require('AppuntoAuth.lib.proxy.Codeigniter');
-
-Ext.define('AppuntoAuth.model.User', {
+Ext.define('AppuntoAuth.model.User', 
+ {
     extend: 'Ext.data.Model',
+
+    requires: [
+        'AppuntoAuth.lib.proxy.Codeigniter'
+    ],
+
     fields: [
         {name: 'id', type: 'int'},
         {name: 'username', type: 'string'},
@@ -14,6 +17,7 @@ Ext.define('AppuntoAuth.model.User', {
         {name: 'created', type: 'string'},
         {name: 'modified', type: 'string'}
     ],
+
     proxy: 
     {
         type    : 'ci',
