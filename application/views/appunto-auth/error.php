@@ -9,7 +9,7 @@
 <div class="login-form-box">
 <?php if (isset($auth_message)) { ?>
     <div class="login-form-auth-message"><?php echo $auth_message ?></div>
-<? } ?>
+<?php } ?>
 </div>
 
 </body>
