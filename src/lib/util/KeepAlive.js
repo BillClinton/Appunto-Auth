@@ -1,25 +1,27 @@
-Ext.define('AppuntoAuth.lib.util.KeepAlive', {
+Ext.define('AppuntoAuth.lib.util.KeepAlive', 
+{
+    singleton   : true,
 
-	statics: 
-	{
-		interval : 4*60*1000,
+    interval    : 4*60*1000,
 
-		init: function(interval) 
-		{
-			if (interval > 0)
-			{
-				AppuntoAuth.lib.util.KeepAlive.interval = interval*1000;
-				AppuntoAuth.lib.util.KeepAlive.touch();
-			}
-		},
+    constructor  : function() 
+    {
+        if (typeof(admin_keepalive) != 'undefined' && Ext.isNumber(admin_keepalive) && admin_keepalive> 0)
+        {
+            this.interval = admin_keepalive*1000;
+        }
+        setTimeout(Ext.bind(this.touch), this.interval);
+    },
 
-		touch: function()
-		{
-			Ext.Ajax.request({
-				url: ci_site_url+'appunto-auth/ui/keep-alive'
-			});
-			setTimeout(Ext.bind(AppuntoAuth.lib.util.KeepAlive.touch), AppuntoAuth.lib.util.KeepAlive.interval);
-		}
+    touch: function()
+    {
+        var me = AppuntoAuth.lib.util.KeepAlive;
 
-	}
+        Ext.Ajax.request({
+            url: ci_site_url+'appunto-auth/ui/keep-alive'
+        });
+
+        setTimeout(Ext.bind(me.touch), me.interval);
+    }
+
 });

@@ -3,16 +3,17 @@
  * Ext.application(). This is the ideal place to handle application launch and initialization
  * details.
  */
-//Ext.require('AppuntoAuth.lib.proxy.Codeigniter');
-Ext.require('AppuntoAuth.lib.util.CustomVTypes');
-Ext.require('AppuntoAuth.lib.util.FakeConsole');
-Ext.require('AppuntoAuth.lib.util.SearchField');
-Ext.require('AppuntoAuth.lib.util.KeepAlive');
-Ext.require('AppuntoAuth.lib.lang.Default');
-
 Ext.define('AppuntoAuth.Application', 
 {
     extend: 'Ext.app.Application',
+
+    requires: [
+        'AppuntoAuth.lib.util.FakeConsole',
+        'AppuntoAuth.lib.util.CustomVTypes',
+        'AppuntoAuth.lib.util.SearchField',
+        'AppuntoAuth.lib.util.KeepAlive',
+        'AppuntoAuth.lib.lang.Default'
+    ],
     
     name: 'AppuntoAuth',
 
@@ -26,14 +27,6 @@ Ext.define('AppuntoAuth.Application',
         'Permissions',
         'Paths',
         'Sessions'
-    ],
+    ]
 
-    launch: function () 
-    {
-        AppuntoAuth.lib.util.CustomVTypes.apply();
-        AppuntoAuth.lib.util.FakeConsole.init();
-        AppuntoAuth.lib.lang.Default.init();
-
-        AppuntoAuth.lib.util.KeepAlive.init(admin_keepalive);
-    }
 });

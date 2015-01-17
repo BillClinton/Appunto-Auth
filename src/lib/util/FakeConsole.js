@@ -1,21 +1,21 @@
-Ext.define('AppuntoAuth.lib.util.FakeConsole', {
+Ext.define('AppuntoAuth.lib.util.FakeConsole', 
+{
+    singleton : true,
 
-	statics: 
-	{
-		init: function () 
-		{
-			if (typeof console === "undefined") {
-				console =
-				{
-					log     : function () { },
-					info    : function () { },
-					warn    : function () { },
-					error   : function () { },
-					time    : function () { },
-					timeEnd : function () { }
-				}
+    constructor: function()
+    {
+        if (typeof console === "undefined") 
+        {
+            console =
+            {
+                log     : function () { },
+                info    : function () { },
+                warn    : function () { },
+                error   : function () { },
+                time    : function () { },
+                timeEnd : function () { }
+            }
 
-			}
-		}
-	}
+        }
+    }
 });
