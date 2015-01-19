@@ -1,33 +1,34 @@
 Ext.define('AppuntoAuth.lib.util.CustomVTypes', {
 
+    singleton   : true,
+
 	requires	:	[
-		'AppuntoAuth.lib.lang.Default'
+		'AppuntoAuth.lib.lang.Default',
+		'Ext.form.field.VTypes'
 	],
 
-	statics: 
-	{
-		apply: function () {
-			Ext.apply(Ext.form.field.VTypes, {
-				passformat: function(val ) 
-				{
-					var format = new RegExp(pw_regex);
+    constructor: function () 
+    {
+        Ext.apply(Ext.form.field.VTypes, {
+            passformat: function(val ) 
+            {
+                var format = new RegExp(pw_regex);
 
-					return format.test(val);
-				},
-				passformatText: Lang.localize('password_format'),
+                return format.test(val);
+            },
+            passformatText: Lang.localize('password_format'),
 
-				passconfirm: function(val, field) 
-				{
-					if (field.passField) {
-						var pwd = field.up('form').down('#' + field.passField);
-						return (val == pwd.getValue());
-					}
-					return false;
-					return true;
-				},
-				passconfirmText: Lang.localize('password_match')
-			});
-		}
-	}
+            passconfirm: function(val, field) 
+            {
+                if (field.passField) {
+                    var pwd = field.up('form').down('#' + field.passField);
+                    return (val == pwd.getValue());
+                }
+                return false;
+                return true;
+            },
+            passconfirmText: Lang.localize('password_match')
+        });
+    }
 
 });

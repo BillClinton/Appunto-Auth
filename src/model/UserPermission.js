@@ -7,8 +7,14 @@
  * @cfg {Array} fields An Array of {@link Ext.data.Field} defintions.
  * @cfg {String/Object/Ext.data.proxy.Proxy} [proxy=ci] Uses {@link APPUNTO.lib.proxy.Codeigniter} defined by "ci" alias.
  */
-Ext.define('AppuntoAuth.model.UserPermission', {
+Ext.define('AppuntoAuth.model.UserPermission', 
+{
     extend: 'Ext.data.Model',
+
+    requires: [
+        'AppuntoAuth.lib.proxy.Codeigniter'
+    ],
+
     fields: [
         {name: 'id', type: 'int'},
         {name: 'hasPermission', type: 'int'},
@@ -17,6 +23,7 @@ Ext.define('AppuntoAuth.model.UserPermission', {
         {name: 'name', type: 'string'},
         {name: 'description', type: 'string'}
     ],
+
     proxy: 
     {
         type    	: 'ci',
