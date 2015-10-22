@@ -373,8 +373,7 @@ class Ui extends CI_Controller
 									if ($filename != 'ui.php') require_once($this_dir.$filename);
 
 									$classname = ucfirst(substr($filename, 0, strrpos($filename, '.')));
-									$controller = new $classname();
-									$methods = get_class_methods($controller);
+									$methods = get_class_methods($classname);
 
 									foreach ($methods as $method)
 									{
@@ -702,5 +701,4 @@ class Ui extends CI_Controller
 	{
 		return $this->appunto_auth->hashPassword($str);
 	}
-};
-
+}
