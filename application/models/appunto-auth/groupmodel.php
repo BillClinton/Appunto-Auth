@@ -196,4 +196,4 @@ class Groupmodel extends CI_Model
         // return formatted result
         return $this->appunto_auth->formatOperationResult($query,$this->get_group_user($user_id,$group_id));
 	}
-};
+}

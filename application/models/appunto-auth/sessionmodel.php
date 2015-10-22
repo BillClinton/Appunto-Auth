@@ -107,4 +107,4 @@ class Sessionmodel extends CI_Model
         return $this->appunto_auth->formatOperationResult($query);
 	}
 
-};
+}
