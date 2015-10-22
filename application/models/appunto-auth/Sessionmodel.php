@@ -27,9 +27,8 @@ class Sessionmodel extends CI_Model
         $this->db->from($this->table);
         $total = 0;
 
-        $this->db->select('session_id as id,ip_address,user_agent');
-        $this->db->select("CONCAT( DATE( FROM_UNIXTIME( `last_activity` ) ),' ',TIME( FROM_UNIXTIME( `last_activity` ) ) ) AS last_activity",false);
-        $this->db->select('user_agent,user_data');
+        $this->db->select('id, ip_address, data');
+        $this->db->select("CONCAT( DATE( FROM_UNIXTIME( `timestamp` ) ),' ',TIME( FROM_UNIXTIME( `timestamp` ) ) ) AS last_activity", false);
 
 		$show_all = 1;
 		if (count($filters)>0)
@@ -54,11 +53,14 @@ class Sessionmodel extends CI_Model
             {
 				$total++;
 
-                $user_data = unserialize($row->user_data);
-				$user_name = isset($user_data['username']) ? $user_data['username'] : '';
-				$last_page = isset($user_data['last_page']) ? $user_data['last_page'] : '';
+                /*
+                $user_data = unserialize($row->data);
+		$user_name = isset($user_data['username']) ? $user_data['username'] : '';
+		$last_page = isset($user_data['last_page']) ? $user_data['last_page'] : '';
+                */
 
-				if ( $show_all == 1 || is_array($user_data))
+		//if ( $show_all == 1 || is_array($user_data)
+                if ($show_all == 1)
 				{
 					$this_row = array (
 						'id'            => $row->id,
@@ -66,7 +68,7 @@ class Sessionmodel extends CI_Model
 						'last_page'     => $last_page,
 						'last_activity' => $row->last_activity,
 						'ip_address'    => $row->ip_address,
-						'user_agent'    => $row->user_agent
+						'user_agent'    => null                   //$row->user_agent
 					);
 					$result_array[] = $this_row;
 				}
@@ -99,7 +101,7 @@ class Sessionmodel extends CI_Model
 	function delete_record($data)
 	{
         // get/set the id
-        $this->db->where('session_id', $data['id']);
+        $this->db->where('id', $data['id']);
 
         // execute query
 		$query = $this->db->delete($this->table);
