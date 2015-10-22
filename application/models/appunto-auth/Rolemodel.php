@@ -1,6 +1,7 @@
-<?php if (!defined('BASEPATH')) exit('No direct script access allowed');
+<?php
+defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Rolemodel extends CI_Model 
+class Rolemodel extends CI_Model
 {
 
 	function __construct()
@@ -17,7 +18,7 @@ class Rolemodel extends CI_Model
         $this->user_role_table = $prefix.'appa_user_role';
         $this->role_permission_table = $prefix.'appa_role_permission';
 	}
-    
+
 
 	/**
 	 * Get roles
@@ -28,11 +29,11 @@ class Rolemodel extends CI_Model
 	{
         // define table here for count all results
         $this->db->from($this->table);
-        $total = $this->db->count_all_results();  
+        $total = $this->db->count_all_results();
 
         $this->db->select('role.id, role.name,role.description');
 
-        if (!empty($sort) && !empty($dir)) 
+        if (!empty($sort) && !empty($dir))
         {
             $this->db->order_by('UPPER('.$sort.')',$dir);
 		}
@@ -112,7 +113,7 @@ class Rolemodel extends CI_Model
 	 * @param	array
 	 * @return	object
 	 */
-	function create_record($data) 
+	function create_record($data)
 	{
         // execute query
 		$query = $this->db->insert($this->table, $data);
@@ -130,7 +131,7 @@ class Rolemodel extends CI_Model
 	 * @param	array
 	 * @return	object
 	 */
-	function update_record($data) 
+	function update_record($data)
 	{
         // get/set the id and remove it from the data array
 		$id = $data['id'];
@@ -150,9 +151,9 @@ class Rolemodel extends CI_Model
 	 * @param	array
 	 * @return	object
 	 */
-	function delete_record($data) 
+	function delete_record($data)
 	{
-        // get/set the id 
+        // get/set the id
         $this->db->where('id', $data['id']);
 
         // execute query
@@ -163,12 +164,12 @@ class Rolemodel extends CI_Model
 	}
 
 	/**
-	 * Add a permission to a role 
+	 * Add a permission to a role
 	 *
 	 * @param	array
 	 * @return	object
 	 */
-	function add_permission($permission_id,$role_id) 
+	function add_permission($permission_id,$role_id)
 	{
         // execute query
 		$query = $this->db->insert($this->role_permission_table, array(
@@ -186,7 +187,7 @@ class Rolemodel extends CI_Model
 	 * @param	array
 	 * @return	object
 	 */
-	function remove_permission($permission_id,$role_id) 
+	function remove_permission($permission_id,$role_id)
 	{
         // execute query
 		$query = $this->db->delete($this->role_permission_table, array(
@@ -198,7 +199,7 @@ class Rolemodel extends CI_Model
         return $this->appunto_auth->formatOperationResult($query,$this->get_role_permission($permission_id,$role_id));
 	}
 
-	function in_use_by_user($id) 
+	function in_use_by_user($id)
 	{
         $this->db->select('role_id');
         $this->db->where('role_id', $id);
@@ -207,13 +208,13 @@ class Rolemodel extends CI_Model
 		$query = $this->db->get($this->user_role_table);
 
 		if ($query->num_rows() > 0)
-		{	
+		{
 			return true;
 		}
 		return false;
 	}
 
-	function in_use_by_permission($id) 
+	function in_use_by_permission($id)
 	{
         $this->db->select('role_id');
         $this->db->where('role_id', $id);
@@ -222,7 +223,7 @@ class Rolemodel extends CI_Model
 		$query = $this->db->get($this->role_permission_table);
 
 		if ($query->num_rows() > 0)
-		{	
+		{
 			return true;
 		}
 		return false;

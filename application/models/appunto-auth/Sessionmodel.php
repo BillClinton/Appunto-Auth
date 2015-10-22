@@ -1,6 +1,7 @@
-<?php if (!defined('BASEPATH')) exit('No direct script access allowed');
+<?php
+defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Sessionmodel extends CI_Model 
+class Sessionmodel extends CI_Model
 {
 
 	function __construct()
@@ -24,14 +25,14 @@ class Sessionmodel extends CI_Model
 	{
         // define table here for count all results
         $this->db->from($this->table);
-        $total = 0;  
+        $total = 0;
 
         $this->db->select('session_id as id,ip_address,user_agent');
         $this->db->select("CONCAT( DATE( FROM_UNIXTIME( `last_activity` ) ),' ',TIME( FROM_UNIXTIME( `last_activity` ) ) ) AS last_activity",false);
         $this->db->select('user_agent,user_data');
 
 		$show_all = 1;
-		if (count($filters)>0) 
+		if (count($filters)>0)
 		{
 			foreach($filters as $filter)
 			{
@@ -47,7 +48,7 @@ class Sessionmodel extends CI_Model
 
         $result_array = array();
 
-        if ($rows = $query->result()) 
+        if ($rows = $query->result())
 		{
 			foreach ($rows as $row)
             {
@@ -95,9 +96,9 @@ class Sessionmodel extends CI_Model
 	 * @param	array
 	 * @return	object
 	 */
-	function delete_record($data) 
+	function delete_record($data)
 	{
-        // get/set the id 
+        // get/set the id
         $this->db->where('session_id', $data['id']);
 
         // execute query

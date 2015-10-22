@@ -1,6 +1,7 @@
-<?php if (!defined('BASEPATH')) exit('No direct script access allowed');
+<?php
+defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Usermodel extends CI_Model 
+class Usermodel extends CI_Model
 {
 
 	function __construct()
@@ -20,7 +21,7 @@ class Usermodel extends CI_Model
         $this->role_permission_table = $prefix.'appa_role_permission';
         $this->user_login_attempt = $prefix.'appa_user_login_attempt';
 	}
-    
+
 
 	/**
 	 * Get users
@@ -34,7 +35,7 @@ class Usermodel extends CI_Model
 		$this->db->from($this->table. ' user');
         $total = $this->db->count_all_results();
 		$this->db->flush_cache();
-		
+
 
 		$this->_build_enumerate($offset,$rows,$sort,$dir,$filters,$search);
         $this->db->limit($rows,$offset);
@@ -55,12 +56,12 @@ class Usermodel extends CI_Model
 		if (!empty($search))
 		{
 			$this->db->like('UPPER(user.username)', strtoupper($search));
-			$this->db->or_like('UPPER(user.name)', strtoupper($search)); 
-			$this->db->or_like('UPPER(user.surname)', strtoupper($search)); 
-			$this->db->or_like('UPPER(user.email)', strtoupper($search)); 
+			$this->db->or_like('UPPER(user.name)', strtoupper($search));
+			$this->db->or_like('UPPER(user.surname)', strtoupper($search));
+			$this->db->or_like('UPPER(user.email)', strtoupper($search));
 		}
 
-        if (!empty($sort) && !empty($dir)) 
+        if (!empty($sort) && !empty($dir))
         {
             $this->db->order_by('UPPER('.$sort.')',$dir);
 		}
@@ -108,7 +109,7 @@ class Usermodel extends CI_Model
         $this->db->join($this->role_table.' r','r.id = ur.role_id and ur.user_id ='.$id,'right');
 
 
-        if (!empty($sort) && !empty($dir)) 
+        if (!empty($sort) && !empty($dir))
         {
             $this->db->order_by('UPPER('.$sort.')',$dir);
 		}
@@ -161,7 +162,7 @@ class Usermodel extends CI_Model
         $this->db->join($this->user_permission_table.' up','p.id = up.permission_id and up.user_id ='.$id,'left');
         $this->db->join($this->role_permission_table.' rp','p.id = rp.permission_id and rp.role_id IN '.$subquery,'left');
 
-        if (!empty($sort) && !empty($dir)) 
+        if (!empty($sort) && !empty($dir))
         {
             $this->db->order_by('UPPER('.$sort.')',$dir);
 		}
@@ -330,14 +331,14 @@ class Usermodel extends CI_Model
 	 * @param	array
 	 * @return	object
 	 */
-	function create_record($data) 
+	function create_record($data)
 	{
-		/** 
+		/**
 		 *  MySQL doesn't allow more than  one TIMESTAMP column with CURRENT_TIMESTAMP in DEFAULT or ON UPDATE clause
 		 * (Error Code : 1293) in versions before 5.6.  We can get around this by making the default of the created
 		 * column "0000-00-00 00:00:00" and inserting null into this column.
-		 * 
-		 * CodeIgniter Active Record doesn't like "nulls" when inserting an array of values, so we have to switch to 
+		 *
+		 * CodeIgniter Active Record doesn't like "nulls" when inserting an array of values, so we have to switch to
 		 * the $this->db->set syntax
 		 */
 		$this->db->set('username',$data['username']);
@@ -366,7 +367,7 @@ class Usermodel extends CI_Model
 	 * @param	array
 	 * @return	object
 	 */
-	function update_record($data) 
+	function update_record($data)
 	{
         // get/set the id and remove it from the data array
 		$id = $data['id'];
@@ -389,9 +390,9 @@ class Usermodel extends CI_Model
 	 * @param	array
 	 * @return	object
 	 */
-	function delete_record($data) 
+	function delete_record($data)
 	{
-        // get/set the id 
+        // get/set the id
         $this->db->where('id', $data['id']);
 
         // execute query
@@ -402,12 +403,12 @@ class Usermodel extends CI_Model
 	}
 
 	/**
-	 * Add a role to a user 
+	 * Add a role to a user
 	 *
 	 * @param	array
 	 * @return	object
 	 */
-	function add_role($role_id,$user_id) 
+	function add_role($role_id,$user_id)
 	{
         // execute query
 		$query = $this->db->insert($this->user_role_table, array(
@@ -425,7 +426,7 @@ class Usermodel extends CI_Model
 	 * @param	array
 	 * @return	object
 	 */
-	function remove_role($role_id,$user_id) 
+	function remove_role($role_id,$user_id)
 	{
         // execute query
 		$query = $this->db->delete($this->user_role_table, array(
@@ -438,12 +439,12 @@ class Usermodel extends CI_Model
 	}
 
 	/**
-	 * Add a permission to a user 
+	 * Add a permission to a user
 	 *
 	 * @param	array
 	 * @return	object
 	 */
-	function add_permission($permission_id,$user_id) 
+	function add_permission($permission_id,$user_id)
 	{
         // execute query
 		$query = $this->db->insert($this->user_permission_table, array(
@@ -461,7 +462,7 @@ class Usermodel extends CI_Model
 	 * @param	array
 	 * @return	object
 	 */
-	function remove_permission($permission_id,$user_id) 
+	function remove_permission($permission_id,$user_id)
 	{
         // execute query
 		$query = $this->db->delete($this->user_permission_table, array(
@@ -474,12 +475,12 @@ class Usermodel extends CI_Model
 	}
 
 	/**
-	 * Add a permission to a user 
+	 * Add a permission to a user
 	 *
 	 * @param	array
 	 * @return	object
 	 */
-	function record_login_attempt($username, $ip_address, $success, $user_agent, $note) 
+	function record_login_attempt($username, $ip_address, $success, $user_agent, $note)
 	{
         // execute query
 		$query = $this->db->insert($this->user_login_attempt, array(
@@ -495,7 +496,7 @@ class Usermodel extends CI_Model
 	}
 
 	/**
-	 * Add a permission to a user 
+	 * Add a permission to a user
 	 *
 	 * @param	array
 	 * @return	object
@@ -521,7 +522,7 @@ class Usermodel extends CI_Model
 
         $this->db->select('username, ip_address, success, user_agent, note, attempt_time');
 
-		if (count($filters)>0) 
+		if (count($filters)>0)
 		{
 			foreach($filters as $filter)
 			{
@@ -537,7 +538,7 @@ class Usermodel extends CI_Model
 
 		$total = $this->db->count_all_results($this->user_login_attempt);
 
-        if (!empty($sort) && !empty($dir)) 
+        if (!empty($sort) && !empty($dir))
         {
             $this->db->order_by('UPPER('.$sort.')',$dir);
 		}
@@ -549,7 +550,7 @@ class Usermodel extends CI_Model
         // execute query
 		$query = $this->db->get($this->user_login_attempt,$rows,$offset);
 
-		$this->db->flush_cache();  
+		$this->db->flush_cache();
 
 		// format and return result to controller
         return $this->appunto_auth->formatQueryResult($query,$total);
