@@ -1,3 +1,5 @@
+*This project is no longer under development.*
+
 # Appunto-Auth
 
 An authentication library for CodeIgniter with a Sencha Ext JS interface and a simple ACL.
