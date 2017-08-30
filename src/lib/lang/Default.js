@@ -21,17 +21,17 @@ Ext.define('AppuntoAuth.lib.lang.Default', {
         }
     },
 
-    localize: function(label) 
+    localize: function(label)
     {
-        if (typeof Language !== 'undefined' && typeof Language.override !== 'undefined' && typeof Language.override[label] !== 'undefined') 
+        if (typeof Language !== 'undefined' && typeof Language.override !== 'undefined' && typeof Language.override[label] !== 'undefined')
         {
             return Language.override[label];
         }
-        else if ( typeof Lang[label] !== 'undefined' )
+        else if ( typeof this[label] !== 'undefined' )
         {
-            return Lang[label];
+            return this[label];
         }
-        else 
+        else
         {
             return undefined;
         }
@@ -67,7 +67,7 @@ Ext.define('AppuntoAuth.lib.lang.Default', {
     tab_paths		: 'Paths',
     tab_sessions	: 'Sessions',
 
-    // User list 
+    // User list
     username			: 'Username',
     name				: 'Name',
     surname				: 'Last name',
@@ -132,7 +132,7 @@ Ext.define('AppuntoAuth.lib.lang.Default', {
     perm_edit				: 'Edit permission',
     perm_delete				: 'Delete permission',
     perm_delete_confirm		: 'Are you sure you want to delete this permission?',
-    
+
 
     // Path list
     path_tab_controllers	: 'Controllers',
