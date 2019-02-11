@@ -1,4 +1,5 @@
-*This project is no longer under development.*
+# Deprecated
+*This project is no longer under development and no maintence is intended.*
 
 # Appunto-Auth
 
