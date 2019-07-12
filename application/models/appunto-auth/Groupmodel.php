@@ -1,6 +1,7 @@
-<?php if (!defined('BASEPATH')) exit('No direct script access allowed');
+<?php
+defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Groupmodel extends CI_Model 
+class Groupmodel extends CI_Model
 {
 
 	function __construct()
@@ -16,7 +17,7 @@ class Groupmodel extends CI_Model
         $this->user_table = $prefix.'appa_user';
         $this->group_user_table = $prefix.'appa_user_group';
 	}
-    
+
 
 	/**
 	 * Get groups
@@ -27,11 +28,11 @@ class Groupmodel extends CI_Model
 	{
         // define table here for count all results
         $this->db->from($this->table);
-        $total = $this->db->count_all_results();  
+        $total = $this->db->count_all_results();
 
         $this->db->select('group.id, group.name,group.description');
 
-        if (!empty($sort) && !empty($dir)) 
+        if (!empty($sort) && !empty($dir))
         {
             $this->db->order_by('UPPER('.$sort.')',$dir);
 		}
@@ -111,7 +112,7 @@ class Groupmodel extends CI_Model
 	 * @param	array
 	 * @return	object
 	 */
-	function create_record($data) 
+	function create_record($data)
 	{
         // execute query
 		$query = $this->db->insert($this->table, $data);
@@ -129,7 +130,7 @@ class Groupmodel extends CI_Model
 	 * @param	array
 	 * @return	object
 	 */
-	function update_record($data) 
+	function update_record($data)
 	{
         // get/set the id and remove it from the data array
 		$id = $data['id'];
@@ -149,9 +150,9 @@ class Groupmodel extends CI_Model
 	 * @param	array
 	 * @return	object
 	 */
-	function delete_record($data) 
+	function delete_record($data)
 	{
-        // get/set the id 
+        // get/set the id
         $this->db->where('id', $data['id']);
 
         // execute query
@@ -162,12 +163,12 @@ class Groupmodel extends CI_Model
 	}
 
 	/**
-	 * Add a user to a group 
+	 * Add a user to a group
 	 *
 	 * @param	array
 	 * @return	object
 	 */
-	function add_user($user_id,$group_id) 
+	function add_user($user_id,$group_id)
 	{
         // execute query
 		$query = $this->db->insert($this->group_user_table, array(
@@ -185,7 +186,7 @@ class Groupmodel extends CI_Model
 	 * @param	array
 	 * @return	object
 	 */
-	function remove_user($user_id,$group_id) 
+	function remove_user($user_id,$group_id)
 	{
         // execute query
 		$query = $this->db->delete($this->group_user_table, array(
@@ -196,4 +197,4 @@ class Groupmodel extends CI_Model
         // return formatted result
         return $this->appunto_auth->formatOperationResult($query,$this->get_group_user($user_id,$group_id));
 	}
-};
+}

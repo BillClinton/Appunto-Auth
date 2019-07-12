@@ -1,6 +1,7 @@
-<?php if (!defined('BASEPATH')) exit('No direct script access allowed');
+<?php
+defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Pathmodel extends CI_Model 
+class Pathmodel extends CI_Model
 {
 
 	function __construct()
@@ -16,7 +17,7 @@ class Pathmodel extends CI_Model
         $this->table = $prefix.'appa_path';
         $this->permission_table = $prefix.'appa_permission';
 	}
-    
+
 	/**
 	 * Get paths for library auhentication verification
 	 *
@@ -32,7 +33,7 @@ class Pathmodel extends CI_Model
         // execute query
 		$query = $this->db->get($this->table.' path');
 
-		// return result 
+		// return result
         return $this->appunto_auth->formatQueryResult($query,$query->num_rows());
 	}
 
@@ -52,7 +53,7 @@ class Pathmodel extends CI_Model
 		$query = $this->db->get($this->table.' path');
 
 		// add column for grouping by controller directory
-        if ($rows = $query->result()) 
+        if ($rows = $query->result())
         {
 			foreach ($rows as $row)
 			{
@@ -91,7 +92,7 @@ class Pathmodel extends CI_Model
 	 * Create record
 	 *
 	 * @param	int		ci_controller
-	 * @param	int		ci_method	
+	 * @param	int		ci_method
 	 * @return	object
 	 */
 	function create_record($dir, $filename, $full_path, $ci_controller, $ci_method, $found = 0)
@@ -111,12 +112,12 @@ class Pathmodel extends CI_Model
 	 * Test to see if this path has already been recorded in db
 	 *
 	 * @param	int		ci_controller
-	 * @param	int		ci_method	
+	 * @param	int		ci_method
 	 * @return	boolean
 	 */
 	function path_exists($dir, $ci_controller, $ci_method)
 	{
-		// shouldn't have to reload the database library here but during the 
+		// shouldn't have to reload the database library here but during the
 		// upgrade to 2.2.0 I started getting an error here if it was not present
 		// investigate further later
 		$this->load->database();
@@ -137,7 +138,7 @@ class Pathmodel extends CI_Model
 	 * Mark Found
 	 *
 	 * @param	int		ci_controller
-	 * @param	int		ci_method	
+	 * @param	int		ci_method
 	 * @return	void
 	 */
 	function mark_found($dir, $ci_controller, $ci_method)
@@ -167,7 +168,7 @@ class Pathmodel extends CI_Model
 	 * @param	array
 	 * @return	object
 	 */
-	function update_record($data) 
+	function update_record($data)
 	{
         // get/set the id and remove it from the data array
 		$id = $data['id'];
@@ -187,9 +188,9 @@ class Pathmodel extends CI_Model
 	 * @param	array
 	 * @return	object
 	 */
-	function delete_record($data) 
+	function delete_record($data)
 	{
-        // get/set the id 
+        // get/set the id
         $this->db->where('id', $data['id']);
 
         // execute query
@@ -204,9 +205,9 @@ class Pathmodel extends CI_Model
 	 *
 	 * @return	object
 	 */
-	function delete_not_found() 
+	function delete_not_found()
 	{
-        // get/set the id 
+        // get/set the id
         $this->db->where('found', 0);
 
         // execute query
@@ -222,11 +223,11 @@ class Pathmodel extends CI_Model
 	 * @param	array
 	 * @return	boolean
 	 */
-	function is_marked_found($data) 
+	function is_marked_found($data)
 	{
         $this->db->select('found');
 
-        // get/set the id 
+        // get/set the id
 		$id = $data['id'];
         $this->db->where('id', $id);
 
@@ -234,7 +235,7 @@ class Pathmodel extends CI_Model
 		$query = $this->db->get($this->table);
 
 		if ($query->num_rows() > 0)
-		{	
+		{
    			$row = $query->row();
 			if ($row->found == 0) return false;
 		}
@@ -247,7 +248,7 @@ class Pathmodel extends CI_Model
 	 * @param	array
 	 * @return	void
 	 */
-	function clear_permissions($data) 
+	function clear_permissions($data)
 	{
         // get/set the id and remove it from the data array
 		$id = $data['id'];
@@ -261,4 +262,4 @@ class Pathmodel extends CI_Model
         return $this->appunto_auth->formatOperationResult($query,$this->get($id));
 	}
 
-};
+}

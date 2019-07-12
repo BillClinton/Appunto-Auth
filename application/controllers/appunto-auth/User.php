@@ -1,4 +1,5 @@
-<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+<?php
+defined('BASEPATH') OR exit('No direct script access allowed');
 
 class User extends CI_Controller {
 
@@ -20,7 +21,7 @@ class User extends CI_Controller {
 		else
 		{
 			$this->session->set_userdata('prev_url', base_url());
-		}  
+		}
 
 
         $this->load->helper('appunto-auth/appunto-auth');
@@ -55,7 +56,7 @@ class User extends CI_Controller {
 			{
 				$user = $this->usermodel->getLoginInfo( $this->input->post('username', TRUE) );
 				$pass = $this->input->post('password', TRUE);
-				
+
 				if (($user != false) && $this->appunto_auth->checkPassword($pass,$user->password))
 				{
 					$this->usermodel->record_login_attempt($username, $ip_address, 1, $user_agent, 'successful login');
@@ -88,7 +89,7 @@ class User extends CI_Controller {
 		$data['auth_message'] = lang('appunto_message_default_error');
 
 		$auth_message = $this->session->flashdata('auth_message');
-		if (isset($auth_message) && strlen($auth_message)>3) 
+		if (isset($auth_message) && strlen($auth_message)>3)
 		{
 			$data['auth_message'] = $auth_message;
 		}
@@ -129,7 +130,7 @@ class User extends CI_Controller {
 			$data['site_name'] = $this->config->item('site_name', 'appunto-auth/appunto_auth');
 
 			$auth_message = $this->session->flashdata('auth_message');
-			if (isset($auth_message) && strlen($auth_message)>3) 
+			if (isset($auth_message) && strlen($auth_message)>3)
 			{
 				$data['auth_message'] = $auth_message;
 			}
@@ -153,5 +154,3 @@ class User extends CI_Controller {
 	}
 
 }
-/* End of file application.php */
-/* Location: ./application/controllers/application.php */

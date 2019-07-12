@@ -1,6 +1,7 @@
-<?php if (!defined('BASEPATH')) exit('No direct script access allowed');
+<?php
+defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Ui extends CI_Controller 
+class Ui extends CI_Controller
 {
 	function __construct()
 	{
@@ -24,11 +25,11 @@ class Ui extends CI_Controller
 		{
 			case 'admin':
 				// $this->load->helper('appunto-auth_helper'); // helper is being loaded in library
-				switch ($func) 
+				switch ($func)
 				{
-					case 'index': 
+					case 'index':
 						echo appunto_auth_admin(); // helper function
-						break;	
+						break;
 					default: $this->appunto_auth->sendResponse($invalid_function);
 				}
 				break;
@@ -36,11 +37,11 @@ class Ui extends CI_Controller
 			case 'user':
 
         		// $this->load->model('usermodel');  // usermodel is being loaded in library
-				switch ($func) 
+				switch ($func)
 				{
-					case 'read': 
+					case 'read':
 						$this->appunto_auth->controller_read($this->usermodel);
-						break;	
+						break;
 					case 'create':
 						$this->form_validation->set_rules('username', 'Username', 'trim|required|xss_clean');
 						$this->form_validation->set_rules('name', 'Name', 'trim|xss_clean');
@@ -49,7 +50,7 @@ class Ui extends CI_Controller
 						$this->form_validation->set_rules('password', 'Password', 'trim|required|xss_clean|callback__password_strength|callback__hash');
 
 						$this->appunto_auth->controller_create($this->usermodel);
-						break;	
+						break;
 					case 'update':
 						$this->form_validation->set_rules('id', 'ID', 'trim|required|xss_clean');
 						$this->form_validation->set_rules('username', 'Username', 'trim|xss_clean');
@@ -58,25 +59,25 @@ class Ui extends CI_Controller
 						$this->form_validation->set_rules('email', 'Email address', 'trim|valid_email|xss_clean');
 
 						$this->appunto_auth->controller_update($this->usermodel);
-						break;	
+						break;
 					case 'update_pass':
 						$this->form_validation->set_rules('id', 'ID', 'trim|required|xss_clean');
 						$this->form_validation->set_rules('password', 'Password', 'trim|required|xss_clean|callback__password_strength|callback__hash');
 
 						$this->appunto_auth->controller_update($this->usermodel);
-						break;	
+						break;
 					case 'destroy':
         				$this->form_validation->set_rules('id', 'Record ID', 'trim|required|numeric|xss_clean');
 
 						$this->appunto_auth->controller_destroy($this->usermodel);
-						break;	
+						break;
 					case 'roles':
         				$this->form_validation->set_rules('id', 'Record ID', 'trim|required|numeric|xss_clean');
-						if ($this->form_validation->run()==FALSE) 
+						if ($this->form_validation->run()==FALSE)
 						{
 							$result = $this->_validation_error();
-						} 
-						else 
+						}
+						else
 						{
 							$sort   = $this->input->get_post('sort', TRUE);
 
@@ -97,14 +98,14 @@ class Ui extends CI_Controller
 							$result = $this->usermodel->get_user_roles($id,$property,$direction);
 						}
 						$this->appunto_auth->sendResponse($result);
-						break;	
+						break;
 					case 'permissions':
         				$this->form_validation->set_rules('id', 'Record ID', 'trim|required|numeric|xss_clean');
-						if ($this->form_validation->run()==FALSE) 
+						if ($this->form_validation->run()==FALSE)
 						{
 							$result = $this->_validation_error();
-						} 
-						else 
+						}
+						else
 						{
 							$sort   = $this->input->get_post('sort', TRUE);
 
@@ -126,15 +127,15 @@ class Ui extends CI_Controller
 
 						}
 						$this->appunto_auth->sendResponse($result);
-						break;	
+						break;
 					case 'add_role':
 						$this->form_validation->set_rules('id', 'Role ID', 'trim|required|numeric|xss_clean');
 						$this->form_validation->set_rules('user_id', 'User ID', 'trim|required|numeric|xss_clean');
-						if ($this->form_validation->run()==FALSE) 
+						if ($this->form_validation->run()==FALSE)
 						{
 							$result = $this->_validation_error();
-						} 
-						else 
+						}
+						else
 						{
 							$role_id = $this->input->get_post('id', TRUE);
 							$user_id = $this->input->get_post('user_id', TRUE);
@@ -142,15 +143,15 @@ class Ui extends CI_Controller
 							$result = $this->usermodel->add_role($role_id,$user_id);
 						}
 						$this->appunto_auth->sendResponse($result);
-						break;	
+						break;
 					case 'remove_role':
 						$this->form_validation->set_rules('id', 'Role ID', 'trim|required|numeric|xss_clean');
 						$this->form_validation->set_rules('user_id', 'User ID', 'trim|required|numeric|xss_clean');
-						if ($this->form_validation->run()==FALSE) 
+						if ($this->form_validation->run()==FALSE)
 						{
 							$result = $this->_validation_error();
-						} 
-						else 
+						}
+						else
 						{
 							$role_id = $this->input->get_post('id', TRUE);
 							$user_id = $this->input->get_post('user_id', TRUE);
@@ -158,15 +159,15 @@ class Ui extends CI_Controller
 							$result = $this->usermodel->remove_role($role_id,$user_id);
 						}
 						$this->appunto_auth->sendResponse($result);
-						break;	
+						break;
 					case 'add_permission':
 						$this->form_validation->set_rules('id', 'Permission ID', 'trim|required|numeric|xss_clean');
 						$this->form_validation->set_rules('user_id', 'User ID', 'trim|required|numeric|xss_clean');
-						if ($this->form_validation->run()==FALSE) 
+						if ($this->form_validation->run()==FALSE)
 						{
 							$result = $this->_validation_error();
-						} 
-						else 
+						}
+						else
 						{
 							$permission_id = $this->input->get_post('id', TRUE);
 							$user_id = $this->input->get_post('user_id', TRUE);
@@ -174,15 +175,15 @@ class Ui extends CI_Controller
 							$result = $this->usermodel->add_permission($permission_id,$user_id);
 						}
 						$this->appunto_auth->sendResponse($result);
-						break;	
+						break;
 					case 'remove_permission':
 						$this->form_validation->set_rules('id', 'Permission ID', 'trim|required|numeric|xss_clean');
 						$this->form_validation->set_rules('user_id', 'User ID', 'trim|required|numeric|xss_clean');
-						if ($this->form_validation->run()==FALSE) 
+						if ($this->form_validation->run()==FALSE)
 						{
 							$result = $this->_validation_error();
-						} 
-						else 
+						}
+						else
 						{
 							$permission_id = $this->input->get_post('id', TRUE);
 							$user_id = $this->input->get_post('user_id', TRUE);
@@ -190,31 +191,31 @@ class Ui extends CI_Controller
 							$result = $this->usermodel->remove_permission($permission_id,$user_id);
 						}
 						$this->appunto_auth->sendResponse($result);
-						break;	
+						break;
 					default: $this->appunto_auth->sendResponse($invalid_function);
 				}
 				break;
 
 			case 'role':
         		$this->load->model('appunto-auth/rolemodel');
-				switch ($func) 
+				switch ($func)
 				{
-					case 'read': 
+					case 'read':
 						$this->appunto_auth->controller_read($this->rolemodel);
-						break;	
+						break;
 					case 'create':
 						$this->form_validation->set_rules('name', 'Name', 'trim|required|min_length[3]|max_length[32]|xss_clean');
 						$this->form_validation->set_rules('description', 'Description', 'trim|max_length[64]|xss_clean');
 
 						$this->appunto_auth->controller_create($this->rolemodel);
-						break;	
+						break;
 					case 'update':
 						$this->form_validation->set_rules('id', 'ID', 'trim|required|numeric|xss_clean');
 						$this->form_validation->set_rules('name', 'Name', 'trim|min_length[3]|max_length[32]|xss_clean');
 						$this->form_validation->set_rules('description', 'Description', 'trim|max_length[64]|xss_clean');
 
 						$this->appunto_auth->controller_update($this->rolemodel);
-						break;	
+						break;
 					case 'destroy':
 						$rules =  'trim|required|numeric|xss_clean';
 						$rules .= '|callback__validate_role_in_use_by_user';
@@ -223,15 +224,15 @@ class Ui extends CI_Controller
 						$this->form_validation->set_rules('id', 'Record ID', $rules);
 
 						$this->appunto_auth->controller_destroy($this->rolemodel);
-						break;	
+						break;
 					case 'permissions':
         				$this->form_validation->set_rules('id', 'Record ID', 'trim|required|numeric|xss_clean');
 
-						if ($this->form_validation->run()==FALSE) 
+						if ($this->form_validation->run()==FALSE)
 						{
 							$result = $this->_validation_error();
-						} 
-						else 
+						}
+						else
 						{
 							$sort   = $this->input->get_post('sort', TRUE);
 
@@ -252,16 +253,16 @@ class Ui extends CI_Controller
 							$result = $this->rolemodel->get_role_permissions($id,$property,$direction);
 						}
         				$this->appunto_auth->sendResponse($result);
-						break;	
+						break;
 					case 'add_permission':
 						$this->form_validation->set_rules('id', 'Permission ID', 'trim|required|numeric|xss_clean');
 						$this->form_validation->set_rules('role_id', 'Role ID', 'trim|required|numeric|xss_clean');
 
-						if ($this->form_validation->run()==FALSE) 
+						if ($this->form_validation->run()==FALSE)
 						{
 							$result = $this->_validation_error();
-						} 
-						else 
+						}
+						else
 						{
 							$permission_id = $this->input->get_post('id', TRUE);
 							$role_id = $this->input->get_post('role_id', TRUE);
@@ -270,16 +271,16 @@ class Ui extends CI_Controller
 						}
 
         				$this->appunto_auth->sendResponse($result);
-						break;	
+						break;
 					case 'remove_permission':
 						$this->form_validation->set_rules('id', 'Permission ID', 'trim|required|numeric|xss_clean');
 						$this->form_validation->set_rules('role_id', 'Role ID', 'trim|required|numeric|xss_clean');
 
-						if ($this->form_validation->run()==FALSE) 
+						if ($this->form_validation->run()==FALSE)
 						{
 							$result = $this->_validation_error();
-						} 
-						else 
+						}
+						else
 						{
 							$permission_id = $this->input->get_post('id', TRUE);
 							$role_id = $this->input->get_post('role_id', TRUE);
@@ -288,31 +289,31 @@ class Ui extends CI_Controller
 						}
 
         				$this->appunto_auth->sendResponse($result);
-						break;	
+						break;
 					default: $this->appunto_auth->sendResponse($invalid_function);
 				}
 				break;
 
 			case 'permission':
         		$this->load->model('appunto-auth/permissionmodel');
-				switch ($func) 
+				switch ($func)
 				{
-					case 'read': 
+					case 'read':
 						$this->appunto_auth->controller_read($this->permissionmodel);
-						break;	
+						break;
 					case 'create':
 						$this->form_validation->set_rules('name', 'Name', 'trim|required|min_length[3]|max_length[32]|xss_clean');
 						$this->form_validation->set_rules('description', 'Description', 'trim|max_length[64]|xss_clean');
 
 						$this->appunto_auth->controller_create($this->permissionmodel);
-						break;	
+						break;
 					case 'update':
 						$this->form_validation->set_rules('id', 'ID', 'trim|required|numeric|xss_clean');
 						$this->form_validation->set_rules('name', 'Name', 'trim|min_length[3]|max_length[32]|xss_clean');
 						$this->form_validation->set_rules('description', 'Description', 'trim|max_length[64]|xss_clean');
 
 						$this->appunto_auth->controller_update($this->permissionmodel);
-						break;	
+						break;
 					case 'destroy':
 						$rules =  'trim|required|numeric|xss_clean';
 						$rules .= '|callback__validate_permission_in_use_by_user';
@@ -322,21 +323,21 @@ class Ui extends CI_Controller
 						$this->form_validation->set_rules('id', 'Record ID', $rules);
 
 						$this->appunto_auth->controller_destroy($this->permissionmodel);
-						break;	
+						break;
 					default: $this->appunto_auth->sendResponse($invalid_function);
 				}
 				break;
 
 			case 'path':
         		$this->load->model('appunto-auth/pathmodel'); // pathmodel is being loaded in the library
-				switch ($func) 
+				switch ($func)
 				{
-					case 'read': 
+					case 'read':
 						$this->appunto_auth->controller_read($this->pathmodel);
-						break;	
+						break;
 
 					case 'verify_paths':
-						// start off by marking all paths unfound.  
+						// start off by marking all paths unfound.
 						$this->pathmodel->mark_all_unfound();
 
 						$data			= array();
@@ -354,7 +355,7 @@ class Ui extends CI_Controller
 						$newPaths = array();
 						$failed = array();
 
-						foreach ($controller_dirs as $controller_dir) 
+						foreach ($controller_dirs as $controller_dir)
 						{
 							// get files in this directory
 							$files = scandir($dir.$controller_dir);
@@ -373,12 +374,11 @@ class Ui extends CI_Controller
 									if ($filename != 'ui.php') require_once($this_dir.$filename);
 
 									$classname = ucfirst(substr($filename, 0, strrpos($filename, '.')));
-									$controller = new $classname();
-									$methods = get_class_methods($controller);
+									$methods = get_class_methods($classname);
 
 									foreach ($methods as $method)
 									{
-										
+
 										$full_path = ($controller_dir=='.') ? $filename : $controller_dir.'/'.$filename;
 
 										if ($this->pathmodel->path_exists($controller_dir,$classname,$method))
@@ -403,7 +403,7 @@ class Ui extends CI_Controller
 						}
 
 
-						if (count($failed)>0) 
+						if (count($failed)>0)
 						{
 							$msg = 'You have '.count($failed).' controller'.((count($failed)>1) ? 's':'').' with a duplicate name: ';
 							$msg .= "<br>";
@@ -418,7 +418,7 @@ class Ui extends CI_Controller
 						else
 						{
 							$msg = 'No new paths found.';
-							if ($new_cnt > 0) 
+							if ($new_cnt > 0)
 							{
 								$msg = $new_cnt.' new path'.($new_cnt > 1 ? "s":"").' found.';
 								$msg .= '<ul>';
@@ -435,18 +435,18 @@ class Ui extends CI_Controller
 							);
 						}
 						$this->appunto_auth->sendResponse($result);
-						break;	
+						break;
 
-					case 'update': 
+					case 'update':
 						$this->form_validation->set_rules('id', 'ID', 'trim|required|numeric|xss_clean');
 						$this->form_validation->set_rules('public_flag', 'Visibility (public/private) ', 'trim|numeric|xss_clean');
 						$this->form_validation->set_rules('permission_id', 'Permission ID', 'trim|numeric|xss_clean');
 
-						if ($this->form_validation->run()==FALSE) 
+						if ($this->form_validation->run()==FALSE)
 						{
 							$result = $this->_validation_error();
-						} 
-						else 
+						}
+						else
 						{
 							// return all POST items with XSS filter
 							$data = $this->input->post(NULL, TRUE);
@@ -455,7 +455,7 @@ class Ui extends CI_Controller
 							if (isset($data['permission_name'])) unset($data['permission_name']);
 
 							// clear any permissions if we are making this a public path
-							if (isset($data['public_flag']) && $data['public_flag']==1) 
+							if (isset($data['public_flag']) && $data['public_flag']==1)
 							{
 								$ignore = $this->pathmodel->clear_permissions($data);
 							}
@@ -473,52 +473,52 @@ class Ui extends CI_Controller
 							}
 						}
 						$this->appunto_auth->sendResponse($result);
-						break;	
+						break;
 
-					case 'destroy': 
+					case 'destroy':
 						$this->form_validation->set_rules('id', 'ID', 'trim|required|numeric|xss_clean');
 
 						// create array from post data
 						$data = $this->input->post(NULL, TRUE);
 
-						if ($this->form_validation->run()==FALSE) 
+						if ($this->form_validation->run()==FALSE)
 						{
 							$result = $this->_validation_error();
 							$this->appunto_auth->sendResponse($result);
-						} 
-						else if ($this->pathmodel->is_marked_found($data)) 
+						}
+						else if ($this->pathmodel->is_marked_found($data))
 						{
 							$result = array (
 								'success'   => false,
 								'msg'       => $this->lang->line('appunto_path_found_in_filesystem')
 							);
 							$this->appunto_auth->sendResponse($result);
-						} 
-						else 
+						}
+						else
 						{
 							$this->appunto_auth->controller_destroy($this->pathmodel);
 						}
-						break;	
+						break;
 
-					case 'delete_not_found': 
+					case 'delete_not_found':
 						$result = $this->pathmodel->delete_not_found();
 						$this->appunto_auth->sendResponse($result);
-						break;	
+						break;
 
-					case 'remove_permission': 
+					case 'remove_permission':
 						$this->form_validation->set_rules('id', 'ID', 'trim|required|numeric|xss_clean');
 
-						if ($this->form_validation->run()==FALSE) 
+						if ($this->form_validation->run()==FALSE)
 						{
 							$result = $this->_validation_error();
-						} 
-						else 
+						}
+						else
 						{
 							$data = $this->input->post(NULL, TRUE);
 							$result = $this->pathmodel->clear_permissions($data);
 						}
         				$this->appunto_auth->sendResponse($result);
-						break;	
+						break;
 
 					default: $this->appunto_auth->sendResponse($invalid_function);
 				}
@@ -526,15 +526,15 @@ class Ui extends CI_Controller
 
 			case 'session':
         		$this->load->model('appunto-auth/sessionmodel');
-				switch ($func) 
+				switch ($func)
 				{
-					case 'read': 
+					case 'read':
 						$this->appunto_auth->controller_read($this->sessionmodel);
-						break;	
+						break;
 					case 'destroy':
         				$this->form_validation->set_rules('id', 'Record ID', 'trim|required|xss_clean');
 						$this->appunto_auth->controller_destroy($this->sessionmodel);
-						break;	
+						break;
 					default: $this->appunto_auth->sendResponse($invalid_function);
 				}
 				break;
@@ -543,24 +543,24 @@ class Ui extends CI_Controller
 				$info_array = array();
 
 				array_push($info_array, array (
-					'info_item' => 'Codeigniter version', 
+					'info_item' => 'Codeigniter version',
 					'info_val' 	=> CI_VERSION
 				));
 				array_push($info_array, array (
-					'info_item'	=> 'Appunto-Auth version', 
+					'info_item'	=> 'Appunto-Auth version',
 					'info_val' 	=> $this->config->item('appunto_auth_version', 'appunto-auth/appunto_auth')
 				));
 
 				$hooks_enabled = $this->config->item('enable_hooks');
 				array_push($info_array, array (
-					'info_item'	=> 'Hooks enabled', 
+					'info_item'	=> 'Hooks enabled',
 					'info_val' 	=> $hooks_enabled,
 					'info_note'	=> (!$hooks_enabled ? $this->lang->line('appunto_no_hook') : '')
 				));
 
 				$csrf_protection = $this->config->item('csrf_protection');
 				array_push($info_array, array (
-					'info_item'	=> $this->lang->line('appunto_csrf_protection'), 
+					'info_item'	=> $this->lang->line('appunto_csrf_protection'),
 					'info_val' 	=> $csrf_protection,
 					'info_note'	=> (!$csrf_protection ? $this->lang->line('appunto_set_true') : '')
 				));
@@ -582,7 +582,7 @@ class Ui extends CI_Controller
 
 				$allow_private_without_permission = $this->config->item('allow_private_without_permission', 'appunto-auth/appunto_auth');
 				array_push($info_array, array (
-					'info_item'	=> $this->lang->line('appunto_private_sans_perm'), 
+					'info_item'	=> $this->lang->line('appunto_private_sans_perm'),
 					'info_val' 	=> $allow_private_without_permission,
 					'info_note'	=> ($allow_private_without_permission? $this->lang->line('appunto_private_sans_perm_warn') : '')
 				));
@@ -612,7 +612,7 @@ class Ui extends CI_Controller
 	}
 
     function _validation_error()
-	{ 
+	{
 		return array (
 			'success'   => false,
 			'msg'       => $this->lang->line('appunto_errors_encountered'),
@@ -624,7 +624,7 @@ class Ui extends CI_Controller
 	{
 		$pass_regex = $this->config->item('password_regex_php', 'appunto-auth/appunto_auth');
 
-		if (preg_match($pass_regex,$pass)!==1) 
+		if (preg_match($pass_regex,$pass)!==1)
 		{
 			$this->form_validation->set_message( '_password_strength', $this->lang->line('appunto_password_strength_fail'));
 			return false;
@@ -638,7 +638,7 @@ class Ui extends CI_Controller
 		if ($this->permissionmodel->in_use_by_user($id))
 		{
 			$this->form_validation->set_message(
-				'_validate_permission_in_use_by_user', 
+				'_validate_permission_in_use_by_user',
 				$this->lang->line('appunto_permission_in_use_by_user')
 			);
 			return false;
@@ -651,7 +651,7 @@ class Ui extends CI_Controller
 		if ($this->permissionmodel->in_use_by_role($id))
 		{
 			$this->form_validation->set_message(
-				'_validate_permission_in_use_by_role', 
+				'_validate_permission_in_use_by_role',
 				$this->lang->line('appunto_permission_in_use_by_role')
 			);
 			return false;
@@ -664,7 +664,7 @@ class Ui extends CI_Controller
 		if ($this->permissionmodel->in_use_by_path($id))
 		{
 			$this->form_validation->set_message(
-				'_validate_permission_in_use_by_path', 
+				'_validate_permission_in_use_by_path',
 				$this->lang->line('appunto_permission_in_use_by_path')
 			);
 			return false;
@@ -677,7 +677,7 @@ class Ui extends CI_Controller
 		if ($this->rolemodel->in_use_by_user($id))
 		{
 			$this->form_validation->set_message(
-				'_validate_role_in_use_by_user', 
+				'_validate_role_in_use_by_user',
 				$this->lang->line('appunto_role_in_use_by_user')
 			);
 			return false;
@@ -690,7 +690,7 @@ class Ui extends CI_Controller
 		if ($this->rolemodel->in_use_by_permission($id))
 		{
 			$this->form_validation->set_message(
-				'_validate_role_in_use_by_permission', 
+				'_validate_role_in_use_by_permission',
 				$this->lang->line('appunto_role_in_use_by_permission')
 			);
 			return false;
@@ -698,9 +698,8 @@ class Ui extends CI_Controller
 		return true;
 	}
 
-	function _hash($str) 
+	function _hash($str)
 	{
 		return $this->appunto_auth->hashPassword($str);
 	}
-};
-
+}

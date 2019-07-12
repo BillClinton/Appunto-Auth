@@ -1,11 +1,12 @@
-<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+<?php
+defined('BASEPATH') OR exit('No direct script access allowed');
 
 require_once('phpass-0.3/PasswordHash.php');
 
 class Appunto_auth
 {
 	/**
-	 * Constructor. 
+	 * Constructor.
 	 * Load config and url helper.
 	 */
     public function __construct()
@@ -26,9 +27,9 @@ class Appunto_auth
     }
 
 	/**
-     * Check if user is logged in 
-	 * 
-	 * @return	void 
+     * Check if user is logged in
+	 *
+	 * @return	void
 	*/
 	public function logged_in()
 	{
@@ -36,36 +37,36 @@ class Appunto_auth
 	}
 
 	/**
-     * Get username if user is logged in 
-	 * 
-	 * @return	void 
+     * Get username if user is logged in
+	 *
+	 * @return	void
 	*/
 	public function get_username()
 	{
 		if ($this->CI->session->userdata('logged_in') == true)
-		{ 
+		{
 			return ($this->CI->session->userdata('username'));
 		}
 		return false;
 	}
 
 	/**
-     * Get user id if user is logged in 
-	 * 
-	 * @return	void 
+     * Get user id if user is logged in
+	 *
+	 * @return	void
 	*/
 	public function get_user_id()
 	{
 		if ($this->CI->session->userdata('logged_in') == true)
-		{ 
+		{
 			return ($this->CI->session->userdata('user_id'));
 		}
 		return false;
 	}
 
 	/**
-	 * Hook to be executed before controller 
-	 * This hook must be included in CodeIgniter's config/hooks.php file using 
+	 * Hook to be executed before controller
+	 * This hook must be included in CodeIgniter's config/hooks.php file using
 	 * the following format:
 	 *
 	 * $hook['post_controller_constructor'] = array(
@@ -76,9 +77,9 @@ class Appunto_auth
 	 * 	'params'   => array()
 	 * );
 	 *
-	 * @return	void 
+	 * @return	void
 	 */
-	public function require_authentication_hook() 
+	public function require_authentication_hook()
 	{
 		$paths 		= $this->_getPaths();
 		$ci_dir		= $this->CI->router->fetch_directory();
@@ -91,14 +92,14 @@ class Appunto_auth
 		$this->CI->session->set_userdata('last_page',$ci_dir.$ci_class.'/'.$ci_method);
 
 		// Test validity of path
-		if (array_key_exists($ci_class,$paths) && 
+		if (array_key_exists($ci_class,$paths) &&
 			(array_key_exists($ci_method,$paths[$ci_class]) ||
 			 array_key_exists('_remap',$paths[$ci_class])))
 		{
 			// if method does not exist, but _remap does, we must authenticate against _remap
 			if (!array_key_exists($ci_method,$paths[$ci_class]) && array_key_exists('_remap',$paths[$ci_class]))
 			{
-				$ci_method = '_remap';	
+				$ci_method = '_remap';
 			}
 
 			// Valid path - store it in a variable for brevity
@@ -108,12 +109,12 @@ class Appunto_auth
 			if ($path['public_flag'] == 1)
 			{
 				// Valid, public path - return
-				return;  
+				return;
 			}
 			else
 			{
 				// Valid, private path - make sure user is logged in
-				if ($this->logged_in()) 
+				if ($this->logged_in())
 				{
 					// User is logged in, check if path has required permission
 					if (is_numeric($path['perm']) && $path['perm'] > 0)
@@ -128,7 +129,7 @@ class Appunto_auth
 						}
 						else
 						{
-							// User does not have required permission 
+							// User does not have required permission
 							$this->_sendError($this->CI->lang->line('appunto_not_authorized'));
 							die;
 						}
@@ -143,13 +144,13 @@ class Appunto_auth
 						}
 						else
 						{
-							// User does not have required permission 
+							// User does not have required permission
 							$this->_sendError($this->CI->lang->line('appunto_not_authorized'));
 							die;
 						}
 					}
-				} 
-				else 
+				}
+				else
 				{
 					// User is not logged in
 					if ($requested_path == 'appunto-auth/user/login')
@@ -164,7 +165,7 @@ class Appunto_auth
 					}
 					$this->_sendError($msg,true);
 					die;
-				} 
+				}
 			}
 		}
 		else
@@ -175,7 +176,7 @@ class Appunto_auth
 		}
 		die; //shouldn't arrive here
 	}
-			
+
 	/**
 	 * send auth error
 	 *
@@ -204,19 +205,19 @@ class Appunto_auth
 			echo($this->CI->load->view($view,$data,true));
 		}
 	}
-			
+
 
 	/**
 	 * Return an array of paths.
 	 *
-	 * @return	array 
+	 * @return	array
 	 */
 	public function _getPaths()
 	{
 		$path_array = array();
         $result 	= $this->CI->pathmodel->getAll();
 
-		if (isset($result['rows']) && is_array($result['rows'])) 
+		if (isset($result['rows']) && is_array($result['rows']))
 		{
 			$rows = $result['rows'];
 			foreach ($rows as $row)
@@ -253,12 +254,11 @@ class Appunto_auth
 	 */
 	public function userHasPermission($permission)
 	{
-		if (!$this->logged_in()) return false;  // user can't have the permission if not logged in 
+		if (!$this->logged_in()) return false;  // user can't have the permission if not logged in
 
 		$user_id = $this->CI->session->userdata('user_id');
 
 		return $this->CI->usermodel->verifyPermissionByInternalName($user_id,$permission);
-		return false;
 	}
 
 	/**
@@ -271,17 +271,16 @@ class Appunto_auth
 		$user_id = $this->CI->session->userdata('user_id');
 
 		return $this->CI->usermodel->verifyPermissionById($user_id,$permission);
-		return false;
 	}
 	/**
 	 * Return an array of user permissions.
 	 *
-	 * @return	array 
+	 * @return	array
 	 */
 	private function _getPermissions()
 	{
 		$user_id = $this->CI->session->userdata('user_id');
-		if (isset($user_id) && is_numeric($user_id) && $user_id > 0) 
+		if (isset($user_id) && is_numeric($user_id) && $user_id > 0)
 		{
 			return $this->CI->usermodel->get_user_permission_array($user_id);
 		}
@@ -314,32 +313,32 @@ class Appunto_auth
 	/**
 	 * Test to determine if request was submitted via Ajax
 	 *
-	 * This is a convenience method to identify Ajax requests so responses can be 
+	 * This is a convenience method to identify Ajax requests so responses can be
 	 * structured appropriately. It is not intended to provide any additional security.
 	 *
-	 * Specifically, authentication failures for normal controllers/views will 
-	 * redirect to the login page or show an error message while authentication 
-	 * failures for JSON requests will offer an ExtJS login dialog or return an 
+	 * Specifically, authentication failures for normal controllers/views will
+	 * redirect to the login page or show an error message while authentication
+	 * failures for JSON requests will offer an ExtJS login dialog or return an
 	 * error message in JSON format;
 	 *
-	 * This cannot be depended on to return an accurate result since headers can 
-	 * be faked and some servers may not provide the HTTP_X_REQUESTED_WITH variable. 
+	 * This cannot be depended on to return an accurate result since headers can
+	 * be faked and some servers may not provide the HTTP_X_REQUESTED_WITH variable.
 	 *
-	 * For servers that don't provide the HTTP_X_REQUESTED_WITH variable, I suggest 
-	 * including a flag with AJAX requests and rewritting this function to check for 
+	 * For servers that don't provide the HTTP_X_REQUESTED_WITH variable, I suggest
+	 * including a flag with AJAX requests and rewritting this function to check for
 	 * the flag.
-	 * 
+	 *
 	 * @return	boolean
 	 */
 	private function _isAjaxRequest()
 	{
-		return (isset($_SERVER['HTTP_X_REQUESTED_WITH']) && 
+		return (isset($_SERVER['HTTP_X_REQUESTED_WITH']) &&
 				(strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest'));
 	}
 
 	/**
      * Create an array of URLs for use in helper.
-	 * 
+	 *
 	 * @return	array
 	*/
 /*
@@ -355,8 +354,8 @@ class Appunto_auth
 		{
 			$urls['extjs_lib'] = $urls['extjs'].'ext-dev.js';
 			$urls['app'] = $urls['base'].'app.js';
-		} 
-		else 
+		}
+		else
 		{
 			$urls['extjs_lib'] = $urls['extjs'].'ext.js';
 			$urls['app'] = $urls['base'].'resources/appunto-auth/app-all.js';
@@ -366,12 +365,12 @@ class Appunto_auth
 */
 
 	/**
-	 * return a hash of the user password. 
+	 * return a hash of the user password.
 	 *
 	 * @param string
 	 * @return string
 	 */
-	public function hashPassword($password) 
+	public function hashPassword($password)
 	{
 		$hasher = new PasswordHash(
 				$this->CI->config->item('hash_logarithm', 'appunto-auth/appunto_auth'),
@@ -381,13 +380,13 @@ class Appunto_auth
 	}
 
 	/**
-	 * compare a password to a hashed password. 
+	 * compare a password to a hashed password.
 	 *
 	 * @param string
 	 * @param string
 	 * @return boolean
 	 */
-	public function checkPassword($password,$hash) 
+	public function checkPassword($password,$hash)
 	{
 		$hasher = new PasswordHash(
 				$this->CI->config->item('hash_logarithm', 'appunto-auth/appunto_auth'),
@@ -410,7 +409,7 @@ class Appunto_auth
 
         if ($callback)
         {
-            // wrap json encoded response in callback 
+            // wrap json encoded response in callback
             // header('Content-Type: application/x-javascript; charset=utf-8');
             $result = $callback . '(' . json_encode($results) . ');';
         } else {
@@ -429,7 +428,7 @@ class Appunto_auth
      */
 	function formatQueryResult($query,$total)
     {
-        if ($query) 
+        if ($query)
         {
             $query_result = $query->result();
             $total = $total;
@@ -438,8 +437,8 @@ class Appunto_auth
                 'total' => $total,
                 'rows' => $query_result
             );
-        } 
-        else 
+        }
+        else
         {
             $result = array (
                 'success' => false,
@@ -459,7 +458,7 @@ class Appunto_auth
 	function formatOperationResult($query, $record = array())
     {
         //$this->chromephp->log($extra_params);
-        if ($query) 
+        if ($query)
         {
             // query successful
             $result = array(
@@ -467,17 +466,17 @@ class Appunto_auth
                 'msg'       => 'Operation successful'
             );
 
-            if (count($record)>0) 
+            if (count($record)>0)
             {
 				$rows = array(
 					'rows'	=> $record
 				);
                 $result = array_merge($result,$rows);
             }
-        } 
-        else 
+        }
+        else
         {
-            // database error 
+            // database error
             $result = array (
                 'success' => false,
                 'msg' => 'Database Error: '.$this->db->_error_message(),
@@ -489,9 +488,9 @@ class Appunto_auth
 
 /*
  * ***** CONTROLLER CODE ****** O__o
- * Putting code that would normally be controller functions in the library to keep the Paths/permissions 
- * manageable and to make it easier to distribute as a spark. 
- */	
+ * Putting code that would normally be controller functions in the library to keep the Paths/permissions
+ * manageable and to make it easier to distribute as a spark.
+ */
 	function controller_read($model)
 	{
         $start  = $this->CI->input->get_post('start', TRUE);
@@ -521,18 +520,18 @@ class Appunto_auth
 
     function controller_create($model)
     {
-        if ($this->CI->form_validation->run()==FALSE) 
+        if ($this->CI->form_validation->run()==FALSE)
         {
             $result = array (
                 'success'   => false,
                 'msg'       => $this->CI->lang->line('appunto_errors_encountered'),
                 'errors'    => validation_errors()
             );
-        } 
-        else 
+        }
+        else
         {
 			// return all POST items with XSS filter
-            $data = $this->CI->input->post(NULL, TRUE); 
+            $data = $this->CI->input->post(NULL, TRUE);
 
             // get result
             $result = $model->create_record($data);
@@ -542,15 +541,15 @@ class Appunto_auth
 
     function controller_update($model)
     {
-        if ($this->CI->form_validation->run()==FALSE) 
+        if ($this->CI->form_validation->run()==FALSE)
         {
             $result = array (
                 'success'   => false,
                 'msg'       => $this->CI->lang->line('appunto_errors_encountered'),
                 'errors'    => validation_errors(),
             );
-        } 
-        else 
+        }
+        else
         {
 			// return all POST items with XSS filter
             $data = $this->CI->input->post(NULL, TRUE);
@@ -575,19 +574,18 @@ class Appunto_auth
 		// create array from post data
 		$data = $this->CI->input->post(NULL, TRUE);
 
-        if (!$this->CI->form_validation->run()) 
+        if (!$this->CI->form_validation->run())
         {
             $result = array (
                 'success'   => false,
                 'msg'       => $this->CI->lang->line('appunto_errors_encountered'),
                 'errors'    => validation_errors()
             );
-        } 
-        else 
+        }
+        else
         {
             $result = $model->delete_record($data);
         }
         $this->sendResponse($result);
 	}
-};
-
+}
