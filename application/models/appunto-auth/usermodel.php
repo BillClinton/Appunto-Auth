@@ -554,4 +554,4 @@ class Usermodel extends CI_Model
 		// format and return result to controller
         return $this->appunto_auth->formatQueryResult($query,$total);
 	}
-};
+}

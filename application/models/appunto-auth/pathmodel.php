@@ -261,4 +261,4 @@ class Pathmodel extends CI_Model
         return $this->appunto_auth->formatOperationResult($query,$this->get($id));
 	}
 
-};
+}

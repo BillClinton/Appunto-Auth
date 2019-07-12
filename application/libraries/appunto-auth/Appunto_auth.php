@@ -258,7 +258,6 @@ class Appunto_auth
 		$user_id = $this->CI->session->userdata('user_id');
 
 		return $this->CI->usermodel->verifyPermissionByInternalName($user_id,$permission);
-		return false;
 	}
 
 	/**
@@ -271,7 +270,6 @@ class Appunto_auth
 		$user_id = $this->CI->session->userdata('user_id');
 
 		return $this->CI->usermodel->verifyPermissionById($user_id,$permission);
-		return false;
 	}
 	/**
 	 * Return an array of user permissions.
@@ -589,5 +587,4 @@ class Appunto_auth
         }
         $this->sendResponse($result);
 	}
-};
-
+}
